@@ -21,27 +21,10 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-package co.edu.uniandes.csw.musica.exceptions;
+package co.edu.uniandes.csw.habitaciones.resources;
 
-import javax.ejb.ApplicationException;
+import javax.ws.rs.ApplicationPath;
+import javax.ws.rs.core.Application;
 
-@ApplicationException(rollback = true)
-public class BusinessLogicException extends Exception {
-
-    public BusinessLogicException() {
-        super();
-    }
-
-    public BusinessLogicException(String message) {
-        super(message);
-    }
-
-    public BusinessLogicException(Throwable cause) {
-        super(cause);
-    }
-
-    public BusinessLogicException(String message, Throwable cause) {
-        super(message, cause);
-    }
-
-}
+@ApplicationPath("api")
+public class RestConfig extends Application {}
