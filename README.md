@@ -1,1 +1,1 @@
-# habitaciones
+# paseos
