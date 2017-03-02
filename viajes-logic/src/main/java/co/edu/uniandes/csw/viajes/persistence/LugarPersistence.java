@@ -20,8 +20,8 @@ import javax.persistence.TypedQuery;
 @Stateless
 public class LugarPersistence {
     
-    @PersistenceContext(unitName="")
-    protected @Inject EntityManager em;
+    @PersistenceContext(unitName="viajesPU")
+    protected EntityManager em;
     
     public LugarEntity create(LugarEntity entity) {
         em.persist(entity);
