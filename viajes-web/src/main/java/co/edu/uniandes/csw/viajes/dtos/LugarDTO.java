@@ -62,9 +62,9 @@ public class LugarDTO {
     
     public LugarEntity toEntity() {
         LugarEntity en = new LugarEntity();
-        en.setDireccion(this.direccion);
         en.setId(this.id);
         en.setLugar(this.lugar);
+        en.setDireccion(this.direccion);
         return en;
     }
 }
