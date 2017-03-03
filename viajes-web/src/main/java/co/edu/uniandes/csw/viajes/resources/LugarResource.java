@@ -29,7 +29,7 @@ import javax.ws.rs.core.MediaType;
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class LugarResource {
-    @Inject LugarLogic logic;
+    @Inject private LugarLogic logic;
     
     @GET
     public List<LugarDTO> getLugares() {
@@ -37,7 +37,7 @@ public class LugarResource {
     }
     
     @GET
-    @PathParam("{id: \\+}")
+    @Path("{id: \\d+}")
     public LugarDTO getLugar(@PathParam("id") Long id) {
         return basicEntity2DTO(logic.findLugar(id));
     }
@@ -48,7 +48,7 @@ public class LugarResource {
     }
     
     @PUT
-    @PathParam("{id: \\+}")
+    @Path("{id: \\d+}")
     public LugarDTO updateLugar(@PathParam("id") Long id, LugarDTO lugar) {
         LugarEntity entity = lugar.toEntity();
         entity.setId(id);
@@ -56,7 +56,7 @@ public class LugarResource {
     }
     
     @DELETE
-    @PathParam("{id: \\+}")
+    @Path("{id: \\d+}")
     public void deleteLugar(@PathParam("id") Long id) {
             logic.deleteLugar(id);
     }
@@ -65,7 +65,7 @@ public class LugarResource {
     
     public LugarDTO basicEntity2DTO(LugarEntity entity) {
         LugarDTO dto = new LugarDTO();
-        dto.setDirrecion(entity.getDireccion());
+        dto.setDireccion(entity.getDireccion());
         dto.setId(entity.getId());
         dto.setLugar(entity.getLugar());
         return dto;

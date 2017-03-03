@@ -18,7 +18,7 @@ import javax.inject.Inject;
 @Stateless
 public class LugarLogic {
     
-    @Inject LugarPersistence persistence;
+    @Inject private LugarPersistence persistence;
     
     public LugarEntity createLugar(LugarEntity entity) {
         return persistence.create(entity);

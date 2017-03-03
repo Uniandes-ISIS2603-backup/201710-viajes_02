@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.viajes.dtos;
 
 import co.edu.uniandes.csw.viajes.entities.LugarEntity;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
@@ -15,7 +16,7 @@ public class LugarDTO {
     
     private Long id;
     private String lugar;
-    private String dirrecion;
+    private String direccion;
 
     /**
      * @return the id
@@ -48,20 +49,20 @@ public class LugarDTO {
     /**
      * @return the dirrecion
      */
-    public String getDirrecion() {
-        return dirrecion;
+    public String getDireccion() {
+        return direccion;
     }
 
     /**
      * @param dirrecion the dirrecion to set
      */
-    public void setDirrecion(String dirrecion) {
-        this.dirrecion = dirrecion;
+    public void setDireccion(String dirrecion) {
+        this.direccion = dirrecion;
     }
     
     public LugarEntity toEntity() {
         LugarEntity en = new LugarEntity();
-        en.setDireccion(this.dirrecion);
+        en.setDireccion(this.direccion);
         en.setId(this.id);
         en.setLugar(this.lugar);
         return en;
