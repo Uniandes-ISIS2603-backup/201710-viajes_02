@@ -19,6 +19,23 @@ public class LugarDTO {
     private String direccion;
 
     /**
+     * Constructor por defecto
+     */
+    public LugarDTO() {
+        
+    }
+    
+    /**
+     * Constructor que crea a partir de una lugar entity.
+     * @param en Lugar entity de la que se va a crear un DTO
+     */
+    public LugarDTO(LugarEntity en) {
+        this.id = en.getId();
+        this.lugar = en.getLugar();
+        this.direccion = en.getDireccion();
+    }
+    
+    /**
      * @return the id
      */
     public Long getId() {
