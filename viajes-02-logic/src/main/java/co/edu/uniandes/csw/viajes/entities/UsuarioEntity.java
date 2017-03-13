@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.viajes.entities;
 
 import java.io.Serializable;
+import javax.persistence.CascadeType;
 import static javax.persistence.CascadeType.PERSIST;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -35,7 +36,7 @@ public class UsuarioEntity implements Serializable{
     
     private String correo;
     
-    @OneToOne
+    @OneToOne(cascade = CascadeType.PERSIST)
     private LugarEntity direccion;
 
     public LugarEntity getLugar() {
