@@ -14,9 +14,12 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
@@ -32,22 +35,37 @@ public class UsuarioResource {
     @Inject
     private UsuarioLogic usuariologic;
 
-    private List<UsuarioDetailDTO> listEntity2DTO(List<UsuarioEntity> entityList) {
-        List<UsuarioDetailDTO> lista = new ArrayList<>();
+    private List<UsuarioDTO> listEntity2DTO(List<UsuarioEntity> entityList) {
+        List<UsuarioDTO> lista = new ArrayList<>();
         for (UsuarioEntity entity : entityList) {
-            lista.add(new UsuarioDetailDTO(entity));
+            lista.add(new UsuarioDTO(entity));
         }
         return lista;
     }
 
     @GET
-    public List<UsuarioDetailDTO> getUsuarios() {
+    public List<UsuarioDTO> getUsuarios() {
         return listEntity2DTO(usuariologic.getUsuarios());
+    }
+    
+    @GET
+    @Path("{id: \\d+}")
+    public UsuarioDTO getUsuario(@PathParam("id")Long id)
+    {
+        return new UsuarioDTO(usuariologic.getUsuario(id));
     }
 
     @POST
-    public UsuarioDetailDTO createUsuario(UsuarioDetailDTO usuario) {
-        return new UsuarioDetailDTO(usuariologic.createUsuario(usuario.toEntity()));
+    public UsuarioDTO createUsuario(UsuarioDTO usuario) {
+        return new UsuarioDTO(usuariologic.createUsuario(usuario.toEntity()));
     }
-
+    
+    @PUT 
+    @Path("{id: \\d+}")
+    public UsuarioDTO updateUsuario(@PathParam ("id") Long id, UsuarioDTO dto)
+    {
+        UsuarioEntity entity = dto.toEntity();
+        entity.setId(id);
+        return new UsuarioDTO(usuariologic.updateUsuario(entity));
+    }
 }

@@ -46,6 +46,6 @@ public class UsuarioPersistence {
     public void delete(Long id)
     {
         UsuarioEntity entity = em.find(UsuarioEntity.class, id);
-        em.detach(entity);
+        em.remove(entity);
     }
 }
