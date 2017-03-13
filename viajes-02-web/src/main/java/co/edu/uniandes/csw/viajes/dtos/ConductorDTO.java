@@ -21,7 +21,7 @@ public class ConductorDTO implements Serializable{
     
     private String nombre;
     
-    private char genero;
+    private String genero;
     
     private Integer telMovil;
     
@@ -47,11 +47,11 @@ public class ConductorDTO implements Serializable{
         this.nombre = nombre;
     }
 
-    public char getGenero() {
+    public String getGenero() {
         return genero;
     }
 
-    public void setGenero(char genero) {
+    public void setGenero(String genero) {
         this.genero = genero;
     }
 

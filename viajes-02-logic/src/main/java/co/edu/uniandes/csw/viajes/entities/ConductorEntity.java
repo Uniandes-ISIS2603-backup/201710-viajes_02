@@ -17,7 +17,7 @@ import javax.persistence.Id;
  */
 
 @Entity
-public class ConductorEntity implements Serializable{
+public class ConductorEntity extends UsuarioEntity{
     
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
@@ -25,7 +25,7 @@ public class ConductorEntity implements Serializable{
     
     private String nombre;
     
-    private char genero;
+    private String genero;
     
     private Integer telMovil;
     
@@ -51,11 +51,12 @@ public class ConductorEntity implements Serializable{
         this.nombre = nombre;
     }
 
-    public char getGenero() {
+    @Override
+    public String getGenero() {
         return genero;
     }
 
-    public void setGenero(char genero) {
+    public void setGenero(String genero) {
         this.genero = genero;
     }
 

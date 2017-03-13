@@ -23,6 +23,26 @@ public class ViajeDTO implements Serializable{
     private Double gastosCompartidos;
     private Date diaYHoraPartida;
     private Date diaYHoraLlegada;
+    private LugarDTO origen;
+    private LugarDTO destino;
+
+    public LugarDTO getOrigen() {
+        return origen;
+    }
+
+    public void setOrigen(LugarDTO origen) {
+        this.origen = origen;
+    }
+
+    public LugarDTO getDestino() {
+        return destino;
+    }
+
+    public void setDestino(LugarDTO destino) {
+        this.destino = destino;
+    }
+    
+    
 
     public Long getIdViaje() {
         return idViaje;
@@ -75,6 +95,9 @@ public class ViajeDTO implements Serializable{
             gastosCompartidos = entity.getGastosCompartidos();
             diaYHoraPartida = entity.getDiaYHoraPartida();
             diaYHoraLlegada = entity.getDiaYHoraPartida();
+            origen = new LugarDTO(entity.getOrigen());
+            destino = new LugarDTO(entity.getDestino());
+            
             
         }
     }
@@ -85,7 +108,9 @@ public class ViajeDTO implements Serializable{
         viaje.setKilometros(Kilometros);
         viaje.setGastosCompartidos(gastosCompartidos);
         viaje.setDiaYHoraLlegada(diaYHoraLlegada);
-        viaje.getDiaYHoraPartida();
+        viaje.setDiaYHoraPartida(diaYHoraPartida);
+        viaje.setDestino(destino.toEntity());
+        viaje.setOrigen(origen.toEntity());
         
         return viaje;
     }

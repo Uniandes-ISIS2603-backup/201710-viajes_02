@@ -6,7 +6,6 @@
 package co.edu.uniandes.csw.viajes.dtos;
 
 import co.edu.uniandes.csw.viajes.entities.ViajeEntity;
-import java.io.Serializable;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -21,7 +20,7 @@ public class ViajeDetailDTO extends ViajeDTO{
     }
     
     public ViajeDetailDTO(ViajeEntity entity){
-        super();
+        super(entity);
     }
     
     @Override

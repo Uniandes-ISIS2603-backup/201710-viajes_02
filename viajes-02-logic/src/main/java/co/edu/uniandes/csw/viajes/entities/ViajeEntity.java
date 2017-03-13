@@ -7,12 +7,17 @@ package co.edu.uniandes.csw.viajes.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -31,6 +36,28 @@ public class ViajeEntity implements Serializable{
     private Date diaYHoraPartida;
     @Temporal(TemporalType.DATE)
     private Date diaYHoraLlegada;
+    
+    @OneToOne(cascade = CascadeType.PERSIST)
+    private LugarEntity origen;
+
+    @OneToOne(cascade = CascadeType.PERSIST)
+    private LugarEntity destino;
+
+    public LugarEntity getOrigen() {
+        return origen;
+    }
+
+    public void setOrigen(LugarEntity origen) {
+        this.origen = origen;
+    }
+
+    public LugarEntity getDestino() {
+        return destino;
+    }
+
+    public void setDestino(LugarEntity destino) {
+        this.destino = destino;
+    }
 
     public Long getIdViaje() {
         return idViaje;
