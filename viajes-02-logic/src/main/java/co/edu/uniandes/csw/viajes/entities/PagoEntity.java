@@ -9,6 +9,8 @@ import java.io.Serializable;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -23,6 +25,10 @@ public class PagoEntity implements Serializable {
     private Long idRemitente;
     private Long idDestinatario;
     private Boolean cancelado;
+    
+    @PodamExclude
+    @ManyToOne
+    private UsuarioEntity usuario;
 
     public Long getIdPago() {
         return idPago;

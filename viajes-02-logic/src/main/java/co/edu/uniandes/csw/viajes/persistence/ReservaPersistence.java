@@ -35,7 +35,7 @@ public class ReservaPersistence {
         ReservaEntity reservaToDelete = query.getSingleResult();
         entityManager.remove(reservaToDelete);
     }
-    
+
     public ReservaEntity update(ReservaEntity reservaEntity) {
         return entityManager.merge(reservaEntity);
     }
@@ -51,5 +51,5 @@ public class ReservaPersistence {
             return null;
         }
     }
-    
+
 }
