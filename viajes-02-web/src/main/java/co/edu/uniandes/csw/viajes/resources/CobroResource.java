@@ -9,6 +9,7 @@ import co.edu.uniandes.csw.viajes.dtos.CobroDTO;
 import co.edu.uniandes.csw.viajes.ejbs.CobroLogic;
 import co.edu.uniandes.csw.viajes.ejbs.UsuarioLogic;
 import co.edu.uniandes.csw.viajes.entities.CobroEntity;
+import co.edu.uniandes.csw.viajes.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -48,10 +49,7 @@ public class CobroResource {
     }
     
     @POST
-    public CobroDTO createCobro(CobroDTO cobro) {
-        //if(!existsUsuario(usuarioId))
-            //throw new WebApplicationException("No existe el usuario",404);
-        
+    public CobroDTO createCobro(CobroDTO cobro){
         cobro.setIdRemitente(usuarioId);
         return basicEntity2DTO(logic.createCobro(cobro.toEntity()));
     }

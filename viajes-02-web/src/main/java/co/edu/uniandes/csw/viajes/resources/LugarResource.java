@@ -68,6 +68,8 @@ public class LugarResource {
         dto.setDireccion(entity.getDireccion());
         dto.setId(entity.getId());
         dto.setLugar(entity.getLugar());
+        dto.setLat(entity.getLat());
+        dto.setLon(entity.getLon());
         return dto;
     }
     

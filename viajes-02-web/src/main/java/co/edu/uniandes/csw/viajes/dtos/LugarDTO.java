@@ -17,6 +17,8 @@ public class LugarDTO {
     private Long id;
     private String lugar;
     private String direccion;
+    private Double lat;
+    private Double lon;
 
     /**
      * Constructor por defecto
@@ -33,6 +35,8 @@ public class LugarDTO {
         this.id = en.getId();
         this.lugar = en.getLugar();
         this.direccion = en.getDireccion();
+        this.lat = en.getLat();
+        this.lon = en.getLon();
     }
     
     /**
@@ -77,11 +81,29 @@ public class LugarDTO {
         this.direccion = dirrecion;
     }
     
+    public Double getLat() {
+        return this.lat;
+    }
+    
+    public Double getLon() {
+        return this.lon;
+    }
+    
+    public void setLat(Double lat) {
+        this.lat = lat;
+    }
+    
+    public void setLon(Double lon) {
+        this.lon = lon;
+    }
+    
     public LugarEntity toEntity() {
         LugarEntity en = new LugarEntity();
         en.setId(this.id);
         en.setLugar(this.lugar);
         en.setDireccion(this.direccion);
+        en.setLat(this.lat);
+        en.setLon(this.lon);
         return en;
     }
 }

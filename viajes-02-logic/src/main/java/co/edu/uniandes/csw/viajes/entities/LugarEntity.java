@@ -28,6 +28,10 @@ public class LugarEntity implements Serializable {
     
     private String direccion;
     
+    private Double lat;
+    
+    private Double lon;
+    
     /**
      * @return the id
      */
@@ -68,6 +72,22 @@ public class LugarEntity implements Serializable {
      */
     public void setDireccion(String direccion) {
         this.direccion = direccion;
+    }
+    
+    public Double getLat() {
+        return this.lat;
+    }
+    
+    public Double getLon() {
+        return this.lon;
+    }
+    
+    public void setLat(Double lat) {
+        this.lat = lat;
+    }
+    
+    public void setLon(Double lon) {
+        this.lon = lon;
     }
     
     @Override

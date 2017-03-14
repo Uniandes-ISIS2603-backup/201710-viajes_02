@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.viajes.ejbs;
 
 import co.edu.uniandes.csw.viajes.entities.CobroEntity;
+import co.edu.uniandes.csw.viajes.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.viajes.persistence.CobroPersistence;
 import java.util.List;
 import javax.ejb.Stateless;
