@@ -17,7 +17,4 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Entity
 public class CobroMultaEntity extends CobroEntity implements Serializable {
     
-    private UsuarioEntity usuario;
-    
-    
 }
