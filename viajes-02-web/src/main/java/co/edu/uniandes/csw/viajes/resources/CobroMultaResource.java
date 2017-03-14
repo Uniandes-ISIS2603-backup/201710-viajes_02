@@ -49,12 +49,14 @@ public class CobroMultaResource {
     
     @POST
     public CobroMultaDTO createLugar(CobroMultaDTO cobro) {
+        cobro.setIdRemitente(usuarioId);
         return basicEntity2DTO(logic.createCobro(cobro.toEntity()));
     }
     
     @PUT
     @Path("{id: \\d+}")
     public CobroMultaDTO updateLugar(@PathParam("id") Long id, CobroMultaDTO cobro) {
+        cobro.setIdRemitente(usuarioId);
         CobroMultaEntity entity = cobro.toEntity();
         entity.setId(id);
         return basicEntity2DTO(logic.updateCobro(entity));

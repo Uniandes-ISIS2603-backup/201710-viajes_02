@@ -13,17 +13,20 @@ import co.edu.uniandes.csw.viajes.entities.CobroEntity;
  */
 public class CobroDTO {
       
-    private Long id;
+    protected Long id;
     
-    private Long valor;
+    protected Long valor;
     
-    private Long idRemitente;
+    protected Long idRemitente;
     
-    private Long idDestinatario;
+    protected Long idDestinatario;
     
-    private Boolean cancelado;
+    protected Boolean cancelado;
 
     public CobroDTO(CobroEntity en) {
+        if(en == null)
+            return;
+
         this.id = en.getId();
         this.valor = en.getValor();
         this.idDestinatario = en.getIdDestinatario();
@@ -105,7 +108,7 @@ public class CobroDTO {
         this.cancelado = candelado;
     }
     
-    public CobroEntity toEntity() {
+    public CobroEntity toEntity() {        
         CobroEntity x = new CobroEntity();
         x.setValor(this.getValor());
         x.setCancelado(this.getCancelado());

@@ -13,6 +13,21 @@ import co.edu.uniandes.csw.viajes.entities.CobroMultaEntity;
  */
 public class CobroMultaDTO extends CobroDTO {
    
+    public CobroMultaDTO(CobroMultaEntity en) {
+        if(en == null)
+            return;
+        
+        this.id = en.getId();
+        this.valor = en.getValor();
+        this.cancelado = en.getCancelado();
+        this.idDestinatario = en.getIdDestinatario();
+        this.idRemitente = en.getIdRemitente();
+    }
+    
+    public CobroMultaDTO() {
+        
+    }
+    
     @Override
     public CobroMultaEntity toEntity() {
         CobroMultaEntity x = new CobroMultaEntity();
