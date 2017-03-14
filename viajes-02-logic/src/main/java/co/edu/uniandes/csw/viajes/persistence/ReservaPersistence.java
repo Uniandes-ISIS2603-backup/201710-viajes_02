@@ -28,9 +28,12 @@ public class ReservaPersistence {
         return reservaEntity;
     }
 
-    public void delete(Long id) {
-        ReservaEntity reservaEntity = entityManager.find(ReservaEntity.class, id);
-        entityManager.remove(reservaEntity);
+    public void delete(Long idViajero, Long idReserva) {
+        TypedQuery<ReservaEntity> query = entityManager.createQuery("Select u from ReservaEntity u where u.idViajero = :idViajero and u.idReserva = :idReserva", ReservaEntity.class);
+        query = query.setParameter("idViajero", idViajero);
+        query = query.setParameter("idReserva", idReserva);
+        ReservaEntity reservaToDelete = query.getSingleResult();
+        entityManager.remove(reservaToDelete);
     }
     
     public ReservaEntity update(ReservaEntity reservaEntity) {
@@ -49,16 +52,4 @@ public class ReservaPersistence {
         }
     }
     
-    public ReservaEntity findReservaByIdViajeroIdReserva(Long idViajero, Long idReserva) {
-        TypedQuery<ReservaEntity> query = entityManager.createQuery("Select u from ReservaEntity u where u.idViajero = :idViajero and u.idReserva = :idReserva", ReservaEntity.class);
-        query = query.setParameter("idViajero", idViajero);
-        query = query.setParameter("idReserva", idReserva);
-
-        ReservaEntity reservasPorIdViajeroIdReserva = query.getSingleResult();
-        if (reservasPorIdViajeroIdReserva != null) {
-            return reservasPorIdViajeroIdReserva;
-        } else {
-            return null;
-        }
-    }
 }

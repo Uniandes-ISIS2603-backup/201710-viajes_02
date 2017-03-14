@@ -30,11 +30,7 @@ public class ReservaLogic {
         return reservaPersistence.findAllByIdViajero(idViajero);
     }
     
-    public ReservaEntity getReservaEspecificaViajero(Long idViajero, Long idReserva) {
-        return reservaPersistence.findReservaByIdViajeroIdReserva(idViajero, idReserva);
-    }
-    
-    public void deleteReserva(Long id) {
-        reservaPersistence.delete(id);
+    public void deleteReserva(Long idViajero, Long idReserva) {
+        reservaPersistence.delete(idViajero, idReserva);
     }
 }

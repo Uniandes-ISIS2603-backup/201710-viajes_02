@@ -14,7 +14,7 @@ import java.io.Serializable;
  */
 public class ReservaDTO implements Serializable {
 
-    private Long numRegistro;
+    private Long idReserva;
     private Long precio;
     private Double valorComision;
     private Integer puestosReservados;
@@ -26,7 +26,7 @@ public class ReservaDTO implements Serializable {
 
     public ReservaDTO(ReservaEntity reservaEntity) {
         if (reservaEntity != null) {
-            this.numRegistro = reservaEntity.getIdReserva();
+            this.idReserva = reservaEntity.getIdReserva();
             this.precio = reservaEntity.getPrecio();
             this.valorComision = reservaEntity.getValorComision();
             this.puestosReservados = reservaEntity.getPuestosReservados();
@@ -36,7 +36,7 @@ public class ReservaDTO implements Serializable {
 
     public ReservaEntity toEntity() {
         ReservaEntity reservaEntity = new ReservaEntity();
-        reservaEntity.setIdReserva(this.numRegistro);
+        reservaEntity.setIdReserva(this.idReserva);
         reservaEntity.setPrecio(this.precio);
         reservaEntity.setValorComision(this.valorComision);
         reservaEntity.setPuestosReservados(this.puestosReservados);
@@ -45,12 +45,12 @@ public class ReservaDTO implements Serializable {
         return reservaEntity;
     }
 
-    public Long getNumRegistro() {
-        return numRegistro;
+    public Long getIdReserva() {
+        return idReserva;
     }
 
-    public void setNumRegistro(Long numRegistro) {
-        this.numRegistro = numRegistro;
+    public void setIdReserva(Long numRegistro) {
+        this.idReserva = numRegistro;
     }
 
     public Long getPrecio() {

@@ -44,10 +44,10 @@ public class ReservaResource {
         return listEntity2DTO(reservaLogic.getReservasViajero(idViajero));
     }
     
-    @GET
+    @DELETE
     @Path("{idViajero: \\d+}/{idReserva: \\d+}")
-    public ReservaDetailDTO getReservaEspecifica(@PathParam("idViajero") Long idViajero, @PathParam("idReserva") Long idReserva) {
-        return new ReservaDetailDTO(reservaLogic.getReservaEspecificaViajero(idViajero, idReserva));
+    public void deleteReserva(@PathParam("idViajero") Long idViajero, @PathParam("idReserva") Long idReserva) {
+        reservaLogic.deleteReserva(idViajero, idReserva);
     }
     
     private List<ReservaDetailDTO> listEntity2DTO(List<ReservaEntity> reservaEntityList){
