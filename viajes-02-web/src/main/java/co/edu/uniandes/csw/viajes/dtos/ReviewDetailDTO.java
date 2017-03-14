@@ -13,7 +13,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Danny
  */
     @XmlRootElement
-public class ReviewDetailDTO
+public class ReviewDetailDTO extends ReviewDTO
     {
 
 
@@ -22,14 +22,15 @@ public class ReviewDetailDTO
 		super( );
 	}
 	
-	//public ReviewDetailDTO( ReviewEntity entity )
-	//{
-	//	super( entity );
-	//}
-	//
-	//public ReviewEntity toEntity( )
-	//{
-	//	ReviewEntity entity = super.toEntity( );
-	//	return entity;
-	//}
+	public ReviewDetailDTO( ReviewEntity entity )
+	{
+		super();
+	}
+	
+        @Override
+	public ReviewEntity toEntity( )
+	{
+		ReviewEntity entity = super.toEntity( );
+		return entity;
+        }
 }

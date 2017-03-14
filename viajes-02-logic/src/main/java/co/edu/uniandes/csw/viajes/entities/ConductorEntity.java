@@ -6,10 +6,14 @@
 package co.edu.uniandes.csw.viajes.entities;
 
 import java.io.Serializable;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -34,7 +38,18 @@ public class ConductorEntity extends UsuarioEntity{
     private Double rating;
     
     private String correo;
+    
+    @OneToMany
+    private List<AutomovilEntity> automoviles;
 
+    public List<AutomovilEntity> getAutomoviles() {
+        return automoviles;
+    }
+
+    public void setAutomoviles(List<AutomovilEntity> automoviles) {
+        this.automoviles = automoviles;
+    }
+    
     public Long getId() {
         return id;
     }
