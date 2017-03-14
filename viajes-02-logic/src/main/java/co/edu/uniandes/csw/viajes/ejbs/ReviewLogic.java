@@ -80,4 +80,10 @@ public class ReviewLogic
 		persistence.delete( idCalificado );
 	}
 	
+        public List<ReviewEntity> getReviews( )
+	{
+		return persistence.findAll( );
+	}
+	
+        
 }

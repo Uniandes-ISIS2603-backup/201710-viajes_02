@@ -68,7 +68,9 @@ public class UsuarioDTO implements Serializable {
         entity.setRating(rating);
         entity.setTelMovil(telMovil);
         if(direccion!=null)
+        {
             entity.setLugar(direccion.toEntity());
+        }
 
         return entity;
     }

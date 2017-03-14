@@ -50,14 +50,14 @@ public class UsuarioResource {
     
     @GET
     @Path("{id: \\d+}")
-    public UsuarioDTO getUsuario(@PathParam("id")Long id)
+    public UsuarioDetailDTO getUsuario(@PathParam("id")Long id)
     {
-        return new UsuarioDTO(usuariologic.getUsuario(id));
+        return new UsuarioDetailDTO(usuariologic.getUsuario(id));
     }
 
     @POST
-    public UsuarioDTO createUsuario(UsuarioDTO usuario) {
-        return new UsuarioDTO(usuariologic.createUsuario(usuario.toEntity()));
+    public UsuarioDetailDTO createUsuario(UsuarioDetailDTO usuario) {
+        return new UsuarioDetailDTO(usuariologic.createUsuario(usuario.toEntity()));
     }
     
     @PUT 

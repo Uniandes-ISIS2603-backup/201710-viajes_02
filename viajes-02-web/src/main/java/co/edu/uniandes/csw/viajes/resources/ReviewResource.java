@@ -27,7 +27,7 @@ import javax.ws.rs.core.MediaType;
 /**
  * @author Danny
  */
-@Path( "/review" )
+@Path("/usuarios/{usuarioId: \\d+}/reviews")
 @Consumes( MediaType.APPLICATION_JSON )
 @Produces( MediaType.APPLICATION_JSON )
 public class ReviewResource
@@ -53,6 +53,12 @@ public class ReviewResource
 		}
 		return list;
 	}
+        
+        @GET
+        public List<ReviewDTO> getReviews()
+        {
+            return listEntity2DTO(logic.getReviews());
+        }
 	
 	@GET
 	@Path( "{id: \\d+}" )
@@ -60,6 +66,8 @@ public class ReviewResource
 	{
 		return new ReviewDTO( logic.getReview( id ) );
 	}
+        
+        
 	
 	@POST
 	public ReviewDTO newReview( ReviewDTO rev ) throws Exception

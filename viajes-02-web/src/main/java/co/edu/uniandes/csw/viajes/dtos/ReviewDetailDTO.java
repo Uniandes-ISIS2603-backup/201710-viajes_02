@@ -24,7 +24,7 @@ public class ReviewDetailDTO extends ReviewDTO
 	
 	public ReviewDetailDTO( ReviewEntity entity )
 	{
-		super();
+		super(entity);
 	}
 	
         @Override

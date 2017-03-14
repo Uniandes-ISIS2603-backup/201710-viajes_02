@@ -6,12 +6,14 @@
 package co.edu.uniandes.csw.viajes.entities;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.CascadeType;
 import static javax.persistence.CascadeType.PERSIST;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 /**
@@ -38,9 +40,31 @@ public class UsuarioEntity implements Serializable{
     
     @OneToOne(cascade = CascadeType.PERSIST)
     private LugarEntity direccion;
+    
+    @OneToMany (cascade = CascadeType.PERSIST)
+    private List<CobroEntity> cobros;
+    
+    @OneToMany (cascade = CascadeType.PERSIST)
+    private List<ReviewEntity> reviews;
+
+    public List<ReviewEntity> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(List<ReviewEntity> reviews) {
+        this.reviews = reviews;
+    }
 
     public LugarEntity getLugar() {
         return direccion;
+    }
+
+    public List<CobroEntity> getCobros() {
+        return cobros;
+    }
+
+    public void setCobros(List<CobroEntity> cobros) {
+        this.cobros = cobros;
     }
 
     public void setLugar(LugarEntity lugar) {
@@ -54,6 +78,14 @@ public class UsuarioEntity implements Serializable{
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public LugarEntity getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(LugarEntity direccion) {
+        this.direccion = direccion;
     }
 
     public String getNombre() {
