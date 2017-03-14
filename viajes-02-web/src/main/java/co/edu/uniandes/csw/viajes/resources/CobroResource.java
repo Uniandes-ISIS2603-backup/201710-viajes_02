@@ -35,7 +35,7 @@ public class CobroResource {
     
     @GET
     public List<CobroDTO> getCobros() {
-        return listEntity2DTO(logic.findCobros());
+        return listEntity2DTO(logic.findCobros(usuarioId));
     }
     
     @GET
@@ -46,12 +46,14 @@ public class CobroResource {
     
     @POST
     public CobroDTO createLugar(CobroDTO cobro) {
+        cobro.setIdRemitente(usuarioId);
         return basicEntity2DTO(logic.createCobro(cobro.toEntity()));
     }
     
     @PUT
     @Path("{id: \\d+}")
     public CobroDTO updateLugar(@PathParam("id") Long id, CobroDTO cobro) {
+        cobro.setIdRemitente(id);
         CobroEntity entity = cobro.toEntity();
         entity.setId(id);
         return basicEntity2DTO(logic.updateCobro(entity));

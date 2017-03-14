@@ -28,15 +28,17 @@ import javax.ws.rs.core.MediaType;
  *
  * @author wr.ravelo
  */
-@Path("/cobromultas")
+@Path("/usuarios/{usuarioId: \\d+}/cobromultas")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class CobroMultaResource {
     @Inject private CobroMultaLogic logic;
     
+    @PathParam("usuarioId") private Long usuarioId;
+    
     @GET
     public List<CobroMultaDTO> getCobros() {
-        return listEntity2DTO(logic.findCobros());
+        return listEntity2DTO(logic.findCobros(usuarioId));
     }
     
     @GET

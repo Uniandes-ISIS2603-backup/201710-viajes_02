@@ -33,6 +33,10 @@ public class CobroMultaLogic {
         return persistence.findAll();
     }
     
+    public List<CobroMultaEntity> findCobros(Long id) {
+        return persistence.findAll(id);
+    }
+    
     public CobroMultaEntity updateCobro(CobroMultaEntity entity) {
         return persistence.update(entity);
     }

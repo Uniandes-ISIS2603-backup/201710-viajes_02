@@ -28,11 +28,11 @@ public class CobroPersistence {
         return entity;
     }
     
-//    public List<CobroEntity> findAllFromUsuario(Long usuarioId) {
-//        TypedQuery q = manager.createQuery("SELECT u FROM CobroEntity u", CobroEntity.class);
-//
-//    }
-//    
+    public List<CobroEntity> findAllFromUsuario(Long usuarioId) {
+        TypedQuery q = manager.createQuery("SELECT u FROM CobroEntity u WHERE u.idRemitente="+usuarioId, CobroEntity.class);
+        return q.getResultList();
+    }
+    
     public List<CobroEntity> findAll() {
         TypedQuery q = manager.createQuery("SELECT u FROM CobroEntity u", CobroEntity.class);
         return q.getResultList();
