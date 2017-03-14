@@ -23,6 +23,18 @@ public class CobroDTO {
     
     private Boolean cancelado;
 
+    public CobroDTO(CobroEntity en) {
+        this.id = en.getId();
+        this.valor = en.getValor();
+        this.idDestinatario = en.getIdDestinatario();
+        this.idRemitente = en.getIdRemitente();
+        this.cancelado = en.getCancelado();
+    }
+    
+    public CobroDTO() {
+        
+    }
+    
     /**
      * @return the id
      */
