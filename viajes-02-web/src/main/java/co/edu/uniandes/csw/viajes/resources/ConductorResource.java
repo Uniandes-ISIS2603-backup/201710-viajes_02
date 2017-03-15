@@ -7,8 +7,10 @@ package co.edu.uniandes.csw.viajes.resources;
 
 import co.edu.uniandes.csw.viajes.dtos.AutomovilDetailDTO;
 import co.edu.uniandes.csw.viajes.dtos.ConductorDetailDTO;
+import co.edu.uniandes.csw.viajes.dtos.ViajeDetailDTO;
 import co.edu.uniandes.csw.viajes.ejbs.ConductorLogic;
 import co.edu.uniandes.csw.viajes.entities.ConductorEntity;
+import co.edu.uniandes.csw.viajes.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -51,18 +53,18 @@ public class ConductorResource {
     
     @GET
     @Path("{id: \\d+}")
-    public ConductorDetailDTO getConductor(@PathParam("id") Long id){
+    public ConductorDetailDTO getConductor(@PathParam("id") Long id) throws BusinessLogicException{
         return new ConductorDetailDTO(logica.getConductor(id));
     }
     
     @POST
-    public ConductorDetailDTO createConductor(ConductorDetailDTO dto){
+    public ConductorDetailDTO createConductor(ConductorDetailDTO dto) throws BusinessLogicException{
         return new ConductorDetailDTO(logica.createConductor(dto.DTO2Entity()));
     }
     
     @PUT
     @Path("{id: \\d+}")
-    public ConductorDetailDTO updateConductor(@PathParam("id") Long id, ConductorDetailDTO c){
+    public ConductorDetailDTO updateConductor(@PathParam("id") Long id, ConductorDetailDTO c) throws BusinessLogicException{
         ConductorEntity entity = c.DTO2Entity();
         entity.setId(id);
         return new ConductorDetailDTO(logica.updateConductor(entity));
@@ -76,7 +78,7 @@ public class ConductorResource {
     
     @POST
     @Path("{idConductor: \\d+}")
-    public ConductorDetailDTO addCarroToConductor(AutomovilDetailDTO dto, @PathParam("idConductor") Long id){
+    public ConductorDetailDTO addCarroToConductor(AutomovilDetailDTO dto, @PathParam("idConductor") Long id) throws BusinessLogicException{
         return new ConductorDetailDTO (logica.addCarroToConductor(dto.toEntity(), id));
     }
 }
