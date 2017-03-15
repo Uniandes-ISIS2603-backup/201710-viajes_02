@@ -16,43 +16,63 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author n.aguilar
  */
 @XmlRootElement
-public class ViajeroDetailDTO extends ViajeroDTO{
-    
+public class ViajeroDetailDTO extends ViajeroDTO {
+
+    /**
+     * Reservas de un viajero
+     */
     private List<ReservaDTO> reservas;
-        
-public ViajeroDetailDTO()
-    {
+
+    /**
+     * Constructor vacio
+     */
+    public ViajeroDetailDTO() {
         super();
     }
 
+    /**
+     * REtorna las reservas de un viajero
+     *
+     * @return reservas
+     */
     public List<ReservaDTO> getReservas() {
         return reservas;
     }
 
+    /**
+     * Modifica las reservas de un viajero por le mparametro
+     *
+     * @param reservas
+     */
     public void setReservas(List<ReservaDTO> reservas) {
         this.reservas = reservas;
     }
-    
-    public ViajeroDetailDTO(ViajeroEntity entity)
-    {
+
+    /**
+     * Se genera el DTO a partir de una entidad que llega por parametro
+     *
+     * @param entity Base
+     */
+    public ViajeroDetailDTO(ViajeroEntity entity) {
         super(entity);
         reservas = new ArrayList<ReservaDTO>();
-        if(entity!=null)
-        {
-            for(ReservaEntity r: entity.getReservas())
-            {
+        if (entity != null) {
+            for (ReservaEntity r : entity.getReservas()) {
                 reservas.add(new ReservaDTO(r));
             }
         }
     }
-    
-    
+
+    /**
+     * Se genera una entidad a partir de la informacion del DTO
+     *
+     * @return Entidad generada
+     */
     @Override
-    public ViajeroEntity toEntity()
-    {
+    public ViajeroEntity toEntity() {
         ViajeroEntity entity = super.toEntity();
-        
-        List<ReservaEntity> reviewsEntity =  new ArrayList<>();
+
+        List<ReservaEntity> reviewsEntity = new ArrayList<>();
         if (reservas != null) {
             for (ReservaDTO r : reservas) {
                 reviewsEntity.add(r.toEntity());
@@ -60,8 +80,8 @@ public ViajeroDetailDTO()
         }
 
         entity.setReservas(reviewsEntity);
-        
+
         return entity;
     }
-    
+
 }

@@ -13,26 +13,40 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author n.aguilar
  */
 @XmlRootElement
-public class ViajeroDTO extends UsuarioDTO{
-    
+public class ViajeroDTO extends UsuarioDTO {
+
+    /**
+     * Constructor vacio
+     */
     public ViajeroDTO() {
 
     }
 
+    /**
+     * Construccion de la case a partir de una entidad
+     *
+     * @param entity Base de la construccion
+     */
     public ViajeroDTO(ViajeroEntity entity) {
         if (entity != null) {
             setCorreo(entity.getCorreo());
-            setEdad(entity.getEdad()) ;
+            setEdad(entity.getEdad());
             setGenero(entity.getGenero());
             setId(entity.getId());
             setNombre(entity.getNombre());
             setRating(entity.getRating());
             setTelMovil(entity.getTelMovil());
-            if(entity.getLugar()!= null)
+            if (entity.getLugar() != null) {
                 setDireccion(new LugarDTO(entity.getLugar()));
+            }
         }
     }
-    
+
+    /**
+     * Se genera una entidad a partir de los datos del DTO
+     *
+     * @return entidad generada
+     */
     public ViajeroEntity toEntity() {
         ViajeroEntity entity = new ViajeroEntity();
         entity.setCorreo(getCorreo());
@@ -42,8 +56,9 @@ public class ViajeroDTO extends UsuarioDTO{
         entity.setNombre(getNombre());
         entity.setRating(getRating());
         entity.setTelMovil(getTelMovil());
-        if(getDireccion()!=null)
+        if (getDireccion() != null) {
             entity.setLugar(getDireccion().toEntity());
+        }
 
         return entity;
     }
