@@ -5,7 +5,10 @@
  */
 package co.edu.uniandes.csw.viajes.entities;
 
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -18,4 +21,16 @@ public class ViajeroEntity extends UsuarioEntity{
     public boolean equals(Object other) {
         return getId().equals(((ViajeroEntity) other).getId());
     }
+    
+    @OneToMany (cascade = CascadeType.PERSIST)
+    public List<ReservaEntity> reservas;
+
+    public List<ReservaEntity> getReservas() {
+        return reservas;
+    }
+
+    public void setReservas(List<ReservaEntity> reservas) {
+        this.reservas = reservas;
+    }   
+    
 }
