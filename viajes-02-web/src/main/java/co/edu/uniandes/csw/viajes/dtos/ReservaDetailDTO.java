@@ -6,12 +6,25 @@
 package co.edu.uniandes.csw.viajes.dtos;
 
 import co.edu.uniandes.csw.viajes.entities.ReservaEntity;
+import co.edu.uniandes.csw.viajes.entities.ViajeEntity;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
  * @author ja.bermudez10
  */
 public class ReservaDetailDTO extends ReservaDTO {
+    
+    private ViajeDTO viaje;
+
+    public ViajeDTO getViaje() {
+        return viaje;
+    }
+
+    public void setViaje(ViajeDTO viaje) {
+        this.viaje = viaje;
+    }
 
     public ReservaDetailDTO() {
         super();
@@ -19,12 +32,16 @@ public class ReservaDetailDTO extends ReservaDTO {
 
     public ReservaDetailDTO(ReservaEntity reservaEntity) {
         super(reservaEntity);
+        viaje = new ViajeDTO(reservaEntity.getViaje());
     }
 
     @Override
     public ReservaEntity toEntity() {
         ReservaEntity reservaEntity = super.toEntity();
+        reservaEntity.setViaje(viaje.DTO2Entity());
 
         return reservaEntity;
     }
+    
+   
 }

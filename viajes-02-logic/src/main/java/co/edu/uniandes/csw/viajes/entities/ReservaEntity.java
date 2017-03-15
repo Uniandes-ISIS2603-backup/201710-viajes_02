@@ -30,11 +30,23 @@ public class ReservaEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idReserva;
+    
+    @ManyToOne
+    private ViajeEntity viaje;
+    
 
     private Long precio;
     private Double valorComision;
     private Integer puestosReservados;
     private Long idViajero;
+
+    public ViajeEntity getViaje() {
+        return viaje;
+    }
+
+    public void setViaje(ViajeEntity viaje) {
+        this.viaje = viaje;
+    }
 
     public Long getIdReserva() {
         return idReserva;

@@ -12,14 +12,26 @@ import co.edu.uniandes.csw.viajes.entities.CobroMultaEntity;
  * @author wr.ravelo
  */
 public class CobroMultaDetailDTO extends CobroMultaDTO {
+  
+    /**
+     * Crea un cobro multa detail dto
+     */
     public CobroMultaDetailDTO() {
         super();
     }
     
+    /**
+     * Crea un cobro multa detail dto de una entidad.
+     * @param entity  Entidad de donde se va a crear el detail dto
+     */
     public CobroMultaDetailDTO(CobroMultaEntity entity) {
         super(entity);
     }
     
+    /**
+     * Convirte una entidad a cobro multa detail dto.
+     * @return 
+     */
     @Override
     public CobroMultaEntity toEntity() {
         return super.toEntity();
