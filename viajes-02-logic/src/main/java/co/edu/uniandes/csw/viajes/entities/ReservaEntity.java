@@ -33,8 +33,8 @@ public class ReservaEntity implements Serializable {
     
     @ManyToOne
     private ViajeEntity viaje;
-    
 
+    
     private Long precio;
     private Double valorComision;
     private Integer puestosReservados;
