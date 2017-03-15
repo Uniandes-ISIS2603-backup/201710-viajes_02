@@ -30,27 +30,26 @@ import javax.ws.rs.core.MediaType;
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class PagoResource {
+
     @Inject
     private PagoLogic reservaLogic;
     @Context
     private HttpServletResponse response;
     @QueryParam("page")
     private Integer page;
-    
+
     @POST
     public PagoDetailDTO createPago(PagoDetailDTO pagoDDTO) {
         return new PagoDetailDTO(reservaLogic.createPago(pagoDDTO.toEntity()));
     }
-    
+
     @GET
     @Path("{idRemitente: \\d+}")
     public List<PagoDetailDTO> getPagos(@PathParam("idRemitente") Long idRemitente) {
         return listEntity2DTO(reservaLogic.getMisPagos(idRemitente));
     }
-    
-    
-    
-    private List<PagoDetailDTO> listEntity2DTO(List<PagoEntity> reservaEntityList){
+
+    private List<PagoDetailDTO> listEntity2DTO(List<PagoEntity> reservaEntityList) {
         List<PagoDetailDTO> listPago = new ArrayList<>();
         for (PagoEntity pagoEntity : reservaEntityList) {
             listPago.add(new PagoDetailDTO(pagoEntity));

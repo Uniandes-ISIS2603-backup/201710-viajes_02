@@ -9,6 +9,8 @@ import java.io.Serializable;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -23,6 +25,10 @@ public class ReservaEntity implements Serializable {
     private Double valorComision;
     private Integer puestosReservados;
     private Long idViajero;
+    
+    @PodamExclude
+    @ManyToOne
+    private ViajeroEntity viajero;
 
     public Long getIdReserva() {
         return idReserva;

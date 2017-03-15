@@ -25,11 +25,11 @@ public class ReservaLogic {
         reservaPersistence.create(reservaEntity);
         return reservaEntity;
     }
-    
+
     public List<ReservaEntity> getReservasViajero(Long idViajero) {
         return reservaPersistence.findAllByIdViajero(idViajero);
     }
-    
+
     public void deleteReserva(Long idViajero, Long idReserva) {
         reservaPersistence.delete(idViajero, idReserva);
     }

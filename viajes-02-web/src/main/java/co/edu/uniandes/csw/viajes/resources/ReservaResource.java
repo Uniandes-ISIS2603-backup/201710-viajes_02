@@ -25,32 +25,32 @@ import javax.ws.rs.core.MediaType;
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class ReservaResource {
-    
+
     @Inject
     private ReservaLogic reservaLogic;
     @Context
     private HttpServletResponse response;
     @QueryParam("page")
     private Integer page;
-    
+
     @POST
     public ReservaDetailDTO createReserva(ReservaDetailDTO reservaDDTO) {
         return new ReservaDetailDTO(reservaLogic.createReserva(reservaDDTO.toEntity()));
     }
-    
+
     @GET
     @Path("{idViajero: \\d+}")
     public List<ReservaDetailDTO> getReservas(@PathParam("id") Long idViajero) {
         return listEntity2DTO(reservaLogic.getReservasViajero(idViajero));
     }
-    
+
     @DELETE
     @Path("{idViajero: \\d+}/{idReserva: \\d+}")
     public void deleteReserva(@PathParam("idViajero") Long idViajero, @PathParam("idReserva") Long idReserva) {
         reservaLogic.deleteReserva(idViajero, idReserva);
     }
-    
-    private List<ReservaDetailDTO> listEntity2DTO(List<ReservaEntity> reservaEntityList){
+
+    private List<ReservaDetailDTO> listEntity2DTO(List<ReservaEntity> reservaEntityList) {
         List<ReservaDetailDTO> listReserva = new ArrayList<>();
         for (ReservaEntity reservaEntity : reservaEntityList) {
             listReserva.add(new ReservaDetailDTO(reservaEntity));
