@@ -5,10 +5,13 @@
  */
 package co.edu.uniandes.csw.viajes.entities;
 
+import javax.persistence.Entity;
+
 /**
  *
  * @author ja.bermudez10
  */
+@Entity
 public class PagoMultaEntity extends PagoEntity {
     
 }

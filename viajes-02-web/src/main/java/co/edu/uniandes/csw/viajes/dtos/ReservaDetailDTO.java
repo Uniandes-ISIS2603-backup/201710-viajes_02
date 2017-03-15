@@ -9,11 +9,13 @@ import co.edu.uniandes.csw.viajes.entities.ReservaEntity;
 import co.edu.uniandes.csw.viajes.entities.ViajeEntity;
 import java.util.ArrayList;
 import java.util.List;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author ja.bermudez10
  */
+@XmlRootElement
 public class ReservaDetailDTO extends ReservaDTO {
     
     private ViajeDTO viaje;
