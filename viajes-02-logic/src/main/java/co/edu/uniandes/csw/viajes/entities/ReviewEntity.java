@@ -68,6 +68,8 @@ public class ReviewEntity implements Serializable
 	{
 		this.calificacion = calificacion;
 	}
+        
+      
 	
 	/**
 	 * Retrieves the id of the ReviewEntity
