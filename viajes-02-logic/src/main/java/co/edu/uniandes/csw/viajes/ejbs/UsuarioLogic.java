@@ -32,11 +32,13 @@ public class UsuarioLogic {
         UsuarioEntity u = persistence.find(id);
         if(u==null)
             throw new BusinessLogicException("No existe un usuario con el id dado por parametro.");
-        return persistence.find(id);
+        return u;
     }
     
-    public UsuarioEntity createUsuario(UsuarioEntity entity)
+    public UsuarioEntity createUsuario(UsuarioEntity entity) throws BusinessLogicException
     {
+        if(!entity.getGenero().equalsIgnoreCase("masculino")&&!entity.getGenero().equalsIgnoreCase("femenino"))
+            throw new BusinessLogicException("El genero del usuario a crear no es valido. (Debe ser masculino o femenino)");
         persistence.create(entity);
         return entity;
     }

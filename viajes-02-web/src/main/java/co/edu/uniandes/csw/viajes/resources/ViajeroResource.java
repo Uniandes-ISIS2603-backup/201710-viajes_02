@@ -9,6 +9,7 @@ import co.edu.uniandes.csw.viajes.dtos.ViajeroDTO;
 import co.edu.uniandes.csw.viajes.dtos.ViajeroDetailDTO;
 import co.edu.uniandes.csw.viajes.ejbs.ViajeroLogic;
 import co.edu.uniandes.csw.viajes.entities.ViajeroEntity;
+import co.edu.uniandes.csw.viajes.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -16,6 +17,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
@@ -31,21 +33,28 @@ public class ViajeroResource {
     @Inject
     private ViajeroLogic logic;
 
-    private List<ViajeroDTO> listEntity2DTO(List<ViajeroEntity> entityList) {
-        List<ViajeroDTO> lista = new ArrayList<>();
+    private List<ViajeroDetailDTO> listEntity2DTO(List<ViajeroEntity> entityList) {
+        List<ViajeroDetailDTO> lista = new ArrayList<>();
         for (ViajeroEntity entity : entityList) {
-            lista.add(new ViajeroDTO(entity));
+            lista.add(new ViajeroDetailDTO(entity));
         }
         return lista;
     }
 
     @GET
-    public List<ViajeroDTO> getViajero() {
+    public List<ViajeroDetailDTO> getViajero() {
         return listEntity2DTO(logic.getViajeros());
     }
     
+    @GET
+    @Path("{id: \\d+}")
+    public ViajeroDetailDTO getUsuario(@PathParam("id")Long id) throws BusinessLogicException
+    {
+        return new ViajeroDetailDTO(logic.getViajero(id));
+    }
+    
     @POST
-    public ViajeroDetailDTO createViajero(ViajeroDetailDTO usuario) {
+    public ViajeroDetailDTO createViajero(ViajeroDetailDTO usuario) throws BusinessLogicException {
         return new ViajeroDetailDTO(logic.createViajero(usuario.toEntity()));
     }
 }

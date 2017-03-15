@@ -55,11 +55,6 @@ public class UsuarioResource {
     {
         return new UsuarioDetailDTO(usuariologic.getUsuario(id));
     }
-
-    @POST
-    public UsuarioDetailDTO createUsuario(UsuarioDetailDTO usuario) {
-        return new UsuarioDetailDTO(usuariologic.createUsuario(usuario.toEntity()));
-    }
     
     @PUT 
     @Path("{id: \\d+}")
