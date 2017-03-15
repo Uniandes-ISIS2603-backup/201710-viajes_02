@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.viajes.ejbs;
 
+import co.edu.uniandes.csw.viajes.entities.AutomovilEntity;
 import co.edu.uniandes.csw.viajes.entities.ConductorEntity;
 import co.edu.uniandes.csw.viajes.persistence.ConductorPersistence;
 import java.util.List;
@@ -38,6 +39,10 @@ public class ConductorLogic {
     
     public void deleteConductor (Long id){
         persistence.delete(id);
+    }
+    
+    public ConductorEntity addCarroToConductor(AutomovilEntity c, Long id){
+        return persistence.addCarro(c, id);
     }
     
 }

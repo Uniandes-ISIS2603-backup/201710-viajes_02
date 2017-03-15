@@ -5,7 +5,7 @@
  */
 package co.edu.uniandes.csw.viajes.resources;
 
-import co.edu.uniandes.csw.viajes.dtos.PagoDetailDTO;
+import co.edu.uniandes.csw.viajes.dtos.PagoDTO;
 import co.edu.uniandes.csw.viajes.ejbs.PagoLogic;
 import co.edu.uniandes.csw.viajes.entities.PagoEntity;
 import java.util.ArrayList;
@@ -34,25 +34,28 @@ public class PagoResource {
     @Inject
     private PagoLogic reservaLogic;
     @Context
-    private HttpServletResponse response;
-    @QueryParam("page")
-    private Integer page;
 
     @POST
-    public PagoDetailDTO createPago(PagoDetailDTO pagoDDTO) {
-        return new PagoDetailDTO(reservaLogic.createPago(pagoDDTO.toEntity()));
+    public PagoDTO createPago(PagoDTO pagoDTO) {
+        return new PagoDTO(reservaLogic.createPago(pagoDTO.toEntity()));
     }
 
     @GET
-    @Path("{idRemitente: \\d+}")
-    public List<PagoDetailDTO> getPagos(@PathParam("idRemitente") Long idRemitente) {
+    @Path("/usuario/{idRemitente: \\d+}")
+    public List<PagoDTO> getMisPagos(@PathParam("idRemitente") Long idRemitente) {
         return listEntity2DTO(reservaLogic.getMisPagos(idRemitente));
     }
+    
+    @GET
+    @Path("/pago/{idPago: \\d+}")
+    public PagoDTO getPago(@PathParam("idPago") Long idPago) {
+        return new PagoDTO(reservaLogic.getPago(idPago));
+    }
 
-    private List<PagoDetailDTO> listEntity2DTO(List<PagoEntity> reservaEntityList) {
-        List<PagoDetailDTO> listPago = new ArrayList<>();
+    private List<PagoDTO> listEntity2DTO(List<PagoEntity> reservaEntityList) {
+        List<PagoDTO> listPago = new ArrayList<>();
         for (PagoEntity pagoEntity : reservaEntityList) {
-            listPago.add(new PagoDetailDTO(pagoEntity));
+            listPago.add(new PagoDTO(pagoEntity));
         }
         return listPago;
     }

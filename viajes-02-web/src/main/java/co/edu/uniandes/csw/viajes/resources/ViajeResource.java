@@ -66,6 +66,13 @@ public class ViajeResource {
         entity.setIdViaje(id);
         return new ViajeDetailDTO(logica.updateViaje(entity));
     }
+    @GET
+    @Path("{origen: .+};(destino: .+)")
+    public List<ViajeDetailDTO> getViajesPorOrigenYDestino(@PathParam("origen") String origen, @PathParam("destino") String destino){
+        List<ViajeEntity> lista = logica.darViajesOrigenYDestino(origen, destino);
+        List<ViajeDetailDTO> respuesta = listEntity2DTO(lista);
+        return respuesta;
+    }
     
     @DELETE
     @Path("{id: \\d+}")

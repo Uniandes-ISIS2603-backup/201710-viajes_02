@@ -6,9 +6,13 @@
 package co.edu.uniandes.csw.viajes.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import uk.co.jemos.podam.common.PodamExclude;
 
@@ -16,19 +20,32 @@ import uk.co.jemos.podam.common.PodamExclude;
  *
  * @author ja.bermudez10
  */
+@Entity
 public class ReservaEntity implements Serializable {
+    
+    @PodamExclude
+    @ManyToMany
+    private List<ViajeroEntity> viajeros = new ArrayList<ViajeroEntity>();
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idReserva;
+    
+    @ManyToOne
+    private ViajeEntity viaje;
+
     private Long precio;
     private Double valorComision;
     private Integer puestosReservados;
     private Long idViajero;
-    
-    @PodamExclude
-    @ManyToOne
-    private ViajeroEntity viajero;
+
+    public ViajeEntity getViaje() {
+        return viaje;
+    }
+
+    public void setViaje(ViajeEntity viaje) {
+        this.viaje = viaje;
+    }
 
     public Long getIdReserva() {
         return idReserva;
@@ -66,8 +83,8 @@ public class ReservaEntity implements Serializable {
         return idViajero;
     }
 
-    public void setIdViajero(Long idViajeroQueReservo) {
-        this.idViajero = idViajeroQueReservo;
+    public void setIdViajero(Long idViajero) {
+        this.idViajero = idViajero;
     }
 
     @Override

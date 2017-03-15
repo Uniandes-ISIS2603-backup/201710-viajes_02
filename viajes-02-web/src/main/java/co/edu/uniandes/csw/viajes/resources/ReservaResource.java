@@ -12,10 +12,12 @@ import co.edu.uniandes.csw.viajes.entities.ReservaEntity;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
+import javax.persistence.ManyToMany;
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -28,19 +30,15 @@ public class ReservaResource {
 
     @Inject
     private ReservaLogic reservaLogic;
-    @Context
-    private HttpServletResponse response;
-    @QueryParam("page")
-    private Integer page;
 
     @POST
-    public ReservaDetailDTO createReserva(ReservaDetailDTO reservaDDTO) {
-        return new ReservaDetailDTO(reservaLogic.createReserva(reservaDDTO.toEntity()));
+    public ReservaDTO createReserva(ReservaDTO reservaDTO) {
+        return new ReservaDetailDTO(reservaLogic.createReserva(reservaDTO.toEntity()));
     }
 
     @GET
-    @Path("{idViajero: \\d+}")
-    public List<ReservaDetailDTO> getReservas(@PathParam("id") Long idViajero) {
+    @Path("/viajeros/{idViajero: \\d+}")
+    public List<ReservaDTO> getReservas(@PathParam("idViajero") Long idViajero) {
         return listEntity2DTO(reservaLogic.getReservasViajero(idViajero));
     }
 
@@ -50,8 +48,8 @@ public class ReservaResource {
         reservaLogic.deleteReserva(idViajero, idReserva);
     }
 
-    private List<ReservaDetailDTO> listEntity2DTO(List<ReservaEntity> reservaEntityList) {
-        List<ReservaDetailDTO> listReserva = new ArrayList<>();
+    private List<ReservaDTO> listEntity2DTO(List<ReservaEntity> reservaEntityList) {
+        List<ReservaDTO> listReserva = new ArrayList<>();
         for (ReservaEntity reservaEntity : reservaEntityList) {
             listReserva.add(new ReservaDetailDTO(reservaEntity));
         }

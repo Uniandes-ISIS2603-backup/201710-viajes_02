@@ -11,6 +11,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -43,5 +44,11 @@ public class ViajePersistence {
     public void delete(Long id){
         ViajeEntity v = em.find(ViajeEntity.class,id);
         em.remove(v);
+    }
+    
+    public List<ViajeEntity> buscarPorOrigenyDestino(String origen, String destino){
+        TypedQuery <ViajeEntity> q = em.createQuery("SELECT U FROM ViajeEntity U WHERE U.origen.lugar = origen AND U.destino.lugar = destino", ViajeEntity.class);
+        List <ViajeEntity> lista = q.getResultList();
+        return lista;
     }
 }

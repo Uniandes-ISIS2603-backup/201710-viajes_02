@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.viajes.persistence;
 
+import co.edu.uniandes.csw.viajes.entities.AutomovilEntity;
 import co.edu.uniandes.csw.viajes.entities.ConductorEntity;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -43,5 +44,14 @@ public class ConductorPersistence {
     public void delete (Long id){
         ConductorEntity conductor = em.find(ConductorEntity.class, id);
         em.remove(conductor);
+    }
+    
+    public ConductorEntity addCarro(AutomovilEntity carro, Long id){
+        ConductorEntity c = em.find(ConductorEntity.class, id);
+        List <AutomovilEntity> lista = c.getAutomoviles();
+        lista.add(carro);
+        c.setAutomoviles(lista);
+        em.merge(c);
+        return c;
     }
 }

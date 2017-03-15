@@ -52,7 +52,7 @@ public class AutomoviLogic
 	 */
 	public AutomovilEntity creatCar( AutomovilEntity entity ) throws Exception
 	{
-		if( persistence.findByPlaca( entity.getPlaca( ) ) == null )
+		if( persistence.findByPlaca( entity.getPlaca( ) ) == null  )
 		{
 			AutomovilEntity car = persistence.create( entity );
 			return entity;
