@@ -12,14 +12,24 @@ import java.util.List;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- *
+ * ReservaDetailDTO
  * @author ja.bermudez10
  */
 @XmlRootElement
 public class ReservaDetailDTO extends ReservaDTO {
     
+    private ViajeroDTO viajero;
+    
     private ViajeDTO viaje;
 
+    public ViajeroDTO getViajero() {
+        return viajero;
+    }
+
+    public void setViajero(ViajeroDTO viajero) {
+        this.viajero = viajero;
+    }
+    
     public ViajeDTO getViaje() {
         return viaje;
     }
@@ -35,15 +45,16 @@ public class ReservaDetailDTO extends ReservaDTO {
     public ReservaDetailDTO(ReservaEntity reservaEntity) {
         super(reservaEntity);
         viaje = new ViajeDTO(reservaEntity.getViaje());
+        viajero = new ViajeroDTO(reservaEntity.getViajero());
     }
 
     @Override
     public ReservaEntity toEntity() {
         ReservaEntity reservaEntity = super.toEntity();
         reservaEntity.setViaje(viaje.DTO2Entity());
+        reservaEntity.setViajero(viajero.toEntity());
 
         return reservaEntity;
     }
     
-   
 }

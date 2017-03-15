@@ -63,8 +63,8 @@ public class PagoEntity implements Serializable {
     }
 
     /**
-     *
-     * @param idPago
+     * Modificacion del idPago 
+     * @param idPago El idPago de la entidad Pago
      */
     public void setIdPago(Long idPago) {
         this.idPago = idPago;
@@ -79,8 +79,8 @@ public class PagoEntity implements Serializable {
     }
 
     /**
-     * 
-     * @param valor
+     * Modificacion del valor
+     * @param valor El valor de la entidad Pago
      */
     public void setValor(Double valor) {
         this.valor = valor;
@@ -95,8 +95,8 @@ public class PagoEntity implements Serializable {
     }
 
     /**
-     *
-     * @param idRemitente
+     * Modificacion del idRemitente
+     * @param idRemitente El idRemitente que remplazara el idRemitente actual
      */
     public void setIdRemitente(Long idRemitente) {
         this.idRemitente = idRemitente;
@@ -104,15 +104,15 @@ public class PagoEntity implements Serializable {
 
     /**
      * Retorna el idDestinatario del Pago
-     * @return
+     * @return el idDestinatario
      */
     public Long getIdDestinatario() {
         return idDestinatario;
     }
 
     /**
-     *
-     * @param idDestinatario
+     * Modificacion del idDestinatario
+     * @param idDestinatario El idDestinatario que remplazara el idDestinatario actual
      */
     public void setIdDestinatario(Long idDestinatario) {
         this.idDestinatario = idDestinatario;
@@ -120,15 +120,15 @@ public class PagoEntity implements Serializable {
 
     /**
      * Retorna el estado del Pago
-     * @return
+     * @return estado del pago
      */
     public Boolean getCancelado() {
         return cancelado;
     }
 
     /**
-     *
-     * @param cancelado
+     * Modificacion del cancelado
+     * @param cancelado El estado que remplazara el estado actual
      */
     public void setCancelado(Boolean cancelado) {
         this.cancelado = cancelado;
@@ -136,15 +136,15 @@ public class PagoEntity implements Serializable {
 
     /**
      * Retorna el usuario por el cual se relacion el Pago
-     * @return
+     * @return el usuario
      */
     public UsuarioEntity getUsuario() {
         return usuario;
     }
 
     /**
-     * 
-     * @param usuario
+     * Modificacion del usuario
+     * @param usuario El usuario que remplazara el usuario actual
      */
     public void setUsuario(UsuarioEntity usuario) {
         this.usuario = usuario;
@@ -165,7 +165,7 @@ public class PagoEntity implements Serializable {
 
     /**
      * Retorna el hashCode del Pago, por medio del idPago
-     * @return
+     * @return hashCode del obj
      */
     @Override
     public int hashCode() {

@@ -6,88 +6,167 @@
 package co.edu.uniandes.csw.viajes.entities;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import uk.co.jemos.podam.common.PodamExclude;
 
 /**
- *
+ * ReservaEntity
  * @author ja.bermudez10
  */
 @Entity
 public class ReservaEntity implements Serializable {
-    
-    @PodamExclude
-    @ManyToMany
-    private List<ViajeroEntity> viajeros = new ArrayList<ViajeroEntity>();
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idReserva;
+    /**
+     *
+     */
+    @ManyToOne
+    private ViajeroEntity viajero = new ViajeroEntity();
     
+    /**
+     *
+     */
     @ManyToOne
     private ViajeEntity viaje;
 
-    
+    /**
+     *
+     */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long idReserva;
+
+    public ViajeroEntity getViajero() {
+        return viajero;
+    }
+
+    public void setViajero(ViajeroEntity viajero) {
+        this.viajero = viajero;
+    }
+
+    /**
+     *
+     */
     private Long precio;
+
+    /**
+     *
+     */
     private Double valorComision;
+
+    /**
+     *
+     */
     private Integer puestosReservados;
+
+    /**
+     *
+     */
     private Long idViajero;
 
-    public ViajeEntity getViaje() {
-        return viaje;
-    }
-
-    public void setViaje(ViajeEntity viaje) {
-        this.viaje = viaje;
-    }
-
+    /**
+     *
+     * @return
+     */
     public Long getIdReserva() {
         return idReserva;
     }
 
+    /**
+     *
+     * @param idReserva
+     */
     public void setIdReserva(Long idReserva) {
         this.idReserva = idReserva;
     }
 
+    /**
+     *
+     * @return
+     */
     public Long getPrecio() {
         return precio;
     }
 
+    /**
+     *
+     * @param precio
+     */
     public void setPrecio(Long precio) {
         this.precio = precio;
     }
 
+    /**
+     *
+     * @return
+     */
     public Double getValorComision() {
         return valorComision;
     }
 
+    /**
+     *
+     * @param valorComision
+     */
     public void setValorComision(Double valorComision) {
         this.valorComision = valorComision;
     }
 
+    /**
+     *
+     * @return
+     */
     public Integer getPuestosReservados() {
         return puestosReservados;
     }
 
+    /**
+     *
+     * @param puestosReservados
+     */
     public void setPuestosReservados(Integer puestosReservados) {
         this.puestosReservados = puestosReservados;
     }
+    
+    /**
+     *
+     * @return
+     */
+    public ViajeEntity getViaje() {
+        return viaje;
+    }
 
+    /**
+     *
+     * @param viaje
+     */
+    public void setViaje(ViajeEntity viaje) {
+        this.viaje = viaje;
+    }
+
+    /**
+     *
+     * @return
+     */
     public Long getIdViajero() {
         return idViajero;
     }
 
+    /**
+     *
+     * @param idViajero
+     */
     public void setIdViajero(Long idViajero) {
         this.idViajero = idViajero;
     }
 
+    /**
+     *
+     * @param obj
+     * @return
+     */
     @Override
     public boolean equals(Object obj) {
         if (this.getIdReserva() != null) {
@@ -96,6 +175,10 @@ public class ReservaEntity implements Serializable {
         return super.equals(obj);
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public int hashCode() {
         if (this.getIdReserva() != null) {

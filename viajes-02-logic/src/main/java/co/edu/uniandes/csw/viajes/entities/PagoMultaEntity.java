@@ -8,7 +8,7 @@ package co.edu.uniandes.csw.viajes.entities;
 import javax.persistence.Entity;
 
 /**
- *
+ * PagoMultaEntity
  * @author ja.bermudez10
  */
 @Entity
