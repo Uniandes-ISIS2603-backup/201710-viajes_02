@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.viajes.entities;
 
 import java.io.Serializable;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -16,6 +17,7 @@ import uk.co.jemos.podam.common.PodamExclude;
  *
  * @author ja.bermudez10
  */
+@Entity
 public class PagoEntity implements Serializable {
 
     @Id

@@ -9,6 +9,7 @@ import co.edu.uniandes.csw.viajes.dtos.UsuarioDTO;
 import co.edu.uniandes.csw.viajes.dtos.UsuarioDetailDTO;
 import co.edu.uniandes.csw.viajes.ejbs.UsuarioLogic;
 import co.edu.uniandes.csw.viajes.entities.UsuarioEntity;
+import co.edu.uniandes.csw.viajes.exceptions.BusinessLogicException;
 import com.gs.collections.impl.utility.internal.primitive.ShortIterableIterate;
 import java.util.ArrayList;
 import java.util.List;
@@ -35,22 +36,22 @@ public class UsuarioResource {
     @Inject
     private UsuarioLogic usuariologic;
 
-    private List<UsuarioDTO> listEntity2DTO(List<UsuarioEntity> entityList) {
-        List<UsuarioDTO> lista = new ArrayList<>();
+    private List<UsuarioDetailDTO> listEntity2DTO(List<UsuarioEntity> entityList) {
+        List<UsuarioDetailDTO> lista = new ArrayList<>();
         for (UsuarioEntity entity : entityList) {
-            lista.add(new UsuarioDTO(entity));
+            lista.add(new UsuarioDetailDTO(entity));
         }
         return lista;
     }
 
     @GET
-    public List<UsuarioDTO> getUsuarios() {
+    public List<UsuarioDetailDTO> getUsuarios() {
         return listEntity2DTO(usuariologic.getUsuarios());
     }
     
     @GET
     @Path("{id: \\d+}")
-    public UsuarioDetailDTO getUsuario(@PathParam("id")Long id)
+    public UsuarioDetailDTO getUsuario(@PathParam("id")Long id) throws BusinessLogicException
     {
         return new UsuarioDetailDTO(usuariologic.getUsuario(id));
     }

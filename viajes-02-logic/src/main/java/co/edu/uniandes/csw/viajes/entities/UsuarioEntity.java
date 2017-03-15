@@ -46,6 +46,17 @@ public class UsuarioEntity implements Serializable{
     
     @OneToMany (cascade = CascadeType.PERSIST)
     private List<ReviewEntity> reviews;
+    
+    @OneToMany (cascade = CascadeType.PERSIST)
+    private List<PagoEntity> pagos;
+
+    public List<PagoEntity> getPagos() {
+        return pagos;
+    }
+
+    public void setPagos(List<PagoEntity> pagos) {
+        this.pagos = pagos;
+    }
 
     public List<ReviewEntity> getReviews() {
         return reviews;

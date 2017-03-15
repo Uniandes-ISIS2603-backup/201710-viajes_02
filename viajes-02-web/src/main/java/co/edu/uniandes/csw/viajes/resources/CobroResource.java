@@ -9,6 +9,7 @@ import co.edu.uniandes.csw.viajes.dtos.CobroDTO;
 import co.edu.uniandes.csw.viajes.ejbs.CobroLogic;
 import co.edu.uniandes.csw.viajes.ejbs.UsuarioLogic;
 import co.edu.uniandes.csw.viajes.entities.CobroEntity;
+import co.edu.uniandes.csw.viajes.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -108,7 +109,7 @@ public class CobroResource {
      * @param id Id del usuario que se va a verificar.
      * @return True si el usuario existe, false de lo contrario.
      */
-    public boolean existsUsuario(Long id) {        
+    public boolean existsUsuario(Long id)throws BusinessLogicException {        
         return usuarioLogic.getUsuario(id) != null;
     }
     

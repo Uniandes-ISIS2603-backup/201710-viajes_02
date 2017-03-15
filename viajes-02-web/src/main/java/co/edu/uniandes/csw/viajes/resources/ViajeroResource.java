@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.viajes.resources;
 
 import co.edu.uniandes.csw.viajes.dtos.ViajeroDTO;
+import co.edu.uniandes.csw.viajes.dtos.ViajeroDetailDTO;
 import co.edu.uniandes.csw.viajes.ejbs.ViajeroLogic;
 import co.edu.uniandes.csw.viajes.entities.ViajeroEntity;
 import java.util.ArrayList;
@@ -44,7 +45,7 @@ public class ViajeroResource {
     }
     
     @POST
-    public ViajeroDTO createViajero(ViajeroDTO usuario) {
-        return new ViajeroDTO(logic.createViajero(usuario.toEntity()));
+    public ViajeroDetailDTO createViajero(ViajeroDetailDTO usuario) {
+        return new ViajeroDetailDTO(logic.createViajero(usuario.toEntity()));
     }
 }

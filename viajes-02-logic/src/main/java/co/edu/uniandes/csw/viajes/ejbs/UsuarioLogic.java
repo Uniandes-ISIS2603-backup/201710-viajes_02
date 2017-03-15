@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.viajes.ejbs;
 
 import co.edu.uniandes.csw.viajes.entities.UsuarioEntity;
+import co.edu.uniandes.csw.viajes.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.viajes.persistence.UsuarioPersistence;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -26,8 +27,11 @@ public class UsuarioLogic {
         return persistence.findAll();
     }
     
-    public UsuarioEntity getUsuario(Long id)
+    public UsuarioEntity getUsuario(Long id)throws BusinessLogicException
     {
+        UsuarioEntity u = persistence.find(id);
+        if(u==null)
+            throw new BusinessLogicException("No existe un usuario con el id dado por parametro.");
         return persistence.find(id);
     }
     
