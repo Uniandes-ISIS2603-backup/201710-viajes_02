@@ -39,7 +39,7 @@ public class ConductorEntity extends UsuarioEntity{
     
     private String correo;
     
-    @OneToMany
+    @OneToMany (cascade = CascadeType.ALL)
     private List<AutomovilEntity> automoviles;
 
     public List<AutomovilEntity> getAutomoviles() {

@@ -39,4 +39,8 @@ public class ViajeLogic {
     public void deleteViaje(Long id){
         persistence.delete(id);
     }
+    
+    public List<ViajeEntity> darViajesOrigenYDestino(String origen, String destino){
+        return persistence.buscarPorOrigenyDestino(origen, destino);
+    }
 }

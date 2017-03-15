@@ -42,6 +42,18 @@ public class ViajeEntity implements Serializable{
 
     @OneToOne(cascade = CascadeType.PERSIST)
     private LugarEntity destino;
+    
+    @OneToOne (cascade = CascadeType.MERGE)
+    private AutomovilEntity automovil;
+
+    public AutomovilEntity getAutomovil() {
+        return automovil;
+    }
+
+    public void setAutomovil(AutomovilEntity automovil) {
+        this.automovil = automovil;
+    }
+    
 
     public LugarEntity getOrigen() {
         return origen;

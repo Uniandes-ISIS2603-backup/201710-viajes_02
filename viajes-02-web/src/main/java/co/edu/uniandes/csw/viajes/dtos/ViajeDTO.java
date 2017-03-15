@@ -25,7 +25,16 @@ public class ViajeDTO implements Serializable{
     private Date diaYHoraLlegada;
     private LugarDTO origen;
     private LugarDTO destino;
+    private AutomovilDTO automovil;
 
+    public AutomovilDTO getAutomovil() {
+        return automovil;
+    }
+
+    public void setAutomovil(AutomovilDTO automovil) {
+        this.automovil = automovil;
+    }
+  
     public LugarDTO getOrigen() {
         return origen;
     }
@@ -97,6 +106,7 @@ public class ViajeDTO implements Serializable{
             diaYHoraLlegada = entity.getDiaYHoraPartida();
             origen = new LugarDTO(entity.getOrigen());
             destino = new LugarDTO(entity.getDestino());
+            automovil = new AutomovilDTO(entity.getAutomovil());
             
             
         }
@@ -111,6 +121,7 @@ public class ViajeDTO implements Serializable{
         viaje.setDiaYHoraPartida(diaYHoraPartida);
         viaje.setDestino(destino.toEntity());
         viaje.setOrigen(origen.toEntity());
+        viaje.setAutomovil(automovil.toEntity());
         
         return viaje;
     }

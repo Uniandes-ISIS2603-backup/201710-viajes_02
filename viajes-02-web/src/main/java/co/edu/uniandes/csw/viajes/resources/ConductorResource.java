@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.viajes.resources;
 
+import co.edu.uniandes.csw.viajes.dtos.AutomovilDetailDTO;
 import co.edu.uniandes.csw.viajes.dtos.ConductorDetailDTO;
 import co.edu.uniandes.csw.viajes.ejbs.ConductorLogic;
 import co.edu.uniandes.csw.viajes.entities.ConductorEntity;
@@ -71,5 +72,11 @@ public class ConductorResource {
     @Path("{id: \\d+}")
     public void deleteConductor(@PathParam("id") Long id){
         logica.deleteConductor(id);
+    }
+    
+    @POST
+    @Path("{idConductor: \\d+}")
+    public ConductorDetailDTO addCarroToConductor(AutomovilDetailDTO dto, @PathParam("idConductor") Long id){
+        return new ConductorDetailDTO (logica.addCarroToConductor(dto.toEntity(), id));
     }
 }
