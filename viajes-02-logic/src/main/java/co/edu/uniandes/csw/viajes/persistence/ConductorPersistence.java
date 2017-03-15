@@ -7,6 +7,7 @@ package co.edu.uniandes.csw.viajes.persistence;
 
 import co.edu.uniandes.csw.viajes.entities.AutomovilEntity;
 import co.edu.uniandes.csw.viajes.entities.ConductorEntity;
+import co.edu.uniandes.csw.viajes.entities.ViajeEntity;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -54,4 +55,6 @@ public class ConductorPersistence {
         em.merge(c);
         return c;
     }
+    
+    
 }

@@ -7,6 +7,7 @@ package co.edu.uniandes.csw.viajes.dtos;
 
 import co.edu.uniandes.csw.viajes.entities.AutomovilEntity;
 import co.edu.uniandes.csw.viajes.entities.ConductorEntity;
+import co.edu.uniandes.csw.viajes.entities.ViajeEntity;
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -20,6 +21,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class ConductorDetailDTO extends ConductorDTO{
     
     private List<AutomovilDetailDTO> automoviles;
+    
+    private List <ViajeDTO> viajes;
 
     public List<AutomovilDetailDTO> getAutomoviles() {
         return automoviles;
@@ -35,6 +38,17 @@ public class ConductorDetailDTO extends ConductorDTO{
     public ConductorDetailDTO(ConductorEntity entity){
         super(entity);
         automoviles = listEntity2DTO(entity.getAutomoviles());
+        viajes = listEntity2DTO2(entity.getViajes());
+    }
+    
+    
+
+    public List<ViajeDTO> getViajes() {
+        return viajes;
+    }
+
+    public void setViajes(List<ViajeDTO> viajes) {
+        this.viajes = viajes;
     }
     
     
@@ -53,4 +67,14 @@ public class ConductorDetailDTO extends ConductorDTO{
 		}
 		return list;
 	}
+    
+    public List<ViajeDTO> listEntity2DTO2(List<ViajeEntity> entityList){
+        List<ViajeDTO> respuesta = new ArrayList();
+        for(int i = 0; i < entityList.size(); i++){
+            ViajeEntity v = entityList.get(i);
+            ViajeDetailDTO v1 = new ViajeDetailDTO(v);
+            respuesta.add(v1);
+        }
+        return respuesta;
+    }
 }

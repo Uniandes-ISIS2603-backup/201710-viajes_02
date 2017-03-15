@@ -41,6 +41,19 @@ public class ConductorEntity extends UsuarioEntity{
     
     @OneToMany (cascade = CascadeType.ALL)
     private List<AutomovilEntity> automoviles;
+    
+    @OneToMany (cascade = CascadeType.ALL, mappedBy = "conductor")
+    private List <ViajeEntity> viajes;
+
+    public List<ViajeEntity> getViajes() {
+        return viajes;
+    }
+
+    public void setViajes(List<ViajeEntity> viajes) {
+        this.viajes = viajes;
+    }
+    
+    
 
     public List<AutomovilEntity> getAutomoviles() {
         return automoviles;
