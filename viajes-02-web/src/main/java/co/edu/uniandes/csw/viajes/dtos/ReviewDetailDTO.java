@@ -12,25 +12,37 @@ import javax.xml.bind.annotation.XmlRootElement;
  *
  * @author Danny
  */
-    @XmlRootElement
+@XmlRootElement
 public class ReviewDetailDTO extends ReviewDTO
+{
+
+    /**
+     * Crea un review detail dto.
+     */
+    public ReviewDetailDTO()
     {
+        super();
+    }
 
+    /**
+     * Crea un review detail dto de una entidad.
+     *
+     * @param entity Entidad de la cual se va a crear un detail dto.
+     */
+    public ReviewDetailDTO(ReviewEntity entity)
+    {
+        super(entity);
+    }
 
-	public ReviewDetailDTO( )
-	{
-		super( );
-	}
-	
-	public ReviewDetailDTO( ReviewEntity entity )
-	{
-		super(entity);
-	}
-	
-        @Override
-	public ReviewEntity toEntity( )
-	{
-		ReviewEntity entity = super.toEntity( );
-		return entity;
-        }
+    /**
+     * Convierte un review detail dto a entidad..
+     *
+     * @return Entidad creada desde un detail dto.
+     */
+    @Override
+    public ReviewEntity toEntity()
+    {
+        ReviewEntity entity = super.toEntity();
+        return entity;
+    }
 }

@@ -14,7 +14,8 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author ja.bermudez10
  */
 @XmlRootElement
-public class ReservaDTO implements Serializable {
+public class ReservaDTO implements Serializable
+{
 
     private Long idReserva;
     private Long precio;
@@ -22,12 +23,15 @@ public class ReservaDTO implements Serializable {
     private Integer puestosReservados;
     private Long idViajero;
 
-    public ReservaDTO() {
+    public ReservaDTO()
+    {
 
     }
 
-    public ReservaDTO(ReservaEntity reservaEntity) {
-        if (reservaEntity != null) {
+    public ReservaDTO(ReservaEntity reservaEntity)
+    {
+        if (reservaEntity != null)
+        {
             this.idReserva = reservaEntity.getIdReserva();
             this.precio = reservaEntity.getPrecio();
             this.valorComision = reservaEntity.getValorComision();
@@ -36,9 +40,10 @@ public class ReservaDTO implements Serializable {
         }
     }
 
-    public ReservaEntity toEntity() {
+    public ReservaEntity toEntity()
+    {
         ReservaEntity reservaEntity = new ReservaEntity();
-        
+
         reservaEntity.setIdReserva(this.idReserva);
         reservaEntity.setPrecio(this.precio);
         reservaEntity.setValorComision(this.valorComision);
@@ -48,43 +53,53 @@ public class ReservaDTO implements Serializable {
         return reservaEntity;
     }
 
-    public Long getIdReserva() {
+    public Long getIdReserva()
+    {
         return idReserva;
     }
 
-    public void setIdReserva(Long numRegistro) {
+    public void setIdReserva(Long numRegistro)
+    {
         this.idReserva = numRegistro;
     }
 
-    public Long getPrecio() {
+    public Long getPrecio()
+    {
         return precio;
     }
 
-    public void setPrecio(Long precio) {
+    public void setPrecio(Long precio)
+    {
         this.precio = precio;
     }
 
-    public Double getValorComision() {
+    public Double getValorComision()
+    {
         return valorComision;
     }
 
-    public void setValorComision(Double valorComision) {
+    public void setValorComision(Double valorComision)
+    {
         this.valorComision = valorComision;
     }
 
-    public Integer getPuestosReservados() {
+    public Integer getPuestosReservados()
+    {
         return puestosReservados;
     }
 
-    public void setPuestosReservados(Integer puestosReservados) {
+    public void setPuestosReservados(Integer puestosReservados)
+    {
         this.puestosReservados = puestosReservados;
     }
 
-    public Long getIdViajero() {
+    public Long getIdViajero()
+    {
         return idViajero;
     }
 
-    public void setIdViajero(Long idViajero) {
+    public void setIdViajero(Long idViajero)
+    {
         this.idViajero = idViajero;
     }
 

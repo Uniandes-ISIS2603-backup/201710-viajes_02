@@ -29,7 +29,8 @@ import javax.ws.rs.core.MediaType;
 @Path("/viajeros")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
-public class ViajeroResource {
+public class ViajeroResource
+{
 
     /**
      * Logica del usuario
@@ -43,9 +44,11 @@ public class ViajeroResource {
      * @param entityList lista de entidades a transformar
      * @return Lista de dtos generada
      */
-    private List<ViajeroDetailDTO> listEntity2DTO(List<ViajeroEntity> entityList) {
+    private List<ViajeroDetailDTO> listEntity2DTO(List<ViajeroEntity> entityList)
+    {
         List<ViajeroDetailDTO> lista = new ArrayList<>();
-        for (ViajeroEntity entity : entityList) {
+        for (ViajeroEntity entity : entityList)
+        {
             lista.add(new ViajeroDetailDTO(entity));
         }
         return lista;
@@ -57,7 +60,8 @@ public class ViajeroResource {
      * @return El viajero
      */
     @GET
-    public List<ViajeroDetailDTO> getViajeros() {
+    public List<ViajeroDetailDTO> getViajeros()
+    {
         return listEntity2DTO(logic.getViajeros());
     }
 
@@ -71,7 +75,8 @@ public class ViajeroResource {
      */
     @GET
     @Path("{id: \\d+}")
-    public ViajeroDetailDTO getUsuario(@PathParam("id") Long id) throws BusinessLogicException {
+    public ViajeroDetailDTO getUsuario(@PathParam("id") Long id) throws BusinessLogicException
+    {
         return new ViajeroDetailDTO(logic.getViajero(id));
     }
 
@@ -84,7 +89,8 @@ public class ViajeroResource {
      * necogico
      */
     @POST
-    public ViajeroDetailDTO createViajero(ViajeroDetailDTO usuario) throws BusinessLogicException {
+    public ViajeroDetailDTO createViajero(ViajeroDetailDTO usuario) throws BusinessLogicException
+    {
         return new ViajeroDetailDTO(logic.createViajero(usuario.toEntity()));
     }
 
@@ -97,7 +103,8 @@ public class ViajeroResource {
      * negocio
      */
     @PUT
-    public ViajeroDetailDTO updateViajero(ViajeroDetailDTO viajero) throws BusinessLogicException {
+    public ViajeroDetailDTO updateViajero(ViajeroDetailDTO viajero) throws BusinessLogicException
+    {
         return new ViajeroDetailDTO(logic.updateViajero(viajero.toEntity()));
     }
 }

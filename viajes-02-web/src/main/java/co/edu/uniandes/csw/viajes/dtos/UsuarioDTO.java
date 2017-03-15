@@ -14,7 +14,8 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author n.aguilar
  */
 @XmlRootElement
-public class UsuarioDTO implements Serializable {
+public class UsuarioDTO implements Serializable
+{
 
     private Long id;
 
@@ -29,23 +30,28 @@ public class UsuarioDTO implements Serializable {
     private Double rating;
 
     private String correo;
-    
+
     private LugarDTO direccion;
 
-    public LugarDTO getDireccion() {
+    public LugarDTO getDireccion()
+    {
         return direccion;
     }
 
-    public void setDireccion(LugarDTO direccion) {
+    public void setDireccion(LugarDTO direccion)
+    {
         this.direccion = direccion;
     }
 
-    public UsuarioDTO() {
+    public UsuarioDTO()
+    {
 
     }
 
-    public UsuarioDTO(UsuarioEntity entity) {
-        if (entity != null) {
+    public UsuarioDTO(UsuarioEntity entity)
+    {
+        if (entity != null)
+        {
             this.correo = entity.getCorreo();
             this.edad = entity.getEdad();
             this.genero = entity.getGenero();
@@ -53,12 +59,15 @@ public class UsuarioDTO implements Serializable {
             this.nombre = entity.getNombre();
             this.rating = entity.getRating();
             this.telMovil = entity.getTelMovil();
-            if(entity.getLugar()!= null)
+            if (entity.getLugar() != null)
+            {
                 this.direccion = new LugarDTO(entity.getLugar());
+            }
         }
     }
 
-    public UsuarioEntity toEntity() {
+    public UsuarioEntity toEntity()
+    {
         UsuarioEntity entity = new UsuarioEntity();
         entity.setCorreo(correo);
         entity.setEdad(edad);
@@ -67,7 +76,7 @@ public class UsuarioDTO implements Serializable {
         entity.setNombre(nombre);
         entity.setRating(rating);
         entity.setTelMovil(telMovil);
-        if(direccion!=null)
+        if (direccion != null)
         {
             entity.setLugar(direccion.toEntity());
         }
@@ -75,59 +84,73 @@ public class UsuarioDTO implements Serializable {
         return entity;
     }
 
-    public Long getId() {
+    public Long getId()
+    {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Long id)
+    {
         this.id = id;
     }
 
-    public String getNombre() {
+    public String getNombre()
+    {
         return nombre;
     }
 
-    public void setNombre(String nombre) {
+    public void setNombre(String nombre)
+    {
         this.nombre = nombre;
     }
 
-    public String getGenero() {
+    public String getGenero()
+    {
         return genero;
     }
 
-    public void setGenero(String genero) {
+    public void setGenero(String genero)
+    {
         this.genero = genero;
     }
 
-    public Integer getTelMovil() {
+    public Integer getTelMovil()
+    {
         return telMovil;
     }
 
-    public void setTelMovil(Integer telMovil) {
+    public void setTelMovil(Integer telMovil)
+    {
         this.telMovil = telMovil;
     }
 
-    public Integer getEdad() {
+    public Integer getEdad()
+    {
         return edad;
     }
 
-    public void setEdad(Integer edad) {
+    public void setEdad(Integer edad)
+    {
         this.edad = edad;
     }
 
-    public Double getRating() {
+    public Double getRating()
+    {
         return rating;
     }
 
-    public void setRating(Double rating) {
+    public void setRating(Double rating)
+    {
         this.rating = rating;
     }
 
-    public String getCorreo() {
+    public String getCorreo()
+    {
         return correo;
     }
 
-    public void setCorreo(String correo) {
+    public void setCorreo(String correo)
+    {
         this.correo = correo;
     }
 

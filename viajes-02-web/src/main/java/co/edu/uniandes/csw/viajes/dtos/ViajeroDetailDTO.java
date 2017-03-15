@@ -16,7 +16,8 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author n.aguilar
  */
 @XmlRootElement
-public class ViajeroDetailDTO extends ViajeroDTO {
+public class ViajeroDetailDTO extends ViajeroDTO
+{
 
     /**
      * Reservas de un viajero
@@ -26,7 +27,8 @@ public class ViajeroDetailDTO extends ViajeroDTO {
     /**
      * Constructor vacio
      */
-    public ViajeroDetailDTO() {
+    public ViajeroDetailDTO()
+    {
         super();
     }
 
@@ -35,7 +37,8 @@ public class ViajeroDetailDTO extends ViajeroDTO {
      *
      * @return reservas
      */
-    public List<ReservaDTO> getReservas() {
+    public List<ReservaDTO> getReservas()
+    {
         return reservas;
     }
 
@@ -44,7 +47,8 @@ public class ViajeroDetailDTO extends ViajeroDTO {
      *
      * @param reservas
      */
-    public void setReservas(List<ReservaDTO> reservas) {
+    public void setReservas(List<ReservaDTO> reservas)
+    {
         this.reservas = reservas;
     }
 
@@ -53,11 +57,14 @@ public class ViajeroDetailDTO extends ViajeroDTO {
      *
      * @param entity Base
      */
-    public ViajeroDetailDTO(ViajeroEntity entity) {
+    public ViajeroDetailDTO(ViajeroEntity entity)
+    {
         super(entity);
         reservas = new ArrayList<ReservaDTO>();
-        if (entity != null) {
-            for (ReservaEntity r : entity.getReservas()) {
+        if (entity != null)
+        {
+            for (ReservaEntity r : entity.getReservas())
+            {
                 reservas.add(new ReservaDTO(r));
             }
         }
@@ -69,12 +76,15 @@ public class ViajeroDetailDTO extends ViajeroDTO {
      * @return Entidad generada
      */
     @Override
-    public ViajeroEntity toEntity() {
+    public ViajeroEntity toEntity()
+    {
         ViajeroEntity entity = super.toEntity();
 
         List<ReservaEntity> reviewsEntity = new ArrayList<>();
-        if (reservas != null) {
-            for (ReservaDTO r : reservas) {
+        if (reservas != null)
+        {
+            for (ReservaDTO r : reservas)
+            {
                 reviewsEntity.add(r.toEntity());
             }
         }

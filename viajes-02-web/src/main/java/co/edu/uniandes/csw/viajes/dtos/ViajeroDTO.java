@@ -13,12 +13,14 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author n.aguilar
  */
 @XmlRootElement
-public class ViajeroDTO extends UsuarioDTO {
+public class ViajeroDTO extends UsuarioDTO
+{
 
     /**
      * Constructor vacio
      */
-    public ViajeroDTO() {
+    public ViajeroDTO()
+    {
 
     }
 
@@ -27,8 +29,10 @@ public class ViajeroDTO extends UsuarioDTO {
      *
      * @param entity Base de la construccion
      */
-    public ViajeroDTO(ViajeroEntity entity) {
-        if (entity != null) {
+    public ViajeroDTO(ViajeroEntity entity)
+    {
+        if (entity != null)
+        {
             setCorreo(entity.getCorreo());
             setEdad(entity.getEdad());
             setGenero(entity.getGenero());
@@ -36,7 +40,8 @@ public class ViajeroDTO extends UsuarioDTO {
             setNombre(entity.getNombre());
             setRating(entity.getRating());
             setTelMovil(entity.getTelMovil());
-            if (entity.getLugar() != null) {
+            if (entity.getLugar() != null)
+            {
                 setDireccion(new LugarDTO(entity.getLugar()));
             }
         }
@@ -47,7 +52,8 @@ public class ViajeroDTO extends UsuarioDTO {
      *
      * @return entidad generada
      */
-    public ViajeroEntity toEntity() {
+    public ViajeroEntity toEntity()
+    {
         ViajeroEntity entity = new ViajeroEntity();
         entity.setCorreo(getCorreo());
         entity.setEdad(getEdad());
@@ -56,7 +62,8 @@ public class ViajeroDTO extends UsuarioDTO {
         entity.setNombre(getNombre());
         entity.setRating(getRating());
         entity.setTelMovil(getTelMovil());
-        if (getDireccion() != null) {
+        if (getDireccion() != null)
+        {
             entity.setLugar(getDireccion().toEntity());
         }
 

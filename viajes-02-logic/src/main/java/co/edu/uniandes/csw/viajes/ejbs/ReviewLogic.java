@@ -18,6 +18,9 @@ import javax.inject.Inject;
 @Stateless
 public class ReviewLogic
 {
+    /**
+     * injeccion de la persistencia en la logica
+     */
 	@Inject
 	private ReviewPersistence persistence;
 	
@@ -44,7 +47,7 @@ public class ReviewLogic
 		// calcularla y verificar que  el otro usuario este en el sistema
 		if( persistence.findByCalificador( idCalificado.getIdCalificador( ) ) != null )
 		{
-			if( persistence.findByCalificado( idCalificado.getIdCalificado( ) ) != null )
+			if( persistence.findByCalificado( idCalificado.getIdCalificado( ) ) != null &&(idCalificado.getCalificacion()>=0 && idCalificado.getCalificacion()<=5  )  )
 			{
 				ReviewEntity reviewA = persistence.create( idCalificado );
 				return reviewA;
@@ -79,6 +82,10 @@ public class ReviewLogic
 	{
 		persistence.delete( idCalificado );
 	}
+        /**
+         * Da todas las reviews
+         * @return reviews
+         */
 	
         public List<ReviewEntity> getReviews( )
 	{

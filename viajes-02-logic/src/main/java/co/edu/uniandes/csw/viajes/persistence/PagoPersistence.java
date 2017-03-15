@@ -17,7 +17,8 @@ import javax.persistence.TypedQuery;
  * @author ja.bermudez10
  */
 @Stateless
-public class PagoPersistence {
+public class PagoPersistence
+{
 
     /**
      * Anotacion que define el contexto de persistencia
@@ -34,7 +35,8 @@ public class PagoPersistence {
      * @param pagoEntity La entidad PAgo
      * @return La entidad Pago, después de ser persistida
      */
-    public PagoEntity create(PagoEntity pagoEntity) {
+    public PagoEntity create(PagoEntity pagoEntity)
+    {
         entityManager.persist(pagoEntity);
         return pagoEntity;
     }
@@ -43,7 +45,8 @@ public class PagoPersistence {
      * Elimina un pago dado el idPago
      * @param idPago El idPago
      */
-    public void delete(Long idPago) {
+    public void delete(Long idPago)
+    {
         PagoEntity pagoEntity = entityManager.find(PagoEntity.class, idPago);
         entityManager.remove(pagoEntity);
     }
@@ -53,23 +56,28 @@ public class PagoPersistence {
      * @param pagoEntity La entidad Pago
      * @return Entidad Pago actualizada
      */
-    public PagoEntity update(PagoEntity pagoEntity) {
+    public PagoEntity update(PagoEntity pagoEntity)
+    {
         return entityManager.merge(pagoEntity);
     }
-
+    
     /**
      * Encuentra los Pagos por medio del idRemitente
      * @param idRemitente El idRemitente del Pago
      * @return Pagos asociados a el idRemitente
      */
-    public List<PagoEntity> findAllMisPagos(Long idRemitente) {
+    public List<PagoEntity> findAllMisPagos(Long idRemitente)
+    {
         TypedQuery<PagoEntity> query = entityManager.createQuery("Select u from PagoEntity u where u.idRemitente = :idRemitente", PagoEntity.class);
         query = query.setParameter("idRemitente", idRemitente);
 
         List<PagoEntity> misPagos = query.getResultList();
-        if (!misPagos.isEmpty()) {
+        if (!misPagos.isEmpty())
+        {
             return misPagos;
-        } else {
+        }
+        else
+        {
             return null;
         }
     }
@@ -79,7 +87,8 @@ public class PagoPersistence {
      * @param idPago El idPago de la entidad Pago
      * @return Entidad pago encontrada
      */
-    public PagoEntity findPago(Long idPago) {
+    public PagoEntity findPago(Long idPago)
+    {
         return entityManager.find(PagoEntity.class, idPago);
     }
     

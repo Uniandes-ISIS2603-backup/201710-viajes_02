@@ -31,7 +31,8 @@ import javax.ws.rs.core.MediaType;
 @Path("/usuarios")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
-public class UsuarioResource {
+public class UsuarioResource
+{
 
     /**
      * Logica del usuario
@@ -45,9 +46,11 @@ public class UsuarioResource {
      * @param entityList lista a transformar
      * @return la lista de dtos
      */
-    private List<UsuarioDetailDTO> listEntity2DTO(List<UsuarioEntity> entityList) {
+    private List<UsuarioDetailDTO> listEntity2DTO(List<UsuarioEntity> entityList)
+    {
         List<UsuarioDetailDTO> lista = new ArrayList<>();
-        for (UsuarioEntity entity : entityList) {
+        for (UsuarioEntity entity : entityList)
+        {
             lista.add(new UsuarioDetailDTO(entity));
         }
         return lista;
@@ -59,7 +62,8 @@ public class UsuarioResource {
      * @return todos los usuarios
      */
     @GET
-    public List<UsuarioDetailDTO> getUsuarios() {
+    public List<UsuarioDetailDTO> getUsuarios()
+    {
         return listEntity2DTO(usuariologic.getUsuarios());
     }
 
@@ -73,7 +77,8 @@ public class UsuarioResource {
      */
     @GET
     @Path("{id: \\d+}")
-    public UsuarioDetailDTO getUsuario(@PathParam("id") Long id) throws BusinessLogicException {
+    public UsuarioDetailDTO getUsuario(@PathParam("id") Long id) throws BusinessLogicException
+    {
         return new UsuarioDetailDTO(usuariologic.getUsuario(id));
     }
 
@@ -86,7 +91,8 @@ public class UsuarioResource {
      */
     @PUT
     @Path("{id: \\d+}")
-    public UsuarioDTO updateUsuario(@PathParam("id") Long id, UsuarioDTO dto) throws BusinessLogicException {
+    public UsuarioDTO updateUsuario(@PathParam("id") Long id, UsuarioDTO dto) throws BusinessLogicException
+    {
         UsuarioEntity entity = dto.toEntity();
         entity.setId(id);
         return new UsuarioDTO(usuariologic.updateUsuario(entity));

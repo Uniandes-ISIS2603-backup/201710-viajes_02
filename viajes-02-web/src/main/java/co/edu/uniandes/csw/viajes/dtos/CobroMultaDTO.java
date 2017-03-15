@@ -13,36 +13,45 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author wr.ravelo
  */
 @XmlRootElement
-public class CobroMultaDTO extends CobroDTO {
-   
+public class CobroMultaDTO extends CobroDTO
+{
+
     /**
-     * Crea un cobro multa DTO de acuerdo a la informacion de una entidad cobro multa
+     * Crea un cobro multa DTO de acuerdo a la informacion de una entidad cobro
+     * multa
+     *
      * @param en Entidad cobro multa de donde se crea el DTO
      */
-    public CobroMultaDTO(CobroMultaEntity en) {
-        if(en == null)
+    public CobroMultaDTO(CobroMultaEntity en)
+    {
+        if (en == null)
+        {
             return;
-        
+        }
+
         this.id = en.getId();
         this.valor = en.getValor();
         this.cancelado = en.getCancelado();
         this.idDestinatario = en.getIdDestinatario();
         this.idRemitente = en.getIdRemitente();
     }
-    
+
     /**
      * Constructor vacio.
      */
-    public CobroMultaDTO() {
-        
+    public CobroMultaDTO()
+    {
+
     }
-    
+
     /**
      * Crea una entidad cobro multa de acueurdo a la informacion del DTO
+     *
      * @return Entidad creada a partir de la informacion actual.
      */
     @Override
-    public CobroMultaEntity toEntity() {
+    public CobroMultaEntity toEntity()
+    {
         CobroMultaEntity x = new CobroMultaEntity();
         x.setValor(this.getValor());
         x.setCancelado(this.getCancelado());

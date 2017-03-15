@@ -18,17 +18,20 @@ import javax.persistence.TypedQuery;
  * @author ja.bermudez10
  */
 @Stateless
-public class ReservaPersistence {
+public class ReservaPersistence
+{
 
     @PersistenceContext(unitName = "viajesPU")
     protected EntityManager entityManager;
 
-    public ReservaEntity create(ReservaEntity reservaEntity) {
+    public ReservaEntity create(ReservaEntity reservaEntity)
+    {
         entityManager.persist(reservaEntity);
         return reservaEntity;
     }
 
-    public void delete(Long idViajero, Long idReserva) {
+    public void delete(Long idViajero, Long idReserva)
+    {
         TypedQuery<ReservaEntity> query = entityManager.createQuery("Select u from ReservaEntity u where u.idViajero = :idViajero and u.idReserva = :idReserva", ReservaEntity.class);
         query = query.setParameter("idViajero", idViajero);
         query = query.setParameter("idReserva", idReserva);
@@ -36,17 +39,22 @@ public class ReservaPersistence {
         entityManager.remove(reservaToDelete);
     }
 
-    public ReservaEntity update(ReservaEntity reservaEntity) {
+    public ReservaEntity update(ReservaEntity reservaEntity)
+    {
         return entityManager.merge(reservaEntity);
     }
 
-    public List<ReservaEntity> findAllByIdViajero(Long idViajero) {
-        TypedQuery<ReservaEntity> query = entityManager.createQuery("Select u from ReservaEntity u where u.idViajero ="+idViajero, ReservaEntity.class);
+    public List<ReservaEntity> findAllByIdViajero(Long idViajero)
+    {
+        TypedQuery<ReservaEntity> query = entityManager.createQuery("Select u from ReservaEntity u where u.idViajero =" + idViajero, ReservaEntity.class);
 
         List<ReservaEntity> reservasPorIdViajero = query.getResultList();
-        if (!reservasPorIdViajero.isEmpty()) {
+        if (!reservasPorIdViajero.isEmpty())
+        {
             return reservasPorIdViajero;
-        } else {
+        }
+        else
+        {
             return null;
         }
     }
