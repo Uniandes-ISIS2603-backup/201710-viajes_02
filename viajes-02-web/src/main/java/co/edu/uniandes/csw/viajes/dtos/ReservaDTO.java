@@ -7,11 +7,13 @@ package co.edu.uniandes.csw.viajes.dtos;
 
 import co.edu.uniandes.csw.viajes.entities.ReservaEntity;
 import java.io.Serializable;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author ja.bermudez10
  */
+@XmlRootElement
 public class ReservaDTO implements Serializable {
 
     private Long idReserva;
@@ -36,6 +38,7 @@ public class ReservaDTO implements Serializable {
 
     public ReservaEntity toEntity() {
         ReservaEntity reservaEntity = new ReservaEntity();
+        
         reservaEntity.setIdReserva(this.idReserva);
         reservaEntity.setPrecio(this.precio);
         reservaEntity.setValorComision(this.valorComision);
@@ -77,12 +80,12 @@ public class ReservaDTO implements Serializable {
         this.puestosReservados = puestosReservados;
     }
 
-    public Long getIdViajeroQueReservo() {
+    public Long getIdViajero() {
         return idViajero;
     }
 
-    public void setIdViajeroQueReservo(Long idViajeroQueReservo) {
-        this.idViajero = idViajeroQueReservo;
+    public void setIdViajero(Long idViajero) {
+        this.idViajero = idViajero;
     }
 
 }

@@ -47,4 +47,8 @@ public class PagoPersistence {
             return null;
         }
     }
+
+    public PagoEntity findPago(Long idPago) {
+        return entityManager.find(PagoEntity.class, idPago);
+    }
 }

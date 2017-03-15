@@ -45,8 +45,14 @@ public class PagoResource {
 
     @GET
     @Path("{idRemitente: \\d+}")
-    public List<PagoDetailDTO> getPagos(@PathParam("idRemitente") Long idRemitente) {
+    public List<PagoDetailDTO> getMisPagos(@PathParam("idRemitente") Long idRemitente) {
         return listEntity2DTO(reservaLogic.getMisPagos(idRemitente));
+    }
+    
+    @GET
+    @Path("{idPago: \\d+}")
+    public List<PagoDetailDTO> getPago(@PathParam("idPago") Long idPago) {
+        return reservaLogic.getPago(idPago);
     }
 
     private List<PagoDetailDTO> listEntity2DTO(List<PagoEntity> reservaEntityList) {

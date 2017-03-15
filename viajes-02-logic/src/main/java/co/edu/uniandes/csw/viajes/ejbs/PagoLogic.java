@@ -27,6 +27,10 @@ public class PagoLogic {
         return pagoPersistence.findAllMisPagos(idRemitente);
     }
     
+    public PagoEntity getPago(Long idPago) {
+        return pagoPersistence.findPago(idPago);
+    }
+    
     public PagoEntity updatePago(PagoEntity pagoEntity) {
         return pagoPersistence.update(pagoEntity);
     }
