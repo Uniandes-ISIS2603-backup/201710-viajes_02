@@ -17,38 +17,47 @@ import javax.persistence.TypedQuery;
  * @author ja.bermudez10
  */
 @Stateless
-public class PagoPersistence {
+public class PagoPersistence
+{
 
     @PersistenceContext(unitName = "viajesPU")
     protected EntityManager entityManager;
 
-    public PagoEntity create(PagoEntity pagoEntity) {
+    public PagoEntity create(PagoEntity pagoEntity)
+    {
         entityManager.persist(pagoEntity);
         return pagoEntity;
     }
 
-    public void delete(Long idPago) {
+    public void delete(Long idPago)
+    {
         PagoEntity pagoEntity = entityManager.find(PagoEntity.class, idPago);
         entityManager.remove(pagoEntity);
     }
 
-    public PagoEntity update(PagoEntity pagoEntity) {
+    public PagoEntity update(PagoEntity pagoEntity)
+    {
         return entityManager.merge(pagoEntity);
     }
 
-    public List<PagoEntity> findAllMisPagos(Long idRemitente) {
+    public List<PagoEntity> findAllMisPagos(Long idRemitente)
+    {
         TypedQuery<PagoEntity> query = entityManager.createQuery("Select u from PagoEntity u where u.idRemitente = :idRemitente", PagoEntity.class);
         query = query.setParameter("idRemitente", idRemitente);
 
         List<PagoEntity> misPagos = query.getResultList();
-        if (!misPagos.isEmpty()) {
+        if (!misPagos.isEmpty())
+        {
             return misPagos;
-        } else {
+        }
+        else
+        {
             return null;
         }
     }
 
-    public PagoEntity findPago(Long idPago) {
+    public PagoEntity findPago(Long idPago)
+    {
         return entityManager.find(PagoEntity.class, idPago);
     }
 }

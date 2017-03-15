@@ -26,31 +26,37 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Path("/reservas")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
-public class ReservaResource {
+public class ReservaResource
+{
 
     @Inject
     private ReservaLogic reservaLogic;
 
     @POST
-    public ReservaDTO createReserva(ReservaDTO reservaDTO) {
+    public ReservaDTO createReserva(ReservaDTO reservaDTO)
+    {
         return new ReservaDetailDTO(reservaLogic.createReserva(reservaDTO.toEntity()));
     }
 
     @GET
     @Path("/viajeros/{idViajero: \\d+}")
-    public List<ReservaDTO> getReservas(@PathParam("idViajero") Long idViajero) {
+    public List<ReservaDTO> getReservas(@PathParam("idViajero") Long idViajero)
+    {
         return listEntity2DTO(reservaLogic.getReservasViajero(idViajero));
     }
 
     @DELETE
     @Path("{idViajero: \\d+}/{idReserva: \\d+}")
-    public void deleteReserva(@PathParam("idViajero") Long idViajero, @PathParam("idReserva") Long idReserva) {
+    public void deleteReserva(@PathParam("idViajero") Long idViajero, @PathParam("idReserva") Long idReserva)
+    {
         reservaLogic.deleteReserva(idViajero, idReserva);
     }
 
-    private List<ReservaDTO> listEntity2DTO(List<ReservaEntity> reservaEntityList) {
+    private List<ReservaDTO> listEntity2DTO(List<ReservaEntity> reservaEntityList)
+    {
         List<ReservaDTO> listReserva = new ArrayList<>();
-        for (ReservaEntity reservaEntity : reservaEntityList) {
+        for (ReservaEntity reservaEntity : reservaEntityList)
+        {
             listReserva.add(new ReservaDetailDTO(reservaEntity));
         }
         return listReserva;

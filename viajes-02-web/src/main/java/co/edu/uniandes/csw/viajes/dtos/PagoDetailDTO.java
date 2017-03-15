@@ -10,47 +10,57 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * PagoDetailDTO
+ *
  * @author ja.bermudez10
  */
 @XmlRootElement
-public class PagoDetailDTO extends PagoDTO {
-    
+public class PagoDetailDTO extends PagoDTO
+{
+
     /**
      * Atributo que define un usuario en el pagoDetailDTO
      */
     private UsuarioDTO usuario;
-    
+
     /**
      * Constructor por defecto de PagoDetailDTO
      */
-    public PagoDetailDTO() {
+    public PagoDetailDTO()
+    {
         super();
     }
-    
+
     /**
      * Constructor de un PagoDetailDTO segun la entidad Pago
+     *
      * @param pagoEntity La entidad Pago
      */
-    public PagoDetailDTO (PagoEntity pagoEntity) {
+    public PagoDetailDTO(PagoEntity pagoEntity)
+    {
         super(pagoEntity);
     }
-     /**
-      * Retorna un PagoEntity basado en el actual PagoDeatailDTO
-      * @return La entidad Pago
-      */
+
+    /**
+     * Retorna un PagoEntity basado en el actual PagoDeatailDTO
+     *
+     * @return La entidad Pago
+     */
     @Override
-    public PagoEntity toEntity() {
+    public PagoEntity toEntity()
+    {
         PagoEntity pagoEntity = super.toEntity();
         pagoEntity.setUsuario(usuario.toEntity());
-        
-        return  pagoEntity;
+
+        return pagoEntity;
     }
 
-    public UsuarioDTO getUsuario() {
+    public UsuarioDTO getUsuario()
+    {
         return usuario;
     }
 
-    public void setUsuario(UsuarioDTO usuario) {
+    public void setUsuario(UsuarioDTO usuario)
+    {
         this.usuario = usuario;
     }
 }

@@ -28,74 +28,89 @@ import javax.ws.rs.core.MediaType;
 @Path("/lugares")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
-public class LugarResource {
+public class LugarResource
+{
+
     /**
      * Logica del lugar.
      */
-    @Inject private LugarLogic logic;
-    
+    @Inject
+    private LugarLogic logic;
+
     /**
      * Da todos los lugares de la base de datos.
+     *
      * @return Todos los lugares registrados
      */
     @GET
-    public List<LugarDTO> getLugares() {
+    public List<LugarDTO> getLugares()
+    {
         return listEntity2DTO(logic.findLugares());
     }
-    
+
     /**
      * Da el lugar que tiene id igual al parametro.
+     *
      * @param id Id del lugar a buscar.
      * @return Da el lugar DTO que tiene id igual al parametro.
      */
     @GET
     @Path("{id: \\d+}")
-    public LugarDTO getLugar(@PathParam("id") Long id) {
+    public LugarDTO getLugar(@PathParam("id") Long id)
+    {
         return basicEntity2DTO(logic.findLugar(id));
     }
-    
+
     /**
-     * Crea un nuevo registro de lugar 
+     * Crea un nuevo registro de lugar
+     *
      * @param lugar DTO que contiene los datos del lugar a crear.
      * @return DTO creado en la base de datos.
      */
     @POST
-    public LugarDTO createLugar(LugarDTO lugar) {
+    public LugarDTO createLugar(LugarDTO lugar)
+    {
         return basicEntity2DTO(logic.createLugar(lugar.toEntity()));
     }
-    
+
     /**
-     * Actualiza un lugar que tiene id igual al parametro que entra por parametro
+     * Actualiza un lugar que tiene id igual al parametro que entra por
+     * parametro
+     *
      * @param id Id de lugar a actualizar.
      * @param lugar DTO que contiene la nueva informacion del lugar
      * @return DTO actualizado.
      */
     @PUT
     @Path("{id: \\d+}")
-    public LugarDTO updateLugar(@PathParam("id") Long id, LugarDTO lugar) {
+    public LugarDTO updateLugar(@PathParam("id") Long id, LugarDTO lugar)
+    {
         LugarEntity entity = lugar.toEntity();
         entity.setId(id);
         return basicEntity2DTO(logic.updateLugar(entity));
     }
-    
+
     /**
      * Elimina un lugar con id igual al parametro.
+     *
      * @param id Id del lugar que se va a eliminar.
      */
     @DELETE
     @Path("{id: \\d+}")
-    public void deleteLugar(@PathParam("id") Long id) {
-            logic.deleteLugar(id);
+    public void deleteLugar(@PathParam("id") Long id)
+    {
+        logic.deleteLugar(id);
     }
-    
+
     // Helpers
-    
     /**
      * Convierte una entidad a dto
+     *
      * @param entity Entidad que se va a convertir a DTO
-     * @return  DTO que se conviertio de una entidad.
+     * @return DTO que se conviertio de una entidad.
      */
-    public LugarDTO basicEntity2DTO(LugarEntity entity) {
+    public LugarDTO basicEntity2DTO(LugarEntity entity)
+    {
         LugarDTO dto = new LugarDTO();
         dto.setDireccion(entity.getDireccion());
         dto.setId(entity.getId());
@@ -104,34 +119,40 @@ public class LugarResource {
         dto.setLon(entity.getLon());
         return dto;
     }
-    
+
     /**
      * Convierte una lista de DTOs a entidades
+     *
      * @param dtos DTOS que se van a convertir a entidades.
      * @return Lista de entidades
      */
-   public List<LugarEntity> listDTO2Entity(List<LugarDTO> dtos) {
-       List<LugarEntity> list = new ArrayList<>();
-       
-       for(LugarDTO dto : dtos) {
-           list.add(dto.toEntity());
-       }
-       
-       return list;
-   }
-   
-   /**
-    * Convierte una lista de entidades a dtos.
-    * @param entities Entidades que se van a convertir a dtos.
-    * @return Lista de dtos.
-    */
-   public List<LugarDTO> listEntity2DTO(List<LugarEntity> entities) {
-       List<LugarDTO> dtos = new ArrayList<>();
-       
-       for(LugarEntity entity : entities) {
-           dtos.add(basicEntity2DTO(entity));
-       } 
-       
-       return dtos;
-   }
+    public List<LugarEntity> listDTO2Entity(List<LugarDTO> dtos)
+    {
+        List<LugarEntity> list = new ArrayList<>();
+
+        for (LugarDTO dto : dtos)
+        {
+            list.add(dto.toEntity());
+        }
+
+        return list;
+    }
+
+    /**
+     * Convierte una lista de entidades a dtos.
+     *
+     * @param entities Entidades que se van a convertir a dtos.
+     * @return Lista de dtos.
+     */
+    public List<LugarDTO> listEntity2DTO(List<LugarEntity> entities)
+    {
+        List<LugarDTO> dtos = new ArrayList<>();
+
+        for (LugarEntity entity : entities)
+        {
+            dtos.add(basicEntity2DTO(entity));
+        }
+
+        return dtos;
+    }
 }

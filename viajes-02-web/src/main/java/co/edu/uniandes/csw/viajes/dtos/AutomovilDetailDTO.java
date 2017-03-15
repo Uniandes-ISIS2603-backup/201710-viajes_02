@@ -12,23 +12,36 @@ import javax.xml.bind.annotation.XmlRootElement;
 /**
  * @author d.jaimes
  */
-
 @XmlRootElement
 public class AutomovilDetailDTO extends AutomovilDTO
 {
-	public AutomovilDetailDTO( )
-	{
-		super( );
-	}
-	
-	public AutomovilDetailDTO( AutomovilEntity entity )
-	{
-		super( entity );
-	}
-	
-	public AutomovilEntity toEntity( )
-	{
-		AutomovilEntity entity = super.toEntity( );
-		return entity;
-	}
+
+    /**
+     * Crea un automovil detail dto.
+     */
+    public AutomovilDetailDTO()
+    {
+        super();
+    }
+
+    /**
+     * Crea un automovil detail dto de una entidad.
+     *
+     * @param entity Entidad de la cual se va a crear un detail dto.
+     */
+    public AutomovilDetailDTO(AutomovilEntity entity)
+    {
+        super(entity);
+    }
+
+    /**
+     * Convierte un Automovil detail dto a entidad.
+     *
+     * @return Entidad creada desde un detail dto.
+     */
+    public AutomovilEntity toEntity()
+    {
+        AutomovilEntity entity = super.toEntity();
+        return entity;
+    }
 }

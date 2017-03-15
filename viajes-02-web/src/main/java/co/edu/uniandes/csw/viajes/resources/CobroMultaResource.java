@@ -28,81 +28,101 @@ import javax.ws.rs.core.MediaType;
 @Path("/usuarios/{usuarioId: \\d+}/cobromultas")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
-public class CobroMultaResource {
+public class CobroMultaResource
+{
+
     /**
      * Logica del cobro multa.
      */
-    @Inject private CobroMultaLogic logic;
-    
+    @Inject
+    private CobroMultaLogic logic;
+
     /**
      * Id del usuario al que pertenece el cobro multa
      */
-    @PathParam("usuarioId") private Long usuarioId;
-    
+    @PathParam("usuarioId")
+    private Long usuarioId;
+
     /**
      * Da todos los cobros del usuario.
-     * @return  Todos los cobros que hay del usuario.
+     *
+     * @return Todos los cobros que hay del usuario.
      */
     @GET
-    public List<CobroMultaDTO> getCobros() {
+    public List<CobroMultaDTO> getCobros()
+    {
         return listEntity2DTO(logic.findCobroMultas(usuarioId));
     }
-    
+
     /**
-     * Da el cobro multa que tiene id que entra por parametro y pertenece al usuario especificado.
-     * @param id Id del cobro multa 
-     * @return Cobro multa que pertenece al usuario especifico y tiene id igual al que entra por parametro
+     * Da el cobro multa que tiene id que entra por parametro y pertenece al
+     * usuario especificado.
+     *
+     * @param id Id del cobro multa
+     * @return Cobro multa que pertenece al usuario especifico y tiene id igual
+     * al que entra por parametro
      */
     @GET
     @Path("{id: \\d+}")
-    public CobroMultaDTO getCobro(@PathParam("id") Long id) {
+    public CobroMultaDTO getCobro(@PathParam("id") Long id)
+    {
         return basicEntity2DTO(logic.findCobroMulta(id));
     }
-    
+
     /**
-     * Crea un cobro multa de acuerdo a la informacion que tiene el DTO que entra por parametro
-     * @param cobro DTO que tiene la informacion del cobro multa que se va a crear en la base de datos.
-     * @return Cobro multa DTO que tiene la informacion guardad en la base de datos.
+     * Crea un cobro multa de acuerdo a la informacion que tiene el DTO que
+     * entra por parametro
+     *
+     * @param cobro DTO que tiene la informacion del cobro multa que se va a
+     * crear en la base de datos.
+     * @return Cobro multa DTO que tiene la informacion guardad en la base de
+     * datos.
      */
     @POST
-    public CobroMultaDTO createCobro(CobroMultaDTO cobro) {
+    public CobroMultaDTO createCobro(CobroMultaDTO cobro)
+    {
         cobro.setIdRemitente(usuarioId);
         return basicEntity2DTO(logic.createCobroMulta(cobro.toEntity()));
     }
-    
+
     /**
      * Actualia la informacion de un cobro multa
+     *
      * @param id Id del cobro multa que se va a actualizar
-     * @param cobro Nueva informacion del cobro  multa.
-     * @return DTO que contiene la nueva informacion. 
+     * @param cobro Nueva informacion del cobro multa.
+     * @return DTO que contiene la nueva informacion.
      */
     @PUT
     @Path("{id: \\d+}")
-    public CobroMultaDTO updateCobro(@PathParam("id") Long id, CobroMultaDTO cobro) {
+    public CobroMultaDTO updateCobro(@PathParam("id") Long id, CobroMultaDTO cobro)
+    {
         cobro.setIdRemitente(usuarioId);
         CobroMultaEntity entity = cobro.toEntity();
         entity.setId(id);
         return basicEntity2DTO(logic.updateCobroMulta(entity));
     }
-    
+
     /**
      * Elimina el registro de un cobro multa.
+     *
      * @param id Id del cobro multa que se quiere eliminar.
      */
     @DELETE
     @Path("{id: \\d+}")
-    public void deleteCobro(@PathParam("id") Long id) {
-            logic.deleteCobroMulta(id);
+    public void deleteCobro(@PathParam("id") Long id)
+    {
+        logic.deleteCobroMulta(id);
     }
-    
+
     // Helpers
-    
     /**
      * Convierte una entidad a DTO
-     * @param entity Entidad a convertir 
-     * @return DTO creado a partir de la entidad 
+     *
+     * @param entity Entidad a convertir
+     * @return DTO creado a partir de la entidad
      */
-    public CobroMultaDTO basicEntity2DTO(CobroMultaEntity entity) {
+    public CobroMultaDTO basicEntity2DTO(CobroMultaEntity entity)
+    {
         CobroMultaDTO dto = new CobroMultaDTO();
         dto.setCancelado(entity.getCancelado());
         dto.setValor(entity.getValor());
@@ -111,34 +131,40 @@ public class CobroMultaResource {
         dto.setIdRemitente(entity.getIdRemitente());
         return dto;
     }
-    
+
     /**
      * Convierte una lista de dtos a entidades.
+     *
      * @param dtos Lista de dtos a converitr a entidades.
      * @return Lista con las entidades.
      */
-    public List<CobroMultaEntity> listDTO2Entity(List<CobroMultaDTO> dtos) {
-       List<CobroMultaEntity> list = new ArrayList<>();
-       
-       for(CobroMultaDTO dto : dtos) {
-           list.add(dto.toEntity());
-       }
-       
-       return list;
-   }
-   
+    public List<CobroMultaEntity> listDTO2Entity(List<CobroMultaDTO> dtos)
+    {
+        List<CobroMultaEntity> list = new ArrayList<>();
+
+        for (CobroMultaDTO dto : dtos)
+        {
+            list.add(dto.toEntity());
+        }
+
+        return list;
+    }
+
     /**
      * Convierte una lista de entidades a DTO
+     *
      * @param entities Entidades a convertir a dto.
      * @return Lista con los DTOS
      */
-   public List<CobroMultaDTO> listEntity2DTO(List<CobroMultaEntity> entities) {
-       List<CobroMultaDTO> dtos = new ArrayList<>();
-       
-       for(CobroMultaEntity entity : entities) {
-           dtos.add(basicEntity2DTO(entity));
-       } 
-       
-       return dtos;
-   }
+    public List<CobroMultaDTO> listEntity2DTO(List<CobroMultaEntity> entities)
+    {
+        List<CobroMultaDTO> dtos = new ArrayList<>();
+
+        for (CobroMultaEntity entity : entities)
+        {
+            dtos.add(basicEntity2DTO(entity));
+        }
+
+        return dtos;
+    }
 }

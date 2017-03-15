@@ -29,32 +29,39 @@ import javax.ws.rs.core.MediaType;
 @Path("/pagos")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
-public class PagoResource {
+public class PagoResource
+{
 
     @Inject
     private PagoLogic reservaLogic;
+
     @Context
 
     @POST
-    public PagoDTO createPago(PagoDTO pagoDTO) {
+    public PagoDTO createPago(PagoDTO pagoDTO)
+    {
         return new PagoDTO(reservaLogic.createPago(pagoDTO.toEntity()));
     }
 
     @GET
     @Path("/usuario/{idRemitente: \\d+}")
-    public List<PagoDTO> getMisPagos(@PathParam("idRemitente") Long idRemitente) {
+    public List<PagoDTO> getMisPagos(@PathParam("idRemitente") Long idRemitente)
+    {
         return listEntity2DTO(reservaLogic.getMisPagos(idRemitente));
     }
-    
+
     @GET
     @Path("/pago/{idPago: \\d+}")
-    public PagoDTO getPago(@PathParam("idPago") Long idPago) {
+    public PagoDTO getPago(@PathParam("idPago") Long idPago)
+    {
         return new PagoDTO(reservaLogic.getPago(idPago));
     }
 
-    private List<PagoDTO> listEntity2DTO(List<PagoEntity> reservaEntityList) {
+    private List<PagoDTO> listEntity2DTO(List<PagoEntity> reservaEntityList)
+    {
         List<PagoDTO> listPago = new ArrayList<>();
-        for (PagoEntity pagoEntity : reservaEntityList) {
+        for (PagoEntity pagoEntity : reservaEntityList)
+        {
             listPago.add(new PagoDTO(pagoEntity));
         }
         return listPago;

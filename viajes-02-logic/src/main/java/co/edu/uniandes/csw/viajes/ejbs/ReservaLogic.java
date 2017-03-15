@@ -16,22 +16,26 @@ import javax.inject.Inject;
  * @author ja.bermudez10
  */
 @Stateless
-public class ReservaLogic {
+public class ReservaLogic
+{
 
     @Inject
     private ReservaPersistence reservaPersistence;
 
-    public ReservaEntity createReserva(ReservaEntity reservaEntity) {
+    public ReservaEntity createReserva(ReservaEntity reservaEntity)
+    {
         reservaPersistence.create(reservaEntity);
 
         return reservaEntity;
     }
 
-    public List<ReservaEntity> getReservasViajero(Long idViajero) {
+    public List<ReservaEntity> getReservasViajero(Long idViajero)
+    {
         return reservaPersistence.findAllByIdViajero(idViajero);
     }
 
-    public void deleteReserva(Long idViajero, Long idReserva) {
+    public void deleteReserva(Long idViajero, Long idReserva)
+    {
         reservaPersistence.delete(idViajero, idReserva);
     }
 }

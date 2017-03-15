@@ -19,76 +19,108 @@ import javax.persistence.TypedQuery;
  * @author jm.dominguez
  */
 @Stateless
-public class ViajePersistence {
-    
+public class ViajePersistence
+{
+
     @PersistenceContext(unitName = "viajesPU")
     protected EntityManager em;
-    
+
     /**
      * Busca la información del viaje con el id dado por parámetro.
+     *
      * @param id: Long. Identificador del viaje a buscar.
      * @return ViajeEntity. Viaje con el identificador dado por parámetro.
      */
-    public ViajeEntity find(Long id){
+    public ViajeEntity find(Long id)
+    {
         return em.find(ViajeEntity.class, id);
     }
+
     /**
-     * Busca la información de todos los viajes que se encuentran en la base de datos.
-     * @return List. Lista con todos los viajes que se encuentran en la base de datos.
+     * Busca la información de todos los viajes que se encuentran en la base de
+     * datos.
+     *
+     * @return List. Lista con todos los viajes que se encuentran en la base de
+     * datos.
      */
-    public List<ViajeEntity> findAll(){
+    public List<ViajeEntity> findAll()
+    {
         Query q = em.createQuery("Select u from ViajeEntity u");
         return q.getResultList();
     }
+
     /**
      * Persiste un viaje dado en la base de datos del sistemas
+     *
      * @param viaje: ViajeEntity. Viaje a persistir en la base de datos.
-     * @return viaje: ViajeEntity. Viaje después de haber sido persistido en la base de datos.
+     * @return viaje: ViajeEntity. Viaje después de haber sido persistido en la
+     * base de datos.
      */
-    public ViajeEntity create(ViajeEntity viaje){
+    public ViajeEntity create(ViajeEntity viaje)
+    {
         em.persist(viaje);
         return viaje;
     }
+
     /**
-     * Permite actualizar la información de un viaje que se encuentre registrado en la base de datos.
+     * Permite actualizar la información de un viaje que se encuentre registrado
+     * en la base de datos.
+     *
      * @param viaje: ViajeEntity. Viaje a actualiza en la base de datos.
-     * @return viaje: ViajeEntity. Viaje después de haber sido actualizado en la base de datos.
+     * @return viaje: ViajeEntity. Viaje después de haber sido actualizado en la
+     * base de datos.
      */
-    public ViajeEntity update(ViajeEntity viaje){
+    public ViajeEntity update(ViajeEntity viaje)
+    {
         return em.merge(viaje);
     }
+
     /**
-     * Permite eliminar la información del viaje con el id dado por parametro de la base de datos.
+     * Permite eliminar la información del viaje con el id dado por parametro de
+     * la base de datos.
+     *
      * @param id: Long. Identificador del viaje a eliminar.
      */
-    public void delete(Long id){
-        ViajeEntity v = em.find(ViajeEntity.class,id);
+    public void delete(Long id)
+    {
+        ViajeEntity v = em.find(ViajeEntity.class, id);
         em.remove(v);
     }
+
     /**
-     * Permite realizar la búsqueda de todos los viajes con un origen y un destino dados.
+     * Permite realizar la búsqueda de todos los viajes con un origen y un
+     * destino dados.
+     *
      * @param origen: String. Ciudad de origen del viaje.
      * @param destino: String. Ciudad de destino del viaje.
-     * @return List. Lista con todos lo viajes cuyos origen y destino coinciden con los dador por parámetro.
+     * @return List. Lista con todos lo viajes cuyos origen y destino coinciden
+     * con los dador por parámetro.
      */
-    public List<ViajeEntity> buscarPorOrigenyDestino(String origen, String destino){
-        TypedQuery <ViajeEntity> q = em.createQuery("SELECT U FROM ViajeEntity U WHERE U.origen.lugar = origen AND U.destino.lugar = destino", ViajeEntity.class);
-        List <ViajeEntity> lista = q.getResultList();
+    public List<ViajeEntity> buscarPorOrigenyDestino(String origen, String destino)
+    {
+        TypedQuery<ViajeEntity> q = em.createQuery("SELECT U FROM ViajeEntity U WHERE U.origen.lugar = origen AND U.destino.lugar = destino", ViajeEntity.class);
+        List<ViajeEntity> lista = q.getResultList();
         return lista;
     }
+
     /**
      * Método para verificar la existencia de un conductor en la base de datos.
+     *
      * @param conductor: Conductor a buscar en la base de datos.
-     * @return true, si el conductor se encuentra en la base de datos. False de lo contrario.
+     * @return true, si el conductor se encuentra en la base de datos. False de
+     * lo contrario.
      */
-    public boolean existeConductor(ConductorEntity conductor){
+    public boolean existeConductor(ConductorEntity conductor)
+    {
         ConductorEntity c = em.find(ConductorEntity.class, conductor.getId());
-        if(c == null){
+        if (c == null)
+        {
             return false;
         }
-        else{
+        else
+        {
             return true;
         }
-        
+
     }
 }

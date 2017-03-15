@@ -15,8 +15,9 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author jm.dominguez
  */
 @XmlRootElement
-public class ViajeDTO implements Serializable{
-    
+public class ViajeDTO implements Serializable
+{
+
     /**
      * id del viaje
      */
@@ -53,146 +54,204 @@ public class ViajeDTO implements Serializable{
      * Persona que va a ejercer como conductor a lo largo del viaje
      */
     private ConductorDTO conductor;
+
     /**
      * Retorna el conductor del viaje
+     *
      * @return Conductor del viaje
      */
-    public ConductorDTO getConductor() {
+    public ConductorDTO getConductor()
+    {
         return conductor;
     }
+
     /**
      * Permite cambiar el conductor
+     *
      * @param conductor del viaje
      */
-    public void setConductor(ConductorDTO conductor) {
+    public void setConductor(ConductorDTO conductor)
+    {
         this.conductor = conductor;
     }
+
     /**
      * Retorna el automovil del viaje
+     *
      * @return Automovil del viaje
      */
-    public AutomovilDTO getAutomovil() {
+    public AutomovilDTO getAutomovil()
+    {
         return automovil;
     }
+
     /**
      * Asigna el automovil del viaje
+     *
      * @param automovil del viaje
      */
-    public void setAutomovil(AutomovilDTO automovil) {
+    public void setAutomovil(AutomovilDTO automovil)
+    {
         this.automovil = automovil;
     }
+
     /**
      * Retorna el origen del viaje
+     *
      * @return Lugar de origen
      */
-    public LugarDTO getOrigen() {
+    public LugarDTO getOrigen()
+    {
         return origen;
     }
+
     /**
      * Establece el origen de viaje
+     *
      * @param origen del viaje
      */
-    public void setOrigen(LugarDTO origen) {
+    public void setOrigen(LugarDTO origen)
+    {
         this.origen = origen;
     }
+
     /**
      * Establece el destino del viaje
+     *
      * @return destino del viaje
      */
-    public LugarDTO getDestino() {
+    public LugarDTO getDestino()
+    {
         return destino;
     }
+
     /**
      * Establece el destino del viaje
+     *
      * @param destino del viaje
      */
-    public void setDestino(LugarDTO destino) {
+    public void setDestino(LugarDTO destino)
+    {
         this.destino = destino;
     }
-    
-    
+
     /**
      * Retorna la id del viaje
+     *
      * @return id del viaje
      */
-    public Long getIdViaje() {
+    public Long getIdViaje()
+    {
         return idViaje;
     }
+
     /**
      * Asigna la id del viaje
-     * @param idViaje 
+     *
+     * @param idViaje
      */
-    public void setIdViaje(Long idViaje) {
+    public void setIdViaje(Long idViaje)
+    {
         this.idViaje = idViaje;
     }
+
     /**
      * Retorna el número de kilometros del viaje
+     *
      * @return Kilometros del viaje
      */
-    public Integer getKilometros() {
+    public Integer getKilometros()
+    {
         return Kilometros;
     }
-     /**
+
+    /**
      * Establece el numero de kilometros del viaje
-     * @param Kilometros 
+     *
+     * @param Kilometros
      */
-    public void setKilometros(Integer Kilometros) {
+    public void setKilometros(Integer Kilometros)
+    {
         this.Kilometros = Kilometros;
     }
-        /**
-        * Retorna el costo de una reserva del viaje
-        * @return 
-        */ 
-    public Double getGastosCompartidos() {
+
+    /**
+     * Retorna el costo de una reserva del viaje
+     *
+     * @return
+     */
+    public Double getGastosCompartidos()
+    {
         return gastosCompartidos;
     }
+
     /**
-    * Permite ajustar el costo de una reserva en el viaje
-    * @param gastosCompartidos 
-    */
-    public void setGastosCompartidos(Double gastosCompartidos) {
+     * Permite ajustar el costo de una reserva en el viaje
+     *
+     * @param gastosCompartidos
+     */
+    public void setGastosCompartidos(Double gastosCompartidos)
+    {
         this.gastosCompartidos = gastosCompartidos;
     }
+
     /**
-    * Retorna día y hora de partida del viaje
-    * @return 
-    */
-    public Date getDiaYHoraPartida() {
+     * Retorna día y hora de partida del viaje
+     *
+     * @return
+     */
+    public Date getDiaYHoraPartida()
+    {
         return diaYHoraPartida;
     }
+
     /**
      * Permite ajustar la fecha de partida del viaje
-     * @param diaYHoraPartida 
+     *
+     * @param diaYHoraPartida
      */
-    public void setDiaYHoraPartida(Date diaYHoraPartida) {
+    public void setDiaYHoraPartida(Date diaYHoraPartida)
+    {
         this.diaYHoraPartida = diaYHoraPartida;
     }
+
     /**
      * Retorna día y hora de llegada del viaje
-     * @return 
+     *
+     * @return
      */
-    public Date getDiaYHoraLlegada() {
+    public Date getDiaYHoraLlegada()
+    {
         return diaYHoraLlegada;
     }
+
     /**
      * Permite ajustar día y hora de llegada del viaje
-     * @param diaYHoraLlegada 
+     *
+     * @param diaYHoraLlegada
      */
-    public void setDiaYHoraLlegada(Date diaYHoraLlegada) {
+    public void setDiaYHoraLlegada(Date diaYHoraLlegada)
+    {
         this.diaYHoraLlegada = diaYHoraLlegada;
     }
+
     /**
      * Constructor Vacío de la calse
      */
-    public ViajeDTO(){
-        
+    public ViajeDTO()
+    {
+
     }
+
     /**
      * Constructor para realizar la transformación de entity a DTO.
+     *
      * @param entity. Entidad de Viaje a transformar.
      */
-    public ViajeDTO(ViajeEntity entity){
-        if(entity != null){
+    public ViajeDTO(ViajeEntity entity)
+    {
+        if (entity != null)
+        {
             idViaje = entity.getIdViaje();
             Kilometros = entity.getKilometros();
             gastosCompartidos = entity.getGastosCompartidos();
@@ -202,15 +261,17 @@ public class ViajeDTO implements Serializable{
             destino = new LugarDTO(entity.getDestino());
             automovil = new AutomovilDTO(entity.getAutomovil());
             conductor = new ConductorDTO(entity.getConductor());
-            
-            
+
         }
     }
+
     /**
      * Método para realizar la transformación del dto a una entidad.
+     *
      * @return Entity
      */
-    public ViajeEntity DTO2Entity(){
+    public ViajeEntity DTO2Entity()
+    {
         ViajeEntity viaje = new ViajeEntity();
         viaje.setIdViaje(idViaje);
         viaje.setKilometros(Kilometros);
@@ -221,7 +282,7 @@ public class ViajeDTO implements Serializable{
         viaje.setOrigen(origen.toEntity());
         viaje.setAutomovil(automovil.toEntity());
         viaje.setConductor(conductor.DTO2Entity());
-        
+
         return viaje;
     }
 }

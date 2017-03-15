@@ -12,58 +12,70 @@ import javax.inject.Inject;
 
 /**
  * PagoLogic
+ *
  * @author ja.bermudez10
  */
-public class PagoLogic {
-    
+public class PagoLogic
+{
+
     /**
      * Inyeccion de persistencia en la logica
      */
     @Inject
     private PagoPersistence pagoPersistence;
-    
+
     /**
      * Crea Pago desde la logica, usando la persistencia
+     *
      * @param pagoEntity
      * @return La entidad APgo
      */
-    public PagoEntity createPago(PagoEntity pagoEntity) {
+    public PagoEntity createPago(PagoEntity pagoEntity)
+    {
         pagoPersistence.create(pagoEntity);
         return pagoEntity;
     }
-    
+
     /**
      * Consulta Pagos del Remitente especificado
+     *
      * @param idRemitente
      * @return Lista de pagos asociados al ususario remitente
      */
-    public List<PagoEntity> getMisPagos(Long idRemitente) {
+    public List<PagoEntity> getMisPagos(Long idRemitente)
+    {
         return pagoPersistence.findAllMisPagos(idRemitente);
     }
-    
+
     /**
      * Consulta un Pago especifico, dado el idPago
+     *
      * @param idPago
      * @return el Pago encontrado
      */
-    public PagoEntity getPago(Long idPago) {
+    public PagoEntity getPago(Long idPago)
+    {
         return pagoPersistence.findPago(idPago);
     }
-    
+
     /**
      * Actualiza un Pago
+     *
      * @param pagoEntity
      * @return La entidad Pago
      */
-    public PagoEntity updatePago(PagoEntity pagoEntity) {
+    public PagoEntity updatePago(PagoEntity pagoEntity)
+    {
         return pagoPersistence.update(pagoEntity);
     }
-    
+
     /**
      * Elimina Pago desde la logica, usando la persistencia
+     *
      * @param idPago El id del pago
      */
-    public void deletePago(Long idPago) {
+    public void deletePago(Long idPago)
+    {
         pagoPersistence.delete(idPago);
     }
 }

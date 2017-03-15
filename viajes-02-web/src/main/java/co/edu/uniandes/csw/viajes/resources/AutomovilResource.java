@@ -30,58 +30,90 @@ import javax.ws.rs.WebApplicationException;
 /**
  * @author Danny
  */
-
-@Path( "/automovil" )
-@Consumes( MediaType.APPLICATION_JSON )
-@Produces( MediaType.APPLICATION_JSON )
+@Path("/automovil")
+@Consumes(MediaType.APPLICATION_JSON)
+@Produces(MediaType.APPLICATION_JSON)
 public class AutomovilResource
 {
-	@Inject
-	private AutomoviLogic logic;
-	
-	@Context
-	private HttpServletResponse response;
-	
-	@QueryParam( "page" )
-	private Integer page;
-	
-	@QueryParam( "limit" )
-	private Integer maxRecords;
-	
-	private List<AutomovilDetailDTO> listEntity2DTO( List<AutomovilEntity> entityList )
-	{
-		List<AutomovilDetailDTO> list = new ArrayList<>( );
-		for( AutomovilEntity entity : entityList )
-		{
-			list.add( new AutomovilDetailDTO( entity ) );
-		}
-		return list;
-	}
-	
-	@GET
-	public List<AutomovilDetailDTO> getAutos( )
-	{
-		return listEntity2DTO( logic.getAutomoviles( ) );
-	}
-	
-	@GET
-	@Path( "{id: \\d+}" )
-	public AutomovilDetailDTO getCar( @PathParam( "id" ) String placa )
-	{
-		return new AutomovilDetailDTO( logic.getAuto( placa ) );
-	}
-	
-	@POST
-	public AutomovilDetailDTO newCar( AutomovilDetailDTO car ) throws Exception
-	{
-		
-		return new AutomovilDetailDTO( logic.creatCar( car.toEntity( ) ) );
-	}
-	
-	@DELETE
-	@Path( "{id: \\d+}" )
-	public void deleteCar( @PathParam( "id" ) String placa )
-	{
-		logic.deletCar( placa );
-	}
+
+    /**
+     * Injeccion de la logica
+     */
+    @Inject
+    private AutomoviLogic logic;
+
+    @Context
+    private HttpServletResponse response;
+
+    @QueryParam("page")
+    private Integer page;
+
+    @QueryParam("limit")
+    private Integer maxRecords;
+
+    /**
+     * convierte una lista de entidades a dto
+     *
+     * @param entityList
+     * @return lista de DetailDTO de automoviles
+     */
+    private List<AutomovilDetailDTO> listEntity2DTO(List<AutomovilEntity> entityList)
+    {
+        List<AutomovilDetailDTO> list = new ArrayList<>();
+        for (AutomovilEntity entity : entityList)
+        {
+            list.add(new AutomovilDetailDTO(entity));
+        }
+        return list;
+    }
+
+    /**
+     * obtener los autos guardados en el sistema
+     *
+     * @return lista de AutomovilDetailDTO
+     */
+    @GET
+    public List<AutomovilDetailDTO> getAutos()
+    {
+        return listEntity2DTO(logic.getAutomoviles());
+    }
+
+    /**
+     * Da un automovil especifico dado por su placa
+     *
+     * @param placa
+     * @return el AutomovilDetailDTO del auto solicitado
+     */
+    @GET
+    @Path("{id: \\d+}")
+    public AutomovilDetailDTO getCar(@PathParam("id") String placa)
+    {
+        return new AutomovilDetailDTO(logic.getAuto(placa));
+    }
+
+    /**
+     * crea un nuevo carro en la base de datos
+     *
+     * @param car
+     * @return AutomovilDetailDTO
+     * @throws Exception
+     */
+    @POST
+    public AutomovilDetailDTO newCar(AutomovilDetailDTO car) throws Exception
+    {
+
+        return new AutomovilDetailDTO(logic.creatCar(car.toEntity()));
+    }
+
+    /**
+     * borra un carro especifico encontrado por su placa
+     *
+     * @param placa
+     */
+    @DELETE
+    @Path("{id: \\d+}")
+    public void deleteCar(@PathParam("id") String placa)
+    {
+        logic.deletCar(placa);
+    }
 }
