@@ -7,6 +7,7 @@ package co.edu.uniandes.csw.viajes.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -45,6 +46,17 @@ public class ViajeEntity implements Serializable{
     
     @OneToOne (cascade = CascadeType.MERGE)
     private AutomovilEntity automovil;
+    
+    @OneToMany (mappedBy = "viaje")
+    private List <ReservaEntity> reserva;
+
+    public List<ReservaEntity> getReserva() {
+        return reserva;
+    }
+
+    public void setReserva(List<ReservaEntity> reserva) {
+        this.reserva = reserva;
+    }
 
     public AutomovilEntity getAutomovil() {
         return automovil;
