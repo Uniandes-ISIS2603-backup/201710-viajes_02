@@ -67,8 +67,12 @@ public class ViajeroLogic {
      * @param entity La entidad que se desea actualizar
      * @return La entidad actualizada
      */
-    public ViajeroEntity updateViajero(ViajeroEntity entity)
+    public ViajeroEntity updateViajero(ViajeroEntity entity)throws BusinessLogicException
     {
+        if(!entity.getGenero().equalsIgnoreCase("masculino")&&!entity.getGenero().equalsIgnoreCase("femenino"))
+            throw new BusinessLogicException("El genero del usuario a crear no es valido. (Debe ser masculino o femenino)");
+        if(entity.getEdad()< 0 || entity.getEdad() > 115 )
+            throw new BusinessLogicException("La edad ingresada no es valida");
         persistence.update(entity);
         return entity;
     }

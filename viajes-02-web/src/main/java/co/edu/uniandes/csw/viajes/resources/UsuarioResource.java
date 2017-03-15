@@ -33,9 +33,18 @@ import javax.ws.rs.core.MediaType;
 @Produces(MediaType.APPLICATION_JSON)
 public class UsuarioResource {
 
+    /**
+     * Logica del usuario
+     */
     @Inject
     private UsuarioLogic usuariologic;
 
+    /**
+     * Pasa una lista de entidades a dtos
+     *
+     * @param entityList lista a transformar
+     * @return la lista de dtos
+     */
     private List<UsuarioDetailDTO> listEntity2DTO(List<UsuarioEntity> entityList) {
         List<UsuarioDetailDTO> lista = new ArrayList<>();
         for (UsuarioEntity entity : entityList) {
@@ -44,22 +53,40 @@ public class UsuarioResource {
         return lista;
     }
 
+    /**
+     * Retorn todos los usuarios ne forma de DTOs
+     *
+     * @return todos los usuarios
+     */
     @GET
     public List<UsuarioDetailDTO> getUsuarios() {
         return listEntity2DTO(usuariologic.getUsuarios());
     }
-    
+
+    /**
+     * Retorna un usuario especifico
+     *
+     * @param id La id del usuario
+     * @return El dto de la entidad del usuario
+     * @throws BusinessLogicException En caso de que no se sigan ciertas reglas
+     * de negocio
+     */
     @GET
     @Path("{id: \\d+}")
-    public UsuarioDetailDTO getUsuario(@PathParam("id")Long id) throws BusinessLogicException
-    {
+    public UsuarioDetailDTO getUsuario(@PathParam("id") Long id) throws BusinessLogicException {
         return new UsuarioDetailDTO(usuariologic.getUsuario(id));
     }
-    
-    @PUT 
+
+    /**
+     * Se modifica el valor de de una entidad con la id recibida
+     *
+     * @param id id de la entidada
+     * @param dto Informacion nueva de la entidad
+     * @return El dto actualizado de la entidad
+     */
+    @PUT
     @Path("{id: \\d+}")
-    public UsuarioDTO updateUsuario(@PathParam ("id") Long id, UsuarioDTO dto)
-    {
+    public UsuarioDTO updateUsuario(@PathParam("id") Long id, UsuarioDTO dto) throws BusinessLogicException {
         UsuarioEntity entity = dto.toEntity();
         entity.setId(id);
         return new UsuarioDTO(usuariologic.updateUsuario(entity));

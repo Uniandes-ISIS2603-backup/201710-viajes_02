@@ -63,8 +63,10 @@ public class UsuarioLogic {
      * @param entity La entidad que se desea actualizar
      * @return La entidad actualizada
      */
-    public UsuarioEntity updateUsuario(UsuarioEntity entity)
+    public UsuarioEntity updateUsuario(UsuarioEntity entity)throws BusinessLogicException
     {
+        if(!entity.getGenero().equalsIgnoreCase("masculino")&&!entity.getGenero().equalsIgnoreCase("femenino"))
+            throw new BusinessLogicException("El genero del usuario a crear no es valido. (Debe ser masculino o femenino)");
         persistence.update(entity);
         return entity;
     }
