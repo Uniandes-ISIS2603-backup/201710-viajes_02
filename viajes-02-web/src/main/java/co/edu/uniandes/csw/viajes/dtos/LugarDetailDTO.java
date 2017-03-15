@@ -13,15 +13,25 @@ import co.edu.uniandes.csw.viajes.entities.LugarEntity;
  */
 public class LugarDetailDTO extends LugarDTO {
     
-    
+    /**
+     * Crea un lugar detail dto.
+     */
     public LugarDetailDTO() {
         super();
     }
     
+    /**
+     * Crea un detail dto de una entidad
+     * @param entity  Entidad de la cual se va a crear un lugar detail dto.
+     */
     public LugarDetailDTO(LugarEntity entity) {
         super(entity);
     }
     
+    /**
+     * Convierte un detail dto lugar a entidad
+     * @return Entidad que se convirtio desde un detail dto lugar.
+     */
     @Override
     public LugarEntity toEntity() {
         return super.toEntity();
