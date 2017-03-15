@@ -6,11 +6,13 @@
 package co.edu.uniandes.csw.viajes.dtos;
 
 import co.edu.uniandes.csw.viajes.entities.CobroEntity;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author wr.ravelo
  */
+@XmlRootElement
 public class CobroDTO {
     
      /**

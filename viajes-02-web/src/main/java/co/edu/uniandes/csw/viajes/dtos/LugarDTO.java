@@ -12,6 +12,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  *
  * @author wr.ravelo
  */
+@XmlRootElement
 public class LugarDTO {
     
     /**

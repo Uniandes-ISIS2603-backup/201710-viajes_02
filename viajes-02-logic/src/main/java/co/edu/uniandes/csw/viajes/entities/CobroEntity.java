@@ -11,7 +11,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.MappedSuperclass;
 
 /**
  *
@@ -46,7 +45,12 @@ public class CobroEntity implements Serializable {
      * Atributo que representa si el cobro ya fue cancelado.
      */
     private Boolean cancelado;
-
+    
+     /**
+     * Usuario al que pertenee el cobro.
+     */
+    @ManyToOne
+    private UsuarioEntity usuario;
     
     /**
      * Da el id del cobro.
