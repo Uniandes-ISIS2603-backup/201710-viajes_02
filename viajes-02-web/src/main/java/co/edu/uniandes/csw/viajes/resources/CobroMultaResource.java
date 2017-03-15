@@ -38,19 +38,19 @@ public class CobroMultaResource {
     
     @GET
     public List<CobroMultaDTO> getCobros() {
-        return listEntity2DTO(logic.findCobros(usuarioId));
+        return listEntity2DTO(logic.findCobroMultas(usuarioId));
     }
     
     @GET
     @Path("{id: \\d+}")
     public CobroMultaDTO getCobro(@PathParam("id") Long id) {
-        return basicEntity2DTO(logic.findCobro(id));
+        return basicEntity2DTO(logic.findCobroMulta(id));
     }
     
     @POST
     public CobroMultaDTO createCobro(CobroMultaDTO cobro) {
         cobro.setIdRemitente(usuarioId);
-        return basicEntity2DTO(logic.createCobro(cobro.toEntity()));
+        return basicEntity2DTO(logic.createCobroMulta(cobro.toEntity()));
     }
     
     @PUT
@@ -59,13 +59,13 @@ public class CobroMultaResource {
         cobro.setIdRemitente(usuarioId);
         CobroMultaEntity entity = cobro.toEntity();
         entity.setId(id);
-        return basicEntity2DTO(logic.updateCobro(entity));
+        return basicEntity2DTO(logic.updateCobroMulta(entity));
     }
     
     @DELETE
     @Path("{id: \\d+}")
     public void deleteCobro(@PathParam("id") Long id) {
-            logic.deleteCobro(id);
+            logic.deleteCobroMulta(id);
     }
     
     // Helpers

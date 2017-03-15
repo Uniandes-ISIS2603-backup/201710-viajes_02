@@ -20,89 +20,119 @@ import javax.persistence.MappedSuperclass;
 @Entity
 public class CobroEntity implements Serializable {
     
+    /**
+     * Id del cobro
+     */
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
     
+    /**
+     * Valor del cobro
+     */
     private Long valor;
     
+    /**
+     * Id del usuario remitente al que se le hace el cobro.
+     */
     private Long idRemitente;
     
+    /**
+     * Id del usuario destinatario al que se le hace el cobro.
+     */
     private Long idDestinatario;
     
+    /**
+     * Atributo que representa si el cobro ya fue cancelado.
+     */
     private Boolean cancelado;
 
     
     /**
-     * @return the id
+     * Da el id del cobro.
+     * @return El id del cobro
      */
     public Long getId() {
         return id;
     }
 
     /**
-     * @param id the id to set
+     * Modifica el id del cobro
+     * @param id El nuevo id.
      */
     public void setId(Long id) {
         this.id = id;
     }
 
     /**
-     * @return the cobro
+     * Da el valor del cobro
+     * @return El valor del cobro
      */
     public Long getValor() {
         return valor;
     }
 
     /**
-     * @param cobro the cobro to set
+     * Modifica el valor del cobro
+     * @param cobro Nuevo valor del cobro
      */
     public void setValor(Long cobro) {
         this.valor = cobro;
     }
 
     /**
-     * @return the idRemitente
+     * Id del remitente al que se le hace el cobro.
+     * @return Id remitente.
      */
     public Long getIdRemitente() {
         return idRemitente;
     }
 
     /**
-     * @param idRemitente the idRemitente to set
+     * Modifica el id remitente del cobro
+     * @param idRemitente Nuevo id del remitente
      */
     public void setIdRemitente(Long idRemitente) {
         this.idRemitente = idRemitente;
     }
 
     /**
-     * @return the idDestinatario
+     * Da el id del destinatario al que se le hace el cobro.
+     * @return Nuevo id destinatario
      */
     public Long getIdDestinatario() {
         return idDestinatario;
     }
 
     /**
-     * @param idDestinatario the idDestinatario to set
+     * Modifica el id del destinatario.
+     * @param idDestinatario Nuevo id destinatario
      */
     public void setIdDestinatario(Long idDestinatario) {
         this.idDestinatario = idDestinatario;
     }
 
     /**
-     * @return the candelado
+     * Mira si el cobro fue cancelado
+     * @return True si fue cancelado el cobro, false de lo contrario.
      */
     public Boolean getCancelado() {
         return cancelado;
     }
 
     /**
-     * @param candelado the candelado to set
+     * Modifica el valor de cancelado
+     * @param cancelado Nuevo calor de cancelado
      */
-    public void setCancelado(Boolean candelado) {
-        this.cancelado = candelado;
+    public void setCancelado(Boolean cancelado) {
+        this.cancelado = cancelado;
     }
     
+    /**
+     * Verifica si dos objetos cobro son iguales
+     * @param other Otro objeto con el que se va a comparar el actual. 
+     * @return  True si son iguales, false de lo contrario.
+     */
     @Override
     public boolean equals(Object other) {
         if(this.getId().equals((((CobroEntity) other)).getId()))
@@ -111,6 +141,10 @@ public class CobroEntity implements Serializable {
         return false;
     }
     
+    /**
+     * Retorna un valor unico para identificador del objeto.
+     * @return Valor unico que representa el objeto.
+     */
     @Override
     public int hashCode() {
         return this.id.hashCode();
