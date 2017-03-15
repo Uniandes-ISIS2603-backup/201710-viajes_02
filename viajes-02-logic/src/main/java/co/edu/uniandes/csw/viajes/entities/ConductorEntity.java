@@ -106,7 +106,10 @@ public class ConductorEntity extends UsuarioEntity{
     public void setId(Long id) {
         this.id = id;
     }
-
+    /**
+     * retorna el nombre del conductor.
+     * @return 
+     */
     public String getNombre() {
         return nombre;
     }
