@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package co.edu.uniandes.csw.viajes.resources;
-
+// TODO Eliminar los imports que no se necesitan
 import co.edu.uniandes.csw.viajes.dtos.AutomovilDTO;
 import co.edu.uniandes.csw.viajes.dtos.AutomovilDetailDTO;
 import co.edu.uniandes.csw.viajes.ejbs.AutomoviLogic;
@@ -41,7 +41,7 @@ public class AutomovilResource
      */
     @Inject
     private AutomoviLogic logic;
-
+// TODO Eliminar los atributos que no se necesitan
     @Context
     private HttpServletResponse response;
 

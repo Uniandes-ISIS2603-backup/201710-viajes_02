@@ -38,7 +38,7 @@ public class ReviewResource
      */
     @Inject
     private ReviewLogic logic;
-
+// TODO Eliminar los atributos que no se necesitan
     @Context
     private HttpServletResponse response;
 
@@ -84,7 +84,7 @@ public class ReviewResource
     @GET
     @Path("{id: \\d+}")
     public ReviewDTO getReview(@PathParam("id") Long id)
-    {
+    { // TODO si el recurso con el id dado no existe de sedeb disparar WebApplicationException 404
         return new ReviewDTO(logic.getReview(id));
     }
 
@@ -109,7 +109,7 @@ public class ReviewResource
     @DELETE
     @Path("{id: \\d+}")
     public void deleteReview(@PathParam("id") Long id)
-    {
+    { // TODO si el recurso con el id dado no existe de sedeb disparar WebApplicationException 404
         logic.deletReview(id);
     }
 }

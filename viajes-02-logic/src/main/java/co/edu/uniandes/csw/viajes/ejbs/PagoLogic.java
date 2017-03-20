@@ -15,6 +15,7 @@ import javax.inject.Inject;
  *
  * @author ja.bermudez10
  */
+// TODO no hay reglas de negocio y hay unos atributos que no se entiende qué modelan ni qué condiciones deben tener. 
 public class PagoLogic
 {
 

@@ -72,7 +72,7 @@ public class CobroResource
     @GET
     @Path("{id: \\d+}")
     public CobroDTO getCobro(@PathParam("id") Long id)
-    {
+    {// TODO si el recurso con el id dado no existe de sedeb disparar WebApplicationException 404
         return basicEntity2DTO(logic.findCobro(id));
     }
 
@@ -85,7 +85,7 @@ public class CobroResource
      */
     @POST
     public CobroDTO createCobro(CobroDTO cobro)
-    {
+    {// TODO si el recurso con el usuarioId dado no existe de sedeb disparar WebApplicationException 404
         cobro.setIdRemitente(usuarioId);
         return basicEntity2DTO(logic.createCobro(cobro.toEntity()));
     }
@@ -100,7 +100,7 @@ public class CobroResource
     @PUT
     @Path("{id: \\d+}")
     public CobroDTO updateCobro(@PathParam("id") Long id, CobroDTO cobro)
-    {
+    {// TODO si el recurso con el id dado no existe de sedeb disparar WebApplicationException 404
         cobro.setIdRemitente(id);
         CobroEntity entity = cobro.toEntity();
         entity.setId(id);
@@ -115,7 +115,8 @@ public class CobroResource
     @DELETE
     @Path("{id: \\d+}")
     public void deleteCobro(@PathParam("id") Long id)
-    {
+    {// TODO si el recurso con el id dado no existe de sedeb disparar WebApplicationException 404
+      
         logic.deleteCobro(id);
     }
 

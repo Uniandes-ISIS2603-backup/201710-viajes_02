@@ -22,6 +22,7 @@ public class PagoDetailDTO extends PagoDTO
      */
     private UsuarioDTO usuario;
 
+    // TODO como puedo saber qué está pagando el usuario si no hay una relación con el viaje?
     /**
      * Constructor por defecto de PagoDetailDTO
      */

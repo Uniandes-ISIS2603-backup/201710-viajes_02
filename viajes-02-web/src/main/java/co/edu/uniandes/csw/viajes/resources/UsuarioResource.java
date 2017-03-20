@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package co.edu.uniandes.csw.viajes.resources;
-
+// TODO Eliminar los imports que no se necesitan
 import co.edu.uniandes.csw.viajes.dtos.UsuarioDTO;
 import co.edu.uniandes.csw.viajes.dtos.UsuarioDetailDTO;
 import co.edu.uniandes.csw.viajes.ejbs.UsuarioLogic;
@@ -78,7 +78,7 @@ public class UsuarioResource
     @GET
     @Path("{id: \\d+}")
     public UsuarioDetailDTO getUsuario(@PathParam("id") Long id) throws BusinessLogicException
-    {
+    { // TODO si el recurso con el id dado no existe de sedeb disparar WebApplicationException 404
         return new UsuarioDetailDTO(usuariologic.getUsuario(id));
     }
 
@@ -92,7 +92,7 @@ public class UsuarioResource
     @PUT
     @Path("{id: \\d+}")
     public UsuarioDTO updateUsuario(@PathParam("id") Long id, UsuarioDTO dto) throws BusinessLogicException
-    {
+    { // TODO si el recurso con el id dado no existe de sedeb disparar WebApplicationException 404
         UsuarioEntity entity = dto.toEntity();
         entity.setId(id);
         return new UsuarioDTO(usuariologic.updateUsuario(entity));

@@ -78,7 +78,7 @@ public class ViajeResource
     @GET
     @Path("{id: \\d+}")
     public ViajeDetailDTO getViaje(@PathParam("id") Long id)
-    {
+    { // TODO si el recurso con el id dado no existe de sedeb disparar WebApplicationException 404
         return new ViajeDetailDTO(logica.findViaje(id));
     }
 
@@ -107,7 +107,7 @@ public class ViajeResource
     @PUT
     @Path("{id: \\d+}")
     public ViajeDetailDTO updateViaje(@PathParam("id") Long id, ViajeDetailDTO viaje) throws BusinessLogicException
-    {
+    { // TODO si el recurso con el id dado no existe de sedeb disparar WebApplicationException 404
         ViajeEntity entity = viaje.DTO2Entity();
         entity.setIdViaje(id);
         return new ViajeDetailDTO(logica.updateViaje(entity));
@@ -123,7 +123,7 @@ public class ViajeResource
      * destino coinciden con los dados por parametro.
      */
     @GET
-    @Path("{origen: .+};(destino: .+)")
+    @Path("{origen: .+};(destino: .+)") // Deberián ser QueryParam y no path
     public List<ViajeDetailDTO> getViajesPorOrigenYDestino(@PathParam("origen") String origen, @PathParam("destino") String destino)
     {
         List<ViajeEntity> lista = logica.darViajesOrigenYDestino(origen, destino);
@@ -139,7 +139,7 @@ public class ViajeResource
     @DELETE
     @Path("{id: \\d+}")
     public void deleteViaje(@PathParam("id") Long id)
-    {
+    { // TODO si el recurso con el id dado no existe de sedeb disparar WebApplicationException 404
         logica.deleteViaje(id);
     }
 }

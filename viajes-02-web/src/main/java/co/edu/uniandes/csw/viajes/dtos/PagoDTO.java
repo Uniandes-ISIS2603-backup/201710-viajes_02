@@ -27,6 +27,7 @@ public class PagoDTO
      */
     private Double valor;
 
+    // TODO qué modelan estos atributos idRemitante y idDestinatario? Son Usuarios del sistema? 
     /**
      * idRemitente de PagoDTO
      */

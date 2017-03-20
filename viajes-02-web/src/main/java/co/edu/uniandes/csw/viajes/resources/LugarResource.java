@@ -57,7 +57,8 @@ public class LugarResource
     @GET
     @Path("{id: \\d+}")
     public LugarDTO getLugar(@PathParam("id") Long id)
-    {
+    {// TODO si el recurso con el id dado no existe de sedeb disparar WebApplicationException 404
+      
         return basicEntity2DTO(logic.findLugar(id));
     }
 
@@ -84,7 +85,8 @@ public class LugarResource
     @PUT
     @Path("{id: \\d+}")
     public LugarDTO updateLugar(@PathParam("id") Long id, LugarDTO lugar)
-    {
+    {// TODO si el recurso con el id dado no existe de sedeb disparar WebApplicationException 404
+      
         LugarEntity entity = lugar.toEntity();
         entity.setId(id);
         return basicEntity2DTO(logic.updateLugar(entity));
@@ -98,7 +100,8 @@ public class LugarResource
     @DELETE
     @Path("{id: \\d+}")
     public void deleteLugar(@PathParam("id") Long id)
-    {
+    {// TODO si el recurso con el id dado no existe de sedeb disparar WebApplicationException 404
+      
         logic.deleteLugar(id);
     }
 

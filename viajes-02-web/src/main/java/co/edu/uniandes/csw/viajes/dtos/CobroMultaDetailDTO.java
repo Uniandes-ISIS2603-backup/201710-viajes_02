@@ -12,7 +12,8 @@ import co.edu.uniandes.csw.viajes.entities.CobroMultaEntity;
  * @author wr.ravelo
  */
 public class CobroMultaDetailDTO extends CobroMultaDTO
-{
+{ // TODO como puedo saber de qué es el cobro al usuario si no hay una relación con el viaje?
+   
 
     /**
      * Crea un cobro multa detail dto

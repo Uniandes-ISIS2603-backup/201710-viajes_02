@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package co.edu.uniandes.csw.viajes.resources;
-
+// TODO Eliminar los imports que no se necesitan
 import co.edu.uniandes.csw.viajes.dtos.AutomovilDetailDTO;
 import co.edu.uniandes.csw.viajes.dtos.ConductorDetailDTO;
 import co.edu.uniandes.csw.viajes.dtos.ViajeDetailDTO;

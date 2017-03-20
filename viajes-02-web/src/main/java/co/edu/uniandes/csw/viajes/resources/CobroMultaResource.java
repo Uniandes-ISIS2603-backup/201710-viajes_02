@@ -65,8 +65,8 @@ public class CobroMultaResource
     @GET
     @Path("{id: \\d+}")
     public CobroMultaDTO getCobro(@PathParam("id") Long id)
-    {
-        return basicEntity2DTO(logic.findCobroMulta(id));
+    {// TODO si el recurso con el id dado no existe de sedeb disparar WebApplicationException 404
+        return basicEntity2DTO(logic.findCobroMulta(id)); 
     }
 
     /**
@@ -80,7 +80,8 @@ public class CobroMultaResource
      */
     @POST
     public CobroMultaDTO createCobro(CobroMultaDTO cobro)
-    {
+    {// TODO si el recurso con el usuarioId dado no existe de sedeb disparar WebApplicationException 404
+        
         cobro.setIdRemitente(usuarioId);
         return basicEntity2DTO(logic.createCobroMulta(cobro.toEntity()));
     }
@@ -95,7 +96,8 @@ public class CobroMultaResource
     @PUT
     @Path("{id: \\d+}")
     public CobroMultaDTO updateCobro(@PathParam("id") Long id, CobroMultaDTO cobro)
-    {
+    {// TODO si el recurso con el usuarioId dado no existe de sedeb disparar WebApplicationException 404
+        // TODO si el recurso con el id dado no existe de sedeb disparar WebApplicationException 404
         cobro.setIdRemitente(usuarioId);
         CobroMultaEntity entity = cobro.toEntity();
         entity.setId(id);
@@ -110,7 +112,7 @@ public class CobroMultaResource
     @DELETE
     @Path("{id: \\d+}")
     public void deleteCobro(@PathParam("id") Long id)
-    {
+    {// TODO si el recurso con el id dado no existe de sedeb disparar WebApplicationException 404
         logic.deleteCobroMulta(id);
     }
 

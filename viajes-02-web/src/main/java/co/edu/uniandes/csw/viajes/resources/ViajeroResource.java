@@ -77,6 +77,7 @@ public class ViajeroResource
     @Path("{id: \\d+}")
     public ViajeroDetailDTO getUsuario(@PathParam("id") Long id) throws BusinessLogicException
     {
+        // TODO si el recurso con el id dado no existe de sedeb disparar WebApplicationException 404
         return new ViajeroDetailDTO(logic.getViajero(id));
     }
 
@@ -103,8 +104,10 @@ public class ViajeroResource
      * negocio
      */
     @PUT
+    // TODO falta el Path id
     public ViajeroDetailDTO updateViajero(ViajeroDetailDTO viajero) throws BusinessLogicException
     {
+         // TODO si el recurso con el id dado no existe de sedeb disparar WebApplicationException 404
         return new ViajeroDetailDTO(logic.updateViajero(viajero.toEntity()));
     }
 }

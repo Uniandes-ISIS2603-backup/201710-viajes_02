@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package co.edu.uniandes.csw.viajes.resources;
-
+// TODO Eliminar los imports que no se necesitan
 import co.edu.uniandes.csw.viajes.dtos.PagoDTO;
 import co.edu.uniandes.csw.viajes.ejbs.PagoLogic;
 import co.edu.uniandes.csw.viajes.entities.PagoEntity;

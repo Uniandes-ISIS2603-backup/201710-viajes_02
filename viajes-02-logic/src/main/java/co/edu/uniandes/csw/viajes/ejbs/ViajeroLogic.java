@@ -49,7 +49,7 @@ public class ViajeroLogic
         ViajeroEntity v = persistence.find(id);
         if (v == null)
         {
-            throw new BusinessLogicException("No existe un viajero con el id ingresado por parametro");
+            throw new BusinessLogicException("No existe un viajero con el id ingresado por parametro"); // TODO esto se debe vañlidr en el recurso
         }
         return persistence.find(id);
     }
