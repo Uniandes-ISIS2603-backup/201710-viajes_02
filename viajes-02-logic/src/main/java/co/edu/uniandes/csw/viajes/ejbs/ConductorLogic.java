@@ -73,10 +73,6 @@ public class ConductorLogic
         {
             throw new BusinessLogicException("El conductor con id dado ya existe en el sistema");
         }
-        else if (c.getAutomoviles().isEmpty())
-        {
-            throw new BusinessLogicException("Los conductores deben tener al menos 1 vehículo");
-        }
         return persistence.create(c);
     }
 
@@ -93,10 +89,6 @@ public class ConductorLogic
         if (conductor != null)
         {
             throw new BusinessLogicException("El conductor con id dado ya existe en el sistema");
-        }
-        else if (c.getAutomoviles().isEmpty())
-        {
-            throw new BusinessLogicException("Los conductores deben tener al menos 1 vehículo");
         }
         return persistence.update(c);
     }
