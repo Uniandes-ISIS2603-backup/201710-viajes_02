@@ -19,6 +19,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 
 /**
@@ -57,8 +58,10 @@ public class LugarResource
     @GET
     @Path("{id: \\d+}")
     public LugarDTO getLugar(@PathParam("id") Long id)
-    {// TODO si el recurso con el id dado no existe de sedeb disparar WebApplicationException 404
-      
+    {
+      if(!existsLugar(id))
+          throw new WebApplicationException("No existe el lugar con id" +id, 404);
+        
         return basicEntity2DTO(logic.findLugar(id));
     }
 
@@ -85,8 +88,10 @@ public class LugarResource
     @PUT
     @Path("{id: \\d+}")
     public LugarDTO updateLugar(@PathParam("id") Long id, LugarDTO lugar)
-    {// TODO si el recurso con el id dado no existe de sedeb disparar WebApplicationException 404
-      
+    {
+      if(!existsLugar(id))
+          throw new WebApplicationException("No existe lugar con id " +id, 404);
+        
         LugarEntity entity = lugar.toEntity();
         entity.setId(id);
         return basicEntity2DTO(logic.updateLugar(entity));
@@ -100,12 +105,25 @@ public class LugarResource
     @DELETE
     @Path("{id: \\d+}")
     public void deleteLugar(@PathParam("id") Long id)
-    {// TODO si el recurso con el id dado no existe de sedeb disparar WebApplicationException 404
-      
+    {
+      if(!existsLugar(id))
+          throw new WebApplicationException("No existe lugar con el id " +id, 404);
+        
         logic.deleteLugar(id);
     }
 
     // Helpers
+     /**
+     * Mira si existe un lugar con el id que entra por parametro.
+     *
+     * @param id Id del lugar que se va a verificar.
+     * @return True si el lugar existe, false de lo contrario.
+     */
+    public boolean existsLugar(Long id) {
+        return logic.findLugar(id) != null;
+    }
+    
+    
     /**
      * Convierte una entidad a dto
      *

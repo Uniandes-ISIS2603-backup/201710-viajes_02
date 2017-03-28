@@ -32,8 +32,6 @@ public class CobroMultaDTO extends CobroDTO
         this.id = en.getId();
         this.valor = en.getValor();
         this.cancelado = en.getCancelado();
-        this.idDestinatario = en.getIdDestinatario();
-        this.idRemitente = en.getIdRemitente();
     }
 
     /**
@@ -56,8 +54,6 @@ public class CobroMultaDTO extends CobroDTO
         x.setValor(this.getValor());
         x.setCancelado(this.getCancelado());
         x.setId(this.getId());
-        x.setIdDestinatario(this.getIdDestinatario());
-        x.setIdRemitente(this.getIdRemitente());
         return x;
     }
 }

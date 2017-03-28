@@ -6,7 +6,6 @@
 package co.edu.uniandes.csw.viajes.ejbs;
 
 import co.edu.uniandes.csw.viajes.entities.CobroEntity;
-import co.edu.uniandes.csw.viajes.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.viajes.persistence.CobroPersistence;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -17,7 +16,6 @@ import javax.inject.Inject;
  * @author wr.ravelo
  */
 @Stateless
-// TODO no hay reglas de negocio y hay unos atributos que no se entiende qué modelan ni qué condiciones deben tener. 
 public class CobroLogic
 {
 

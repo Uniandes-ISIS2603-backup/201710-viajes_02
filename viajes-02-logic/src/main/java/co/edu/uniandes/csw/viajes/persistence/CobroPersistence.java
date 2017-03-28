@@ -47,7 +47,7 @@ public class CobroPersistence
      */
     public List<CobroEntity> findAllFromUsuario(Long usuarioId)
     {
-        TypedQuery q = manager.createQuery("SELECT u FROM CobroEntity u WHERE u.idRemitente=" + usuarioId, CobroEntity.class);
+        TypedQuery q = manager.createQuery("SELECT u FROM CobroEntity u WHERE u.usuarioRemitente.id=" + usuarioId, CobroEntity.class);
         return q.getResultList();
     }
 

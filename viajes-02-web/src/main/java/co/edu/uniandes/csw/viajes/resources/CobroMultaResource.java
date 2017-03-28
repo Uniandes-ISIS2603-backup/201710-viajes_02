@@ -6,7 +6,10 @@
 package co.edu.uniandes.csw.viajes.resources;
 
 import co.edu.uniandes.csw.viajes.dtos.CobroMultaDTO;
+import co.edu.uniandes.csw.viajes.dtos.CobroMultaDetailDTO;
+import co.edu.uniandes.csw.viajes.dtos.UsuarioDTO;
 import co.edu.uniandes.csw.viajes.ejbs.CobroMultaLogic;
+import co.edu.uniandes.csw.viajes.ejbs.UsuarioLogic;
 import co.edu.uniandes.csw.viajes.entities.CobroMultaEntity;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +22,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 
 /**
@@ -28,8 +32,7 @@ import javax.ws.rs.core.MediaType;
 @Path("/usuarios/{usuarioId: \\d+}/cobromultas")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
-public class CobroMultaResource
-{
+public class CobroMultaResource {
 
     /**
      * Logica del cobro multa.
@@ -44,13 +47,18 @@ public class CobroMultaResource
     private Long usuarioId;
 
     /**
+     * Logica de los usuarios.
+     */
+    @Inject
+    private UsuarioLogic usuarioLogic;
+
+    /**
      * Da todos los cobros del usuario.
      *
      * @return Todos los cobros que hay del usuario.
      */
     @GET
-    public List<CobroMultaDTO> getCobros()
-    {
+    public List<CobroMultaDetailDTO> getCobros() {
         return listEntity2DTO(logic.findCobroMultas(usuarioId));
     }
 
@@ -64,9 +72,11 @@ public class CobroMultaResource
      */
     @GET
     @Path("{id: \\d+}")
-    public CobroMultaDTO getCobro(@PathParam("id") Long id)
-    {// TODO si el recurso con el id dado no existe de sedeb disparar WebApplicationException 404
-        return basicEntity2DTO(logic.findCobroMulta(id)); 
+    public CobroMultaDetailDTO getCobro(@PathParam("id") Long id) {
+        if(!existsCobroMulta(id))
+            throw new WebApplicationException("No existe cobro multa con id"+id, 404);
+        
+        return basicEntity2DTO(logic.findCobroMulta(id));
     }
 
     /**
@@ -79,10 +89,13 @@ public class CobroMultaResource
      * datos.
      */
     @POST
-    public CobroMultaDTO createCobro(CobroMultaDTO cobro)
-    {// TODO si el recurso con el usuarioId dado no existe de sedeb disparar WebApplicationException 404
+    public CobroMultaDetailDTO createCobro(CobroMultaDetailDTO cobro) {
+        if(!existsUsuario(usuarioId))
+            throw new WebApplicationException("No existe usuario con id" +usuarioId, 404);
+        else if(!cobro.getUsuarioRemitente().getId().equals(usuarioId))
+            throw new WebApplicationException("Solo puede crear cobros multa con id remitente a " +usuarioId, 404);
         
-        cobro.setIdRemitente(usuarioId);
+        cobro.getUsuarioRemitente().setId(usuarioId);
         return basicEntity2DTO(logic.createCobroMulta(cobro.toEntity()));
     }
 
@@ -95,10 +108,11 @@ public class CobroMultaResource
      */
     @PUT
     @Path("{id: \\d+}")
-    public CobroMultaDTO updateCobro(@PathParam("id") Long id, CobroMultaDTO cobro)
-    {// TODO si el recurso con el usuarioId dado no existe de sedeb disparar WebApplicationException 404
-        // TODO si el recurso con el id dado no existe de sedeb disparar WebApplicationException 404
-        cobro.setIdRemitente(usuarioId);
+    public CobroMultaDTO updateCobro(@PathParam("id") Long id, CobroMultaDetailDTO cobro) {
+        if(!existsCobroMulta(id)|| !existsUsuario(usuarioId))
+            throw new WebApplicationException("No existe el id", 404);
+        
+        cobro.getUsuarioRemitente().setId(usuarioId);
         CobroMultaEntity entity = cobro.toEntity();
         entity.setId(id);
         return basicEntity2DTO(logic.updateCobroMulta(entity));
@@ -111,26 +125,51 @@ public class CobroMultaResource
      */
     @DELETE
     @Path("{id: \\d+}")
-    public void deleteCobro(@PathParam("id") Long id)
-    {// TODO si el recurso con el id dado no existe de sedeb disparar WebApplicationException 404
+    public void deleteCobro(@PathParam("id") Long id) {
+       if(!existsCobroMulta(id))
+           throw new WebApplicationException("No existe cobro multa con id " +id, 404);
+        
         logic.deleteCobroMulta(id);
     }
 
     // Helpers
+    /**
+     * Mira si existe un usuario con el id que entra por parametro.
+     *
+     * @param id Id del usuario que se va a verificar.
+     * @return True si el usuario existe, false de lo contrario.
+     */
+    public boolean existsUsuario(Long id) {
+        try {
+            return usuarioLogic.getUsuario(id) != null;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    /**
+     * Mira si existe un cobro con el id que entra por parametro.
+     *
+     * @param id Id del cobro que se va a verificar.
+     * @return True si el cobro existe, false de lo contrario.
+     */
+    public boolean existsCobroMulta(Long id) {
+        return logic.findCobroMulta(id) != null;
+    }
+
     /**
      * Convierte una entidad a DTO
      *
      * @param entity Entidad a convertir
      * @return DTO creado a partir de la entidad
      */
-    public CobroMultaDTO basicEntity2DTO(CobroMultaEntity entity)
-    {
-        CobroMultaDTO dto = new CobroMultaDTO();
+    public CobroMultaDetailDTO basicEntity2DTO(CobroMultaEntity entity) {
+        CobroMultaDetailDTO dto = new CobroMultaDetailDTO();
         dto.setCancelado(entity.getCancelado());
         dto.setValor(entity.getValor());
         dto.setId(entity.getId());
-        dto.setIdDestinatario(entity.getIdDestinatario());
-        dto.setIdRemitente(entity.getIdRemitente());
+        dto.setUsuarioDestinatario(new UsuarioDTO(entity.getUsuarioDestinatario()));
+        dto.setUsuarioRemitente(new UsuarioDTO(entity.getUsuarioRemitente()));
         return dto;
     }
 
@@ -140,12 +179,10 @@ public class CobroMultaResource
      * @param dtos Lista de dtos a converitr a entidades.
      * @return Lista con las entidades.
      */
-    public List<CobroMultaEntity> listDTO2Entity(List<CobroMultaDTO> dtos)
-    {
+    public List<CobroMultaEntity> listDTO2Entity(List<CobroMultaDetailDTO> dtos) {
         List<CobroMultaEntity> list = new ArrayList<>();
 
-        for (CobroMultaDTO dto : dtos)
-        {
+        for (CobroMultaDetailDTO dto : dtos) {
             list.add(dto.toEntity());
         }
 
@@ -158,12 +195,10 @@ public class CobroMultaResource
      * @param entities Entidades a convertir a dto.
      * @return Lista con los DTOS
      */
-    public List<CobroMultaDTO> listEntity2DTO(List<CobroMultaEntity> entities)
-    {
-        List<CobroMultaDTO> dtos = new ArrayList<>();
+    public List<CobroMultaDetailDTO> listEntity2DTO(List<CobroMultaEntity> entities) {
+        List<CobroMultaDetailDTO> dtos = new ArrayList<>();
 
-        for (CobroMultaEntity entity : entities)
-        {
+        for (CobroMultaEntity entity : entities) {
             dtos.add(basicEntity2DTO(entity));
         }
 

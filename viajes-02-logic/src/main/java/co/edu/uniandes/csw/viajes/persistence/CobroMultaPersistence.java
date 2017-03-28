@@ -59,7 +59,7 @@ public class CobroMultaPersistence
      */
     public List<CobroMultaEntity> findAllFromUsuario(Long id)
     {
-        TypedQuery q = manager.createQuery("SELECT u FROM CobroMultaEntity u WHERE u.idRemitente=" + id, CobroMultaEntity.class);
+        TypedQuery q = manager.createQuery("SELECT u FROM CobroMultaEntity u WHERE u.usuarioRemitente.id=" + id, CobroMultaEntity.class);
         return q.getResultList();
     }
 

@@ -27,16 +27,6 @@ public class CobroDTO
     protected Long valor;
 
     /**
-     * Id del usuario remitente al que se le hace el cobro.
-     */
-    protected Long idRemitente;
-
-    /**
-     * Id del usuario destinatario al que se le hace el cobro.
-     */
-    protected Long idDestinatario;
-
-    /**
      * Atributo que representa si el cobro ya fue cancelado.
      */
     protected Boolean cancelado;
@@ -55,8 +45,6 @@ public class CobroDTO
 
         this.id = en.getId();
         this.valor = en.getValor();
-        this.idDestinatario = en.getIdDestinatario();
-        this.idRemitente = en.getIdRemitente();
         this.cancelado = en.getCancelado();
     }
 
@@ -109,46 +97,6 @@ public class CobroDTO
     }
 
     /**
-     * Id del remitente al que se le hace el cobro.
-     *
-     * @return Id remitente.
-     */
-    public Long getIdRemitente()
-    {
-        return idRemitente;
-    }
-
-    /**
-     * Modifica el id remitente del cobro
-     *
-     * @param idRemitente Nuevo id del remitente
-     */
-    public void setIdRemitente(Long idRemitente)
-    {
-        this.idRemitente = idRemitente;
-    }
-
-    /**
-     * Da el id del destinatario al que se le hace el cobro.
-     *
-     * @return Nuevo id destinatario
-     */
-    public Long getIdDestinatario()
-    {
-        return idDestinatario;
-    }
-
-    /**
-     * Modifica el id del destinatario.
-     *
-     * @param idDestinatario Nuevo id destinatario
-     */
-    public void setIdDestinatario(Long idDestinatario)
-    {
-        this.idDestinatario = idDestinatario;
-    }
-
-    /**
      * Mira si el cobro fue cancelado
      *
      * @return True si fue cancelado el cobro, false de lo contrario.
@@ -179,9 +127,6 @@ public class CobroDTO
         x.setValor(this.getValor());
         x.setCancelado(this.getCancelado());
         x.setId(this.getId());
-        x.setIdDestinatario(this.getIdDestinatario());
-        x.setIdRemitente(this.getIdRemitente());
         return x;
     }
-
 }
