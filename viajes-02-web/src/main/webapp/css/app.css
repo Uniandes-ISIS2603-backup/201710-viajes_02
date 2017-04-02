@@ -12,6 +12,7 @@ and open the template in the editor.
 
 .mainHeader {
     padding: 35px;
+    background-position: center;
     background-image: url("image_logo.png");
     background-repeat: no-repeat;
 }
