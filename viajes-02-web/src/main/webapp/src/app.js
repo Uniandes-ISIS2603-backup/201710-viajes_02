@@ -4,7 +4,9 @@
         'ui.router',
         // Internal modules dependencies 
         'cobroModule',
-        'lugarModule'
+        'lugarModule',
+        'automovilesModule',
+        'reviewModule'
         
     ]);
     // Resuelve problemas de las promesas
