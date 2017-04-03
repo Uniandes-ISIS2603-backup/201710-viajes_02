@@ -3,20 +3,20 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
+<br>
 <div class="container-fluid">
-    <div class="row">
-        <br>
         <div class="col-sm-12" ng-repeat="reserva in reservasRecords">
             <div class="panel-group">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            <a ui-sref="reservaDetail({reservaId:reserva.id})">Reserva {{reserva.id}}</a>
-                            <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-down"></i></span>
+                            <a ui-sref="reservaDetail({reservaId:reserva.id})">Reserva {{reserva.id}}
+                                <span data-toggle="collapse" href="#toCollapse{{reserva.id}}" style="float: right;"><i class="glyphicon glyphicon-chevron-down"></i></span>
+                            </a>
                         </h4>
                     </div>
-                    <div id="toCollapse" class="panel-collapse collapse in">
-                        <div class="panel-body">
+                    <div id="toCollapse{{reserva.id}}" class="panel-collapse collapse">
+                        <div class="panel-body" style="height: 250px">
                             <dl>
                                 <dt>Fecha de reservación:</dt>
                                 <dd>{{reserva.fechareserva}}</dd>
@@ -35,5 +35,4 @@ and open the template in the editor.
                 </div>
             </div>
         </div>
-    </div>
 </div>

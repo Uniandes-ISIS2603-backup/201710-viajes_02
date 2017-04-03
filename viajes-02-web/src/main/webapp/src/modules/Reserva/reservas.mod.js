@@ -5,11 +5,11 @@
  */
 (function (ng) {
     var mod = ng.module("reservaModule", ['ui.router']);
-    mod.constant("reservasContext","api/reservas");
+    mod.constant("reservasContext", "api/reservas");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
 
             var basePath = 'src/modules/Reserva/';
-            
+
             $urlRouterProvider.otherwise("/reservasList");
 
             $stateProvider.state('reservas', {
@@ -18,14 +18,14 @@
                 resolve: {
                     reservas: ['$http', function ($http) {
                             return $http.get('data/reservas.json');
-                    }]
+                        }]
                 },
                 views: {
                     'mainView': {
                         templateUrl: basePath + 'reservas.html',
                         controller: ['$scope', 'reservas', function ($scope, reservas) {
-                            $scope.reservasRecords = reservas.data;
-                        }]
+                                $scope.reservasRecords = reservas.data;
+                            }]
                     }
                 }
             }).state('reservasList', {
