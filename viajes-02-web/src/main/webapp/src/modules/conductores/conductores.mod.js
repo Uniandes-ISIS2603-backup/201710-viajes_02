@@ -43,6 +43,14 @@
                             }]
                     }
                 }
+            }).state('conductoresDetailReview', {
+                url: '/reviews',
+                parent: 'conductorDetail',
+                views: {
+                    'detail': {
+                        templateUrl: basePath + 'conductores.detail.reviews.html'
+                    }
+                }
             });
         }]);
 })(window.angular);
