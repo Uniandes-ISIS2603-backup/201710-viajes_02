@@ -6,7 +6,8 @@
         'cobroModule',
         'lugarModule',
         'automovilesModule',
-        'reviewModule'
+        'reviewModule',
+        'reservasModule'
         
     ]);
     // Resuelve problemas de las promesas

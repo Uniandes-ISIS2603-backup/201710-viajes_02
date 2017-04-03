@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<div class="panel panel-default"> 
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel-group">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3>Viaje asociado a Reserva {{currentReserva.id}}</h3>
+                    </div>
+                    <!--<ul ng-repeat="viaje in currentReserva.viaje">
+                        <a ui-sref="viajeDetail({viajeId: viaje.id})">{{viaje.id}}</a>
+                    </ul>-->
+                    <div class="panel-body">
+                        <dl>
+                            <dt>Origen - Destino</dt>
+                            <dd>{{currentReserva.viaje.origen}} - {{currentReserva.viaje.destino}}</dd>
+                            <hr>
+                            <dt>Distancia (Km)</dt>
+                            <dd>{{currentReserva.viaje.kilometros}}</dd>
+                            <hr>
+                            <dt>Fecha de partida</dt>
+                            <dd>{{currentReserva.viaje.fechapartida}}</dd>
+                            <hr>
+                            <dt>Fecha de llegada</dt>
+                            <dd>{{currentReserva.viaje.fechallegada}}</dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+            <!--                <ul class="nav nav-tabs">
+                                <li role="presentation" class="active"> <a ui-sref="reviewsList({bookId: currentBook.id})">Reviews</a></li>
+                                <li role="presentation"><a href="#">Profile</a></li>
+                                <li role="presentation"><a href="#">Messages</a></li>
+                            </ul>-->
+        </div>
+    </div>
+</div><!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div>TODO write content</div>
+    </body>
+</html>

@@ -1,0 +1,39 @@
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<div class="container-fluid">
+    <div class="row">
+        <br>
+        <div class="col-sm-12" ng-repeat="reserva in reservasRecords">
+            <div class="panel-group">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a ui-sref="reservaDetail({reservaId:reserva.id})">Reserva {{reserva.id}}</a>
+                            <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-down"></i></span>
+                        </h4>
+                    </div>
+                    <div id="toCollapse" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                            <dl>
+                                <dt>Fecha de reservación:</dt>
+                                <dd>{{reserva.fechareserva}}</dd>
+                                <br>
+                                <dt>Precio:</dt>
+                                <dd>{{reserva.precio}}</dd>
+                                <br>
+                                <dt>Conductor:</dt>
+                                <dd>{{reserva.conductor}}</dd>
+                                <br>
+                                <dt>Puestos reservados:</dt>
+                                <dd>{{reserva.puestosreservados}}</dd>
+                            </dl>
+                        </div> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
