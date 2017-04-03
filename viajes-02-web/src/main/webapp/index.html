@@ -13,7 +13,10 @@
         <!-- Dependencias Externas -->
         <script src="bower_components/angular/angular.js"></script>
         <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-
+        
+        <!-- Viajero -->
+        <script src="src/modules/Viajero/viajeros.mod.js" type="text/javascript"></script>
+        
         <!-- Lugares -->
         <script src="src/modules/Cobro/cobros.mod.js" type="text/javascript"></script>
         <script src="src/modules/Lugar/lugares.mod.js" type="text/javascript"></script>
@@ -27,6 +30,7 @@
             <div class="row mainHeader">
                 <div class="col-sm-12">
                     <ul class="nav nav-tabs">
+                        <li role="navigation"><a ui-sref="viajerosList">Viajeros</a></li>
                         <li role="navigation"><a ui-sref="lugarList">Lugares</a></li>
                         <li role="navigation"><a ui-sref="cobroList">Cobros</a></li>
                         <li role="navigation"><a ui-sref="reservasList">Reservas</a></li>

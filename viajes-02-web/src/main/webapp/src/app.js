@@ -5,9 +5,10 @@
         // Internal modules dependencies 
         'cobroModule',
         'lugarModule',
-        'automovilesModule',
-        'reviewModule',
-        'reservasModule'
+        //'automovilesModule',
+        //'reviewModule',
+        'reservaModule',
+        'viajeroModule'
         
     ]);
     // Resuelve problemas de las promesas
