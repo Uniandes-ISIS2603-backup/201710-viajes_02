@@ -5,7 +5,7 @@
         // Internal modules dependencies 
         'cobroModule',
         'lugarModule',
-        //'automovilesModule',
+        'automovilesModule',
         //'reviewModule',
         'reservaModule',
         'viajeroModule'
