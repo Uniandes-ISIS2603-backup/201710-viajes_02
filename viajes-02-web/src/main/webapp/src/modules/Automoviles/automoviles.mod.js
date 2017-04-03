@@ -6,14 +6,15 @@
     var mod = ng.module("automovilesModule",['ui.router']);
     mod.constant("automovilContext","api/automoviles");
     mod.config(['$stateProvider',  '$urlRouterProvider', function ( $stateProvider, $urlRouterProvider) {
-        var basePath = 'src/modules/automoviles/';
+        var basePath = 'src/modules/Automoviles/';
         $urlRouterProvider.otherwise("/automovilesList");
-        $stateProvider.state('automoviles',{
+       
+            $stateProvider.state('automoviles',{
             url: '/automoviles',
             abstract: true,
             resolve:
-                { automoviles: ['$http', 'automovilesContext', function( $http, automovilesContext) {
-            return $http.get(automovilesContext);
+                { automoviles: ['$http', function( $http ) {
+            return $http.get('data/automoviles.json');
 
         }]
     },
@@ -40,16 +41,11 @@
             param: {
                 automovilesId: null
             },
-            resolve:{
-                currentAutomoviles:['$http', 'automovilesContext', '$stateParams', function ($http, automovilesContext, $params) {
-                    return $http.get(automovilesContext+'/'+$params.automovilesId);
-                }]
-            },
             views: {
                 'detailView': {
                     templateUrl: basePath + 'automoviles.detail.html',
                     controller: ['$scope', '$stateParams', function ($scope, $stateParams) {
-                        $scope.currentAutomoviles = $scope.automovilesRecords[$params.automovilesId-1];
+                        $scope.currentAutomoviles = $scope.automovilesRecords[$stateParams.automovilesId-1];
                     }]
                 }
 
