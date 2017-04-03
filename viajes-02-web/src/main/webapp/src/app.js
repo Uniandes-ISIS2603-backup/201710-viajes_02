@@ -8,7 +8,9 @@
         //'automovilesModule',
         //'reviewModule',
         'reservaModule',
-        'viajeroModule'
+        'viajeroModule',
+        'conductorModule',
+        'viajeModule'
         
     ]);
     // Resuelve problemas de las promesas
