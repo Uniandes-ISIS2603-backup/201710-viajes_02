@@ -43,6 +43,28 @@
                         }]
                     }
                 }
+            }).state('cobroUserList', {
+                url: '/{usuarioId:int}/cobrosUsuario',
+                parent:'cobros',
+                param: {
+                    usuarioId:null
+                },
+                views: {
+                    'userCobroView': {
+                        templateUrl: basePath + 'cobro-user-list.html',
+                        controller: ['$scope', '$stateParams', function($scope, $params) {
+                            var arreglo = [];
+                            var i;
+                                                        
+                            for(i = 0; i < $scope.cobrosRecords.length; i++) {
+                                if($scope.cobrosRecords[i].usuarioRemitente.id === $params.usuarioId) { 
+                                    arreglo.push($scope.cobrosRecords[i]);
+                                }
+                            }                           
+                            $scope.userCobros = arreglo
+                        }]
+                    }
+                }
             });
         }]);
 })(window.angular);
