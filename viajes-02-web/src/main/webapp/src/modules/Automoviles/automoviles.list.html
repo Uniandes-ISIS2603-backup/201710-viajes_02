@@ -1,13 +1,13 @@
 <div class="container-fluid">
     <div class="row">
-        <div class="col-sm-2" ng-repeat="automovil in automovilesRecords">
+        <div class="col-md-3" ng-repeat="automovil in automovilesRecords">
             <div class="thumbnail">
-                <p id="{{$index}}-placa"class="text-center">{{automovil.placa}}</p>
-                <p id="{{$index}}-color"class="text-center">{{automovil.color}}</p>
-                <p id="{{$index}}-modelo" class="text-center">{{automovil.modelo}}</p>
-                <p id="{{$index}}-cantAsientos" class="text-center">{{automovil.cantAsientos}}</p>
-                <p id="{{$index}}-compSeguros" class="text-center">{{automovil.compSeguros}}</p>
-                <p id="{{$index}}-numSeguros" class="text-center">{{automovil.numSeguro}}</p>
+                <p class="text-center">Placa: {{automovil.placa}}</p>
+                <p class="text-center">Color: {{automovil.color}}</p>
+                <p class="text-center">Modelo: {{automovil.modelo}}</p>
+                <p class="text-center">Cantidad asientos: {{automovil.cantAsientos}}</p>
+                <p class="text-center">Compañia de seguros: {{automovil.compSeguros}}</p>
+                <p class="text-center">Numero de seguros: {{automovil.numSeguros}}</p>
              </div>
         </div>
     </div>

@@ -10,13 +10,24 @@ and open the template in the editor.
 .mainHeader {
     padding: 35px;
     background-position: center;
-    background-image: url("image_logo.png");
+    /*background-image: url("image_logo.png");*/
     background-repeat: no-repeat;
 }
 
 .mainTitle {
     font-variant: small-caps;
     font-style: italic;
+}
+
+.nav-tabs > li, .nav-pills > li {
+    float:none;
+    display:inline-block;
+    *display:inline; /* ie7 fix */
+    zoom:1; /* hasLayout ie7 trigger */
+}
+
+.nav-tabs, .nav-pills {
+    text-align:center;
 }
 
 .footer {
