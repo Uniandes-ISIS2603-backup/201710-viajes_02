@@ -1,6 +1,5 @@
 (function (ng) {
     var mod = ng.module("viajeroModule", ['ui.router']);
-
     // Configuración de los estados del módulo
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             // En basePath se encuentran los templates y controladores de módulo
@@ -52,6 +51,15 @@
                                 controller: ['$scope', '$stateParams', function ($scope, $params) {
                                         $scope.currentViajero = $scope.viajerosRecords[$params.viajeroId - 1];
                                     }]
+                            }
+                        }
+                    })
+                    .state('viajerosDetailReview', {
+                        url: '/reviews',
+                        parent: 'viajeroDetail',
+                        views: {
+                            'detail': {
+                                templateUrl: basePath + 'viajeros.detail.reviews.html'
                             }
                         }
                     });
