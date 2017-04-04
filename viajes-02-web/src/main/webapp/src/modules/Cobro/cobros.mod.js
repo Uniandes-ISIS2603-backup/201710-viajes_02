@@ -55,9 +55,9 @@
                         controller: ['$scope', '$stateParams', function($scope, $params) {
                             var arreglo = [];
                             var i;
-                            
+                                                        
                             for(i = 0; i < $scope.cobrosRecords.length; i++) {
-                                if($scope.cobrosRecords[i].id === $params.usuarioId) { 
+                                if($scope.cobrosRecords[i].usuarioRemitente.id === $params.usuarioId) { 
                                     arreglo.push($scope.cobrosRecords[i]);
                                 }
                             }                           

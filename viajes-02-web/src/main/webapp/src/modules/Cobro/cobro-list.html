@@ -1,5 +1,5 @@
 <div class="container-fluid">
-            <h1><a ui-sref="cobroUserList({userId: 1})">sadfsadf</a></h1>
+   <!-- <h1><a ui-sref="cobroUserList({usuarioId: 1})">sadfsadf</a></h1> LINK -->
     <div class="col-sm-12">
         <table class="table table-hover">
             <thead>
@@ -11,8 +11,8 @@
             </thead>
             <tbody>
                 <tr ng-repeat="cobro in cobrosRecords">
-                    <td>{{cobro.usuarioRemitente.nombre}}</td>
-                    <td>{{cobro.usuarioDestinatario.nombre}}</td>
+                    <td><a ui-sref="viajeroDetail({viajeroId: 1})">{{cobro.usuarioRemitente.nombre}}</a></td> <!-- CAMBIAR ID-->
+                    <td><a ui-sref="viajeroDetail({viajeroId: 2})">{{cobro.usuarioDestinatario.nombre}}</a></td> <!-- CAMBIAR ID-->
                     <td><a ui-sref="cobrosDetail({cobroId: cobro.id})" class="thumb">{{cobro.valor}}</a></td>
                 </tr>
             </tbody>
