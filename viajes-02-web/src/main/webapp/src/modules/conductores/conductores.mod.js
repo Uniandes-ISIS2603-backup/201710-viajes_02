@@ -51,6 +51,14 @@
                                     templateUrl: basePath + 'conductores.detail.reviews.html'
                             }
                         }
+             }).state('conductoresDetailAutomoviles', {
+                 url: '/automoviles',
+                 parent: 'conductorDetail',
+                 views: {
+                     'detail': {
+                         templateUrl: basePath + 'conductores.detail.automoviles.html'
+                     }
+                 }
              });
     }]);
 })(window.angular);

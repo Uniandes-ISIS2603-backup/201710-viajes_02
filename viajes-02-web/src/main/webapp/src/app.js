@@ -4,6 +4,7 @@
         'ui.router',
         // Internal modules dependencies 
         'cobroModule',
+        'pagoModule',
         'lugarModule',
         'automovilesModule',
         //'reviewModule',
