@@ -1,38 +1,38 @@
 <div class="panel panel-default"> 
     <div class="panel-body">
-    <div class="row">
-        <div class="col-md-3">
-            <div class="thumb">
-                <img class="img-responsive" ng-src="{{currentConductor.imagen}}"/>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="thumb">
+                    <img class="img-responsive" ng-src="{{currentConductor.imagen}}"/>
+                </div>
+
             </div>
+            <div class="col-md-3">
+                <dl>
+                    <hr>
+                    <dt>Nombre</dt>
+                    <dd>{{currentConductor.nombre}}</dd>
 
-        </div>
-        <div class="col-md-3">
-            <dl>
-                <hr>
-                <dt>Nombre</dt>
-                <dd>{{currentConductor.nombre}}</dd>
-                
-                <hr>
-                <dt>Genero</dt>
-                <dd>{{currentConductor.genero}}</dd>
-          
-                <hr>
-                <dt>Correo</dt>
-                <dd>{{currentConductor.correo}}</dd>
-                
-                <hr>
-                <dt>Telefono</dt>
-                <dd>{{currentConductor.telMovil}}</dd>
+                    <hr>
+                    <dt>Genero</dt>
+                    <dd>{{currentConductor.genero}}</dd>
 
-            </dl>
-            <ul class="nav nav-tabs">
-                <li role="presentation" class="active"> <a ui-sref="conductoresDetailReview">Reviews</a></li>
-                <li role="presentation" class="active"> <a ui-sref="conductoresDetailAutomoviles">Automoviles</a></li>
-                                </ul>
+                    <hr>
+                    <dt>Correo</dt>
+                    <dd>{{currentConductor.correo}}</dd>
+
+                    <hr>
+                    <dt>Telefono</dt>
+                    <dd>{{currentConductor.telMovil}}</dd>
+
+                </dl>
+                <ul class="nav nav-tabs">
+                    <li role="presentation" class="active"> <a ui-sref="conductoresDetailReview">Reviews</a></li>
+                    <li role="presentation" class="active"> <a ui-sref="conductoresDetailAutomoviles">Automoviles</a></li>
+                </ul>
+            </div>
         </div>
-    </div>
         <div ui-view = "detail" > </div>
-        </div>
+    </div>
 </div>
 

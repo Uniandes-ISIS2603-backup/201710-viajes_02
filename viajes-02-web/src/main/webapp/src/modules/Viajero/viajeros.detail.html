@@ -22,7 +22,11 @@
                     <br>
                     <dd><B>Lugar: </B><a ui-sref="lugarDetail({lugarId: currentViajero.lugar.id})"> {{currentViajero.lugar.lugar}}</a> </dd>
                 </dl>
+                <ul class="nav nav-tabs">
+                    <li role="presentation" class="active"> <a ui-sref="viajerosDetailReview">Reviews</a></li>
+                </ul>
             </div>
         </div>
+        <div ui-view = "detail"> </div>
     </div>
 </div>
