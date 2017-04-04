@@ -1,9 +1,3 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <div class="container-fluid">
     <div class="col-sm-12">
         <table class="table table-hover">
@@ -15,9 +9,9 @@ and open the template in the editor.
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="pago in pagosRecords">
-                    <td><a ui-sref="viajeroDetail({viajeroId: 1})">{{pago.usuarioRemitente.nombre}}</a></td>
-                    <td><a ui-sref="viajeroDetail({viajeroId: 2})">{{pago.usuarioDestinatario.nombre}}</a></td>
+                <tr ng-repeat="pago in userPagos">
+                    <td>{{pago.usuarioRemitente.nombre}}</td>
+                    <td>{{pago.usuarioDestinatario.nombre}}</td>
                     <td><a ui-sref="pagosDetail({pagoId: pago.id})" class="thumb">{{pago.valor}}</a></td>
                 </tr>
             </tbody>

@@ -7,9 +7,9 @@
     var mod = ng.module("pagoModule", ['ui.router']);
     mod.constant("pagosContext", "api/pagos");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
-            
+
             var basePath = 'src/modules/Pago/';
-            
+
             $urlRouterProvider.otherwise("/pagosList");
 
             $stateProvider.state('pagos', {
@@ -33,7 +33,7 @@
                 parent: 'pagos',
                 views: {
                     'listView': {
-                        templateUrl: basePath + 'pago-list.html'
+                        templateUrl: basePath + 'pagos.list.html'
                     }
                 }
             }).state('pagosDetail', {
@@ -46,10 +46,32 @@
                     'detailView': {
                         templateUrl: basePath + 'pagos.detail.html',
                         controller: ['$scope', '$stateParams', function ($scope, $params) {
-                                $scope.currentPago = $scope.pagosRecords[$params.pagoId - 1 ];
+                                $scope.currentPago = $scope.pagosRecords[$params.pagoId - 1];
+                            }]
+                    }
+                }
+            }).state('pagoUserList', {
+                url: '/{usuarioId:int}/pagosUsuario',
+                parent: 'pagos',
+                param: {
+                    usuarioId: null
+                },
+                views: {
+                    'userPagoView': {
+                        templateUrl: basePath + 'pago.user.list.html',
+                        controller: ['$scope', '$stateParams', function ($scope, $params) {
+                                var arreglo = [];
+                                var i;
+                                for (i = 0; i < $scope.pagosRecords.length; i++) {
+                                    if ($scope.pagosRecords[i].usuarioRemitente.id === $params.usuarioId) {
+                                        arreglo.push($scope.pagosRecords[i]);
+                                    }
+                                }
+                                $scope.userPagos = arreglo;
                             }]
                     }
                 }
             });
-        }]);
+        }
+    ]);
 })(window.angular);
