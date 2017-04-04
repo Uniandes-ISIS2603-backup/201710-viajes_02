@@ -36,7 +36,7 @@
                         templateUrl: basePath + 'reservas.list.html'
                     }
                 }
-            }).state('reservaDetail', {
+            }).state('reservasDetail', {
                 url: '/{reservaId:int}/detail',
                 parent: 'reservas',
                 param: {
