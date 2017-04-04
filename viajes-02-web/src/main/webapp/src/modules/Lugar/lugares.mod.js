@@ -10,7 +10,7 @@
                 abstract: true,
                 resolve: {
                     lugares: ['$http','lugarContext', function ($http, lugarContext) {
-                            return $http.get('data/lugares.json');
+                            return $http.get(lugarContext);
                         }]
                 },
                 views: {
@@ -30,19 +30,25 @@
                     }
                 }
             }).state('lugarDetail', {
-                url:'/{lugarId:int}/detail',
+                url: '/{lugarId:int}/detail',
                 parent: 'lugares',
                 param: {
-                   lugarId: null
+                    lugarId: null
+                },
+                resolve:  {
+                    currentLugar: ['$http', 'lugarContext', '$stateParams', function ($http, lugarContext, $params) {
+                            return $http.get(lugarContext+'/'+$params.lugarId);
+                        }]
                 },
                 views: {
                     'detailView': {
                         templateUrl: basePath + 'lugar-detail.html',
-                        controller: ['$scope', '$stateParams', function($scope, $params) {
-                                $scope.currentLugar = $scope.lugarRecords[$params.lugarId-1]
-                        }]
+                        controller: ['$scope', 'currentLugar', function ($scope,  currentLugar) {
+                                $scope.currentLugar = currentLugar.data;
+                            }]
                     }
-                } 
+
+                }
             });
         }]);
 })(window.angular);
