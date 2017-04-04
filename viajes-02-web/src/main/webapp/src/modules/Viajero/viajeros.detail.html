@@ -19,6 +19,8 @@
                     <dd><B>Rating: </B> {{currentViajero.rating}} </dd>
                     <br>
                     <dd><B>Id: </B> {{currentViajero.id}} </dd>
+                    <br>
+                    <dd><B>Lugar: </B><a ui-sref="lugarDetail({lugarId: currentViajero.lugar.id})"> {{currentViajero.lugar.lugar}}</a> </dd>
                 </dl>
             </div>
         </div>
