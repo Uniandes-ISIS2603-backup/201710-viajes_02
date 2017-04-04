@@ -5,17 +5,17 @@ and open the template in the editor.
 -->
 <br>
 <div class="container-fluid">
-        <div class="col-sm-12" ng-repeat="reserva in reservasRecords">
+        <div class="col-sm-12" ng-repeat="reserva in reservasRecords" >
             <div class="panel-group">
-                <div class="panel panel-primary">
+                <div class="panel panel-primary" >
                     <div class="panel-heading">
-                        <h4 class="panel-title">
+                        <h4 class="panel-title" >
                             <a ui-sref="reservasDetail({reservaId:reserva.id})">Reserva {{reserva.id}}
-                                <span data-toggle="collapse" href="#toCollapse{{reserva.id}}" style="float: right;"><i class="glyphicon glyphicon-chevron-down"></i></span>
+                                <span data-toggle="collapse" href="#toCollapse{{reserva.id}}" style="float: right; color: #00b3ee"><i class="glyphicon glyphicon-chevron-down"></i></span>
                             </a>
                         </h4>
                     </div>
-                    <div id="toCollapse{{reserva.id}}" class="panel-collapse collapse">
+                    <div id="toCollapse{{reserva.id}}" class="panel-collapse collapse" >
                         <div class="panel-body" style="height: 250px">
                             <dl>
                                 <dt>Fecha de reservación:</dt>
