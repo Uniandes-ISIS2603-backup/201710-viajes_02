@@ -8,13 +8,12 @@
     mod.config(['$stateProvider',  '$urlRouterProvider', function ( $stateProvider, $urlRouterProvider) {
         var basePath = 'src/modules/Automoviles/';
         $urlRouterProvider.otherwise("/automovilesList");
-       
-            $stateProvider.state('automoviles',{
+        $stateProvider.state('automoviles',{
             url: '/automoviles',
             abstract: true,
             resolve:
                 { automoviles: ['$http', function( $http ) {
-            return $http.get('data/automoviles.json');
+                 return $http.get('data/automoviles.json');
 
         }]
     },
@@ -41,6 +40,11 @@
             param: {
                 automovilesId: null
             },
+            // resolve:{
+            //     currentAutomoviles:['$http', 'automovilesContext', '$stateParams', function ($http, automovilesContext, $params) {
+            //         return $http.get(automovilesContext+'/'+$params.automovilesId);
+            //     }]
+            // },
             views: {
                 'detailView': {
                     templateUrl: basePath + 'automoviles.detail.html',

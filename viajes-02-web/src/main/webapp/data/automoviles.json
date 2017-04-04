@@ -39,8 +39,8 @@
   "marca": "MINI",
   "color": "Rojo & Negro",
   "compSeguros":"ARP",
-   "cantAsientos":89356712,
-  "numSeguros": 4,
+   "cantAsientos":4,
+  "numSeguros":89356712 ,
   "placa":"LAR789",
   "modelo":"England"
 },
