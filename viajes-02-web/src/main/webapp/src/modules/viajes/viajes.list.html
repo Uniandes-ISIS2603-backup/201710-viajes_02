@@ -16,7 +16,7 @@
             </thead>
             <tbody>
                 <tr ng-repeat="viaje in viajesRecords">
-                    <td id="{{$index}}-id">  <a ui-sref="viajeDetail({viajeId: viaje.id})">{{viaje.id}}</a></td>
+                    <td id="{{$index}}-id">  <a ui-sref="viajeDetail({viajeId: viaje.idViaje})">{{viaje.idViaje}}</a></td>
                     <td id="{{$index}}-kilometros">  {{viaje.kilometros}}</td>
                     <td id="{{$index}}-gastoscompartidos">{{viaje.gastosCompartidos}}</td>
                     <td id="{{$index}}-fechapartida">{{viaje.diaYHoraPartida}}</td>

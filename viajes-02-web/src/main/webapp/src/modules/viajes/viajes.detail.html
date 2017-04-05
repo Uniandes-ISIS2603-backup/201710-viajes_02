@@ -5,7 +5,7 @@
             <dl>
                 <hr>
                 <dt>Id</dt>
-                <dd>{{currentViaje.id}}</dd>
+                <dd>{{currentViaje.idViaje}}</dd>
                 
                 <hr>
                 <dt>Kilometros</dt>
@@ -33,7 +33,7 @@
                 
                 <hr>
                 <dt>Conductor</dt>
-                <dd>{{currentViaje.conductor.nombre}<a ui-sref="conductorDetail({conductorId: currentViaje.conductor.id})">}</dd>
+                <dd><a ui-sref="conductorDetail({conductorId: currentViaje.conductor.id})">{{currentViaje.conductor.nombre}}</a></dd>
 
             </dl>
         </div>
