@@ -1,16 +1,19 @@
 (function (ng) {
     var mod = ng.module("cobroModule", ['ui.router']);
-    mod.constant("cobroContext", "api/cobros");
+    mod.constant("cobroContext", "api/usuarios");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             var basePath = 'src/modules/Cobro/';
             $urlRouterProvider.otherwise("/cobroList");
 
             $stateProvider.state('cobros', {
-                url: '/cobros',
+                url: '/usuarios/{usuarioId:int}/cobros',
                 abstract: true,
+                param: {
+                  usuarioId:null  
+                },
                 resolve: {
-                    cobros: ['$http', function ($http) {
-                            return $http.get('data/cobros.json');
+                    cobros: ['$http', 'cobroContext', '$stateParams', function ($http,cobroContext, $params) {
+                            return $http.get(cobroContext+'/'+$params.usuarioId+'/cobros');
                         }]
                 },
                 views: {
@@ -30,38 +33,22 @@
                     }
                 }
             }).state('cobrosDetail',{
-                url:'/{cobroId:int}/detail',
-                parent:'cobros',
+                url:'/{cobroId:int}',
+                parent: 'cobros',
                 param: {
-                    lugarId:null
+                    cobroId:null
+                },
+                resolve:  {
+                    currentCobro: ['$http', 'cobroContext', '$stateParams', function ($http, cobroContext, $params) {
+                            return $http.get(cobroContext+'/'+$params.usuarioId+'/cobros/'+$params.cobroId);
+                        }]
                 },
                 views: {
                     'detailView': {
                         templateUrl: basePath + 'cobro-detail.html',
-                        controller: ['$scope','$stateParams', function($scope, $params) {
-                                $scope.currentCobro = $scope.cobrosRecords[$params.cobroId-1 ]
-                        }]
-                    }
-                }
-            }).state('cobroUserList', {
-                url: '/{usuarioId:int}/cobrosUsuario',
-                parent:'cobros',
-                param: {
-                    usuarioId:null
-                },
-                views: {
-                    'userCobroView': {
-                        templateUrl: basePath + 'cobro-user-list.html',
-                        controller: ['$scope', '$stateParams', function($scope, $params) {
-                            var arreglo = [];
-                            var i;
-                                                        
-                            for(i = 0; i < $scope.cobrosRecords.length; i++) {
-                                if($scope.cobrosRecords[i].usuarioRemitente.id === $params.usuarioId) { 
-                                    arreglo.push($scope.cobrosRecords[i]);
-                                }
-                            }                           
-                            $scope.userCobros = arreglo
+                        controller: ['$scope','currentCobro', function($scope, currentCobro) {
+                                $scope.currentCobro = currentCobro.data
+                                console.log($scope.currentCobro)
                         }]
                     }
                 }
