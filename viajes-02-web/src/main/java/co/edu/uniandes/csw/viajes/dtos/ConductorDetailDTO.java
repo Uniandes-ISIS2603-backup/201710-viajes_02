@@ -7,6 +7,7 @@ package co.edu.uniandes.csw.viajes.dtos;
 
 import co.edu.uniandes.csw.viajes.entities.AutomovilEntity;
 import co.edu.uniandes.csw.viajes.entities.ConductorEntity;
+import co.edu.uniandes.csw.viajes.entities.ReviewEntity;
 import co.edu.uniandes.csw.viajes.entities.ViajeEntity;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +24,8 @@ public class ConductorDetailDTO extends ConductorDTO
     private List<AutomovilDetailDTO> automoviles;
 
     private List<ViajeDTO> viajes;
+    
+    private List<ReviewDTO> reviews;
 
     public List<AutomovilDetailDTO> getAutomoviles()
     {
@@ -44,6 +47,7 @@ public class ConductorDetailDTO extends ConductorDTO
         super(entity);
         automoviles = listEntity2DTO(entity.getAutomoviles());
         viajes = listEntity2DTO2(entity.getViajes());
+        reviews = listEntity2DTO3(entity.getReviews());
     }
 
     public List<ViajeDTO> getViajes()
@@ -54,6 +58,16 @@ public class ConductorDetailDTO extends ConductorDTO
     public void setViajes(List<ViajeDTO> viajes)
     {
         this.viajes = viajes;
+    }
+    
+    public List<ReviewDTO> getReviews()
+    {
+        return reviews;
+    }
+
+    public void setReviews(List<ReviewDTO> reviews)
+    {
+        this.reviews = reviews;
     }
 
     @Override
@@ -80,6 +94,17 @@ public class ConductorDetailDTO extends ConductorDTO
         {
             ViajeEntity v = entityList.get(i);
             ViajeDetailDTO v1 = new ViajeDetailDTO(v);
+            respuesta.add(v1);
+        }
+        return respuesta;
+    }
+    public List<ReviewDTO> listEntity2DTO3(List<ReviewEntity> entityList)
+    {
+        List<ReviewDTO> respuesta = new ArrayList();
+        for (int i = 0; i < entityList.size(); i++)
+        {
+            ReviewEntity r = entityList.get(i);
+            ReviewDetailDTO v1 = new ReviewDetailDTO(r);
             respuesta.add(v1);
         }
         return respuesta;

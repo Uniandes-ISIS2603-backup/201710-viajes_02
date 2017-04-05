@@ -9,8 +9,8 @@
                 url: '/viajes',
                 abstract: true,
                 resolve: {
-                    viajes: ['$http', function ($http) {
-                            return $http.get('data/viajes.json');
+                    viajes: ['$http', 'viajesContext',function ($http, viajesContext) {
+                            return $http.get(viajesContext);
                         }]
                 },
                 views: {
