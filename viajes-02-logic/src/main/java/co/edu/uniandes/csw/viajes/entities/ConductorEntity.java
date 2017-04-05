@@ -53,6 +53,10 @@ public class ConductorEntity extends UsuarioEntity{
      */
     private String correo;
     /**
+     * Imagen del conductor
+     */
+    private String imagen;
+    /**
      * Automoviles del conductor.
      */
     @OneToMany (cascade = CascadeType.ALL)
@@ -214,5 +218,14 @@ public class ConductorEntity extends UsuarioEntity{
         
         return super.hashCode();
     }
+    
+    public String getImagen(){
+        return this.imagen;
+    }
+    
+    public void setImagen(String imagen){
+        this.imagen = imagen;
+    }
+    
     
 }
