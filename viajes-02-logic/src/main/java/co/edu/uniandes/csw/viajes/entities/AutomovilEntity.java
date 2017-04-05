@@ -58,6 +58,17 @@ public class AutomovilEntity implements Serializable {
      * atributo numero de seguro
      */
     private Integer numSeguro;
+//TODO: verificar porque falla
+
+    private ConductorEntity conductorEntity;
+
+    public ConductorEntity getConductorEntity() {
+        return conductorEntity;
+    }
+
+    public void setConductorEntity(ConductorEntity conductorEntity) {
+        this.conductorEntity = conductorEntity;
+    }
 
     /**
      * dar placa
@@ -178,7 +189,7 @@ public class AutomovilEntity implements Serializable {
     /**
      * actualizar compañia de seguros
      *
-     * @param compseguros
+     * @param compSeguros
      */
     public void setCompSeguros(String compSeguros) {
         this.compSeguros = compSeguros;

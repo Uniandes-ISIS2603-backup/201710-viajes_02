@@ -1,0 +1,26 @@
+<div class="container-fluid">
+    <div ui-view="childrensViwe">
+
+
+
+    <div class="row">
+        <div class="col-md-3" ng-repeat="automovil in automovilesRecords">
+            <button class="thumbnail" >
+                <!--<td><a ui-sref="lugarDetail({automovoilId: automovil.id})" class="thumb">{{.lugar}}</a></td>-->
+                <p class="text-center">Placa: {{automovil.placa}}</p>
+                <p class="text-center">Color: {{automovil.color}}</p>
+                <p class="text-center">Modelo: {{automovil.modelo}}</p>
+                <p class="text-center">Cantidad asientos: {{automovil.cantAsientos}}</p>
+                <p class="text-center">Compañia de seguros: {{automovil.compSeguros}}</p>
+                <p class="text-center">Numero de seguros: {{automovil.numSeguros}}</p>
+
+             </button>
+            <tbody>
+            <tr ng-repeat="conductor in conductorRecords">
+            <td><a ui-sref="automovilesDetail()" class="thumb"></a></td>
+            </tr>
+            </tbody>
+        </div>
+    </div>
+</div>
+

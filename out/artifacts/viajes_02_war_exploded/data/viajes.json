@@ -1,0 +1,10 @@
+[{"id":1,"kilometros":651,"gastosCompartidos":489205,"diaYHoraPartida":"12/12/2016","diaYHoraLlegada":"11/6/2016","origen":"Sojo","destino":"Mundri","conductor":"Carl"},
+{"id":2,"kilometros":1125,"gastosCompartidos":479248,"diaYHoraPartida":"11/14/2016","diaYHoraLlegada":"4/2/2016","origen":"Casais de Vera Cruz","destino":"Gaojiabu","conductor":"Betty"},
+{"id":3,"kilometros":405,"gastosCompartidos":447800,"diaYHoraPartida":"12/12/2016","diaYHoraLlegada":"7/7/2016","origen":"Pavlivka","destino":"Kérkyra","conductor":"Andrea"},
+{"id":4,"kilometros":831,"gastosCompartidos":265352,"diaYHoraPartida":"8/5/2016","diaYHoraLlegada":"5/11/2016","origen":"Medina Estates","destino":"Shuitou","conductor":"Sara"},
+{"id":5,"kilometros":653,"gastosCompartidos":191457,"diaYHoraPartida":"12/5/2016","diaYHoraLlegada":"4/4/2016","origen":"Guadalupe","destino":"Inabaan Sur","conductor":"Helen"},
+{"id":6,"kilometros":661,"gastosCompartidos":402135,"diaYHoraPartida":"2/1/2017","diaYHoraLlegada":"3/15/2017","origen":"Oele","destino":"Tabuadelo","conductor":"Kevin"},
+{"id":7,"kilometros":1134,"gastosCompartidos":224871,"diaYHoraPartida":"1/2/2017","diaYHoraLlegada":"12/13/2016","origen":"Heshui","destino":"León","conductor":"Ashley"},
+{"id":8,"kilometros":1014,"gastosCompartidos":174828,"diaYHoraPartida":"10/16/2016","diaYHoraLlegada":"11/20/2016","origen":"Kuala Lumpur","destino":"Sallanches","conductor":"Kenneth"},
+{"id":9,"kilometros":470,"gastosCompartidos":317396,"diaYHoraPartida":"1/30/2017","diaYHoraLlegada":"9/3/2016","origen":"Kurzętnik","destino":"Baing","conductor":"Raymond"},
+{"id":10,"kilometros":615,"gastosCompartidos":360240,"diaYHoraPartida":"8/9/2016","diaYHoraLlegada":"3/26/2017","origen":"Varennes","destino":"Salvaleón de Higüey","conductor":"Judy"}]
