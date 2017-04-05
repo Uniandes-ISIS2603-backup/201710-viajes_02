@@ -45,6 +45,10 @@ public class ConductorDTO implements Serializable
      * Correo del conductor.
      */
     private String correo;
+    /**
+     * Imagen del conductor
+     */
+    private String imagen;
 
     /**
      * Retorna el id del conductor.
@@ -185,6 +189,18 @@ public class ConductorDTO implements Serializable
     {
         this.correo = correo;
     }
+    /**
+     * Retorna la url de la imagen del conductor
+     */
+    public String getImagen(){
+        return this.imagen;
+    }
+    /**
+     * Asigna una imagen al conductor.
+     */
+    public void setImagen(String imagen){
+        this.imagen = imagen;
+    }
 
     /**
      * Constructor Vacío
@@ -210,6 +226,7 @@ public class ConductorDTO implements Serializable
             this.edad = entity.getEdad();
             this.rating = entity.getRating();
             this.correo = entity.getCorreo();
+            this.imagen = entity.getImagen();
         }
     }
 
@@ -228,6 +245,7 @@ public class ConductorDTO implements Serializable
         respuesta.setEdad(edad);
         respuesta.setRating(rating);
         respuesta.setCorreo(correo);
+        respuesta.setImagen(imagen);
 
         return respuesta;
     }
