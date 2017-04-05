@@ -16,9 +16,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class ReservaDTO implements Serializable
 {
-
     private Long idReserva;
-    private Long precio;
+    private Double precio;
     private Double valorComision;
     private Integer puestosReservados;
     private Long idViajero;
@@ -32,7 +31,7 @@ public class ReservaDTO implements Serializable
     {
         if (reservaEntity != null)
         {
-            this.idReserva = reservaEntity.getIdReserva();
+            this.idReserva = reservaEntity.getId();
             this.precio = reservaEntity.getPrecio();
             this.valorComision = reservaEntity.getValorComision();
             this.puestosReservados = reservaEntity.getPuestosReservados();
@@ -44,7 +43,7 @@ public class ReservaDTO implements Serializable
     {
         ReservaEntity reservaEntity = new ReservaEntity();
 
-        reservaEntity.setIdReserva(this.idReserva);
+        reservaEntity.setId(this.idReserva);
         reservaEntity.setPrecio(this.precio);
         reservaEntity.setValorComision(this.valorComision);
         reservaEntity.setPuestosReservados(this.puestosReservados);
@@ -63,12 +62,12 @@ public class ReservaDTO implements Serializable
         this.idReserva = numRegistro;
     }
 
-    public Long getPrecio()
+    public Double getPrecio()
     {
         return precio;
     }
 
-    public void setPrecio(Long precio)
+    public void setPrecio(Double precio)
     {
         this.precio = precio;
     }

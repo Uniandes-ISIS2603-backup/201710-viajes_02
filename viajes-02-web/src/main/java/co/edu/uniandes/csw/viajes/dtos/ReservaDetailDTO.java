@@ -15,8 +15,8 @@ import javax.xml.bind.annotation.XmlRootElement;
  * ReservaDetailDTO
  * @author ja.bermudez10
  */
-@XmlRootElement
 
+@XmlRootElement
 public class ReservaDetailDTO extends ReservaDTO {
     
     private ViajeroDTO viajero;

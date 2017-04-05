@@ -30,21 +30,29 @@
             }).state('reservasList', {
                 url: '/list',
                 parent: 'reservas',
+                param: {
+                    idViajero: null
+                },
+                resolve: {
+                    reservasViajero: ['$http', 'reservasContext', '$stateParams', function ($http, reservasContext, $params) {
+                            return $http.get(reservasContext + '/viajeros/' + $params.idVIajero);
+                    }]
+                },
                 views: {
                     'listView': {
                         templateUrl: basePath + 'reservas.list.html'
                     }
                 }
             }).state('reservasDetail', {
-                url: '/{reservaId:int}/detail',
+                url: '/{idReserva:int}/detail',
                 parent: 'reservas',
+                param: {
+                    id: null
+                },
                 resolve: {
                     currentReserva: ['$http', 'reservasContext', '$stateParams', function ($http, reservasContext, $params) {
-                            return $http.get(reservasContext + '/' + $params.reservaId);
+                            return $http.get(reservasContext + '/viajeros/' + $params.reservaId);
                         }]
-                },
-                param: {
-                    reservaId: null
                 },
                 views: {
                     'detailView': {

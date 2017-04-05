@@ -15,7 +15,7 @@ import javax.persistence.OneToMany;
  * @author n.aguilar
  */
 @Entity
-public class ViajeroEntity extends UsuarioEntity{
+public class ViajeroEntity extends UsuarioEntity {
     
     /*
     * Verifica si el usuario se puede considerar como igual al objeto que llega por parametro
