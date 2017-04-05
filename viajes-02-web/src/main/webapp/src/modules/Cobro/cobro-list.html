@@ -11,9 +11,9 @@
             </thead>
             <tbody>
                 <tr ng-repeat="cobro in cobrosRecords">
-                    <td><a ui-sref="viajeroDetail({viajeroId: 1})">{{cobro.usuarioRemitente.nombre}}</a></td> <!-- CAMBIAR ID-->
-                    <td><a ui-sref="viajeroDetail({viajeroId: 2})">{{cobro.usuarioDestinatario.nombre}}</a></td> <!-- CAMBIAR ID-->
-                    <td><a ui-sref="cobrosDetail({cobroId: cobro.id})" class="thumb">{{cobro.valor}}</a></td>
+                    <td><a ui-sref="viajeroDetail({viajeroId: cobro.usuarioRemitente.id})">{{cobro.usuarioRemitente.nombre}}</a></td> <!-- CAMBIAR ID-->
+                    <td><a ui-sref="viajeroDetail({viajeroId: cobro.usuarioDestinatario.id})">{{cobro.usuarioDestinatario.nombre}}</a></td> <!-- CAMBIAR ID-->
+                    <td><a ui-sref="cobrosDetail({usuarioId: cobro.usuarioRemitente.id,cobroId: cobro.id})" class="thumb">{{cobro.valor}}</a></td>
                 </tr>
             </tbody>
         </table>
