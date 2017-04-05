@@ -14,8 +14,8 @@
                         abstract: true,
                         resolve:
                                 {automoviles: ['$http', 'automovilContext', function ($http, automovilContext) {
-                                            //return $http.get(automovilContext);
-                                            return $http.get("data/automoviles.json");
+                                            return $http.get(automovilContext);
+                                           // return $http.get("data/automoviles.json");
                                         }]
                                 },
                         views: {
