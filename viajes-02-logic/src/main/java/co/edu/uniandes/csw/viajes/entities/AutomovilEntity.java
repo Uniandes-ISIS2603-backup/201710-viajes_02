@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 /**
  * @author Danny
@@ -58,17 +59,20 @@ public class AutomovilEntity implements Serializable {
      * atributo numero de seguro
      */
     private Integer numSeguro;
+
+
 //TODO: verificar porque falla
-
-    private ConductorEntity conductorEntity;
-
-    public ConductorEntity getConductorEntity() {
-        return conductorEntity;
-    }
-
-    public void setConductorEntity(ConductorEntity conductorEntity) {
-        this.conductorEntity = conductorEntity;
-    }
+//    TODO: CAMBIO
+//    @ManyToOne 
+//    private ConductorEntity conductorEntity;
+//
+//    public ConductorEntity getConductorEntity() {
+//        return conductorEntity;
+//    }
+//
+//    public void setConductorEntity(ConductorEntity conductorEntity) {
+//        this.conductorEntity = conductorEntity;
+//    }
 
     /**
      * dar placa
