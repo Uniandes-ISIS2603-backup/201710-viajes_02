@@ -21,9 +21,9 @@
                     <td id="{{$index}}-gastoscompartidos">{{viaje.gastosCompartidos}}</td>
                     <td id="{{$index}}-fechapartida">{{viaje.diaYHoraPartida}}</td>
                     <td id="{{$index}}-fechallegada">{{viaje.diaYHoraLlegada}}</td>
-                    <td id="{{$index}}-origen">{{viaje.origen}}</td>
-                    <td id="{{$index}}-destino">{{viaje.destino}}</td>
-                    <td id="{{$index}}-conductores">{{viaje.conductor}}</td>
+                    <td id="{{$index}}-origen"><a ui-sref="lugarDetail({lugarId: viaje.origen.id})">{{viaje.origen.lugar}}</a></td>
+                    <td id="{{$index}}-destino"><a ui-sref="lugarDetail({lugarId: viaje.destino.id})">{{viaje.destino.lugar}}</a></td>
+                    <td id="{{$index}}-conductores"><a ui-sref="conductorDetail({conductorId: viaje.conductor.id})">{{viaje.conductor.nombre}}</td>
                 </tr>
             </tbody>
         </table>

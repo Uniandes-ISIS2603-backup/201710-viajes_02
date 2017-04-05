@@ -25,15 +25,15 @@
                 
                 <hr>
                 <dt>Origen</dt>
-                <dd>{{currentViaje.origen}}</dd>
+                <dd><a ui-sref="lugarDetail({lugarId: currentViaje.origen.id})">{{currentViaje.origen.lugar}}</a></dd>
                 
                 <hr>
                 <dt>Destino</dt>
-                <dd>{{currentViaje.destino}}</dd>
+                <dd><a ui-sref="lugarDetail({lugarId: currentViaje.destino.id})">{{currentViaje.destino.lugar}}</a></dd>
                 
                 <hr>
                 <dt>Conductor</dt>
-                <dd>{{currentViaje.conductor}}</dd>
+                <dd>{{currentViaje.conductor.nombre}<a ui-sref="conductorDetail({conductorId: currentViaje.conductor.id})">}</dd>
 
             </dl>
         </div>
