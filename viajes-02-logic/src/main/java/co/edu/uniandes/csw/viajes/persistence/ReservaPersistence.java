@@ -54,4 +54,9 @@ public class ReservaPersistence
         else
             return null;
     }
+
+    public ReservaEntity findReserva(Long idReserva) {
+        return entityManager.find(ReservaEntity.class, idReserva);
+    }
+    
 }

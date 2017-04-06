@@ -40,11 +40,6 @@ public class ReservaEntity implements Serializable {
      *
      */
     private Integer puestosReservados;
-
-    /**
-     *
-     */
-    private Long idViajero;
     
     /**
      *
@@ -120,22 +115,6 @@ public class ReservaEntity implements Serializable {
      */
     public void setPuestosReservados(Integer puestosReservados) {
         this.puestosReservados = puestosReservados;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public Long getIdViajero() {
-        return idViajero;
-    }
-
-    /**
-     *
-     * @param idViajero
-     */
-    public void setIdViajero(Long idViajero) {
-        this.idViajero = idViajero;
     }
     
     /**

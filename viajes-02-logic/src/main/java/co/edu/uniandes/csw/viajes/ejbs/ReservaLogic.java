@@ -33,6 +33,10 @@ public class ReservaLogic
     {
         return reservaPersistence.findAllByIdViajero(idViajero);
     }
+    
+    public ReservaEntity getReserva(Long idReserva) {
+        return reservaPersistence.findReserva(idReserva);
+    }
 
     public void deleteReserva(Long idViajero, Long idReserva)
     {

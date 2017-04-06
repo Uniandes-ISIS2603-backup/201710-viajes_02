@@ -18,28 +18,17 @@ public class PagoDTO
 {
 
     /**
-     * Id de PagoDTO
+     * id del pago
      */
-    private Long idPago;
+    private Long id;
 
     /**
-     * Valor de PagoDTO
+     * Valor del Pago
      */
     private Double valor;
-
-    // TODO qué modelan estos atributos idRemitante y idDestinatario? Son Usuarios del sistema? 
+    
     /**
-     * idRemitente de PagoDTO
-     */
-    private Long idRemitente;
-
-    /**
-     * idDestinatario de PagoDTO
-     */
-    private Long idDestinatario;
-
-    /**
-     * estado del PagoDTO
+     * Estado del Pago
      */
     private Boolean cancelado;
 
@@ -60,10 +49,8 @@ public class PagoDTO
     {
         if (pagoEntity != null)
         {
-            this.idPago = pagoEntity.getIdPago();
+            this.id = pagoEntity.getId();
             this.valor = pagoEntity.getValor();
-            this.idRemitente = pagoEntity.getIdRemitente();
-            this.idDestinatario = pagoEntity.getIdDestinatario();
             this.cancelado = pagoEntity.getCancelado();
         }
     }
@@ -76,33 +63,31 @@ public class PagoDTO
     public PagoEntity toEntity()
     {
         PagoEntity pagoEntity = new PagoEntity();
-        pagoEntity.setIdPago(idPago);
+        pagoEntity.setId(id);
         pagoEntity.setValor(valor);
-        pagoEntity.setIdRemitente(idRemitente);
-        pagoEntity.setIdDestinatario(idDestinatario);
         pagoEntity.setCancelado(cancelado);
 
         return pagoEntity;
     }
 
     /**
-     * Retorno de idPago de PagoDTO
+     * Retorno de id de PagoDTO
      *
-     * @return El idPago
+     * @return El id
      */
-    public Long getIdPago()
+    public Long getId()
     {
-        return idPago;
+        return id;
     }
 
     /**
-     * Modificacion de idPago de PagoDTO
+     * Modificacion de id de PagoDTO
      *
-     * @param idPago El idPago que remplazará al actual
+     * @param id El id que remplazará al actual
      */
-    public void setIdPago(Long idPago)
+    public void setId(Long id)
     {
-        this.idPago = idPago;
+        this.id = id;
     }
 
     /**
@@ -123,46 +108,6 @@ public class PagoDTO
     public void setValor(Double valor)
     {
         this.valor = valor;
-    }
-
-    /**
-     * Retorno de idRemitente del PagoDTO
-     *
-     * @return El idRemitente
-     */
-    public Long getIdRemitente()
-    {
-        return idRemitente;
-    }
-
-    /**
-     * Modificacion de valor de PagoDTO
-     *
-     * @param idRemitente El idRemitente que remplazará al actual
-     */
-    public void setIdRemitente(Long idRemitente)
-    {
-        this.idRemitente = idRemitente;
-    }
-
-    /**
-     * Retorno de idDestinatario del PagoDTO
-     *
-     * @return El idDestinatario
-     */
-    public Long getIdDestinatario()
-    {
-        return idDestinatario;
-    }
-
-    /**
-     * Modificacion de valor de PagoDTO
-     *
-     * @param idDestinatario El idDestinatario que remplazará al actual
-     */
-    public void setIdDestinatario(Long idDestinatario)
-    {
-        this.idDestinatario = idDestinatario;
     }
 
     /**

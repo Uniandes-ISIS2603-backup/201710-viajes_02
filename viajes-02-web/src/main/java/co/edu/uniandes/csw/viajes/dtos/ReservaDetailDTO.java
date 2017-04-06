@@ -10,6 +10,7 @@ import co.edu.uniandes.csw.viajes.entities.ViajeEntity;
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.annotation.XmlRootElement;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  * ReservaDetailDTO
@@ -19,8 +20,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class ReservaDetailDTO extends ReservaDTO {
     
+    @PodamExclude
     private ViajeroDTO viajero;
 
+    @PodamExclude
     private ViajeDTO viaje;
 
     public ViajeroDTO getViajero() {

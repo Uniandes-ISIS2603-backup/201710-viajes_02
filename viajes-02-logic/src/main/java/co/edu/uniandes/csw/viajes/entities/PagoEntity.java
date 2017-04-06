@@ -21,11 +21,11 @@ import uk.co.jemos.podam.common.PodamExclude;
 public class PagoEntity implements Serializable {
 
     /**
-     * Generacion de idPago
+     * Generacion de id
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idPago;
+    private Long id;
 
     /**
      * Valor del Pago
@@ -33,14 +33,18 @@ public class PagoEntity implements Serializable {
     private Double valor;
 
     /**
-     * idRemitente del Pago
+     * Conexion con el usuario remitente
      */
-    private Long idRemitente;
+    @PodamExclude
+    @ManyToOne
+    private UsuarioEntity remitente;
 
     /**
-     * idDestinatrio del Pago
+     * Conexion con el usuario destinatario
      */
-    private Long idDestinatario;
+    @PodamExclude
+    @ManyToOne
+    private UsuarioEntity destinatario;
 
     /**
      * Estado del Pago
@@ -48,26 +52,19 @@ public class PagoEntity implements Serializable {
     private Boolean cancelado;
 
     /**
-     * Relacion muchos a uno con la entidad Usuario
+     * Retorna el id del Pago
+     * @return id
      */
-    @PodamExclude
-    @ManyToOne
-    private UsuarioEntity usuario;
-
-    /**
-     * Retorna el idPago del Pago
-     * @return idPago
-     */
-    public Long getIdPago() {
-        return idPago;
+    public Long getId() {
+        return id;
     }
 
     /**
-     * Modificacion del idPago 
-     * @param idPago El idPago de la entidad Pago
+     * Modificacion del id 
+     * @param id El id de la entidad Pago
      */
-    public void setIdPago(Long idPago) {
-        this.idPago = idPago;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     /**
@@ -87,35 +84,35 @@ public class PagoEntity implements Serializable {
     }
 
     /**
-     * Retorna el idRemitente del Pago
+     * Retorna el remitente del Pago
      * @return
      */
-    public Long getIdRemitente() {
-        return idRemitente;
+    public UsuarioEntity getRemitente() {
+        return remitente;
     }
 
     /**
-     * Modificacion del idRemitente
-     * @param idRemitente El idRemitente que remplazara el idRemitente actual
+     * Modificacion del remitente
+     * @param remitente El remitente que remplazara el remitente actual
      */
-    public void setIdRemitente(Long idRemitente) {
-        this.idRemitente = idRemitente;
+    public void setRemitente(UsuarioEntity remitente) {
+        this.remitente = remitente;
     }
 
     /**
-     * Retorna el idDestinatario del Pago
-     * @return el idDestinatario
+     * Retorna el destinatario del Pago
+     * @return el destinatario
      */
-    public Long getIdDestinatario() {
-        return idDestinatario;
+    public UsuarioEntity getDestinatario() {
+        return destinatario;
     }
 
     /**
-     * Modificacion del idDestinatario
-     * @param idDestinatario El idDestinatario que remplazara el idDestinatario actual
+     * Modificacion del destinatario
+     * @param destinatario El destinatario que remplazara el destinatario actual
      */
-    public void setIdDestinatario(Long idDestinatario) {
-        this.idDestinatario = idDestinatario;
+    public void setDestinatario(UsuarioEntity destinatario) {
+        this.destinatario = destinatario;
     }
 
     /**
@@ -135,42 +132,26 @@ public class PagoEntity implements Serializable {
     }
 
     /**
-     * Retorna el usuario por el cual se relacion el Pago
-     * @return el usuario
-     */
-    public UsuarioEntity getUsuario() {
-        return usuario;
-    }
-
-    /**
-     * Modificacion del usuario
-     * @param usuario El usuario que remplazara el usuario actual
-     */
-    public void setUsuario(UsuarioEntity usuario) {
-        this.usuario = usuario;
-    }
-
-    /**
      * Retorna true si un Objeto es igual al Pago actual
      * @param obj objeto a comparar
      * @return true o false
      */
     @Override
     public boolean equals(Object obj) {
-        if (this.getIdPago() != null) {
-            return this.getIdPago().equals(((PagoEntity) obj).getIdPago());
+        if (this.getId() != null) {
+            return this.getId().equals(((PagoEntity) obj).getId());
         }
         return super.equals(obj);
     }
 
     /**
-     * Retorna el hashCode del Pago, por medio del idPago
+     * Retorna el hashCode del Pago, por medio del id
      * @return hashCode del obj
      */
     @Override
     public int hashCode() {
-        if (this.getIdPago() != null) {
-            return this.getIdPago().hashCode();
+        if (this.getId() != null) {
+            return this.getId().hashCode();
         }
         return super.hashCode();
     }

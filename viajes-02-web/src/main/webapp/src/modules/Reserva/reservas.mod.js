@@ -5,18 +5,21 @@
  */
 (function (ng) {
     var mod = ng.module("reservaModule", ['ui.router']);
-    mod.constant("reservasContext", "api/reservas");
+    mod.constant("reservasContext", "api/viajeros");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
 
             var basePath = 'src/modules/Reserva/';
             $urlRouterProvider.otherwise("/reservasList");
-            
+
             $stateProvider.state('reservas', {
-                url: '/reservas',
+                url: 'viajeros/{idViajero:int}/reservas/',
                 abstract: true,
+                param: {
+                    idViajero: null
+                },
                 resolve: {
-                    reservas: ['$http', 'reservasContext', function ($http, reservasContext) {
-                            return $http.get(reservasContext);
+                    reservas: ['$http', 'reservasContext', '$stateParams', function ($http, reservasContext, $params) {
+                            return $http.get(reservasContext + '/' + $params.idViajero + '/reservas');
                         }]
                 },
                 views: {
@@ -30,28 +33,20 @@
             }).state('reservasList', {
                 url: '/list',
                 parent: 'reservas',
-                param: {
-                    idViajero: null
-                },
-                resolve: {
-                    reservasViajero: ['$http', 'reservasContext', '$stateParams', function ($http, reservasContext, $params) {
-                            return $http.get(reservasContext + '/viajeros/' + $params.idVIajero);
-                    }]
-                },
                 views: {
                     'listView': {
                         templateUrl: basePath + 'reservas.list.html'
                     }
                 }
             }).state('reservasDetail', {
-                url: '/{idReserva:int}/detail',
+                url: '/{idReserva:int}',
                 parent: 'reservas',
                 param: {
-                    id: null
+                    idReserva: null
                 },
                 resolve: {
                     currentReserva: ['$http', 'reservasContext', '$stateParams', function ($http, reservasContext, $params) {
-                            return $http.get(reservasContext + '/viajeros/' + $params.reservaId);
+                            return $http.get(reservasContext + '/' + $params.idViajero + '/reservas/' + $params.idReserva);
                         }]
                 },
                 views: {

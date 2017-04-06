@@ -7,6 +7,7 @@ package co.edu.uniandes.csw.viajes.dtos;
 
 import co.edu.uniandes.csw.viajes.entities.PagoEntity;
 import javax.xml.bind.annotation.XmlRootElement;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  * PagoDetailDTO
@@ -14,20 +15,25 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author ja.bermudez10
  */
 @XmlRootElement
-public class PagoDetailDTO extends PagoDTO
-{
+public class PagoDetailDTO extends PagoDTO {
 
     /**
-     * Atributo que define un usuario en el pagoDetailDTO
+     * Usuario destinatario del cobro
      */
-    private UsuarioDTO usuario;
+    @PodamExclude
+    private UsuarioDTO destinatario;
+
+    /**
+     * Usuario remitente del cobro
+     */
+    @PodamExclude
+    private UsuarioDTO remitente;
 
     // TODO como puedo saber qué está pagando el usuario si no hay una relación con el viaje?
     /**
      * Constructor por defecto de PagoDetailDTO
      */
-    public PagoDetailDTO()
-    {
+    public PagoDetailDTO() {
         super();
     }
 
@@ -36,9 +42,10 @@ public class PagoDetailDTO extends PagoDTO
      *
      * @param pagoEntity La entidad Pago
      */
-    public PagoDetailDTO(PagoEntity pagoEntity)
-    {
+    public PagoDetailDTO(PagoEntity pagoEntity) {
         super(pagoEntity);
+        this.destinatario = new UsuarioDTO(pagoEntity.getDestinatario());
+        this.remitente = new UsuarioDTO(pagoEntity.getRemitente());
     }
 
     /**
@@ -47,21 +54,44 @@ public class PagoDetailDTO extends PagoDTO
      * @return La entidad Pago
      */
     @Override
-    public PagoEntity toEntity()
-    {
+    public PagoEntity toEntity() {
         PagoEntity pagoEntity = super.toEntity();
-        pagoEntity.setUsuario(usuario.toEntity());
+        pagoEntity.setDestinatario(this.destinatario.toEntity());
+        pagoEntity.setRemitente(this.remitente.toEntity());
 
         return pagoEntity;
     }
-
-    public UsuarioDTO getUsuario()
-    {
-        return usuario;
+    
+    /**
+     * 
+     * @return 
+     */
+    public UsuarioDTO getDestinatario() {
+        return destinatario;
     }
 
-    public void setUsuario(UsuarioDTO usuario)
-    {
-        this.usuario = usuario;
+    /**
+     * 
+     * @param destinatario 
+     */
+    public void setDestinatario(UsuarioDTO destinatario) {
+        this.destinatario = destinatario;
     }
+
+    /**
+     * 
+     * @return 
+     */
+    public UsuarioDTO getRemitente() {
+        return remitente;
+    }
+
+    /**
+     * 
+     * @param remitente 
+     */
+    public void setRemitente(UsuarioDTO remitente) {
+        this.remitente = remitente;
+    }
+
 }
