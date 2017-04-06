@@ -20,17 +20,17 @@
                     <br>
                     <dd><B>Id: </B> {{currentViajero.id}} </dd>
                     <br>
-                    <dd><B>Lugar: </B><a ui-sref="lugarDetail({lugarId: currentViajero.lugar.id})"> {{currentViajero.lugar.lugar}}</a> </dd>
+                    <dd><B>Lugar: </B><a ui-sref="lugarDetail({lugarId: currentViajero.direccion.id})"> {{currentViajero.direccion.lugar}}</a> </dd>
                     <h3><a ui-sref="cobroList({usuarioId: currentViajero.id})">Cobros</a></h3>
-                    <h3><a ui-sref="pagoUserList({usuarioId: currentViajero.id})">Pagos</a></h3>
-                    <h3><a ui-sref="reservasList({usuarioId: currentViajero.id})">Reservas</a></h3>
+<!--                    <h3><a ui-sref="pagoUserList({usuarioId: currentViajero.id})">Pagos</a></h3>-->
+                    <h3><a ui-sref="reservasList({idViajero: currentViajero.id})">Reservas</a></h3>
 
                 </dl>
-                <ul class="nav nav-tabs">
+<!--                <ul class="nav nav-tabs">
                     <li role="presentation" class="active"> <a ui-sref="viajerosDetailReview">Reviews</a></li>
-                </ul>
+                </ul>-->
             </div>
-        </div>
+<!--        </div>
         <div ui-view = "detail"> </div>
-    </div>
+    </div>-->
 </div>
