@@ -53,6 +53,15 @@ public class ConductorEntity extends UsuarioEntity{
      */
     private String correo;
     /**
+     * Imagen del conductor
+     */
+    private String imagen;
+    /**
+     * Reviews del conductor
+     */
+    @OneToMany
+    private List <ReviewEntity> reviews;
+    /**
      * Automoviles del conductor.
      */
     @OneToMany (cascade = CascadeType.ALL)
@@ -192,6 +201,18 @@ public class ConductorEntity extends UsuarioEntity{
         this.correo = correo;
     }
     /**
+     * Retorna los reviews del conductor.
+     */
+    public List<ReviewEntity> getReviews(){
+        return reviews;
+    }
+    /**
+     * Asigan reviews al conductor.
+     */
+    public void setReviews(List <ReviewEntity> reviews){
+        this.reviews = reviews;
+    }
+    /**
      * Re-escripción del metodo equals
      * @param obj : Objeto a comparar
      * @return true si los objetos son iguales, false de lo contrario.
@@ -214,5 +235,14 @@ public class ConductorEntity extends UsuarioEntity{
         
         return super.hashCode();
     }
+    
+    public String getImagen(){
+        return this.imagen;
+    }
+    
+    public void setImagen(String imagen){
+        this.imagen = imagen;
+    }
+    
     
 }

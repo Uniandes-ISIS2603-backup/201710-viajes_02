@@ -71,7 +71,7 @@ public class CobroResource {
      */
     @GET
     @Path("{id: \\d+}")
-    public CobroDTO getCobro(@PathParam("id") Long id) {
+    public CobroDetailDTO getCobro(@PathParam("id") Long id) {
         if (!existsCobro(id)) {
             throw new WebApplicationException("El id no existe", 404);
         }

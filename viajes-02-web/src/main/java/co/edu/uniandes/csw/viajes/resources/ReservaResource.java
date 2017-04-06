@@ -57,8 +57,8 @@ public class ReservaResource
     private List<ReservaDTO> listEntity2DTO(List<ReservaEntity> reservaEntityList)
     {
         List<ReservaDTO> listReserva = new ArrayList<>();
-        for (ReservaEntity reservaEntity : reservaEntityList)
-        {
+        
+        for (ReservaEntity reservaEntity : reservaEntityList) {
             listReserva.add(new ReservaDetailDTO(reservaEntity));
         }
         return listReserva;

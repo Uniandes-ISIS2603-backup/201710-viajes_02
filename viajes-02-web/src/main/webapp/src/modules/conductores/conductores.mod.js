@@ -1,6 +1,6 @@
 (function (ng) {
     var mod = ng.module("conductorModule", ['ui.router']);
-    mod.constant("conductoresContext", "api/conductores");
+    mod.constant("conductoresContext", "api/Conductores");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             var basePath = 'src/modules/conductores/';
             $urlRouterProvider.otherwise("/conductoresList");
@@ -9,8 +9,8 @@
                 url: '/conductores',
                 abstract: true,
                 resolve: {
-                    conductores: ['$http', function ($http) {
-                            return $http.get('data/conductores.json');
+                    conductores: ['$http','conductoresContext', function ($http, conductoresContext) {
+                            return $http.get(conductoresContext);
                         }]
                 },
                 views: {

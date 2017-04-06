@@ -22,34 +22,14 @@ public class ReservaEntity implements Serializable {
     /**
      *
      */
-    @ManyToOne
-    private ViajeroEntity viajero = new ViajeroEntity();
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     
     /**
      *
      */
-    @ManyToOne
-    private ViajeEntity viaje;
-
-    /**
-     *
-     */
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idReserva;
-
-    public ViajeroEntity getViajero() {
-        return viajero;
-    }
-
-    public void setViajero(ViajeroEntity viajero) {
-        this.viajero = viajero;
-    }
-
-    /**
-     *
-     */
-    private Long precio;
+    private Double precio;
 
     /**
      *
@@ -65,28 +45,40 @@ public class ReservaEntity implements Serializable {
      *
      */
     private Long idViajero;
+    
+    /**
+     *
+     */
+    @ManyToOne
+    private ViajeroEntity viajero;
+    
+    /**
+     *
+     */
+    @ManyToOne
+    private ViajeEntity viaje;
+    
+    /**
+     *
+     * @return
+     */
+    public Long getId() {
+        return id;
+    }
+
+    /**
+     *
+     * @param id
+     */
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     /**
      *
      * @return
      */
-    public Long getIdReserva() {
-        return idReserva;
-    }
-
-    /**
-     *
-     * @param idReserva
-     */
-    public void setIdReserva(Long idReserva) {
-        this.idReserva = idReserva;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public Long getPrecio() {
+    public Double getPrecio() {
         return precio;
     }
 
@@ -94,7 +86,7 @@ public class ReservaEntity implements Serializable {
      *
      * @param precio
      */
-    public void setPrecio(Long precio) {
+    public void setPrecio(Double precio) {
         this.precio = precio;
     }
 
@@ -129,6 +121,38 @@ public class ReservaEntity implements Serializable {
     public void setPuestosReservados(Integer puestosReservados) {
         this.puestosReservados = puestosReservados;
     }
+
+    /**
+     *
+     * @return
+     */
+    public Long getIdViajero() {
+        return idViajero;
+    }
+
+    /**
+     *
+     * @param idViajero
+     */
+    public void setIdViajero(Long idViajero) {
+        this.idViajero = idViajero;
+    }
+    
+    /**
+     * 
+     * @return 
+     */
+    public ViajeroEntity getViajero() {
+        return viajero;
+    }
+
+    /**
+     * 
+     * @param viajero 
+     */
+    public void setViajero(ViajeroEntity viajero) {
+        this.viajero = viajero;
+    }
     
     /**
      *
@@ -148,29 +172,13 @@ public class ReservaEntity implements Serializable {
 
     /**
      *
-     * @return
-     */
-    public Long getIdViajero() {
-        return idViajero;
-    }
-
-    /**
-     *
-     * @param idViajero
-     */
-    public void setIdViajero(Long idViajero) {
-        this.idViajero = idViajero;
-    }
-
-    /**
-     *
      * @param obj
      * @return
      */
     @Override
     public boolean equals(Object obj) {
-        if (this.getIdReserva() != null) {
-            return this.getIdReserva().equals(((ReservaEntity) obj).getIdReserva());
+        if (this.getId() != null) {
+            return this.getId().equals(((ReservaEntity) obj).getId());
         }
         return super.equals(obj);
     }
@@ -181,8 +189,8 @@ public class ReservaEntity implements Serializable {
      */
     @Override
     public int hashCode() {
-        if (this.getIdReserva() != null) {
-            return this.getIdReserva().hashCode();
+        if (this.getId() != null) {
+            return this.getId().hashCode();
         }
         return super.hashCode();
     }
