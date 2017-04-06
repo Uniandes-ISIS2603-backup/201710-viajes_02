@@ -47,10 +47,6 @@ public class UsuarioLogic
     public UsuarioEntity getUsuario(Long id) throws BusinessLogicException
     {
         UsuarioEntity u = persistence.find(id);
-        if (u == null)
-        {
-            throw new BusinessLogicException("No existe un usuario con el id dado por parametro.");
-        }
         return u;
     }
 
