@@ -6,10 +6,7 @@
 package co.edu.uniandes.csw.viajes.entities;
 
 import java.io.Serializable;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 //import javax.persistence.ManyToOne;
 
 /**
@@ -63,16 +60,16 @@ public class AutomovilEntity implements Serializable {
 
 //TODO: verificar porque falla
 //    TODO: CAMBIO
-//    @ManyToOne 
-//    private ConductorEntity conductorEntity;
-//
-//    public ConductorEntity getConductorEntity() {
-//        return conductorEntity;
-//    }
-//
-//    public void setConductorEntity(ConductorEntity conductorEntity) {
-//        this.conductorEntity = conductorEntity;
-//    }
+    @ManyToOne
+    private ConductorEntity conductorEntity;
+
+    public ConductorEntity getConductorEntity() {
+        return conductorEntity;
+    }
+
+    public void setConductorEntity(ConductorEntity conductorEntity) {
+        this.conductorEntity = conductorEntity;
+    }
 
     /**
      * dar placa

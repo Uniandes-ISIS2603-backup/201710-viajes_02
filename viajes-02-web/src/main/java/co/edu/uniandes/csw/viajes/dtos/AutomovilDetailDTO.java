@@ -16,7 +16,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class AutomovilDetailDTO extends AutomovilDTO
 {
     //TODO: verificar
-    //private ConductorDTO conductorDTO;
+    private ConductorDTO conductorDTO;
 
     /**
      * Crea un automovil detail dto.
@@ -35,7 +35,7 @@ public class AutomovilDetailDTO extends AutomovilDTO
     {
         super(entity);
         //TODO: Verificar
-        //this.conductorDTO = new ConductorDTO(entity.getConductorEntity() );
+        this.conductorDTO = new ConductorDTO(entity.getConductorEntity() );
     }
 
 
@@ -49,15 +49,15 @@ public class AutomovilDetailDTO extends AutomovilDTO
     {
         AutomovilEntity en = super.toEntity();
         //TODO: verificar
-// en.setConductorEntity(conductorDTO.DTO2Entity());
+     en.setConductorEntity(conductorDTO.DTO2Entity());
         return en;
     }
 //TODO: verificar
-//    public ConductorDTO getConductorDTO() {
-//        return conductorDTO;
-//    }
-//
-//    public void setConductorDTO(ConductorDTO conductorDTO) {
-//        this.conductorDTO = conductorDTO;
-//    }
+    public ConductorDTO getConductorDTO() {
+        return conductorDTO;
+    }
+
+    public void setConductorDTO(ConductorDTO conductorDTO) {
+        this.conductorDTO = conductorDTO;
+    }
 }
