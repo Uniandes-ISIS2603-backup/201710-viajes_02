@@ -34,45 +34,6 @@ insert into LugarEntity (id, direccion, lugar, lat, lon) values (17 , '1319 Bria
 insert into LugarEntity (id, direccion, lugar, lat, lon) values (18 , '367 Mayer Crossing' , 'Lama' , 41.53 , -8.3567);
 insert into LugarEntity (id, direccion, lugar, lat, lon) values (19 , '7994 Hooker Court' , 'Taoyuan' , 22.58041 , 113.96121);
 
-insert into CobroEntity (id,cancelado,valor,usuariodestinatario_id,usuarioremitente_id,dtype) values (1,0,43,5,8,'CobroEntity');
-insert into CobroEntity (id,cancelado,valor,usuariodestinatario_id,usuarioremitente_id,dtype) values (2,1,75,3,8,'CobroEntity');
-insert into CobroEntity (id,cancelado,valor,usuariodestinatario_id,usuarioremitente_id,dtype) values (3,0,8,5,8,'CobroEntity');
-insert into CobroEntity (id,cancelado,valor,usuariodestinatario_id,usuarioremitente_id,dtype) values (4,1,35,2,9,'CobroEntity');
-insert into CobroEntity (id,cancelado,valor,usuariodestinatario_id,usuarioremitente_id,dtype) values (5,1,15,3,8,'CobroEntity');
-insert into CobroEntity (id,cancelado,valor,usuariodestinatario_id,usuarioremitente_id,dtype) values (6,1,84,3,9,'CobroEntity');
-insert into CobroEntity (id,cancelado,valor,usuariodestinatario_id,usuarioremitente_id,dtype) values (7,1,19,1,6,'CobroEntity');
-insert into CobroEntity (id,cancelado,valor,usuariodestinatario_id,usuarioremitente_id,dtype) values (8,0,68,3,6,'CobroEntity');
-insert into CobroEntity (id,cancelado,valor,usuariodestinatario_id,usuarioremitente_id,dtype) values (9,0,18,3,6,'CobroEntity');
-insert into CobroEntity (id,cancelado,valor,usuariodestinatario_id,usuarioremitente_id,dtype) values (10,1,1,5,10,'CobroEntity');
-insert into CobroEntity (id,cancelado,valor,usuariodestinatario_id,usuarioremitente_id,dtype) values (11,1,63,2,6,'CobroEntity');
-insert into CobroEntity (id,cancelado,valor,usuariodestinatario_id,usuarioremitente_id,dtype) values (12,1,77,3,6,'CobroEntity');
-insert into CobroEntity (id,cancelado,valor,usuariodestinatario_id,usuarioremitente_id,dtype) values (13,0,60,3,7,'CobroEntity');
-insert into CobroEntity (id,cancelado,valor,usuariodestinatario_id,usuarioremitente_id,dtype) values (14,0,66,4,7,'CobroEntity');
-insert into CobroEntity (id,cancelado,valor,usuariodestinatario_id,usuarioremitente_id,dtype) values (15,1,38,1,10,'CobroEntity');
-insert into CobroEntity (id,cancelado,valor,usuariodestinatario_id,usuarioremitente_id,dtype) values (16,0,70,3,8,'CobroEntity');
-insert into CobroEntity (id,cancelado,valor,usuariodestinatario_id,usuarioremitente_id,dtype) values (17,0,96,4,7,'CobroEntity');
-insert into CobroEntity (id,cancelado,valor,usuariodestinatario_id,usuarioremitente_id,dtype) values (18,1,27,1,10,'CobroEntity');
-insert into CobroEntity (id,cancelado,valor,usuariodestinatario_id,usuarioremitente_id,dtype) values (19,0,92,4,8,'CobroEntity');
-insert into CobroEntity (id,cancelado,valor,usuariodestinatario_id,usuarioremitente_id,dtype) values (20,0,80,1,7,'CobroEntity');
-
-insert into ReviewEntity (id, calificacion, coment,idcalificado,idcalificador) values (0 , 4, 'gran conductor',1,2);
-insert into ReviewEntity (id, calificacion, coment,idcalificado,idcalificador) values (1 , 2,'aun le falta mucha experiencia manejando',3,4);
-insert into ReviewEntity (id, calificacion, coment,idcalificado,idcalificador) values (2 , 3, 'es buen conductor  pero el viaje es como aburrido ',2,3);
-insert into ReviewEntity (id, calificacion, coment,idcalificado,idcalificador) values (3 ,  5, 'gran conductor y muy buena persona ',1,4);
-insert into ReviewEntity (id, calificacion, coment,idcalificado,idcalificador) values (4 , 4,' recomendado',3,2);
-insert into ReviewEntity (id, calificacion, coment,idcalificado,idcalificador) values (5 , 4, 'Es buen conductor',5,4);
-insert into ReviewEntity (id, calificacion, coment,idcalificado,idcalificador) values (6 , 2,'terrible nada recomendado',3,5);
-insert into ReviewEntity (id, calificacion, coment,idcalificado,idcalificador) values (5 , 5,'Super recomendado',1,2);
-insert into ReviewEntity (id, calificacion, coment,idcalificado,idcalificador) values (4 , 0, 'Cancela los viajes a ultima hora',1,4);
-insert into ReviewEntity (id, calificacion, coment,idcalificado,idcalificador) values (3 , 4, 'Es una gran persona',2,3);
-insert into ReviewEntity (id, calificacion, coment,idcalificado,idcalificador) values (2 , 5, 'muy divertido y hace que el viaje sea genial',1,4);
-insert into ReviewEntity (id, calificacion, coment,idcalificado,idcalificador) values (1 ,3, 'es eonomico pero muy casual',4,1);
-insert into ReviewEntity (id, calificacion, coment,idcalificado,idcalificador) values (0 ,1 ,  'aun no entinedo como tiene pase',4,3);
-insert into ReviewEntity (id, calificacion, coment,idcalificado,idcalificador) values (3 , 4,'Super',2,4);
-insert into ReviewEntity (id, calificacion, coment,idcalificado,idcalificador) values (4 ,4, 'te deja dormir tranquilo',4,2);
-insert into ReviewEntity (id, calificacion, coment,idcalificado,idcalificador) values (5 ,2, 'tiene una personalidad complicada',4,3);
-insert into ReviewEntity (id, calificacion, coment,idcalificado,idcalificador) values (6 ,3,'super tranuqilo',5,4);
-
 INSERT INTO APP.AUTOMOVILENTITY (ID,CANTASIENTOS, COLOR, COMPSEGUROS, MARCA, MODELO, NUMSEGURO, PLACA)
 	VALUES (1,4, 'Rojo', 'Asura', 'Mercedes', 'AMG', 456789, 'MAD568');
 INSERT INTO APP.AUTOMOVILENTITY (ID, CANTASIENTOS, COLOR, COMPSEGUROS, MARCA, MODELO, NUMSEGURO, PLACA) 
@@ -123,6 +84,41 @@ insert into VIAJEENTITY (IDVIAJE, KILOMETROS, DIAYHORALLEGADA, DIAYHORAPARTIDA, 
 insert into VIAJEENTITY (IDVIAJE, KILOMETROS, DIAYHORALLEGADA, DIAYHORAPARTIDA, GASTOSCOMPARTIDOS, CONDUCTOR_ID, AUTOMOVIL_ID, DESTINO_ID, ORIGEN_ID) VALUES (4,500,'2017-06-20','2017-04-1',80000,15,8,2,1);
 
 
+insert into CobroEntity (id,cancelado,valor,usuariodestinatario_id,usuarioremitente_id,dtype) values (1,0,43,5,8,'CobroEntity');
+insert into CobroEntity (id,cancelado,valor,usuariodestinatario_id,usuarioremitente_id,dtype) values (2,1,75,3,8,'CobroEntity');
+insert into CobroEntity (id,cancelado,valor,usuariodestinatario_id,usuarioremitente_id,dtype) values (3,0,8,5,8,'CobroEntity');
+insert into CobroEntity (id,cancelado,valor,usuariodestinatario_id,usuarioremitente_id,dtype) values (4,1,35,2,9,'CobroEntity');
+insert into CobroEntity (id,cancelado,valor,usuariodestinatario_id,usuarioremitente_id,dtype) values (5,1,15,3,8,'CobroEntity');
+insert into CobroEntity (id,cancelado,valor,usuariodestinatario_id,usuarioremitente_id,dtype) values (6,1,84,3,9,'CobroEntity');
+insert into CobroEntity (id,cancelado,valor,usuariodestinatario_id,usuarioremitente_id,dtype) values (7,1,19,1,6,'CobroEntity');
+insert into CobroEntity (id,cancelado,valor,usuariodestinatario_id,usuarioremitente_id,dtype) values (8,0,68,3,6,'CobroEntity');
+insert into CobroEntity (id,cancelado,valor,usuariodestinatario_id,usuarioremitente_id,dtype) values (9,0,18,3,6,'CobroEntity');
+insert into CobroEntity (id,cancelado,valor,usuariodestinatario_id,usuarioremitente_id,dtype) values (10,1,1,5,10,'CobroEntity');
+insert into CobroEntity (id,cancelado,valor,usuariodestinatario_id,usuarioremitente_id,dtype) values (11,1,63,2,6,'CobroEntity');
+insert into CobroEntity (id,cancelado,valor,usuariodestinatario_id,usuarioremitente_id,dtype) values (12,1,77,3,6,'CobroEntity');
+insert into CobroEntity (id,cancelado,valor,usuariodestinatario_id,usuarioremitente_id,dtype) values (13,0,60,3,7,'CobroEntity');
+insert into CobroEntity (id,cancelado,valor,usuariodestinatario_id,usuarioremitente_id,dtype) values (14,0,66,4,7,'CobroEntity');
+insert into CobroEntity (id,cancelado,valor,usuariodestinatario_id,usuarioremitente_id,dtype) values (15,1,38,1,10,'CobroEntity');
+insert into CobroEntity (id,cancelado,valor,usuariodestinatario_id,usuarioremitente_id,dtype) values (16,0,70,3,8,'CobroEntity');
+insert into CobroEntity (id,cancelado,valor,usuariodestinatario_id,usuarioremitente_id,dtype) values (17,0,96,4,7,'CobroEntity');
+insert into CobroEntity (id,cancelado,valor,usuariodestinatario_id,usuarioremitente_id,dtype) values (18,1,27,1,10,'CobroEntity');
+insert into CobroEntity (id,cancelado,valor,usuariodestinatario_id,usuarioremitente_id,dtype) values (19,0,92,4,8,'CobroEntity');
+insert into CobroEntity (id,cancelado,valor,usuariodestinatario_id,usuarioremitente_id,dtype) values (20,0,80,1,7,'CobroEntity');
 
-
-
+insert into ReviewEntity (id, calificacion, coment,idcalificado,idcalificador) values (0 , 4, 'gran conductor',1,2);
+insert into ReviewEntity (id, calificacion, coment,idcalificado,idcalificador) values (1 , 2,'aun le falta mucha experiencia manejando',3,4);
+insert into ReviewEntity (id, calificacion, coment,idcalificado,idcalificador) values (2 , 3, 'es buen conductor  pero el viaje es como aburrido ',2,3);
+insert into ReviewEntity (id, calificacion, coment,idcalificado,idcalificador) values (3 ,  5, 'gran conductor y muy buena persona ',1,4);
+insert into ReviewEntity (id, calificacion, coment,idcalificado,idcalificador) values (4 , 4,' recomendado',3,2);
+insert into ReviewEntity (id, calificacion, coment,idcalificado,idcalificador) values (5 , 4, 'Es buen conductor',5,4);
+insert into ReviewEntity (id, calificacion, coment,idcalificado,idcalificador) values (6 , 2,'terrible nada recomendado',3,5);
+insert into ReviewEntity (id, calificacion, coment,idcalificado,idcalificador) values (5 , 5,'Super recomendado',1,2);
+insert into ReviewEntity (id, calificacion, coment,idcalificado,idcalificador) values (4 , 0, 'Cancela los viajes a ultima hora',1,4);
+insert into ReviewEntity (id, calificacion, coment,idcalificado,idcalificador) values (3 , 4, 'Es una gran persona',2,3);
+insert into ReviewEntity (id, calificacion, coment,idcalificado,idcalificador) values (2 , 5, 'muy divertido y hace que el viaje sea genial',1,4);
+insert into ReviewEntity (id, calificacion, coment,idcalificado,idcalificador) values (1 ,3, 'es eonomico pero muy casual',4,1);
+insert into ReviewEntity (id, calificacion, coment,idcalificado,idcalificador) values (0 ,1 ,  'aun no entinedo como tiene pase',4,3);
+insert into ReviewEntity (id, calificacion, coment,idcalificado,idcalificador) values (3 , 4,'Super',2,4);
+insert into ReviewEntity (id, calificacion, coment,idcalificado,idcalificador) values (4 ,4, 'te deja dormir tranquilo',4,2);
+insert into ReviewEntity (id, calificacion, coment,idcalificado,idcalificador) values (5 ,2, 'tiene una personalidad complicada',4,3);
+insert into ReviewEntity (id, calificacion, coment,idcalificado,idcalificador) values (6 ,3,'super tranuqilo',5,4);
