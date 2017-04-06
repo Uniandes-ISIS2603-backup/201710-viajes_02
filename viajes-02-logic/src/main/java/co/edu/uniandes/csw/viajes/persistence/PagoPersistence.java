@@ -42,12 +42,12 @@ public class PagoPersistence
     }
 
     /**
-     * Elimina un pago dado el idPago
-     * @param idPago El idPago
+     * Elimina un pago dado el id
+     * @param id El id del pago
      */
-    public void delete(Long idPago)
+    public void delete(Long id)
     {
-        PagoEntity pagoEntity = entityManager.find(PagoEntity.class, idPago);
+        PagoEntity pagoEntity = entityManager.find(PagoEntity.class, id);
         entityManager.remove(pagoEntity);
     }
 
@@ -68,28 +68,23 @@ public class PagoPersistence
      */
     public List<PagoEntity> findAllMisPagos(Long idRemitente)
     {
-        TypedQuery<PagoEntity> query = entityManager.createQuery("Select u from PagoEntity u where u.idRemitente = :idRemitente", PagoEntity.class);
-        query = query.setParameter("idRemitente", idRemitente);
-
+        TypedQuery<PagoEntity> query = entityManager.createQuery("Select u from PagoEntity u where u.remitente.id =" + idRemitente, PagoEntity.class);
         List<PagoEntity> misPagos = query.getResultList();
+        
         if (!misPagos.isEmpty())
-        {
             return misPagos;
-        }
         else
-        {
             return null;
-        }
     }
 
     /**
-     * Encuentra la entidad Pago por medio del idPago
-     * @param idPago El idPago de la entidad Pago
+     * Encuentra la entidad Pago por medio del id
+     * @param id El idPago de la entidad Pago
      * @return Entidad pago encontrada
      */
-    public PagoEntity findPago(Long idPago)
+    public PagoEntity findPago(Long id)
     {
-        return entityManager.find(PagoEntity.class, idPago);
+        return entityManager.find(PagoEntity.class, id);
     }
     
 }

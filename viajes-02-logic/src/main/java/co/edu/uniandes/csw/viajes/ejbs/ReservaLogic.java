@@ -31,15 +31,15 @@ public class ReservaLogic
 
     public List<ReservaEntity> getReservasViajero(Long idViajero)
     {
-        return reservaPersistence.findAllByIdViajero(idViajero);
+        return reservaPersistence.findReservasByIdViajero(idViajero);
     }
     
-    public ReservaEntity getReserva(Long idReserva) {
-        return reservaPersistence.findReserva(idReserva);
+    public ReservaEntity getReserva(Long id) {
+        return reservaPersistence.findReserva(id);
     }
 
-    public void deleteReserva(Long idViajero, Long idReserva)
+    public void deleteReserva(Long idViajero, Long id)
     {
-        reservaPersistence.delete(idViajero, idReserva);
+        reservaPersistence.delete(idViajero, id);
     }
 }

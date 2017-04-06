@@ -8,26 +8,42 @@ and open the template in the editor.
 <div class="container-fluid">
     <div class="col-md-12">
         <div class="panel-group">
-            <div class="panel panel-info">
+            <div class="panel panel-default">
                 <div class="panel-heading" style="height: 40px" >
-                    <h3 style="margin-top: -2px" >Viaje asociado a Reserva {{currentReserva.id}}</h3>
+                    <h3 style="margin-top: -2px;">Reserva {{currentReserva.id}}</h3>
                 </div>
                 <!--<ul ng-repeat="viaje in currentReserva.viaje">
                     <a ui-sref="viajeDetail({viajeId: viaje.id})">{{viaje.id}}</a>
                 </ul>-->
-                <div class="panel-body" style="height: 310px">
+                <div class="panel-body" style="height: 310px;">
                     <dl>
-                        <dt>Origen - Destino</dt>
-                        <dd>{{currentReserva.viaje.origen}} - {{currentReserva.viaje.destino}}</dd>
-                        <hr>
+                        <dt class="bold">Viaje {{currentReserva.viaje.idViaje}}</dt>
+                        <br>
+                        <dt>Origen (Dirección, Lugar)</dt>
+                        <dd>{{currentReserva.viaje.destino.direccion}}, {{currentReserva.viaje.destino.lugar}}</dd>
+                        <dt>Destino (Dirección, Lugar)</dt>
+                        <dd>{{currentReserva.viaje.origen.direccion}}, {{currentReserva.viaje.origen.lugar}}</dd>
+                        <br>
                         <dt>Distancia (Km)</dt>
-                        <dd>{{currentReserva.viaje.kilometros}}</dd>
-                        <hr>
+                        <dd>{{currentReserva.viaje.Kilometros}}</dd>
+                        <br>
+                        <dt>Conductor</dt>
+                        <dd>{{currentReserva.viaje.conductor.nombre}}</dd>
+                        <br>
                         <dt>Fecha de partida</dt>
-                        <dd>{{currentReserva.viaje.fechapartida}}</dd>
-                        <hr>
+                        <dd>{{currentReserva.viaje.diaYHoraPartida}}</dd>
+                        <br>
                         <dt>Fecha de llegada</dt>
-                        <dd>{{currentReserva.viaje.fechallegada}}</dd>
+                        <dd>{{currentReserva.viaje.diaYHoraLlegada}}</dd>
+                        <hr>
+                        <dt class="bold">Viajero {{currentReserva.viajero.id}}</dt>
+                        <br>
+                        <dt>Nombre</dt>
+                        <dd>{{currentReserva.viajero.nombre}}</dd>
+                        <dt>Nombre</dt>
+                        <dd>{{currentReserva.viajerotelMovil}}</dd>
+                        <dt>Nombre</dt>
+                        <dd>{{currentReserva.viajero.correo}}</dd>
                     </dl>
                 </div>
             </div>

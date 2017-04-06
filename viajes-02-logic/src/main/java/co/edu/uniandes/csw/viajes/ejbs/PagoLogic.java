@@ -51,12 +51,12 @@ public class PagoLogic
     /**
      * Consulta un Pago especifico, dado el idPago
      *
-     * @param idPago
+     * @param id
      * @return el Pago encontrado
      */
-    public PagoEntity getPago(Long idPago)
+    public PagoEntity getPago(Long id)
     {
-        return pagoPersistence.findPago(idPago);
+        return pagoPersistence.findPago(id);
     }
 
     /**
@@ -73,10 +73,10 @@ public class PagoLogic
     /**
      * Elimina Pago desde la logica, usando la persistencia
      *
-     * @param idPago El id del pago
+     * @param id El id del pago
      */
-    public void deletePago(Long idPago)
+    public void deletePago(Long id)
     {
-        pagoPersistence.delete(idPago);
+        pagoPersistence.delete(id);
     }
 }
