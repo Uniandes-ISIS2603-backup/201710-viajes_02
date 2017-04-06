@@ -16,6 +16,15 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class ViajeroDTO extends UsuarioDTO
 {
 
+    private String imagen;
+
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
     /**
      * Constructor vacio
      */
@@ -40,6 +49,7 @@ public class ViajeroDTO extends UsuarioDTO
             setNombre(entity.getNombre());
             setRating(entity.getRating());
             setTelMovil(entity.getTelMovil());
+            setImagen(entity.getImagen());
             if (entity.getLugar() != null)
             {
                 setDireccion(new LugarDTO(entity.getLugar()));
@@ -54,7 +64,7 @@ public class ViajeroDTO extends UsuarioDTO
      */
     public ViajeroEntity toEntity()
     {
-        ViajeroEntity entity = new ViajeroEntity();
+        ViajeroEntity entity = new ViajeroEntity(getImagen());
         entity.setCorreo(getCorreo());
         entity.setEdad(getEdad());
         entity.setGenero(getGenero());

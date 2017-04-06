@@ -16,7 +16,25 @@ import javax.persistence.OneToMany;
  */
 @Entity
 public class ViajeroEntity extends UsuarioEntity {
-    
+
+    /**
+     * Imagen del viajero
+     */
+    private String imagen;
+
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
+
+    public ViajeroEntity(String imagen) {
+        super();
+        this.imagen = imagen;
+    }
+
     /*
     * Verifica si el usuario se puede considerar como igual al objeto que llega por parametro
     * return true si se considera igual, false de lo contrario
@@ -25,26 +43,26 @@ public class ViajeroEntity extends UsuarioEntity {
     public boolean equals(Object other) {
         return getId().equals(((ViajeroEntity) other).getId());
     }
-    
+
     /*
     * Reservas que realiza el usuario
-    */    
-    @OneToMany (cascade = CascadeType.PERSIST)
+     */
+    @OneToMany(cascade = CascadeType.PERSIST)
     public List<ReservaEntity> reservas;
 
     /*
     * Se obtienen las reservas relacionadas con el usuario
     * return reservas
-    */
+     */
     public List<ReservaEntity> getReservas() {
         return reservas;
     }
 
     /*
     * Se modifican las reservas que hizo el usuario por las que llegan por parametro
-    */
+     */
     public void setReservas(List<ReservaEntity> reservas) {
         this.reservas = reservas;
-    }   
-    
+    }
+
 }

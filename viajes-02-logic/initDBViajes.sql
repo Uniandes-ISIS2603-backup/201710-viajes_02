@@ -34,6 +34,19 @@ insert into LugarEntity (id, direccion, lugar, lat, lon) values (17 , '1319 Bria
 insert into LugarEntity (id, direccion, lugar, lat, lon) values (18 , '367 Mayer Crossing' , 'Lama' , 41.53 , -8.3567);
 insert into LugarEntity (id, direccion, lugar, lat, lon) values (19 , '7994 Hooker Court' , 'Taoyuan' , 22.58041 , 113.96121);
 
+
+insert into UsuarioEntity (id, dtype, correo, edad, genero, nombre, rating, telmovil, direccion_id, imagen) values (1, 'ViajeroEntity', 'lcunningham0@simplemachines.org', 79, 'Female', 'Linda Cunningham', 1, 29076289, 18, 'https://robohash.org/atiureerror.jpg?size=200x200&set=set1');
+insert into UsuarioEntity (id, dtype, correo, edad, genero, nombre, rating, telmovil, direccion_id, imagen) values (2, 'ViajeroEntity', 'tbarnes1@slashdot.org', 53, 'Female', 'Teresa Barnes', 2, 573381344, 18, 'https://robohash.org/praesentiumharumsunt.jpg?size=200x200&set=set1');
+insert into UsuarioEntity (id, dtype, correo, edad, genero, nombre, rating, telmovil, direccion_id, imagen) values (3, 'ViajeroEntity', 'pchavez2@sourceforge.net', 72, 'Male', 'Patrick Chavez', 3, 462233292, 6, 'https://robohash.org/accusantiumquosprovident.jpg?size=200x200&set=set1');
+insert into UsuarioEntity (id, dtype, correo, edad, genero, nombre, rating, telmovil, direccion_id, imagen) values (4, 'ViajeroEntity', 'schavez3@artisteer.com', 98, 'Male', 'Scott Chavez', 4, 637595999, 12, 'https://robohash.org/temporeomnismagni.jpg?size=200x200&set=set1');
+insert into UsuarioEntity (id, dtype, correo, edad, genero, nombre, rating, telmovil, direccion_id, imagen) values (5, 'ViajeroEntity', 'sfowler4@symantec.com', 18, 'Male', 'Stephen Fowler', 5, 904549476, 8, 'https://robohash.org/laboriosamrecusandaepraesentium.jpg?size=200x200&set=set1');
+insert into UsuarioEntity (id, dtype, correo, edad, genero, nombre, rating, telmovil, direccion_id, imagen) values (6, 'ViajeroEntity', 'mhayes5@cam.ac.uk', 62, 'Female', 'Melissa Hayes', 6, 61261899, 18, 'https://robohash.org/autundevoluptas.jpg?size=200x200&set=set1');
+insert into UsuarioEntity (id, dtype, correo, edad, genero, nombre, rating, telmovil, direccion_id, imagen) values (7, 'ViajeroEntity', 'rlarson6@princeton.edu', 69, 'Male', 'Ralph Larson', 7, 826866243, 13, 'https://robohash.org/enimetdolores.jpg?size=200x200&set=set1');
+insert into UsuarioEntity (id, dtype, correo, edad, genero, nombre, rating, telmovil, direccion_id, imagen) values (8, 'ViajeroEntity', 'lmason7@uiuc.edu', 93, 'Male', 'Louis Mason', 8, 906028877, 18, 'https://robohash.org/iustosintsit.jpg?size=200x200&set=set1');
+insert into UsuarioEntity (id, dtype, correo, edad, genero, nombre, rating, telmovil, direccion_id, imagen) values (9, 'ViajeroEntity', 'nharrison8@livejournal.com', 40, 'Male', 'Nicholas Harrison', 9, 284081599, 16, 'https://robohash.org/eoseligendiut.jpg?size=200x200&set=set1');
+insert into UsuarioEntity (id, dtype, correo, edad, genero, nombre, rating, telmovil, direccion_id, imagen) values (10, 'ViajeroEntity', 'sreid9@amazon.co.jp', 68, 'Male', 'Stephen Reid', 10, 405901148, 5, 'https://robohash.org/nequeimpediteveniet.jpg?size=200x200&set=set1');
+
+
 insert into CobroEntity (id,cancelado,valor,usuariodestinatario_id,usuarioremitente_id,dtype) values (1,0,43,5,8,'CobroEntity');
 insert into CobroEntity (id,cancelado,valor,usuariodestinatario_id,usuarioremitente_id,dtype) values (2,1,75,3,8,'CobroEntity');
 insert into CobroEntity (id,cancelado,valor,usuariodestinatario_id,usuarioremitente_id,dtype) values (3,0,8,5,8,'CobroEntity');
