@@ -9,11 +9,11 @@
                 url: '/usuarios/{usuarioId:int}/cobros',
                 abstract: true,
                 param: {
-                  usuarioId:null  
+                    usuarioId: null
                 },
                 resolve: {
-                    cobros: ['$http', 'cobroContext', '$stateParams', function ($http,cobroContext, $params) {
-                            return $http.get(cobroContext+'/'+$params.usuarioId+'/cobros');
+                    cobros: ['$http', 'cobroContext', '$stateParams', function ($http, cobroContext, $params) {
+                            return $http.get(cobroContext + '/' + $params.usuarioId + '/cobros');
                         }]
                 },
                 views: {
@@ -32,24 +32,24 @@
                         templateUrl: basePath + 'cobro-list.html'
                     }
                 }
-            }).state('cobrosDetail',{
-                url:'/{cobroId:int}',
+            }).state('cobrosDetail', {
+                url: '/{cobroId:int}',
                 parent: 'cobros',
                 param: {
-                    cobroId:null
+                    cobroId: null
                 },
-                resolve:  {
+                resolve: {
                     currentCobro: ['$http', 'cobroContext', '$stateParams', function ($http, cobroContext, $params) {
-                            return $http.get(cobroContext+'/'+$params.usuarioId+'/cobros/'+$params.cobroId);
+                            return $http.get(cobroContext + '/' + $params.usuarioId + '/cobros/' + $params.cobroId);
                         }]
                 },
                 views: {
                     'detailView': {
                         templateUrl: basePath + 'cobro-detail.html',
-                        controller: ['$scope','currentCobro', function($scope, currentCobro) {
+                        controller: ['$scope', 'currentCobro', function ($scope, currentCobro) {
                                 $scope.currentCobro = currentCobro.data
                                 console.log($scope.currentCobro)
-                        }]
+                            }]
                     }
                 }
             });

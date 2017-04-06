@@ -4,7 +4,7 @@ delete from UsuarioEntity_ReservaEntity;
 delete from UsuarioEntity_PagoEntity;
 delete from UsuarioEntity_CobroEntity;
 delete from UsuarioEntity_AutomovilEntity;
---delete from ReservaEntity_UsuarioEntity;
+delete from ReservaEntity_UsuarioEntity;
 delete from ReviewEntity;
 delete from ReservaEntity;
 delete from PagoEntity;
@@ -50,7 +50,7 @@ INSERT INTO APP.AUTOMOVILENTITY (ID, CANTASIENTOS, COLOR, COMPSEGUROS, MARCA, MO
 	VALUES (7,4, 'Azul Noche', 'Travel', 'Renault', 'Twingo', 93024, 'MLD456');
 INSERT INTO APP.AUTOMOVILENTITY (ID, CANTASIENTOS, COLOR, COMPSEGUROS, MARCA, MODELO, NUMSEGURO, PLACA) 
 	VALUES (8,4, 'Rojo/Negro', 'Safe', 'Mini', 'England', 723924, 'RTP849');
-	
+    
 insert into UsuarioEntity (id, dtype, correo, edad, genero, nombre, rating, telmovil, direccion_id, imagen) values (1, 'ViajeroEntity', 'lcunningham0@simplemachines.org', 79, 'Female', 'Linda Cunningham', 1, 29076289, 18, 'https://robohash.org/atiureerror.jpg?size=200x200&set=set1');
 insert into UsuarioEntity (id, dtype, correo, edad, genero, nombre, rating, telmovil, direccion_id, imagen) values (2, 'ViajeroEntity', 'tbarnes1@slashdot.org', 53, 'Female', 'Teresa Barnes', 2, 573381344, 18, 'https://robohash.org/praesentiumharumsunt.jpg?size=200x200&set=set1');
 insert into UsuarioEntity (id, dtype, correo, edad, genero, nombre, rating, telmovil, direccion_id, imagen) values (3, 'ViajeroEntity', 'pchavez2@sourceforge.net', 72, 'Male', 'Patrick Chavez', 3, 462233292, 6, 'https://robohash.org/accusantiumquosprovident.jpg?size=200x200&set=set1');
@@ -122,7 +122,35 @@ insert into VIAJEENTITY (IDVIAJE, KILOMETROS, DIAYHORALLEGADA, DIAYHORAPARTIDA, 
 insert into VIAJEENTITY (IDVIAJE, KILOMETROS, DIAYHORALLEGADA, DIAYHORAPARTIDA, GASTOSCOMPARTIDOS, CONDUCTOR_ID, AUTOMOVIL_ID, DESTINO_ID, ORIGEN_ID) VALUES (3,500,'2017-06-2','2017-04-1',120000,13,4,8,10);
 insert into VIAJEENTITY (IDVIAJE, KILOMETROS, DIAYHORALLEGADA, DIAYHORAPARTIDA, GASTOSCOMPARTIDOS, CONDUCTOR_ID, AUTOMOVIL_ID, DESTINO_ID, ORIGEN_ID) VALUES (4,500,'2017-06-20','2017-04-1',80000,15,8,2,1);
 
+insert into RESERVAENTITY (id, precio, puestosreservados, valorcomision, viaje_idviajero, viajero_id) values (1, 32.06, 3, 14.19, 1, 1);
+insert into RESERVAENTITY (id, precio, puestosreservados, valorcomision, viaje_idviajero, viajero_id) values (2, 23.08, 1, 10.67, 2, 2);
+insert into RESERVAENTITY (id, precio, puestosreservados, valorcomision, viaje_idviajero, viajero_id) values (3, 45.59, 1, 14.11, 3, 3);
+insert into RESERVAENTITY (id, precio, puestosreservados, valorcomision, viaje_idviajero, viajero_id) values (4, 42.97, 4, 14.2, 4, 4);
+insert into RESERVAENTITY (id, precio, puestosreservados, valorcomision, viaje_idviajero, viajero_id) values (5, 47.74, 1, 12.72, 5, 5);
+insert into RESERVAENTITY (id, precio, puestosreservados, valorcomision, viaje_idviajero, viajero_id) values (6, 22.49, 3, 17.88, 6, 6);
+insert into RESERVAENTITY (id, precio, puestosreservados, valorcomision, viaje_idviajero, viajero_id) values (7, 49.7, 3, 11.58, 7, 7);
+insert into RESERVAENTITY (id, precio, puestosreservados, valorcomision, viaje_idviajero, viajero_id) values (8, 47.33, 3, 18.54, 8, 8);
+insert into RESERVAENTITY (id, precio, puestosreservados, valorcomision, viaje_idviajero, viajero_id) values (9, 32.94, 3, 17.8, 9, 9);
+insert into RESERVAENTITY (id, precio, puestosreservados, valorcomision, viaje_idviajero, viajero_id) values (10, 39.26, 1, 18.0, 10, 10);
 
+insert into USUARIOENTITY_RESERVAENTITY (viajeroentity_id, reservas_id) values (1, 1);
+insert into USUARIOENTITY_RESERVAENTITY (viajeroentity_id, reservas_id) values (2, 2);
+insert into USUARIOENTITY_RESERVAENTITY (viajeroentity_id, reservas_id) values (3, 3);
+insert into USUARIOENTITY_RESERVAENTITY (viajeroentity_id, reservas_id) values (4, 4);
+insert into USUARIOENTITY_RESERVAENTITY (viajeroentity_id, reservas_id) values (5, 5);
+insert into USUARIOENTITY_RESERVAENTITY (viajeroentity_id, reservas_id) values (6, 6);
+insert into USUARIOENTITY_RESERVAENTITY (viajeroentity_id, reservas_id) values (7, 7);
+insert into USUARIOENTITY_RESERVAENTITY (viajeroentity_id, reservas_id) values (8, 8);
+insert into USUARIOENTITY_RESERVAENTITY (viajeroentity_id, reservas_id) values (9, 9);
+insert into USUARIOENTITY_RESERVAENTITY (viajeroentity_id, reservas_id) values (10, 10);
 
-
-
+insert into PAGOENTITY (id, dtype, cancelado, valor, destinatario_id, remitente_id) values (1, 'PagoEntity', 1, 1, 1, 11);
+insert into PAGOENTITY (id, dtype, cancelado, valor, destinatario_id, remitente_id) values (2, 'PagoEntity', 1, 1, 2, 12);
+insert into PAGOENTITY (id, dtype, cancelado, valor, destinatario_id, remitente_id) values (3, 'PagoEntity', 0, 1, 3, 13);
+insert into PAGOENTITY (id, dtype, cancelado, valor, destinatario_id, remitente_id) values (4, 'PagoEntity', 0, 1, 4, 14);
+insert into PAGOENTITY (id, dtype, cancelado, valor, destinatario_id, remitente_id) values (5, 'PagoEntity', 1, 0, 5, 15);
+insert into PAGOENTITY (id, dtype, cancelado, valor, destinatario_id, remitente_id) values (6, 'PagoEntity', 0, 1, 6, 16);
+insert into PAGOENTITY (id, dtype, cancelado, valor, destinatario_id, remitente_id) values (7, 'PagoEntity', 0, 1, 7, 17);
+insert into PAGOENTITY (id, dtype, cancelado, valor, destinatario_id, remitente_id) values (8, 'PagoEntity', 0, 1, 8, 18);
+insert into PAGOENTITY (id, dtype, cancelado, valor, destinatario_id, remitente_id) values (9, 'PagoEntity', 0, 1, 9, 19);
+insert into PAGOENTITY (id, dtype, cancelado, valor, destinatario_id, remitente_id) values (10, 'PagoEntity', 1, 0, 10, 20);
