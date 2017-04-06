@@ -15,7 +15,7 @@ and open the template in the editor.
                 <!--<ul ng-repeat="viaje in currentReserva.viaje">
                     <a ui-sref="viajeDetail({viajeId: viaje.id})">{{viaje.id}}</a>
                 </ul>-->
-                <div class="panel-body" style="height: 310px;">
+                <div class="panel-body">
                     <dl>
                         <dt class="bold">Viaje {{currentReserva.viaje.idViaje}}</dt>
                         <br>
@@ -40,9 +40,9 @@ and open the template in the editor.
                         <br>
                         <dt>Nombre</dt>
                         <dd>{{currentReserva.viajero.nombre}}</dd>
-                        <dt>Nombre</dt>
-                        <dd>{{currentReserva.viajerotelMovil}}</dd>
-                        <dt>Nombre</dt>
+                        <dt>Teléfono movil</dt>
+                        <dd>{{currentReserva.viajero.telMovil}}</dd>
+                        <dt>Correo</dt>
                         <dd>{{currentReserva.viajero.correo}}</dd>
                     </dl>
                 </div>
