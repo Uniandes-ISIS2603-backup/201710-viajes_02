@@ -34,3 +34,23 @@ insert into LugarEntity (id, direccion, lugar, lat, lon) values (17 , '1319 Bria
 insert into LugarEntity (id, direccion, lugar, lat, lon) values (18 , '367 Mayer Crossing' , 'Lama' , 41.53 , -8.3567);
 insert into LugarEntity (id, direccion, lugar, lat, lon) values (19 , '7994 Hooker Court' , 'Taoyuan' , 22.58041 , 113.96121);
 
+insert into CobroEntity (id,cancelado,valor,usuariodestinatario_id,usuarioremitente_id,dtype) values (1,0,43,5,8,'CobroEntity');
+insert into CobroEntity (id,cancelado,valor,usuariodestinatario_id,usuarioremitente_id,dtype) values (2,1,75,3,8,'CobroEntity');
+insert into CobroEntity (id,cancelado,valor,usuariodestinatario_id,usuarioremitente_id,dtype) values (3,0,8,5,8,'CobroEntity');
+insert into CobroEntity (id,cancelado,valor,usuariodestinatario_id,usuarioremitente_id,dtype) values (4,1,35,2,9,'CobroEntity');
+insert into CobroEntity (id,cancelado,valor,usuariodestinatario_id,usuarioremitente_id,dtype) values (5,1,15,3,8,'CobroEntity');
+insert into CobroEntity (id,cancelado,valor,usuariodestinatario_id,usuarioremitente_id,dtype) values (6,1,84,3,9,'CobroEntity');
+insert into CobroEntity (id,cancelado,valor,usuariodestinatario_id,usuarioremitente_id,dtype) values (7,1,19,1,6,'CobroEntity');
+insert into CobroEntity (id,cancelado,valor,usuariodestinatario_id,usuarioremitente_id,dtype) values (8,0,68,3,6,'CobroEntity');
+insert into CobroEntity (id,cancelado,valor,usuariodestinatario_id,usuarioremitente_id,dtype) values (9,0,18,3,6,'CobroEntity');
+insert into CobroEntity (id,cancelado,valor,usuariodestinatario_id,usuarioremitente_id,dtype) values (10,1,1,5,10,'CobroEntity');
+insert into CobroEntity (id,cancelado,valor,usuariodestinatario_id,usuarioremitente_id,dtype) values (11,1,63,2,6,'CobroEntity');
+insert into CobroEntity (id,cancelado,valor,usuariodestinatario_id,usuarioremitente_id,dtype) values (12,1,77,3,6,'CobroEntity');
+insert into CobroEntity (id,cancelado,valor,usuariodestinatario_id,usuarioremitente_id,dtype) values (13,0,60,3,7,'CobroEntity');
+insert into CobroEntity (id,cancelado,valor,usuariodestinatario_id,usuarioremitente_id,dtype) values (14,0,66,4,7,'CobroEntity');
+insert into CobroEntity (id,cancelado,valor,usuariodestinatario_id,usuarioremitente_id,dtype) values (15,1,38,1,10,'CobroEntity');
+insert into CobroEntity (id,cancelado,valor,usuariodestinatario_id,usuarioremitente_id,dtype) values (16,0,70,3,8,'CobroEntity');
+insert into CobroEntity (id,cancelado,valor,usuariodestinatario_id,usuarioremitente_id,dtype) values (17,0,96,4,7,'CobroEntity');
+insert into CobroEntity (id,cancelado,valor,usuariodestinatario_id,usuarioremitente_id,dtype) values (18,1,27,1,10,'CobroEntity');
+insert into CobroEntity (id,cancelado,valor,usuariodestinatario_id,usuarioremitente_id,dtype) values (19,0,92,4,8,'CobroEntity');
+insert into CobroEntity (id,cancelado,valor,usuariodestinatario_id,usuarioremitente_id,dtype) values (20,0,80,1,7,'CobroEntity');
