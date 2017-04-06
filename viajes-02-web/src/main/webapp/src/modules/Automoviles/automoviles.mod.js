@@ -36,22 +36,22 @@
                                 templateUrl: basePath + 'automoviles.list.html'
                             }
                         }
-                    })
-                    .state('automovilesDetail', {
-                        url: '/{automovilesId:int}/detail',
-                        parent: 'automovilesList',
-                        param: {
-                            automovilesId: null
-                        },
-                        views: {
-                            'detailView': {
-                                templateUrl: basePath + 'automoviles.detail.html',
-                                controller: ['$scope', '$stateParams', function ($scope, $param)
-                                    {
-                                        $scope.currentAutomovil = $scope.automovilesRecords[$param.automovilesId - 1]
-                                    }]
-                            }
-                        }
+                    // })
+                    // .state('automovilesDetail', {
+                    //     url: '/{automovilesId:int}/detail',
+                    //     parent: 'automovilesList',
+                    //     param: {
+                    //         automovilesId: null
+                    //     },
+                    //     views: {
+                    //         'detailView': {
+                    //             templateUrl: basePath + 'automoviles.detail.html',
+                    //             controller: ['$scope', '$stateParams', function ($scope, $param)
+                    //                 {
+                    //                     $scope.currentAutomovil = $scope.automovilesRecords[$param.automovilesId - 1]
+                    //                 }]
+                    //         }
+                    //     }
 
                         // }).state('conductoresDetail', {
                         //     url: '/{conductoresId:int}/detail',
