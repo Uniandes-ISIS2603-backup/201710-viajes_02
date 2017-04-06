@@ -30,7 +30,7 @@ import javax.ws.rs.WebApplicationException;
 /**
  * @author Danny
  */
-@Path("/automovil")
+@Path("/automoviles")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class AutomovilResource

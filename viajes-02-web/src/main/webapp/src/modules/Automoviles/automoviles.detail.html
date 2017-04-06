@@ -1,0 +1,36 @@
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="thumb">
+                    <img class="img-responsive" ng-src="{{currentAutomovil.cond.imagen}}"/>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <dl>
+                    <hr>
+                    <dt>Nombre</dt>
+                    <dd>{{currentAutomovil.cond.nombre}}</dd>
+
+                    <hr>
+                    <dt>Genero</dt>
+                    <dd>{{currentAutomovil.cond.genero}}</dd>
+
+                    <hr>
+                    <dt>Correo</dt>
+                    <dd>{{currentAutomovil.cond.correo}}</dd>
+
+                    <hr>
+                    <dt>Telefono</dt>
+                    <dd>{{currentAutomovil.cond.telMovil}}</dd>
+
+                </dl>
+                <ul class="nav nav-tabs">
+                    <li role="presentation" class="active"> <a ui-sref="conductoresDetailReview">Reviews</a></li>
+                    <li role="presentation" class="active"> <a ui-sref="conductoresDetailAutomoviles">Automoviles</a></li>
+                </ul>
+            </div>
+        </div>
+        <div ui-view = "detail" > </div>
+    </div>
+</div>

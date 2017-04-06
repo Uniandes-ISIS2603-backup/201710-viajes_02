@@ -1,0 +1,11 @@
+<div class = "container-fluid"> 
+    <div class = "row">
+        <h1> REVIEWS </h1>
+        <div ng-repeat = "review in currentConductor.reviews" >
+            <ul>
+                <li>{{review.puntuacion}} {{review.comentarios}}</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div ui-view = "childrenView"></div>

@@ -1,15 +1,18 @@
 <div class="container-fluid">
+    <div ui-view="detailView"></div>
     <div class="row">
         <div class="col-md-3" ng-repeat="automovil in automovilesRecords">
-            <div class="thumbnail">
-                <p class="text-center">Placa: {{automovil.placa}}</p>
-                <p class="text-center">Color: {{automovil.color}}</p>
-                <p class="text-center">Modelo: {{automovil.modelo}}</p>
-                <p class="text-center">Cantidad asientos: {{automovil.cantAsientos}}</p>
-                <p class="text-center">Compañia de seguros: {{automovil.compSeguros}}</p>
-                <p class="text-center">Numero de seguros: {{automovil.numSeguros}}</p>
-             </div>
+            <a ui-sref="automovilesDetail({automovilesId:automovil.id})">
+                <button class="thumbnail">
+                    <!--<td><a ui-sref="lugarDetail({automovoilId: automovil.id})" class="thumb">{{.lugar}}</a></td>-->
+                    <p class="text-center">Placa: {{automovil.placa}}</p>
+                    <p class="text-center">Color: {{automovil.color}}</p>
+                    <p class="text-center">Modelo: {{automovil.modelo}}</p>
+                    <p class="text-center">Cantidad asientos: {{automovil.cantAsientos}}</p>
+                    <p class="text-center">Compañia de seguros: {{automovil.compSeguros}}</p>
+                    <p class="text-center">Numero de seguros: {{automovil.numSeguros}}</p>
+                </button>
+            </a>
         </div>
     </div>
 </div>
-
