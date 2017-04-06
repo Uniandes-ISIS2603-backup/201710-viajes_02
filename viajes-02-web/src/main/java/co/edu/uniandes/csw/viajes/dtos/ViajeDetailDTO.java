@@ -19,17 +19,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class ViajeDetailDTO extends ViajeDTO
 {
 
-    private List<ReservaDTO> reservas;
-
-    public List<ReservaDTO> getReservas()
-    {
-        return reservas;
-    }
-
-    public void setReservas(List<ReservaDTO> reservas)
-    {
-        this.reservas = reservas;
-    }
+    
 
     public ViajeDetailDTO()
     {
@@ -39,9 +29,7 @@ public class ViajeDetailDTO extends ViajeDTO
     public ViajeDetailDTO(ViajeEntity entity)
     {
         super(entity);
-        List<ReservaEntity> r1 = entity.getReserva();
-        List<ReservaDTO> r2 = listEntity2DTO(r1);
-        reservas = r2;
+        
     }
 
     @Override
