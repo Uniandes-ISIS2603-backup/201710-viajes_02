@@ -64,7 +64,8 @@ public class ViajeroDTO extends UsuarioDTO
      */
     public ViajeroEntity toEntity()
     {
-        ViajeroEntity entity = new ViajeroEntity(getImagen());
+        ViajeroEntity entity = new ViajeroEntity();
+        entity.setImagen(getImagen());
         entity.setCorreo(getCorreo());
         entity.setEdad(getEdad());
         entity.setGenero(getGenero());

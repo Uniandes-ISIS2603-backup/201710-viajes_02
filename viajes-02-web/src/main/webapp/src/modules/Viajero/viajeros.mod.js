@@ -1,5 +1,6 @@
 (function (ng) {
     var mod = ng.module("viajeroModule", ['ui.router']);
+    mod.constant("viajerosContext", "api/viajeros");
     // Configuración de los estados del módulo
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             // En basePath se encuentran los templates y controladores de módulo
@@ -14,8 +15,8 @@
                 // Se define una variable books (del estado) que toma por valor 
                 // la colección de libros que obtiene utilizando $http.get 
                 resolve: {
-                    viajeros: ['$http', function ($http) {
-                            return $http.get('data/viajeros.json'); // $http retorna una promesa que aquí no se está manejando si viene con error.
+                    viajeros: ['$http', "viajerosContext",function ($http, viajerosContext) {
+                            return $http.get(viajerosContext); // $http retorna una promesa que aquí no se está manejando si viene con error.
                         }]
                 },
                 views: {

@@ -4,7 +4,7 @@ delete from UsuarioEntity_ReservaEntity;
 delete from UsuarioEntity_PagoEntity;
 delete from UsuarioEntity_CobroEntity;
 delete from UsuarioEntity_AutomovilEntity;
-delete from ReservaEntity_UsuarioEntity;
+--delete from ReservaEntity_UsuarioEntity;
 delete from ReviewEntity;
 delete from ReservaEntity;
 delete from PagoEntity;
@@ -90,6 +90,17 @@ INSERT INTO APP.AUTOMOVILENTITY (ID, CANTASIENTOS, COLOR, COMPSEGUROS, MARCA, MO
 INSERT INTO APP.AUTOMOVILENTITY (ID, CANTASIENTOS, COLOR, COMPSEGUROS, MARCA, MODELO, NUMSEGURO, PLACA) 
 	VALUES (8,4, 'Rojo/Negro', 'Safe', 'Mini', 'England', 723924, 'RTP849');
 	
+insert into UsuarioEntity (id, dtype, correo, edad, genero, nombre, rating, telmovil, direccion_id, imagen) values (1, 'ViajeroEntity', 'lcunningham0@simplemachines.org', 79, 'Female', 'Linda Cunningham', 1, 29076289, 18, 'https://robohash.org/atiureerror.jpg?size=200x200&set=set1');
+insert into UsuarioEntity (id, dtype, correo, edad, genero, nombre, rating, telmovil, direccion_id, imagen) values (2, 'ViajeroEntity', 'tbarnes1@slashdot.org', 53, 'Female', 'Teresa Barnes', 2, 573381344, 18, 'https://robohash.org/praesentiumharumsunt.jpg?size=200x200&set=set1');
+insert into UsuarioEntity (id, dtype, correo, edad, genero, nombre, rating, telmovil, direccion_id, imagen) values (3, 'ViajeroEntity', 'pchavez2@sourceforge.net', 72, 'Male', 'Patrick Chavez', 3, 462233292, 6, 'https://robohash.org/accusantiumquosprovident.jpg?size=200x200&set=set1');
+insert into UsuarioEntity (id, dtype, correo, edad, genero, nombre, rating, telmovil, direccion_id, imagen) values (4, 'ViajeroEntity', 'schavez3@artisteer.com', 98, 'Male', 'Scott Chavez', 4, 637595999, 12, 'https://robohash.org/temporeomnismagni.jpg?size=200x200&set=set1');
+insert into UsuarioEntity (id, dtype, correo, edad, genero, nombre, rating, telmovil, direccion_id, imagen) values (5, 'ViajeroEntity', 'sfowler4@symantec.com', 18, 'Male', 'Stephen Fowler', 5, 904549476, 8, 'https://robohash.org/laboriosamrecusandaepraesentium.jpg?size=200x200&set=set1');
+insert into UsuarioEntity (id, dtype, correo, edad, genero, nombre, rating, telmovil, direccion_id, imagen) values (6, 'ViajeroEntity', 'mhayes5@cam.ac.uk', 62, 'Female', 'Melissa Hayes', 6, 61261899, 18, 'https://robohash.org/autundevoluptas.jpg?size=200x200&set=set1');
+insert into UsuarioEntity (id, dtype, correo, edad, genero, nombre, rating, telmovil, direccion_id, imagen) values (7, 'ViajeroEntity', 'rlarson6@princeton.edu', 69, 'Male', 'Ralph Larson', 7, 826866243, 13, 'https://robohash.org/enimetdolores.jpg?size=200x200&set=set1');
+insert into UsuarioEntity (id, dtype, correo, edad, genero, nombre, rating, telmovil, direccion_id, imagen) values (8, 'ViajeroEntity', 'lmason7@uiuc.edu', 93, 'Male', 'Louis Mason', 8, 906028877, 18, 'https://robohash.org/iustosintsit.jpg?size=200x200&set=set1');
+insert into UsuarioEntity (id, dtype, correo, edad, genero, nombre, rating, telmovil, direccion_id, imagen) values (9, 'ViajeroEntity', 'nharrison8@livejournal.com', 40, 'Male', 'Nicholas Harrison', 9, 284081599, 16, 'https://robohash.org/eoseligendiut.jpg?size=200x200&set=set1');
+insert into UsuarioEntity (id, dtype, correo, edad, genero, nombre, rating, telmovil, direccion_id, imagen) values (10, 'ViajeroEntity', 'sreid9@amazon.co.jp', 68, 'Male', 'Stephen Reid', 10, 405901148, 5, 'https://robohash.org/nequeimpediteveniet.jpg?size=200x200&set=set1');
+
 insert into USUARIOENTITY (ID, DTYPE, CORREO, EDAD, GENERO, NOMBRE, TELMOVIL, DIRECCION_ID, IMAGEN) VALUES (11,'ConductorEntity','j.s@gmail.com', 22, 'M', 'Juan Sebastián', 315991,1,'https://robohash.org/perspiciatisetofficia.png?size=300x300&set=set1');
 insert into USUARIOENTITY (ID, DTYPE, CORREO, EDAD, GENERO, NOMBRE, TELMOVIL, DIRECCION_ID, IMAGEN) VALUES (12,'ConductorEntity','n.a@gmail.com', 25, 'F', 'Nicolas Aguilar', 28182,2,'https://robohash.org/fugiatdoloresperspiciatis.jpg?size=300x300&set=set1');
 insert into USUARIOENTITY (ID, DTYPE, CORREO, EDAD, GENERO, NOMBRE, TELMOVIL, DIRECCION_ID, IMAGEN) VALUES (13,'ConductorEntity','d.f@gmail.com', 25, 'F', 'Daniela Forero', 89090,3,'https://robohash.org/fugiatdoloresperspiciatis.jpg?size=300x300&set=set1');
