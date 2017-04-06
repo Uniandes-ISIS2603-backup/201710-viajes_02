@@ -8,7 +8,6 @@ package co.edu.uniandes.csw.viajes.entities;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.CascadeType;
-import static javax.persistence.CascadeType.PERSIST;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
