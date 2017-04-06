@@ -35,17 +35,19 @@
                 param: {
                     viajeId: null
                 },
+                resolve:{
+                    currentViaje: ['$http', 'viajesContext', '$stateParams', function ($http, viajesContext, $params) {
+                            return $http.get(viajesContext+'/'+$params.viajeId);
+                        }]
+                },
                 views: {
                     'detailView': {
                         templateUrl: basePath + 'viajes.detail.html',
-                        controller: ['$scope', '$stateParams', function ($scope, $params) {
-                                $scope.currentViaje = $scope.viajesRecords[$params.viajeId - 1];
+                        controller: ['$scope', 'currentViaje', function ($scope,  currentViaje) {
+                                $scope.currentViaje = currentViaje.data;
                             }]
                     }
                 }
             });
         }]);
 })(window.angular);
-
-
-

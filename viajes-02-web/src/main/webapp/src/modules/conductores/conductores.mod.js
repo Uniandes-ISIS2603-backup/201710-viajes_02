@@ -35,11 +35,16 @@
                 param: {
                     conductorId: null
                 },
+                resolve:{
+                    currentConductor: ['$http', 'conductoresContext', '$stateParams', function ($http, conductoresContext, $params) {
+                            return $http.get(conductoresContext+'/'+$params.conductorId);
+                        }]
+                },
                 views: {
                     'detailView': {
                         templateUrl: basePath + 'conductores.detail.html',
-                        controller: ['$scope', '$stateParams', function ($scope, $params) {
-                                $scope.currentConductor = $scope.conductoresRecords[$params.conductorId - 1];
+                        controller: ['$scope', 'currentConductor', function ($scope,  currentConductor) {
+                                $scope.currentConductor = currentConductor.data;
                             }]
                     }
                 }
@@ -62,3 +67,6 @@
              });
     }]);
 })(window.angular);
+
+
+
