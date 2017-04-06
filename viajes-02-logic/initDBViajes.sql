@@ -72,9 +72,9 @@ insert into USUARIOENTITY (ID, DTYPE, CORREO, EDAD, GENERO, NOMBRE, TELMOVIL, DI
 insert into USUARIOENTITY (ID, DTYPE, CORREO, EDAD, GENERO, NOMBRE, TELMOVIL, DIRECCION_ID, IMAGEN) VALUES (19,'ConductorEntity','dm@gmail.com', 23, 'F', 'Dani Alves', 36732,8,'https://robohash.org/quiveniammaxime.jpg?size=300x300&set=set1');
 insert into USUARIOENTITY (ID, DTYPE, CORREO, EDAD, GENERO, NOMBRE, TELMOVIL, DIRECCION_ID, IMAGEN) VALUES (20,'ConductorEntity','rr@gmail.com', 28, 'F', 'Ronda Rousey', 77323,9,'https://robohash.org/sapientesuntsit.bmp?size=300x300&set=set1');
 
-insert into CobroEntity (id,cancelado,valor,usuariodestinatario_id,usuarioremitente_id,dtype) values (1,0,43,5,8,'CobroEntity');
-insert into CobroEntity (id,cancelado,valor,usuariodestinatario_id,usuarioremitente_id,dtype) values (2,1,75,3,8,'CobroEntity');
-insert into CobroEntity (id,cancelado,valor,usuariodestinatario_id,usuarioremitente_id,dtype) values (3,0,8,5,8,'CobroEntity');
+insert into CobroEntity (id,cancelado,valor,usuariodestinatario_id,usuarioremitente_id,dtype) values (1,0,43,5,1,'CobroEntity');
+insert into CobroEntity (id,cancelado,valor,usuariodestinatario_id,usuarioremitente_id,dtype) values (2,1,75,3,1,'CobroEntity');
+insert into CobroEntity (id,cancelado,valor,usuariodestinatario_id,usuarioremitente_id,dtype) values (3,0,8,5,1,'CobroEntity');
 insert into CobroEntity (id,cancelado,valor,usuariodestinatario_id,usuarioremitente_id,dtype) values (4,1,35,2,9,'CobroEntity');
 insert into CobroEntity (id,cancelado,valor,usuariodestinatario_id,usuarioremitente_id,dtype) values (5,1,15,3,8,'CobroEntity');
 insert into CobroEntity (id,cancelado,valor,usuariodestinatario_id,usuarioremitente_id,dtype) values (6,1,84,3,9,'CobroEntity');
@@ -154,3 +154,7 @@ insert into PAGOENTITY (id, dtype, cancelado, valor, destinatario_id, remitente_
 insert into PAGOENTITY (id, dtype, cancelado, valor, destinatario_id, remitente_id) values (8, 'PagoEntity', 0, 1, 8, 18);
 insert into PAGOENTITY (id, dtype, cancelado, valor, destinatario_id, remitente_id) values (9, 'PagoEntity', 0, 1, 9, 19);
 insert into PAGOENTITY (id, dtype, cancelado, valor, destinatario_id, remitente_id) values (10, 'PagoEntity', 1, 0, 10, 20);
+
+insert into USUARIOEntity_REVIEWENTITY (USUARIOENTITY_ID, reviews_id) values (11,1);
+insert into USUARIOEntity_REVIEWENTITY (USUARIOENTITY_ID, reviews_id) values (11,3);
+insert into USUARIOEntity_REVIEWENTITY (USUARIOENTITY_ID, reviews_id) values (11,4);
