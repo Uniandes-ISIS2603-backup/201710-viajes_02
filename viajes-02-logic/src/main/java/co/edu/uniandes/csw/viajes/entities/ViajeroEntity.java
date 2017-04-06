@@ -30,11 +30,6 @@ public class ViajeroEntity extends UsuarioEntity {
         this.imagen = imagen;
     }
 
-    public ViajeroEntity(String imagen) {
-        super();
-        this.imagen = imagen;
-    }
-
     /*
     * Verifica si el usuario se puede considerar como igual al objeto que llega por parametro
     * return true si se considera igual, false de lo contrario
