@@ -122,16 +122,16 @@ insert into VIAJEENTITY (IDVIAJE, KILOMETROS, DIAYHORALLEGADA, DIAYHORAPARTIDA, 
 insert into VIAJEENTITY (IDVIAJE, KILOMETROS, DIAYHORALLEGADA, DIAYHORAPARTIDA, GASTOSCOMPARTIDOS, CONDUCTOR_ID, AUTOMOVIL_ID, DESTINO_ID, ORIGEN_ID) VALUES (3,500,'2017-06-2','2017-04-1',120000,13,4,8,10);
 insert into VIAJEENTITY (IDVIAJE, KILOMETROS, DIAYHORALLEGADA, DIAYHORAPARTIDA, GASTOSCOMPARTIDOS, CONDUCTOR_ID, AUTOMOVIL_ID, DESTINO_ID, ORIGEN_ID) VALUES (4,500,'2017-06-20','2017-04-1',80000,15,8,2,1);
 
-insert into RESERVAENTITY (id, precio, puestosreservados, valorcomision, viaje_idviajero, viajero_id) values (1, 32.06, 3, 14.19, 1, 1);
-insert into RESERVAENTITY (id, precio, puestosreservados, valorcomision, viaje_idviajero, viajero_id) values (2, 23.08, 1, 10.67, 2, 2);
-insert into RESERVAENTITY (id, precio, puestosreservados, valorcomision, viaje_idviajero, viajero_id) values (3, 45.59, 1, 14.11, 3, 3);
-insert into RESERVAENTITY (id, precio, puestosreservados, valorcomision, viaje_idviajero, viajero_id) values (4, 42.97, 4, 14.2, 4, 4);
-insert into RESERVAENTITY (id, precio, puestosreservados, valorcomision, viaje_idviajero, viajero_id) values (5, 47.74, 1, 12.72, 5, 5);
-insert into RESERVAENTITY (id, precio, puestosreservados, valorcomision, viaje_idviajero, viajero_id) values (6, 22.49, 3, 17.88, 6, 6);
-insert into RESERVAENTITY (id, precio, puestosreservados, valorcomision, viaje_idviajero, viajero_id) values (7, 49.7, 3, 11.58, 7, 7);
-insert into RESERVAENTITY (id, precio, puestosreservados, valorcomision, viaje_idviajero, viajero_id) values (8, 47.33, 3, 18.54, 8, 8);
-insert into RESERVAENTITY (id, precio, puestosreservados, valorcomision, viaje_idviajero, viajero_id) values (9, 32.94, 3, 17.8, 9, 9);
-insert into RESERVAENTITY (id, precio, puestosreservados, valorcomision, viaje_idviajero, viajero_id) values (10, 39.26, 1, 18.0, 10, 10);
+insert into RESERVAENTITY (id, precio, puestosreservados, valorcomision, viaje_idviaje, viajero_id) values (1, 32.06, 3, 14.19, 1, 1);
+insert into RESERVAENTITY (id, precio, puestosreservados, valorcomision, viaje_idviaje, viajero_id) values (2, 23.08, 1, 10.67, 2, 2);
+insert into RESERVAENTITY (id, precio, puestosreservados, valorcomision, viaje_idviaje, viajero_id) values (3, 45.59, 1, 14.11, 3, 3);
+insert into RESERVAENTITY (id, precio, puestosreservados, valorcomision, viaje_idviaje, viajero_id) values (4, 42.97, 4, 14.2, 4, 4);
+insert into RESERVAENTITY (id, precio, puestosreservados, valorcomision, viaje_idviaje, viajero_id) values (5, 47.74, 1, 12.72, 5, 5);
+insert into RESERVAENTITY (id, precio, puestosreservados, valorcomision, viaje_idviaje, viajero_id) values (6, 22.49, 3, 17.88, 6, 6);
+insert into RESERVAENTITY (id, precio, puestosreservados, valorcomision, viaje_idviaje, viajero_id) values (7, 49.7, 3, 11.58, 7, 7);
+insert into RESERVAENTITY (id, precio, puestosreservados, valorcomision, viaje_idviaje, viajero_id) values (8, 47.33, 3, 18.54, 8, 8);
+insert into RESERVAENTITY (id, precio, puestosreservados, valorcomision, viaje_idviaje, viajero_id) values (9, 32.94, 3, 17.8, 9, 9);
+insert into RESERVAENTITY (id, precio, puestosreservados, valorcomision, viaje_idviaje, viajero_id) values (10, 39.26, 1, 18.0, 10, 10);
 
 insert into USUARIOENTITY_RESERVAENTITY (viajeroentity_id, reservas_id) values (1, 1);
 insert into USUARIOENTITY_RESERVAENTITY (viajeroentity_id, reservas_id) values (2, 2);
