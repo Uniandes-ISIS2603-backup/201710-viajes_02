@@ -15,7 +15,7 @@
                 // Se define una variable books (del estado) que toma por valor 
                 // la colección de libros que obtiene utilizando $http.get 
                 resolve: {
-                    viajeros: ['$http', "viajerosContext",function ($http, viajerosContext) {
+                    viajeros: ['$http', "viajerosContext", function ($http, viajerosContext) {
                             return $http.get(viajerosContext); // $http retorna una promesa que aquí no se está manejando si viene con error.
                         }]
                 },
@@ -46,6 +46,10 @@
                         views: {
                             'listView': {
                                 templateUrl: basePath + 'viajeros.list.html'
+                            }, resolve: {
+                                currentViajero: ['$http', 'viajerosContext', '$stateParams', function ($http, viajerosContext, $params) {
+                                        return $http.get(viajerosContext + '/' + $params.viajeroID); // $http retorna una promesa que aquí no se está manejando si viene con error.
+                                    }]
                             },
                             'detailView': {
                                 templateUrl: basePath + 'viajeros.detail.html',
