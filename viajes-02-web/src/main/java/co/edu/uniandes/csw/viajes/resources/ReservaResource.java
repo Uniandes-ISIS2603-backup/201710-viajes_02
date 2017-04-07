@@ -13,15 +13,9 @@ import co.edu.uniandes.csw.viajes.entities.ReservaEntity;
 import co.edu.uniandes.csw.viajes.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.inject.Inject;
-import javax.persistence.ManyToMany;
-import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.*;
-import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
-import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
