@@ -80,10 +80,11 @@ public class ViajeResource
     @Path("{id: \\d+}")
     public ViajeDetailDTO getViaje(@PathParam("id") Long id)
     { // TODO si el recurso con el id dado no existe de sedeb disparar WebApplicationException 404
-        ViajeDetailDTO respuesta = new ViajeDetailDTO (logica.findViaje(id));
-        if(respuesta == null){
+        ViajeEntity existe = logica.findViaje(id);
+        if(existe == null){
             throw new WebApplicationException("No existe el viaje con id" +id, 404);
         }
+        ViajeDetailDTO respuesta = new ViajeDetailDTO (existe);
         return respuesta;
     }
 
