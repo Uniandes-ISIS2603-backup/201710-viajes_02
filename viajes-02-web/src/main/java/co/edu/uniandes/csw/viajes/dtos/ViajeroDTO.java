@@ -49,6 +49,7 @@ public class ViajeroDTO extends UsuarioDTO
             setNombre(entity.getNombre());
             setRating(entity.getRating());
             setTelMovil(entity.getTelMovil());
+            
             setImagen(entity.getImagen());
             if (entity.getLugar() != null)
             {

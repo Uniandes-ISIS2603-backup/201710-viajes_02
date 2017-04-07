@@ -9,19 +9,18 @@ import co.edu.uniandes.csw.viajes.dtos.UsuarioDTO;
 import co.edu.uniandes.csw.viajes.dtos.UsuarioDetailDTO;
 import co.edu.uniandes.csw.viajes.ejbs.UsuarioLogic;
 import co.edu.uniandes.csw.viajes.entities.UsuarioEntity;
+import co.edu.uniandes.csw.viajes.entities.ViajeroEntity;
 import co.edu.uniandes.csw.viajes.exceptions.BusinessLogicException;
-import com.gs.collections.impl.utility.internal.primitive.ShortIterableIterate;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
-import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
-import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 
 /**
@@ -79,7 +78,12 @@ public class UsuarioResource
     @Path("{id: \\d+}")
     public UsuarioDetailDTO getUsuario(@PathParam("id") Long id) throws BusinessLogicException
     { // TODO si el recurso con el id dado no existe de sedeb disparar WebApplicationException 404
-        return new UsuarioDetailDTO(usuariologic.getUsuario(id));
+        UsuarioEntity v = usuariologic.getUsuario(id);
+        if(v==null)
+        {
+            throw new WebApplicationException("No existe el usuario con el id especificado",404);
+        }
+        return new UsuarioDetailDTO(v);
     }
 
     /**
@@ -93,8 +97,11 @@ public class UsuarioResource
     @Path("{id: \\d+}")
     public UsuarioDTO updateUsuario(@PathParam("id") Long id, UsuarioDTO dto) throws BusinessLogicException
     { // TODO si el recurso con el id dado no existe de sedeb disparar WebApplicationException 404
-        UsuarioEntity entity = dto.toEntity();
-        entity.setId(id);
-        return new UsuarioDTO(usuariologic.updateUsuario(entity));
+        UsuarioEntity u=usuariologic.updateUsuario(dto.toEntity());
+        if (u == null)
+        {
+            throw new WebApplicationException("No existe el usuario con el id especificado",404);
+        }
+        return new UsuarioDetailDTO(u);
     }
 }

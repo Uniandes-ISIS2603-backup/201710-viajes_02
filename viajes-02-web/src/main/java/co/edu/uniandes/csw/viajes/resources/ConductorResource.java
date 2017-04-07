@@ -7,7 +7,6 @@ package co.edu.uniandes.csw.viajes.resources;
 // TODO Eliminar los imports que no se necesitan
 import co.edu.uniandes.csw.viajes.dtos.AutomovilDetailDTO;
 import co.edu.uniandes.csw.viajes.dtos.ConductorDetailDTO;
-import co.edu.uniandes.csw.viajes.dtos.ViajeDetailDTO;
 import co.edu.uniandes.csw.viajes.ejbs.ConductorLogic;
 import co.edu.uniandes.csw.viajes.entities.ConductorEntity;
 import co.edu.uniandes.csw.viajes.exceptions.BusinessLogicException;

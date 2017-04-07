@@ -20,6 +20,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 
 /**
@@ -78,7 +79,12 @@ public class ViajeroResource
     public ViajeroDetailDTO getUsuario(@PathParam("id") Long id) throws BusinessLogicException
     {
         // TODO si el recurso con el id dado no existe de sedeb disparar WebApplicationException 404
-        return new ViajeroDetailDTO(logic.getViajero(id));
+        ViajeroEntity v=logic.getViajero(id);
+        if (v == null)
+        {
+            throw new WebApplicationException("No existe el viajero con el id especificado",404);
+        }
+        return new ViajeroDetailDTO(v);
     }
 
     /**
@@ -104,10 +110,16 @@ public class ViajeroResource
      * negocio
      */
     @PUT
+    @Path("{id: \\d+}")
     // TODO falta el Path id
     public ViajeroDetailDTO updateViajero(ViajeroDetailDTO viajero) throws BusinessLogicException
     {
          // TODO si el recurso con el id dado no existe de sedeb disparar WebApplicationException 404
-        return new ViajeroDetailDTO(logic.updateViajero(viajero.toEntity()));
+        ViajeroEntity v=logic.updateViajero(viajero.toEntity());
+        if (v == null)
+        {
+            throw new WebApplicationException("No existe el viajero con el id especificado",404);
+        }
+        return new ViajeroDetailDTO(v);
     }
 }
