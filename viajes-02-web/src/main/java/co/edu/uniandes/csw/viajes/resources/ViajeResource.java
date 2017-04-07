@@ -20,6 +20,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 
 /**
@@ -79,7 +80,11 @@ public class ViajeResource
     @Path("{id: \\d+}")
     public ViajeDetailDTO getViaje(@PathParam("id") Long id)
     { // TODO si el recurso con el id dado no existe de sedeb disparar WebApplicationException 404
-        return new ViajeDetailDTO(logica.findViaje(id));
+        ViajeDetailDTO respuesta = new ViajeDetailDTO (logica.findViaje(id));
+        if(respuesta == null){
+            throw new WebApplicationException("No existe el viaje con id" +id, 404);
+        }
+        return respuesta;
     }
 
     /**
@@ -108,6 +113,12 @@ public class ViajeResource
     @Path("{id: \\d+}")
     public ViajeDetailDTO updateViaje(@PathParam("id") Long id, ViajeDetailDTO viaje) throws BusinessLogicException
     { // TODO si el recurso con el id dado no existe de sedeb disparar WebApplicationException 404
+        Long identificador = viaje.getIdViaje();
+        ViajeEntity existe = logica.findViaje(identificador);
+        if(existe == null){
+            throw new WebApplicationException("No existe el viaje con id" +id, 404);
+        }
+        
         ViajeEntity entity = viaje.DTO2Entity();
         entity.setIdViaje(id);
         return new ViajeDetailDTO(logica.updateViaje(entity));
@@ -140,6 +151,10 @@ public class ViajeResource
     @Path("{id: \\d+}")
     public void deleteViaje(@PathParam("id") Long id)
     { // TODO si el recurso con el id dado no existe de sedeb disparar WebApplicationException 404
+        ViajeEntity existe = logica.findViaje(id);
+        if(existe == null){
+            throw new WebApplicationException("No existe el viaje con id" +id, 404);
+        }
         logica.deleteViaje(id);
     }
 }
