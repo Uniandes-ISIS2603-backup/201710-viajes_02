@@ -74,26 +74,31 @@ public class ViajeEntity implements Serializable{
     /**
      * Lugar de origen del viaje
      */
+    @PodamExclude
     @OneToOne(cascade = CascadeType.PERSIST)
     private LugarEntity origen;
     /**
      * Lugar de destino del viaje
      */
+    @PodamExclude
     @OneToOne(cascade = CascadeType.PERSIST)
     private LugarEntity destino;
     /**
      * Automovil a utilizar en el viaje.
      */
+    @PodamExclude
     @OneToOne (cascade = CascadeType.MERGE)
     private AutomovilEntity automovil;
     /**
      * Lista de reservas asociadas al viaje
      */
+    @PodamExclude
     @OneToMany (mappedBy = "viaje")
     private List <ReservaEntity> reserva;
     /**
      * Persona que va a ejercer como conductor a lo largo del viaje
      */
+    @PodamExclude
     @ManyToOne 
     private ConductorEntity conductor;
     /**

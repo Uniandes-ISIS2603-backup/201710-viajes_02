@@ -29,6 +29,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  * ReservaEntity
@@ -62,12 +63,14 @@ public class ReservaEntity implements Serializable {
     /**
      *
      */
+    @PodamExclude
     @ManyToOne
     private ViajeroEntity viajero;
     
     /**
      *
      */
+    @PodamExclude
     @ManyToOne
     private ViajeEntity viaje;
     
