@@ -60,7 +60,7 @@ public class ReservaResource
     public List<ReservaDetailDTO> getReservas(@PathParam("idViajero") Long idViajero)
     {  // TODO si el recurso con el idViajero dado no existe de se debe disparar WebApplicationException 404
         if(reservaLogic.getReservasViajero(idViajero) == null)
-            throw new WebApplicationException("No existe(n) reserva(s) asociadas al viajero con id " + idViajero, 404);
+            throw new WebApplicationException("No existe(n) reserva(s) asociada(s) al viajero con id " + idViajero, 404);
         else
             return listEntity2DDTO(reservaLogic.getReservasViajero(idViajero));
     }
@@ -73,10 +73,10 @@ public class ReservaResource
     }
 
     @DELETE
-    @Path("{idViajero: \\d+}/{idReserva: \\d+}")
-    public void deleteReserva(@PathParam("idViajero") Long idViajero, @PathParam("idReserva") Long idReserva)
+    @Path("{idReserva: \\d+}")
+    public void deleteReserva(@PathParam("idReserva") Long idReserva)
     {// TODO si el recurso con el idViajero y el idReserva dado no existe de sedeb disparar WebApplicationException 404
-        reservaLogic.deleteReserva(idViajero, idReserva);
+        reservaLogic.deleteReserva(idReserva);
     }
 
     private List<ReservaDetailDTO> listEntity2DDTO(List<ReservaEntity> reservaEntityList)
@@ -92,7 +92,7 @@ public class ReservaResource
     private boolean existeViajero(Long idViajero) {
         try {
             return (viajeroLogic.getViajero(idViajero) != null);
-        } catch (BusinessLogicException ex) {
+        } catch (BusinessLogicException e) {
             return false;
         }
     }

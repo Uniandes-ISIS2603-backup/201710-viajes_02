@@ -28,6 +28,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 /**
@@ -58,25 +59,10 @@ public class PagoPersistence
         entityManager.persist(pagoEntity);
         return pagoEntity;
     }
-
-    /**
-     * Elimina un pago dado el id
-     * @param id El id del pago
-     */
-    public void delete(Long id)
-    {
-        PagoEntity pagoEntity = entityManager.find(PagoEntity.class, id);
-        entityManager.remove(pagoEntity);
-    }
-
-    /**
-     * Actualiza un Pago
-     * @param pagoEntity La entidad Pago
-     * @return Entidad Pago actualizada
-     */
-    public PagoEntity update(PagoEntity pagoEntity)
-    {
-        return entityManager.merge(pagoEntity);
+    
+    public List<PagoEntity> findAll() {
+        Query query = entityManager.createQuery("SELECT u FROM PagoEntity u");
+        return query.getResultList();
     }
     
     /**
@@ -103,6 +89,26 @@ public class PagoPersistence
     public PagoEntity findPago(Long id)
     {
         return entityManager.find(PagoEntity.class, id);
+    }
+
+    /**
+     * Actualiza un Pago
+     * @param pagoEntity La entidad Pago
+     * @return Entidad Pago actualizada
+     */
+    public PagoEntity update(PagoEntity pagoEntity)
+    {
+        return entityManager.merge(pagoEntity);
+    }
+    
+    /**
+     * Elimina un pago dado el id
+     * @param id El id del pago
+     */
+    public void delete(Long id)
+    {
+        PagoEntity pagoEntity = entityManager.find(PagoEntity.class, id);
+        entityManager.remove(pagoEntity);
     }
     
 }

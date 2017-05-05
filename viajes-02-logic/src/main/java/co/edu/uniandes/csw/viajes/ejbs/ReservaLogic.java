@@ -56,8 +56,8 @@ public class ReservaLogic
         return reservaPersistence.findReserva(id);
     }
 
-    public void deleteReserva(Long idViajero, Long id)
+    public void deleteReserva(Long id)
     {
-        reservaPersistence.delete(idViajero, id);
+        reservaPersistence.delete(id);
     }
 }

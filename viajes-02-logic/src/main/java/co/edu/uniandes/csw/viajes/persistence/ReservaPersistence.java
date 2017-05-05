@@ -28,7 +28,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.TemporalType;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 /**
@@ -42,29 +42,18 @@ public class ReservaPersistence
     @PersistenceContext(unitName = "viajesPU")
     protected EntityManager entityManager;
 
-    public ReservaEntity create(ReservaEntity reservaEntity)
-    {
+    public ReservaEntity create(ReservaEntity reservaEntity) {
         entityManager.persist(reservaEntity);
         return reservaEntity;
     }
-
-    public void delete(Long idViajero, Long id)
-    {
-        TypedQuery<ReservaEntity> query = entityManager.createQuery("Select u from ReservaEntity u where u.viajero.id = :idViajero and u.id = :id", ReservaEntity.class);
-        query = query.setParameter("idViajero", idViajero);
-        query = query.setParameter("idReserva", id);
-        ReservaEntity reservaToDelete = query.getSingleResult();
-        entityManager.remove(reservaToDelete);
+    
+    public List<ReservaEntity> findAll() {
+        Query query = entityManager.createQuery("SELECT u FROM ReservaEntity u");
+        return query.getResultList();
     }
-
-    public ReservaEntity update(ReservaEntity reservaEntity)
-    {
-        return entityManager.merge(reservaEntity);
-    }
-
-    public List<ReservaEntity> findReservasByIdViajero(Long idViajero)
-    {
-        TypedQuery<ReservaEntity> query = entityManager.createQuery("Select u from ReservaEntity u where u.viajero.id =" + idViajero, ReservaEntity.class);
+    
+    public List<ReservaEntity> findReservasByIdViajero(Long idViajero) {
+        TypedQuery<ReservaEntity> query = entityManager.createQuery("SELECT u FROM ReservaEntity u WHERE u.viajero.id = " + idViajero, ReservaEntity.class);
         List<ReservaEntity> reservasPorIdViajero = query.getResultList();
         
         if (!reservasPorIdViajero.isEmpty())
@@ -75,6 +64,17 @@ public class ReservaPersistence
 
     public ReservaEntity findReserva(Long id) {
         return entityManager.find(ReservaEntity.class, id);
+    }
+
+    public void delete(Long id) {
+        TypedQuery<ReservaEntity> query = entityManager.createQuery("SELECT u FROM ReservaEntity u WHERE u.id = :id", ReservaEntity.class);
+        query.setParameter("id", id);
+        ReservaEntity reservaToDelete = query.getSingleResult();
+        entityManager.remove(reservaToDelete);
+    }
+
+    public ReservaEntity update(ReservaEntity reservaEntity) {
+        return entityManager.merge(reservaEntity);
     }
     
 }
