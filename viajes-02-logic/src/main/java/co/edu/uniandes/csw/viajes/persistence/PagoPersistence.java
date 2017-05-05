@@ -72,7 +72,7 @@ public class PagoPersistence
      */
     public List<PagoEntity> findAllMisPagos(Long idRemitente)
     {
-        TypedQuery<PagoEntity> query = entityManager.createQuery("Select u from PagoEntity u where u.remitente.id =" + idRemitente, PagoEntity.class);
+        TypedQuery<PagoEntity> query = entityManager.createQuery("Select u from PagoEntity u where u.remitente.id = " + idRemitente, PagoEntity.class);
         List<PagoEntity> misPagos = query.getResultList();
         
         if (!misPagos.isEmpty())

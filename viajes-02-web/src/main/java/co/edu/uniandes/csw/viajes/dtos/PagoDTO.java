@@ -38,17 +38,17 @@ public class PagoDTO
     /**
      * id del pago
      */
-    private Long id;
+    protected Long id;
 
     /**
      * Valor del Pago
      */
-    private Double valor;
+    protected Double valor;
     
     /**
      * Estado del Pago
      */
-    private Boolean cancelado;
+    protected Boolean cancelado;
 
     /**
      * Constructor por defecto de PagoDTO

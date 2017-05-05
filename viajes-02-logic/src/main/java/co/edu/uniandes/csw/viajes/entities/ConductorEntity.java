@@ -32,6 +32,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -77,16 +78,19 @@ public class ConductorEntity extends UsuarioEntity{
     /**
      * Reviews del conductor
      */
+    @PodamExclude
     @OneToMany
     private List <ReviewEntity> reviews;
     /**
      * Automoviles del conductor.
      */
+    @PodamExclude
     @OneToMany (cascade = CascadeType.ALL)
     private List<AutomovilEntity> automoviles;
     /**
      * Viajes del conductor.
      */
+    @PodamExclude
     @OneToMany (cascade = CascadeType.ALL, mappedBy = "conductor")
     private List <ViajeEntity> viajes;
     /**

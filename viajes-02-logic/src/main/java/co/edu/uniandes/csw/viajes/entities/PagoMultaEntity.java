@@ -23,6 +23,7 @@
  */
 package co.edu.uniandes.csw.viajes.entities;
 
+import java.io.Serializable;
 import javax.persistence.Entity;
 
 /**
@@ -30,6 +31,6 @@ import javax.persistence.Entity;
  * @author ja.bermudez10
  */
 @Entity
-public class PagoMultaEntity extends PagoEntity {
+public class PagoMultaEntity extends PagoEntity implements Serializable {
     
 }

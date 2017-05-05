@@ -48,28 +48,29 @@ public class ReservaResource
     @Inject
     private ReservaLogic reservaLogic;
     
+    @Inject
     private ViajeroLogic viajeroLogic;
 
     @POST 
-    public ReservaDTO createReserva(ReservaDTO reservaDTO)
+    public ReservaDetailDTO createReserva(ReservaDTO reservaDTO)
     {
         return new ReservaDetailDTO(reservaLogic.createReserva(reservaDTO.toEntity()));
     }
 
     @GET
-    public List<ReservaDetailDTO> getReservas(@PathParam("idViajero") Long idViajero)
+    public List<ReservaDTO> getReservas(@PathParam("idViajero") Long idViajero)
     {  // TODO si el recurso con el idViajero dado no existe de se debe disparar WebApplicationException 404
         if(reservaLogic.getReservasViajero(idViajero) == null)
             throw new WebApplicationException("No existe(n) reserva(s) asociada(s) al viajero con id " + idViajero, 404);
         else
-            return listEntity2DDTO(reservaLogic.getReservasViajero(idViajero));
+            return listEntity2DTO(reservaLogic.getReservasViajero(idViajero));
     }
     
     @GET
     @Path("/{id: \\d+}")
-    public ReservaDetailDTO getReserva(@PathParam("id") Long id)
+    public ReservaDTO getReserva(@PathParam("id") Long id)
     {
-        return new ReservaDetailDTO(reservaLogic.getReserva(id));
+        return new ReservaDTO(reservaLogic.getReserva(id));
     }
 
     @DELETE
@@ -79,9 +80,19 @@ public class ReservaResource
         reservaLogic.deleteReserva(idReserva);
     }
 
-    private List<ReservaDetailDTO> listEntity2DDTO(List<ReservaEntity> reservaEntityList)
+    private List<ReservaDTO> listEntity2DTO(List<ReservaEntity> reservaEntityList)
     {
-        List<ReservaDetailDTO> listReserva = new ArrayList<>();
+        List<ReservaDTO> listReserva = new ArrayList<ReservaDTO>();
+        
+        for (ReservaEntity reservaEntity : reservaEntityList) {
+            listReserva.add(new ReservaDTO(reservaEntity));
+        }
+        return listReserva;
+    }
+    
+    private List<ReservaDetailDTO> listEntity2DetailDTO(List<ReservaEntity> reservaEntityList)
+    {
+        List<ReservaDetailDTO> listReserva = new ArrayList<ReservaDetailDTO>();
         
         for (ReservaEntity reservaEntity : reservaEntityList) {
             listReserva.add(new ReservaDetailDTO(reservaEntity));

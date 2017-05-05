@@ -5,22 +5,19 @@
  */
 package co.edu.uniandes.csw.viajes.persistence;
 
-import co.edu.uniandes.csw.viajes.entities.PagoEntity;
+import co.edu.uniandes.csw.viajes.entities.PagoMultaEntity;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.UserTransaction;
-import org.jboss.arquillian.junit.Arquillian;
+import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
-import org.junit.Test;
-import static org.junit.Assert.*;
-import org.junit.runner.RunWith;
-import org.jboss.arquillian.container.test.api.Deployment;
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.Test;
 import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
 
@@ -28,20 +25,18 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
  *
  * @author ja.bermudez10
  */
-@RunWith(Arquillian.class)
-public class PagoPersistenceTest {
-    
-    @Deployment
+public class PagoMultaPersistenceTest {
+     @Deployment
     public static JavaArchive createDeployment () {
         return ShrinkWrap.create(JavaArchive.class)
-                .addPackage(PagoEntity.class.getPackage())
-                .addPackage(PagoPersistence.class.getPackage())
+                .addPackage(PagoMultaEntity.class.getPackage())
+                .addPackage(PagoMultaPersistence.class.getPackage())
                 .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }
     
     @Inject
-    private PagoPersistence pagoPersistence;
+    private PagoMultaPersistence pagoMultaPersistence;
     
     @PersistenceContext
     private EntityManager entityManager;
@@ -49,7 +44,7 @@ public class PagoPersistenceTest {
     @Inject
     UserTransaction userTransaction;
     
-    private List<PagoEntity> data = new ArrayList<PagoEntity>();
+    private List<PagoMultaEntity> data = new ArrayList<PagoMultaEntity>();
     
     @Before
     public void setUp() {
@@ -72,40 +67,40 @@ public class PagoPersistenceTest {
     }
     
     private void clearData() {
-        entityManager.createQuery("DELETE FROM PagoEntity").executeUpdate();
+        entityManager.createQuery("DELETE FROM PagoMultaEntity").executeUpdate();
     }
     
     private void insertData() {
         PodamFactory podamFactory = new PodamFactoryImpl();
         
         for (int i = 0; i < 10; i++) {
-            PagoEntity pagoEntity = podamFactory.manufacturePojo(PagoEntity.class);
-            entityManager.persist(pagoEntity);
-            data.add(pagoEntity);
+            PagoMultaEntity pagoMultaEntity = podamFactory.manufacturePojo(PagoMultaEntity.class);
+            entityManager.persist(pagoMultaEntity);
+            data.add(pagoMultaEntity);
         }
     }
     
     @Test
-    public void createPagoTest() {
+    public void createPagoMultaTest() {
         PodamFactory podamFactory = new PodamFactoryImpl();
-        PagoEntity newPagoEntity = podamFactory.manufacturePojo(PagoEntity.class);
-        PagoEntity result = pagoPersistence.create(newPagoEntity);
+        PagoMultaEntity newPagoMultaEntity = podamFactory.manufacturePojo(PagoMultaEntity.class);
+        PagoMultaEntity result = pagoMultaPersistence.create(newPagoMultaEntity);
         
         Assert.assertNotNull(result);
-        PagoEntity pagoEntity = entityManager.find(PagoEntity.class, result.getId());
-        Assert.assertNotNull(pagoEntity);
-        Assert.assertEquals(newPagoEntity, pagoEntity);
+        PagoMultaEntity pagoMultaEntity = entityManager.find(PagoMultaEntity.class, result.getId());
+        Assert.assertNotNull(pagoMultaEntity);
+        Assert.assertEquals(newPagoMultaEntity, pagoMultaEntity);
     }
     
     @Test
-    public void getPagosTest() {
-        List<PagoEntity> pagos = pagoPersistence.findAll();
+    public void getPagosMultaTest() {
+        List<PagoMultaEntity> pagos = pagoMultaPersistence.findAll();
         Assert.assertEquals(data.size(), pagos.size());
         
-        for (PagoEntity pagoPagos : pagos) {
+        for (PagoMultaEntity pagoPagos : pagos) {
             boolean encontrado = false;
             
-            for (PagoEntity pagoData : data) {
+            for (PagoMultaEntity pagoData : data) {
                 if (pagoPagos.getId().equals(pagoData.getId())) {
                     encontrado = true;
                 }
@@ -116,32 +111,31 @@ public class PagoPersistenceTest {
     }
     
     @Test
-    public void getPagoByIdTest() {
-        PagoEntity pagoEntity = data.get(0);
-        PagoEntity newPagoEntity = pagoPersistence.findPago(pagoEntity.getId());
-        Assert.assertNotNull(newPagoEntity);
-        Assert.assertEquals(pagoEntity, newPagoEntity);
+    public void getPagoMultaByIdTest() {
+        PagoMultaEntity pagoMultaEntity = data.get(0);
+        PagoMultaEntity newPagoMultaEntity = pagoMultaPersistence.findPagoMulta(pagoMultaEntity.getId());
+        Assert.assertNotNull(newPagoMultaEntity);
+        Assert.assertEquals(pagoMultaEntity, newPagoMultaEntity);
     }
     
     @Test
-    public void deletePagoTest() {
-        PagoEntity pagoEntity = data.get(0);
-        pagoPersistence.delete(pagoEntity.getId());
-        PagoEntity eliminado = entityManager.find(PagoEntity.class, pagoEntity.getId());
+    public void deletePagoMultaTest() {
+        PagoMultaEntity pagoMultaEntity = data.get(0);
+        pagoMultaPersistence.delete(pagoMultaEntity.getId());
+        PagoMultaEntity eliminado = entityManager.find(PagoMultaEntity.class, pagoMultaEntity.getId());
         Assert.assertNull(eliminado);
     }
     
     @Test
-    public void updatePagoTest() {
-        PagoEntity pagoEntity = data.get(0);
+    public void updatePagoMultaTest() {
+        PagoMultaEntity pagoMultaEntity = data.get(0);
         PodamFactory podamFactory = new PodamFactoryImpl();
-        PagoEntity newPagoEntity = podamFactory.manufacturePojo(PagoEntity.class);
+        PagoMultaEntity newPagoMultaEntity = podamFactory.manufacturePojo(PagoMultaEntity.class);
         
-        newPagoEntity.setId(pagoEntity.getId());
-        pagoPersistence.update(newPagoEntity);
-        PagoEntity respPagoEntity = entityManager.find(PagoEntity.class, pagoEntity.getId());
-        Assert.assertEquals(newPagoEntity, respPagoEntity);
+        newPagoMultaEntity.setId(pagoMultaEntity.getId());
+        pagoMultaPersistence.update(newPagoMultaEntity);
+        PagoMultaEntity respPagoMultaEntity = entityManager.find(PagoMultaEntity.class, pagoMultaEntity.getId());
+        Assert.assertEquals(newPagoMultaEntity, respPagoMultaEntity);
     }
     
 }
-

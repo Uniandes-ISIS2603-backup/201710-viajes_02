@@ -32,6 +32,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -55,16 +56,20 @@ public class UsuarioEntity implements Serializable {
     private Double rating;
 
     private String correo;
-
+    
+    @PodamExclude
     @OneToOne(cascade = CascadeType.PERSIST)
     private LugarEntity direccion;
 
+    @PodamExclude
     @OneToMany(cascade = CascadeType.PERSIST)
     private List<CobroEntity> cobros;
 
+    @PodamExclude
     @OneToMany(cascade = CascadeType.PERSIST)
     private List<PagoEntity> pagos;
 
+    @PodamExclude
     @OneToMany(cascade = CascadeType.PERSIST)
     private List<ReviewEntity> reviews;
     

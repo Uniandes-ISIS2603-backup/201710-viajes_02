@@ -5,7 +5,7 @@
  */
 (function (ng) {
     var mod = ng.module("pagoModule", ['ui.router']);
-    mod.constant("pagosContext", "api/pagos");
+    mod.constant("pagosContext", "api/usuarios");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
 
             var basePath = 'src/modules/Pago/';
@@ -13,11 +13,14 @@
             $urlRouterProvider.otherwise("/pagosList");
 
             $stateProvider.state('pagos', {
-                url: '/pagos',
+                url: '/usuarios/{idUsuario:int}/pagos',
                 abstract: true,
+                param: {
+                  idUsuario: null
+                },
                 resolve: {
-                    pagos: ['$http', function ($http) {
-                            return $http.get('data/pagos.json');
+                    pagos: ['$http', 'pagosContext', '$stateParams', function ($http, pagosContext, $params) {
+                            return $http.get(pagosContext + '/' + $params.idUsuario + '/pagos');
                         }]
                 },
                 views: {

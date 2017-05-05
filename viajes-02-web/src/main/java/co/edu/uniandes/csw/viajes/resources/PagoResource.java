@@ -24,6 +24,7 @@
 package co.edu.uniandes.csw.viajes.resources;
 // TODO Eliminar los imports que no se necesitan
 import co.edu.uniandes.csw.viajes.dtos.PagoDTO;
+import co.edu.uniandes.csw.viajes.dtos.PagoDetailDTO;
 import co.edu.uniandes.csw.viajes.ejbs.PagoLogic;
 import co.edu.uniandes.csw.viajes.entities.PagoEntity;
 import java.util.ArrayList;
@@ -42,35 +43,32 @@ import javax.ws.rs.core.MediaType;
  *
  * @author ja.bermudez10
  */
-@Path("/pagos")
+@Path("/usuarios/{idUsuario: \\d+}/pagos")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class PagoResource
 {
 
     @Inject
-    private PagoLogic reservaLogic;
-
-    @Context
+    private PagoLogic pagoLogic;
 
     @POST
-    public PagoDTO createPago(PagoDTO pagoDTO)
+    public PagoDetailDTO createPago(PagoDetailDTO pagoDetailDTO)
     {
-        return new PagoDTO(reservaLogic.createPago(pagoDTO.toEntity()));
+        return new PagoDetailDTO(pagoLogic.createPago(pagoDetailDTO.toEntity()));
     }
 
     @GET
-    @Path("/usuario/{idRemitente: \\d+}")
-    public List<PagoDTO> getMisPagos(@PathParam("idRemitente") Long idRemitente)
+    public List<PagoDTO> getMisPagos(@PathParam("idUsuario") Long idUsuario)
     {
-        return listEntity2DTO(reservaLogic.getMisPagos(idRemitente));
+        return listEntity2DTO(pagoLogic.getMisPagos(idUsuario));
     }
 
     @GET
-    @Path("/pago/{idPago: \\d+}")
+    @Path("/{idPago: \\d+}")
     public PagoDTO getPago(@PathParam("idPago") Long idPago)
     {
-        return new PagoDTO(reservaLogic.getPago(idPago));
+        return new PagoDTO(pagoLogic.getPago(idPago));
     }
 
     private List<PagoDTO> listEntity2DTO(List<PagoEntity> reservaEntityList)
@@ -79,6 +77,16 @@ public class PagoResource
         for (PagoEntity pagoEntity : reservaEntityList)
         {
             listPago.add(new PagoDTO(pagoEntity));
+        }
+        return listPago;
+    }
+    
+    private List<PagoDetailDTO> listEntity2DetailDTO(List<PagoEntity> reservaEntityList)
+    {
+        List<PagoDetailDTO> listPago = new ArrayList<PagoDetailDTO>();
+        for (PagoEntity pagoEntity : reservaEntityList)
+        {
+            listPago.add(new PagoDetailDTO(pagoEntity));
         }
         return listPago;
     }
