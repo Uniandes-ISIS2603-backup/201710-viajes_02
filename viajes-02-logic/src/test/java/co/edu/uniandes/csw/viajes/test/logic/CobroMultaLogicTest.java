@@ -5,9 +5,10 @@
  */
 package co.edu.uniandes.csw.viajes.test.logic;
 
-import co.edu.uniandes.csw.viajes.ejbs.LugarLogic;
-import co.edu.uniandes.csw.viajes.entities.LugarEntity;
-import co.edu.uniandes.csw.viajes.persistence.LugarPersistence;
+import co.edu.uniandes.csw.viajes.ejbs.CobroMultaLogic;
+import co.edu.uniandes.csw.viajes.entities.CobroMultaEntity;
+import co.edu.uniandes.csw.viajes.persistence.CobroMultaPersistence;
+import co.edu.uniandes.csw.viajes.persistence.CobroPersistence;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -30,12 +31,12 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
  * @author wr.ravelo
  */
 @RunWith(Arquillian.class)
-public class LugarLogicTest 
-{
+public class CobroMultaLogicTest {
+
     private PodamFactory factory = new PodamFactoryImpl();
 
     @Inject
-    private LugarLogic lugarLogic;
+    private CobroMultaLogic cobroMultaLogic;
 
     @PersistenceContext
     private EntityManager em;
@@ -43,17 +44,14 @@ public class LugarLogicTest
     @Inject
     private UserTransaction utx;
 
-    private List<LugarEntity> data = new ArrayList<LugarEntity>();
+    private List<CobroMultaEntity> data = new ArrayList<CobroMultaEntity>();
 
-    /**
-     * Configuracion de despliegue
-     */
     @Deployment
     public static JavaArchive createDeployment() {
         return ShrinkWrap.create(JavaArchive.class)
-                .addPackage(LugarEntity.class.getPackage())
-                .addPackage(LugarLogic.class.getPackage())
-                .addPackage(LugarPersistence.class.getPackage())
+                .addPackage(CobroMultaEntity.class.getPackage())
+                .addPackage(CobroMultaLogic.class.getPackage())
+                .addPackage(CobroMultaPersistence.class.getPackage())
                 .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }
@@ -78,31 +76,31 @@ public class LugarLogicTest
     }
 
     /**
-     * Prueba de crear un lugar
+     * Prueba de crear un cobro multa
      */
     @Test
-    public void createLugarTest() {
-        LugarEntity newEntity = factory.manufacturePojo(LugarEntity.class);
+    public void createCobroMultaTest() {
+        CobroMultaEntity newEntity = factory.manufacturePojo(CobroMultaEntity.class);
 
-        LugarEntity result = lugarLogic.createLugar(newEntity);
+        CobroMultaEntity result = cobroMultaLogic.createCobroMulta(newEntity);
         Assert.assertNotNull(result);
 
-        LugarEntity entity = em.find(LugarEntity.class, result.getId());
+        CobroMultaEntity entity = em.find(CobroMultaEntity.class, result.getId());
 
         Assert.assertEquals(newEntity.getId(), entity.getId());
-        Assert.assertEquals(newEntity.getLugar(), entity.getLugar());
+        Assert.assertEquals(newEntity.getValor(), entity.getValor());
     }
 
     /**
-     * Prueba que se den todos los lugares
+     * Prueba que se den todos los cobros multa
      */
     @Test
-    public void getLugaresTest() {
-        List<LugarEntity> list = lugarLogic.findLugares();
+    public void getCobrosMultaTest() {
+        List<CobroMultaEntity> list = cobroMultaLogic.findCobroMultas();
         Assert.assertEquals(data.size(), list.size());
-        for (LugarEntity entity : list) {
+        for (CobroMultaEntity entity : list) {
             boolean found = false;
-            for (LugarEntity entity2 : data) {
+            for (CobroMultaEntity entity2 : data) {
                 if (entity.getId().equals(entity2.getId())) {
                     found = true;
                 }
@@ -112,52 +110,52 @@ public class LugarLogicTest
     }
 
     /**
-     * Prueba que se de un lugar especifico.
+     * Prueba que se de un cobro especifico.
      */
     @Test
-    public void getLugarTest() {
-        LugarEntity entity = data.get(0);
-        LugarEntity resultEntity = lugarLogic.findLugar(entity.getId());
+    public void getCobroMultaTest() {
+        CobroMultaEntity entity = data.get(0);
+        CobroMultaEntity resultEntity = cobroMultaLogic.findCobroMulta(entity.getId());
         Assert.assertNotNull(resultEntity);
-        Assert.assertEquals(entity.getLugar(), resultEntity.getLugar());
+        Assert.assertEquals(entity.getValor(), resultEntity.getValor());
         Assert.assertEquals(entity.getId(), resultEntity.getId());
     }
 
     /**
-     * Prueba que se actualice un lugar.
+     * Prueba que se actualice un cobro.
      */
     @Test
-    public void updateLugarTest() {
-        LugarEntity entity = data.get(0);
-        LugarEntity newEntity = factory.manufacturePojo(LugarEntity.class);
+    public void updateCobroMultaTest() {
+        CobroMultaEntity entity = data.get(0);
+        CobroMultaEntity newEntity = factory.manufacturePojo(CobroMultaEntity.class);
 
         newEntity.setId(entity.getId());
 
-        lugarLogic.updateLugar(newEntity);
+        cobroMultaLogic.updateCobroMulta(newEntity);
 
-        LugarEntity resp = em.find(LugarEntity.class, entity.getId());
+        CobroMultaEntity resp = em.find(CobroMultaEntity.class, entity.getId());
 
-        Assert.assertEquals(newEntity.getLugar(), resp.getLugar());
+        Assert.assertEquals(newEntity.getValor(), resp.getValor());
         Assert.assertEquals(newEntity.getId(), resp.getId());
     }
 
     /**
-     * Prueba que se elimine un lugar.
+     * Prueba que se elimine un cobro multa.
      */
     @Test
-    public void deleteLugarTest() {
-        LugarEntity entity = data.get(1);
-        lugarLogic.deleteLugar(entity.getId());
-        LugarEntity deleted = em.find(LugarEntity.class, entity.getId());
+    public void deleteCobroMultaTest() {
+        CobroMultaEntity entity = data.get(1);
+        cobroMultaLogic.deleteCobroMulta(entity.getId());
+        CobroMultaEntity deleted = em.find(CobroMultaEntity.class, entity.getId());
         Assert.assertNull(deleted);
     }
 
-    // Helpers
+    //Helpers
     /**
      * Elimina los datos que hay actualmente en la base de datos.
      */
     public void clearData() {
-        em.createQuery("delete from LugarEntity").executeUpdate();
+        em.createQuery("delete from CobroMultaEntity").executeUpdate();
     }
 
     /**
@@ -165,7 +163,7 @@ public class LugarLogicTest
      */
     public void insertData() {
         for (int i = 0; i < 10; i++) {
-            LugarEntity entity = factory.manufacturePojo(LugarEntity.class);
+            CobroMultaEntity entity = factory.manufacturePojo(CobroMultaEntity.class);
             em.persist(entity);
             data.add(entity);
         }
