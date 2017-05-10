@@ -1,23 +1,11 @@
 ----------------------------------------------------------------
-<<<<<<< HEAD
-Fri May 05 10:25:15 COT 2017:
- Iniciando instancia a816c00e-015b-d937-0ea6-00000f1122b8 de Derby, versión The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): 
-en el directorio de base de datos C:\Users\ja.bermudez10\AppData\Local\Temp\gfembed1953189408036597417tmp\lib\databases\embedded_default con el cargador de clases sun.misc.Launcher$AppClassLoader@4aa298b7
-Cargado desde file:/C:/Users/ja.bermudez10/.m2/repository/org/glassfish/main/extras/glassfish-embedded-all/4.1/glassfish-embedded-all-4.1.jar
-=======
-Thu May 04 13:31:00 COT 2017:
- Iniciando instancia a816c00e-015b-d4ba-bf78-00000a8335a0 de Derby, versión The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): 
-en el directorio de base de datos C:\Users\wr.ravelo\AppData\Local\Temp\gfembed8069998413754553080tmp\lib\databases\embedded_default con el cargador de clases sun.misc.Launcher$AppClassLoader@4aa298b7
+Wed May 10 11:16:44 COT 2017:
+ Iniciando instancia a816c00e-015b-f325-fbab-00000def0248 de Derby, versión The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): 
+en el directorio de base de datos C:\Users\wr.ravelo\AppData\Local\Temp\gfembed2882818142024107521tmp\lib\databases\embedded_default con el cargador de clases sun.misc.Launcher$AppClassLoader@4aa298b7
 Cargado desde file:/C:/Users/wr.ravelo/.m2/repository/org/glassfish/main/extras/glassfish-embedded-all/4.1/glassfish-embedded-all-4.1.jar
->>>>>>> origin/master
 java.vendor=Oracle Corporation
-<<<<<<< HEAD
-java.runtime.version=1.8.0_121-b13
-user.dir=C:\Users\ja.bermudez10\Documents\NetBeansProjects\viajes_02\viajes-02-logic
-=======
 java.runtime.version=1.8.0_111-b14
 user.dir=C:\Users\wr.ravelo\Documents\NetBeansProjects\viajes_02\viajes-02-logic
->>>>>>> origin/master
 os.name=Windows 7
 os.arch=amd64
 os.version=6.1
