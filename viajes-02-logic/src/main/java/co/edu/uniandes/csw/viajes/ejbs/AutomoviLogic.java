@@ -59,9 +59,9 @@ public class AutomoviLogic
      * @param id (placa) Identificador del carro
      * @return AutomovilEntity.
      */
-    public AutomovilEntity getAuto(String placa)
+    public AutomovilEntity getAuto(Long id)
     {
-        return persistence.find(placa);
+        return persistence.find(id);
     }
 
     /**
@@ -99,10 +99,10 @@ public class AutomoviLogic
     /**
      * Elimina una instancia de Automovil en la base de datos
      *
-     * @param placa para identificar el carro a eliminar
+     * @param id para identificar el carro a eliminar
      */
-    public void deletCar(String placa)
+    public void deletCar(Long id)
     {
-        persistence.delete(placa);
+        persistence.delete(id);
     }
 }

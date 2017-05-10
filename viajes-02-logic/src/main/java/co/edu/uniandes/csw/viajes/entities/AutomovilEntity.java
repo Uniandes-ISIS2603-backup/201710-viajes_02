@@ -23,6 +23,8 @@
  */
 package co.edu.uniandes.csw.viajes.entities;
 
+import uk.co.jemos.podam.common.PodamExclude;
+
 import java.io.Serializable;
 import javax.persistence.*;
 //import javax.persistence.ManyToOne;
@@ -78,7 +80,8 @@ public class AutomovilEntity implements Serializable {
 
 //TODO: verificar porque falla
 //    TODO: CAMBIO
-    @ManyToOne
+    @ManyToOne(targetEntity = ConductorEntity.class, cascade = CascadeType.PERSIST)
+    @PodamExclude
     private ConductorEntity conductorEntity;
 
     public ConductorEntity getConductorEntity() {

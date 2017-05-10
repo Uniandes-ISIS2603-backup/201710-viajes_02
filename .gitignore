@@ -5,3 +5,5 @@
 /viajes-02-web/src/main/webapp/WEB-INF/bower_components/
 /viajes-02-logic/nbproject/
 /viajes-02-web/viajes-02-web/src/main/webapp/WEB-INF/bower_components/
+.idea/
+.out/

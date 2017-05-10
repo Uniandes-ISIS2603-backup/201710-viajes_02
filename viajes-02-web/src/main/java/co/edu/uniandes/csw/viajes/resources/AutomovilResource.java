@@ -99,14 +99,14 @@ public class AutomovilResource
     /**
      * Da un automovil especifico dado por su placa
      *
-     * @param placa
+     * @param id
      * @return el AutomovilDetailDTO del auto solicitado
      */
     @GET
     @Path("{id: \\d+}")
-    public AutomovilDetailDTO getCar(@PathParam("id") String placa)
+    public AutomovilDetailDTO getCar(@PathParam("id") Long id)
     {
-        return new AutomovilDetailDTO(logic.getAuto(placa));
+        return new AutomovilDetailDTO(logic.getAuto(id));
     }
 
     /**
@@ -126,12 +126,12 @@ public class AutomovilResource
     /**
      * borra un carro especifico encontrado por su placa
      *
-     * @param placa
+     * @param id
      */
     @DELETE
     @Path("{id: \\d+}")
-    public void deleteCar(@PathParam("id") String placa)
+    public void deleteCar(@PathParam("id") Long id)
     {
-        logic.deletCar(placa);
+        logic.deletCar(id);
     }
 }

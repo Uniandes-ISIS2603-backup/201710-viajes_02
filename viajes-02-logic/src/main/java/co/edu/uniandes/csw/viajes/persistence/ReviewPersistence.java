@@ -63,85 +63,44 @@ public class ReviewPersistence
      * @return ReviewEntity
      */
 
-    public ReviewEntity find(Long idCalificado)
+    public List<ReviewEntity> findReviewsUsuario(Long idCalificado)
     {
-        return em.find(ReviewEntity.class, idCalificado);
+        Query q = em.createQuery("select u from ReviewEntity u where u.idCalificado = :pollo");
+        q.setParameter("pollo",idCalificado);
+        return q.getResultList();
     }
 
     /**
      * crea un nuevo review
      *
-     * @param idCalificado
+     * @param review
      * @return ReviewEntity
      */
-    public ReviewEntity create(ReviewEntity idCalificado)
+    public ReviewEntity create(ReviewEntity review)
     {
-        em.persist(idCalificado);
-        return idCalificado;
+        em.persist(review);
+        return review;
     }
 
     /**
      * actualiza el review de un usuario
      *
-     * @param idCalificado
+     * @param review
      * @return ReviewEntity
      */
-    public ReviewEntity update(ReviewEntity idCalificado)
+
+    //TODO: verificar  review
+    public ReviewEntity update(ReviewEntity review)
     {
-        return em.merge(idCalificado);
+        return em.merge(review);
 
     }
-
-    public void delete(Long idCalificado)
+ //TODO: verificar que busque por el id del review
+    public void delete(Long idReview)
     {
-        ReviewEntity borrar = em.find(ReviewEntity.class, idCalificado);
+        ReviewEntity borrar = em.find(ReviewEntity.class, idReview);
         em.remove(borrar);
 
     }
 
-    /**
-     * busca el idDelCalificado
-     *
-     * @param idCalificado
-     * @return ReviewEntity
-     */
-    public ReviewEntity findByCalificado(Long idCalificado)
-    {
-        //		TypedQuery<ReviewEntity> q = em.createQuery( "select u from ReviewEntity u where u.idCalificado = :idCalificado", ReviewEntity.class );
-        //		q = q.setParameter( "idCalificado", idCalificado );
-        //
-        //		List<ReviewEntity> sameID = q.getResultList( );
-        //		if( sameID.isEmpty( ) )
-        //		{
-        //			return null;
-        //		}
-        //		else
-        //		{
-        //			return sameID.get( 0 );
-        //		}
-        TypedQuery<ReviewEntity> q = em.createQuery("select u from ReviewEntity u where u.idCalificado = :idCalificado", ReviewEntity.class);
-        return q.getResultList().get(0);
-    }
-
-    /**
-     * busca el idDelCalificador
-     *
-     * @param idCalificador
-     * @return ReviewEntity
-     */
-    public ReviewEntity findByCalificador(Long idCalificador)
-    {
-        TypedQuery<ReviewEntity> q = em.createQuery("select u from ReviewEntity u where u.idCalificador = :idCalificador", ReviewEntity.class);
-        q = q.setParameter("idCalificador", idCalificador);
-
-        List<ReviewEntity> sameID = q.getResultList();
-        if (sameID.isEmpty())
-        {
-            return null;
-        }
-        else
-        {
-            return sameID.get(0);
-        }
-    }
-}
+   }

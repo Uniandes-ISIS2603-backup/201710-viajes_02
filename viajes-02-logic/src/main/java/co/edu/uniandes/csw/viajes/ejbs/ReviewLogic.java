@@ -24,7 +24,9 @@
 package co.edu.uniandes.csw.viajes.ejbs;
 
 import co.edu.uniandes.csw.viajes.entities.ReviewEntity;
+import co.edu.uniandes.csw.viajes.persistence.ConductorPersistence;
 import co.edu.uniandes.csw.viajes.persistence.ReviewPersistence;
+import co.edu.uniandes.csw.viajes.persistence.ViajeroPersistence;
 
 import java.util.List;
 import javax.ejb.Stateless;
@@ -41,34 +43,39 @@ public class ReviewLogic
      */
 	@Inject
 	private ReviewPersistence persistence;
-	
+
+	@Inject
+	private ConductorPersistence conductorPersistence;
+
+	@Inject
+	private ViajeroPersistence viajeroPersistence;
+
 	/**
 	 * Obtiene la calificacion de un usuario.
 	 *
-	 * @param id (idCalificado) Identificador del usuario
+	 * @param idCalificado (idCalificado) Identificador del usuario
 	 * @return ReviewEntity.
 	 */
-	public ReviewEntity getReview( Long idCalificado )
+	public List<ReviewEntity> getReviews(Long idCalificado )
 	{
-		return persistence.find( idCalificado );
+		return persistence.findReviewsUsuario( idCalificado );
 	}
 	
 	/**
 	 * Se encarga de crear una nueva calificacion en la base de datos.
 	 *
-	 * @param entity Objeto de ReviewEntity con los datos nuevos
+	 * @param review Objeto de ReviewEntity con los datos nuevos
 	 * @return Objeto de AutomovilEntity con los datos nuevos y su ID.
 	 * @generated
 	 */
-	public ReviewEntity creatReview( ReviewEntity idCalificado ) throws Exception
+	public ReviewEntity creatReview( ReviewEntity review ) throws Exception
 	{
 		// calcularla y verificar que  el otro usuario este en el sistema
-		if( persistence.findByCalificador( idCalificado.getIdCalificador( ) ) != null )
+		if( viajeroPersistence.find( review.getIdCalificador( ) ) != null )
 		{
-			if( persistence.findByCalificado( idCalificado.getIdCalificado( ) ) != null &&(idCalificado.getCalificacion()>=0 && idCalificado.getCalificacion()<=5  )  )
+			if( conductorPersistence.find( review.getIdCalificado( ) ) != null &&(review.getCalificacion()>=0 && review.getCalificacion()<=5  )  )
 			{
-				ReviewEntity reviewA = persistence.create( idCalificado );
-				return reviewA;
+				return persistence.create( review );
 			}
 			else
 			{
@@ -94,11 +101,11 @@ public class ReviewLogic
 	/**
 	 * Elimina la  calificacion de un usuario en la base de datos
 	 *
-	 * @param idCalificado para identificar la calificacion del usuario a eliminar
+	 * @param idReview para identificar la calificacion del usuario a eliminar
 	 */
-	public void deletReview( Long idCalificado )
+	public void deletReview( Long idReview )
 	{
-		persistence.delete( idCalificado );
+		persistence.delete( idReview );
 	}
         /**
          * Da todas las reviews

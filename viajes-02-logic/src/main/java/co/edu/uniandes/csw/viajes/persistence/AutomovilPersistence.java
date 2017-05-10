@@ -59,12 +59,12 @@ public class AutomovilPersistence
     /**
      * encuentra un carro por una placa
      *
-     * @param placa
+     * @param id
      * @return AutomovilEntity
      */
-    public AutomovilEntity find(String placa)
+    public AutomovilEntity find(Long id)
     {
-        return em.find(AutomovilEntity.class, placa);
+        return em.find(AutomovilEntity.class, id);
     }
 
     /**
@@ -95,11 +95,11 @@ public class AutomovilPersistence
     /**
      * borra un auto con una placa especifica
      *
-     * @param placa
+     * @param id
      */
-    public void delete(String placa)
+    public void delete(Long id)
     {
-        AutomovilEntity borrar = em.find(AutomovilEntity.class, placa);
+        AutomovilEntity borrar = em.find(AutomovilEntity.class, id);
         em.remove(borrar);
 
     }

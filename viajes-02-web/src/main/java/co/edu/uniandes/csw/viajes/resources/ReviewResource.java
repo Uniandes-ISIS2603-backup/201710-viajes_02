@@ -96,14 +96,21 @@ public class ReviewResource
     /**
      * Da un revew especifico para un usuario en particular dado por su id
      *
-     * @param placa
+     * @param id
      * @return el AutomovilDetailDTO del auto solicitado
      */
     @GET
     @Path("{id: \\d+}")
-    public ReviewDTO getReview(@PathParam("id") Long id)
+    public List<ReviewDTO> getReview(@PathParam("id") Long id)
     { // TODO si el recurso con el id dado no existe de sedeb disparar WebApplicationException 404
-        return new ReviewDTO(logic.getReview(id));
+        List<ReviewDTO> lista = new ArrayList<ReviewDTO>();
+
+        for ( ReviewEntity review : logic.getReviews(id) )
+        {
+            lista.add(new ReviewDTO(review));
+        }
+
+                return lista;
     }
 
     /**
