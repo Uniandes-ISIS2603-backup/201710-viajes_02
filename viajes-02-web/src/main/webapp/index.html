@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html ng-app="mainApp">
+    <!DOCTYPE html>
+    <html ng-app="mainApp">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,8 +14,13 @@
         <script src="bower_components/angular/angular.js"></script>
         <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
 
+
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+
+
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
 
         <!--mainApp-->
         <script src="src/app.js" type="text/javascript"></script>
@@ -46,62 +51,160 @@
     </head>
     <body class="span4">
         <div class="container-fluid">
-            <div class="row mainHeader"  >
-                <div class="col-lg-12">
-                    <ul class=" nav nav-tabs " style= "text-align: center;padding-bottom: 15px;margin-bottom: 15px; margin-top:15px">
-                        <li>&nbsp </li>
-                        <li>&nbsp </li>
-                        <li>&nbsp </li>
-                        <li>&nbsp </li>
-                        <li>&nbsp </li>
-                        <li>&nbsp </li>
-                        <li role="navigation"><a ui-sref="viajerosList">Viajeros</a></li>
-                        <li>&nbsp </li>
-                        <li>&nbsp </li>
-                        <li>&nbsp </li>
-                        <li>&nbsp </li>
-                        <li role="presentation"><a ui-sref="conductoresList">Conductores</a></li>
-                        <li>&nbsp </li>
-                        <li>&nbsp </li>
-                        <li>&nbsp </li>
-                        <li>&nbsp </li>
-                        <li role="presentation"><a ui-sref="viajesList">Viajes</a></li>
-                        <li>&nbsp </li>
-                        <li>&nbsp </li>
-                        <li>&nbsp </li>
-                        <li><img src="css/image_logo.png"></li>
-                        <li>&nbsp </li>
-                        <li>&nbsp </li>
-                        <li>&nbsp </li>
-                        <li>&nbsp </li>
-                        <li role="navigation"><a ui-sref="lugarList">Lugares</a></li>
-                        <li>&nbsp </li>
-                        <li>&nbsp </li>
-                        <li>&nbsp </li>
-                        <li>&nbsp </li>
-                        <li role="navigation"><a ui-sref="pagosList">Pagos</a></li>
-                        <li>&nbsp </li>
-                        <li>&nbsp </li>
-                        <li>&nbsp </li>
-                        <li>&nbsp </li>
-                        <li>&nbsp </li>
-                        <li>&nbsp </li>
-                        <li role="navigation"><a ui-sref="automovilesList">Automoviles</a></li>
-                        <li>&nbsp </li>
-                        <li>&nbsp </li>
-                        <li>&nbsp </li>
-                        <li>&nbsp </li>
-                        <li>&nbsp </li>
-                        <li>&nbsp </li>
-                        <li>&nbsp </li>
-                        <li>&nbsp </li>
-                    </ul>
+
+            <!-- Menu de arriba -->
+            <div class="navbar navbar-default"></div>
+
+            <!-- Parte de arriba. Slider y ambos lados -->
+            <div class="container-fluid upper-body"> 
+                <!--  Izquierda -->
+                <div class="col-md-2 left-body">
+
+                    <!-- Este es el date picker fecha inicio -->
+                    <div class="row-fluid">
+                        <form class="form-horizontal">
+                           <div class="form-group">
+                             <label for="startDate" class="col-md-6 control-label">Fecha Inicio</label>
+                             <div class="input-group col-md-6 startDateInput" id="btnStartDate">
+                                 <input type="text" class="form-control" name="name" placeholder="DD/MM/YY" />
+                                 <span class="input-group-addon"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+                             </div>  
+                         </div>
+                     </form>
+                 </div>     
+
+                 <!-- Este es el date picker fecha fin -->
+                 <div class="row-fluid">
+                    <form class="form-horizontal">
+                       <div class="form-group">
+                         <label for="endDate" class="col-md-6 control-label">Fecha Fin</label>
+                         <div class="input-group col-md-6 startDateInput" id="btnEndDate">
+                             <input type="text" class="form-control" name="name" placeholder="DD/MM/YY" />
+                             <span class="input-group-addon"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+                         </div>  
+                     </div>
+                 </form>
+             </div>  
+
+             <!-- Drop list de lugares de origen -->
+             <div class="row-fluid">
+                 <form class="form-horizontal">
+                     <div class="form-group">
+                         <label for="startPlace" class="col-md-6 control-label">Origen</label>
+                         <div class="dropdown col-md-6">
+                             <button class="btn btn-default dropdown-toggle lugarDropdown" type="button" data-toggle="dropdown">
+                                Lugares
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Accion</a></li>
+                                <li><a href="#">Accion 2</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="#">Separado</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Drop list de lugares de destino -->
+            <div class="row-fluid">
+             <form class="form-horizontal">
+                 <div class="form-group">
+                     <label for="endPlace" class="col-md-6 control-label">Destino</label>
+                     <div class="dropdown col-md-6">
+                         <button class="btn btn-default dropdown-toggle lugarDropdown" type="button" data-toggle="dropdown" >
+                            Lugares
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Accion</a></li>
+                            <li><a href="#">Accion 2</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Separado</a></li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="span4" ui-view="mainView"></div>
+            </form>
+        </div> 
+
+        <!-- Drop numero de personas -->
+        <div class="row-fluid">
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label for="numberOfPeople" class="col-md-8 control-label">Numero de personas</label>
+
+                    <div class="form-group col-md-4">
+                        <select class="form-control">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <!-- Boton de buscar -->
+        <div class="form-group">
+            <a href="#" type="button" class="btn btn-primary btn-lg btn-block">Buscar</a>
+        </div>
+
+    </div>
+
+    <!--  Centro -->
+    <div class="col-md-8 center-body"></div>
+
+    <!--  Derecha -->
+    <div class="col-md-2 right-body container-fluid">
+        <div class="row-fluid main">
+            <div class="main-login main-center">
+                <h5>Iniciar sesión</h5>
+
+                <!-- Esto es solo una forma que tiene titulo y su input-->
+                <form>
+                    <div class="form-group">
+                        <label for="name" class="cols-sm-2 control-label">Usuario</label>
+
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                <input type="text" class="form-control" name="name" placeholder="Ingresa tu usuario"/>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+                <form>
+                    <div class="form-group">
+                        <label for="password" class="cols-sm-2 control-label">Contraseña</label>
+
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                <input type="password" class="form-control" name="name" placeholder="Contraseña"/>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+                <!-- Boton de ingresar -->
+                <div class="form-group">
+                    <a href="#" type="button" class="btn btn-primary btn-lg btn-block">Ingresar</a>
+                </div>
+
+                <h5>¿No tienes cuenta?</h5>
+
+                <!-- Boton de registrarse -->
+                <div class="form-group">
+                    <a href="#" type="button" class="btn btn-primary btn-lg btn-block">Registrar</a>
+                </div>
             </div>
         </div>
         <div class="footer">
-            <p class="footerTitle">Viajes</p>
+
         </div>
     </body>
-</html>
+    </html>

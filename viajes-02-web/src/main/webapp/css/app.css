@@ -1,90 +1,40 @@
-/*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
-/* 
-    Created on : 23/03/2017, 05:20:11 PM
-    Author     : Rubby
-*/
-.mainHeader {
-    padding: 35px;
-    background-position: center;
-    /*background-image: url("image_logo.png");*/
-    background-repeat: no-repeat;
+/* GENERAL */
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
-.mainTitle {
-    font-variant: small-caps;
-    font-style: italic;
+.navbar {
+
+    margin-left: -20px;
+    margin-right: -20px;
 }
 
-.nav-tabs > li, .nav-pills > li {
-    float:none;
-    display:inline-block;
-    *display:inline; /* ie7 fix */
-    zoom:1; /* hasLayout ie7 trigger */
+.container-fluid {
+    padding: 0;
 }
 
-.nav-tabs, .nav-pills {
-    text-align:center;
-}
+/* INDEX*/
 
-.footer {
-    height: 59px;
-    margin: 0 auto;
-    color: black;
-    clear: both;
-    padding: 2em 2em;
-    background: #b3ccff;
+
+.left-body, .right-body{
+    padding: 0;
     position: relative;
-    top: 508px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
-.footerTitle {
-    font-variant: small-caps;
-    font-weight: bold;
+.form-horizontal .form-group {
+    margin-right: 0px;
+    margin-left: 0px;
 }
 
-.table-info {
-    margin-top: 20px;
+.col-md-4 {
+	padding-right: 0px;
 }
 
-#form {
-    width: 250px;
-    margin: 0 auto;
-    height: 50px;
+/* Izquierda */
+
+.lugarDropdown {
+	width: 100px;
 }
 
-#form p {
-    text-align: center;
-}
-
-#form label {
-    font-size: 20px;
-}
-
-input[type="radio"] {
-    display: none;
-}
-
-label {
-    color: grey;
-}
-
-.clasificacion {
-    direction: rtl;
-    unicode-bidi: bidi-override;
-}
-
-label:hover,
-label:hover ~ label {
-    color: orange;
-}
-
-input[type="radio"]:checked ~ label {
-    color: orange;
-}
+/* Derecha */
