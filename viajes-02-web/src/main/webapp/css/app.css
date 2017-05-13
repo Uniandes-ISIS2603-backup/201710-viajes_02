@@ -4,7 +4,44 @@ html, body {
     overflow-x: hidden;
 }
 
+#slider {
+  margin-top: 50px;
+}
+
 /* Izquierda */
+
+#search-form {
+  padding-right: 0px;
+  padding-left: 0px;
+}
+
+.form-horizontal .form-group {
+  margin-right: 0px;
+  margin-left: 0px;
+}
+
+.lugarDropdown {
+  width: 100%;
+}
+
+.dropdown {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+#people-dropdown {
+  padding-right: 0px;
+  padding-left: 0px; 
+}
+
+.form-horizontal .control-label, .left-label {
+  display: inline-block;
+  text-align: left;
+}
+
+.left-label {
+  padding-left: 0px;
+}
 
 /* Derecha */
 
