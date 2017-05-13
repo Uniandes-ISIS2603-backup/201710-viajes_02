@@ -5,7 +5,7 @@ html, body {
 }
 
 #slider {
-  margin-top: 50px;
+  margin-top: 80px;
 }
 
 /* Izquierda */
@@ -13,6 +13,7 @@ html, body {
 #search-form {
   padding-right: 0px;
   padding-left: 0px;
+  padding-top: 80px;
 }
 
 .form-horizontal .form-group {
@@ -47,6 +48,7 @@ html, body {
 
 #right-form {
   padding: 0;
+  padding-top: 80px;
 }
 
 /* Centro */
@@ -93,4 +95,74 @@ html, body {
 }
 .fade-carousel .slides .slide-3 {
   background-image: url(https://ununsplash.imgix.net/photo-1416339276121-ba1dfa199912?q=75&fm=jpg&s=9bf9f2ef5be5cb5eee5255e7765cb327);
+}
+
+/* Navigation header */
+
+.navbar-custom {
+    background: #2C3E50;
+    font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-transform: uppercase;
+    font-weight: 700;
+    border: none
+}
+
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-brand.active,
+.navbar-custom .navbar-brand:active,
+.navbar-custom .navbar-brand:focus,
+.navbar-custom .navbar-brand:hover {
+    color: #fff
+}
+.navbar-custom .navbar-nav {
+    letter-spacing: 1px
+}
+.navbar-custom .navbar-nav li a {
+    color: #fff
+}
+.navbar-custom .navbar-nav li a:hover {
+    color: #18BC9C
+}
+.navbar-custom .navbar-nav li a:active,
+.navbar-custom .navbar-nav li a:focus {
+    color: #fff
+}
+.navbar-custom .navbar-nav li.active a,
+.navbar-custom .navbar-nav li.active a:active,
+.navbar-custom .navbar-nav li.active a:focus,
+.navbar-custom .navbar-nav li.active a:hover {
+    color: #fff;
+    background: #18BC9C
+}
+.navbar-custom .navbar-toggle {
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 10px;
+    border-color: #fff
+}
+.navbar-custom .navbar-toggle:focus,
+.navbar-custom .navbar-toggle:hover {
+    background-color: #18BC9C;
+    color: #fff;
+    border-color: #18BC9C
+}
+@media (min-width: 768px) {
+    .navbar-custom {
+        padding: 10px 0;
+        -webkit-transition: padding .3s;
+        -moz-transition: padding .3s;
+        transition: padding .3s
+    }
+    .navbar-custom .navbar-brand {
+        font-size: 2em;
+        -webkit-transition: all .3s;
+        -moz-transition: all .3s;
+        transition: all .3s
+    }
+    .navbar-custom.affix {
+        padding: 10px 0
+    }
+    .navbar-custom.affix .navbar-brand {
+        font-size: 1.5em
+    }
 }
