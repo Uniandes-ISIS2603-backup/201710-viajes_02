@@ -63,148 +63,187 @@
                     <!-- Este es el date picker fecha inicio -->
                     <div class="row-fluid">
                         <form class="form-horizontal">
-                           <div class="form-group">
-                             <label for="startDate" class="col-md-6 control-label">Fecha Inicio</label>
-                             <div class="input-group col-md-6 startDateInput" id="btnStartDate">
-                                 <input type="text" class="form-control" name="name" placeholder="DD/MM/YY" />
-                                 <span class="input-group-addon"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-                             </div>  
-                         </div>
-                     </form>
-                 </div>     
+                         <div class="form-group">
+                           <label for="startDate" class="col-md-6 control-label">Fecha Inicio</label>
+                           <div class="input-group col-md-6 startDateInput" id="btnStartDate">
+                               <input type="text" class="form-control" name="name" placeholder="DD/MM/YY" />
+                               <span class="input-group-addon"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+                           </div>  
+                       </div>
+                   </form>
+               </div>     
 
-                 <!-- Este es el date picker fecha fin -->
-                 <div class="row-fluid">
-                    <form class="form-horizontal">
-                       <div class="form-group">
-                         <label for="endDate" class="col-md-6 control-label">Fecha Fin</label>
-                         <div class="input-group col-md-6 startDateInput" id="btnEndDate">
-                             <input type="text" class="form-control" name="name" placeholder="DD/MM/YY" />
-                             <span class="input-group-addon"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-                         </div>  
-                     </div>
-                 </form>
-             </div>  
-
-             <!-- Drop list de lugares de origen -->
-             <div class="row-fluid">
-                 <form class="form-horizontal">
-                     <div class="form-group">
-                         <label for="startPlace" class="col-md-6 control-label">Origen</label>
-                         <div class="dropdown col-md-6">
-                             <button class="btn btn-default dropdown-toggle lugarDropdown" type="button" data-toggle="dropdown">
-                                Lugares
-                                <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Accion</a></li>
-                                <li><a href="#">Accion 2</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="#">Separado</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </form>
-            </div>
-
-            <!-- Drop list de lugares de destino -->
-            <div class="row-fluid">
-             <form class="form-horizontal">
+               <!-- Este es el date picker fecha fin -->
+               <div class="row-fluid">
+                <form class="form-horizontal">
                  <div class="form-group">
-                     <label for="endPlace" class="col-md-6 control-label">Destino</label>
-                     <div class="dropdown col-md-6">
-                         <button class="btn btn-default dropdown-toggle lugarDropdown" type="button" data-toggle="dropdown" >
-                            Lugares
-                            <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Accion</a></li>
-                            <li><a href="#">Accion 2</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#">Separado</a></li>
-                        </ul>
-                    </div>
+                   <label for="endDate" class="col-md-6 control-label">Fecha Fin</label>
+                   <div class="input-group col-md-6 startDateInput" id="btnEndDate">
+                       <input type="text" class="form-control" name="name" placeholder="DD/MM/YY" />
+                       <span class="input-group-addon"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+                   </div>  
+               </div>
+           </form>
+       </div>  
+
+       <!-- Drop list de lugares de origen -->
+       <div class="row-fluid">
+           <form class="form-horizontal">
+               <div class="form-group">
+                   <label for="startPlace" class="col-md-6 control-label">Origen</label>
+                   <div class="dropdown col-md-6">
+                       <button class="btn btn-default dropdown-toggle lugarDropdown" type="button" data-toggle="dropdown">
+                        Lugares
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Accion</a></li>
+                        <li><a href="#">Accion 2</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">Separado</a></li>
+                    </ul>
                 </div>
-            </form>
-        </div> 
-
-        <!-- Drop numero de personas -->
-        <div class="row-fluid">
-            <form class="form-horizontal">
-                <div class="form-group">
-                    <label for="numberOfPeople" class="col-md-8 control-label">Numero de personas</label>
-
-                    <div class="form-group col-md-4">
-                        <select class="form-control">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                        </select>
-                    </div>
-                </div>
-            </form>
-        </div>
-
-        <!-- Boton de buscar -->
-        <div class="form-group">
-            <a href="#" type="button" class="btn btn-primary btn-lg btn-block">Buscar</a>
-        </div>
-
+            </div>
+        </form>
     </div>
 
-    <!--  Centro -->
-    <div class="col-md-8 center-body"></div>
-
-    <!--  Derecha -->
-    <div class="col-md-2 right-body container-fluid">
-        <div class="row-fluid main">
-            <div class="main-login main-center">
-                <h5>Iniciar sesión</h5>
-
-                <!-- Esto es solo una forma que tiene titulo y su input-->
-                <form>
-                    <div class="form-group">
-                        <label for="name" class="cols-sm-2 control-label">Usuario</label>
-
-                        <div class="cols-sm-10">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                                <input type="text" class="form-control" name="name" placeholder="Ingresa tu usuario"/>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-
-                <form>
-                    <div class="form-group">
-                        <label for="password" class="cols-sm-2 control-label">Contraseña</label>
-
-                        <div class="cols-sm-10">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                                <input type="password" class="form-control" name="name" placeholder="Contraseña"/>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-
-                <!-- Boton de ingresar -->
-                <div class="form-group">
-                    <a href="#" type="button" class="btn btn-primary btn-lg btn-block">Ingresar</a>
-                </div>
-
-                <h5>¿No tienes cuenta?</h5>
-
-                <!-- Boton de registrarse -->
-                <div class="form-group">
-                    <a href="#" type="button" class="btn btn-primary btn-lg btn-block">Registrar</a>
-                </div>
+    <!-- Drop list de lugares de destino -->
+    <div class="row-fluid">
+       <form class="form-horizontal">
+           <div class="form-group">
+               <label for="endPlace" class="col-md-6 control-label">Destino</label>
+               <div class="dropdown col-md-6">
+                   <button class="btn btn-default dropdown-toggle lugarDropdown" type="button" data-toggle="dropdown" >
+                    Lugares
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Accion</a></li>
+                    <li><a href="#">Accion 2</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="#">Separado</a></li>
+                </ul>
             </div>
         </div>
-        <div class="footer">
+    </form>
+</div> 
 
+<!-- Drop numero de personas -->
+<div class="row-fluid">
+    <form class="form-horizontal">
+        <div class="form-group">
+            <label for="numberOfPeople" class="col-md-8 control-label">Numero de personas</label>
+
+            <div class="form-group col-md-4">
+                <select class="form-control">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+            </div>
         </div>
-    </body>
-    </html>
+    </form>
+</div>
+
+<!-- Boton de buscar -->
+<div class="form-group">
+    <a href="#" type="button" class="btn btn-primary btn-lg btn-block">Buscar</a>
+</div>
+
+</div>
+
+<!--  Centro -->
+<div class="col-md-8 center-body">
+    <div class="carousel fade-carousel slide" data-ride="carousel" data-interval="4000" id="bs-carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#bs-carousel" data-slide-to="0" class="active"></li>
+        <li data-target="#bs-carousel" data-slide-to="1"></li>
+        <li data-target="#bs-carousel" data-slide-to="2"></li>
+    </ol>
+
+    <!-- Mensajes deberian salir del servidor -->
+    <div class="carousel-inner">
+        <div class="item slides active">
+          <div class="slide-1"></div>
+          <div class="hero">
+            <hgroup>
+                <h1>Prueba1</h1>        
+                <h3>Texto de abajo</h3>
+            </hgroup>
+        </div>
+    </div>
+    <div class="item slides">
+      <div class="slide-2"></div>
+      <div class="hero">        
+        <hgroup>
+                 <h1>Prueba2</h1>        
+                <h3>Texto de abajo</h3>
+        </hgroup>       
+    </div>
+</div>
+<div class="item slides">
+  <div class="slide-3"></div>
+  <div class="hero">        
+    <hgroup>
+                 <h1>Prueba3</h1>        
+                <h3>Texto de abajo</h3>
+    </hgroup>
+</div>
+</div>
+</div> 
+</div>
+</div>
+
+<!--  Derecha -->
+<div class="col-md-2 right-body container-fluid">
+    <div class="row-fluid main">
+        <div class="main-login main-center">
+            <h5>Iniciar sesión</h5>
+
+            <!-- Esto es solo una forma que tiene titulo y su input-->
+            <form>
+                <div class="form-group">
+                    <label for="name" class="cols-sm-2 control-label">Usuario</label>
+
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                            <input type="text" class="form-control" name="name" placeholder="Ingresa tu usuario"/>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            <form>
+                <div class="form-group">
+                    <label for="password" class="cols-sm-2 control-label">Contraseña</label>
+
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                            <input type="password" class="form-control" name="name" placeholder="Contraseña"/>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            <!-- Boton de ingresar -->
+            <div class="form-group">
+                <a href="#" type="button" class="btn btn-primary btn-lg btn-block">Ingresar</a>
+            </div>
+
+            <h5>¿No tienes cuenta?</h5>
+
+            <!-- Boton de registrarse -->
+            <div class="form-group">
+                <a href="#" type="button" class="btn btn-primary btn-lg btn-block">Registrar</a>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+
+    </div>
+</body>
+</html>
