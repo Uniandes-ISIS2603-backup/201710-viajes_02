@@ -4,44 +4,13 @@ html, body {
     overflow-x: hidden;
 }
 
-.navbar {
-
-    margin-left: -20px;
-    margin-right: -20px;
-}
-
-.container-fluid {
-    padding: 0;
-}
-
-/* INDEX*/
-
-
-.left-body, .right-body{
-    padding: 0;
-    position: relative;
-}
-
-.form-horizontal .form-group {
-    margin-right: 0px;
-    margin-left: 0px;
-}
-
-.col-md-4 {
-	padding-right: 0px;
-}
-
-.upper-body {
-    height: 500px;
-}
-
 /* Izquierda */
 
-.lugarDropdown {
-	width: 100px;
-}
-
 /* Derecha */
+
+#right-form {
+  padding: 0;
+}
 
 /* Centro */
 
