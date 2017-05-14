@@ -15,3 +15,14 @@
             });
         }]);
 })(window.angular);
+
+ function filtrarContenido(algo) {
+      var $target = $(algo).data('target');
+
+     if ($target !== 'all') {
+        $('.table tr').css('display', 'none');
+        $('.table tr[data-status="' + $target + '"]').fadeIn('slow');
+      } else {
+        $('.table tr').css('display', 'none').fadeIn('slow');
+      }
+}
