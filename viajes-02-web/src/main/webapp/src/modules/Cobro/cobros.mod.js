@@ -12,6 +12,9 @@
                     usuarioId: null
                 },
                 resolve: {
+                    currentUsuario: ['$http', 'cobroContext', '$stateParams', function ($http, cobroContext, $params) {
+                            return $http.get(cobroContext + '/' + $params.usuarioId);
+                        }],
                     cobros: ['$http', 'cobroContext', '$stateParams', function ($http, cobroContext, $params) {
                             return $http.get(cobroContext + '/' + $params.usuarioId + '/cobros');
                         }]
@@ -19,8 +22,11 @@
                 views: {
                     'mainView': {
                         templateUrl: basePath + 'cobro.html',
-                        controller: ['$scope', 'cobros', function ($scope, cobros) {
+                        controller: ['$scope', 'cobros', 'currentUsuario', function ($scope, cobros, currentUsuario) {
+                                $scope.currentUsuario = currentUsuario.data;
+                                console.log($scope.currentUsuario.id);
                                 $scope.cobrosRecords = cobros.data;
+                                
                             }]
                     }
                 }
@@ -47,8 +53,7 @@
                     'detailView': {
                         templateUrl: basePath + 'cobro-detail.html',
                         controller: ['$scope', 'currentCobro', function ($scope, currentCobro) {
-                                $scope.currentCobro = currentCobro.data
-                                console.log($scope.currentCobro)
+                                $scope.currentCobro = currentCobro.data;
                             }]
                     }
                 }

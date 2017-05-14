@@ -1,28 +1,7 @@
-<!-- <div class="container-fluid">
-    <div class="col-sm-12">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Usuario Remitente</th>  
-                    <th>Usuario Destinatario</th>
-                    <th>Costo</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="cobro in cobrosRecords">
-                    <td><a ui-sref="viajeroDetail({viajeroId: cobro.usuarioRemitente.id})">{{cobro.usuarioRemitente.nombre}}</a></td> 
-                    <td><a ui-sref="viajeroDetail({viajeroId: cobro.usuarioDestinatario.id})">{{cobro.usuarioDestinatario.nombre}}</a></td> 
-                    <td><a ui-sref="cobrosDetail({usuarioId: cobro.usuarioRemitente.id,cobroId: cobro.id})" class="thumb">{{cobro.valor}}</a></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
--->
 <div class="container cobro-list">
     <div class="row">
         <section class="content">
-            <h1>Cobros de William</h1>
+            <h1>Cobros de {{currentUsuario.nombre.split(" ")[0]}}</h1>          
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
                     <div class="panel-body">
