@@ -18,4 +18,5 @@
     app.config(['$qProvider', function ($qProvider) {
             $qProvider.errorOnUnhandledRejections(false);
         }]);
-})(window.angular);
+})(window.angular);    
+ 

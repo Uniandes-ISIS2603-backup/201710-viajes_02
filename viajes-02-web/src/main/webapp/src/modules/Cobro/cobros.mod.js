@@ -24,9 +24,7 @@
                         templateUrl: basePath + 'cobro.html',
                         controller: ['$scope', 'cobros', 'currentUsuario', function ($scope, cobros, currentUsuario) {
                                 $scope.currentUsuario = currentUsuario.data;
-                                console.log($scope.currentUsuario.id);
-                                $scope.cobrosRecords = cobros.data;
-                                
+                                $scope.cobrosRecords = cobros.data; 
                             }]
                     }
                 }
