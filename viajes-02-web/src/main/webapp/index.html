@@ -65,14 +65,15 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right">
                         <li class="page-scroll">
-                            <a ui-sref="cobroList({usuarioId: 1})">Prueba</a>                        
+                            <a ui-sref="cobroList({usuarioId: 1})">Prueba</a>
+                            <a ui-sref="conductoresList">Nuestros Conductores</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
 
-        <div class="span4 mainView" ui-view="mainView"></div>
+        <div ui-view="mainView"></div>
 
         <!-- Footer -->
         <footer class="text-center">
