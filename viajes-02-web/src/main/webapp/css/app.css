@@ -145,25 +145,31 @@ hr.line-separator:after {
     padding: 0;
 }
 
-.fade-carousel .slides .slide-1, 
-.fade-carousel .slides .slide-2,
-.fade-carousel .slides .slide-3 {
+.fade-carousel .slides .slide-1, .fade-carousel .slides .slide-2,.fade-carousel .slides .slide-3 {
   height: 500px;
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
 }
 
+.date-placeholder {
+  font-size: 12px;
+}
+
+.numberValue {
+ font-size: 12px; 
+}
+
 /* Esto deberia salir del servidor */
 
 .fade-carousel .slides .slide-1 {
-  background-image: url(https://ununsplash.imgix.net/photo-1416339134316-0e91dc9ded92?q=75&fm=jpg&s=883a422e10fc4149893984019f63c818); 
+  background-image: url(slide-1.jpg); 
 }
 .fade-carousel .slides .slide-2 {
-  background-image: url(https://ununsplash.imgix.net/photo-1416339684178-3a239570f315?q=75&fm=jpg&s=c39d9a3bf66d6566b9608a9f1f3765af);
+  background-image: url(slide-2.jpg);
 }
 .fade-carousel .slides .slide-3 {
-  background-image: url(https://ununsplash.imgix.net/photo-1416339276121-ba1dfa199912?q=75&fm=jpg&s=9bf9f2ef5be5cb5eee5255e7765cb327);
+  background-image: url(slide-3.jpg);
 }
 
 /* Navigation header */
@@ -176,11 +182,7 @@ hr.line-separator:after {
     border: none
 }
 
-.navbar-custom .navbar-brand,
-.navbar-custom .navbar-brand.active,
-.navbar-custom .navbar-brand:active,
-.navbar-custom .navbar-brand:focus,
-.navbar-custom .navbar-brand:hover {
+.navbar-custom .navbar-brand,.navbar-custom .navbar-brand.active,.navbar-custom .navbar-brand:active,.navbar-custom .navbar-brand:focus,.navbar-custom .navbar-brand:hover {
     color: #fff
 }
 .navbar-custom .navbar-nav {
@@ -196,10 +198,7 @@ hr.line-separator:after {
 .navbar-custom .navbar-nav li a:focus {
     color: #fff
 }
-.navbar-custom .navbar-nav li.active a,
-.navbar-custom .navbar-nav li.active a:active,
-.navbar-custom .navbar-nav li.active a:focus,
-.navbar-custom .navbar-nav li.active a:hover {
+.navbar-custom .navbar-nav li.active a,.navbar-custom .navbar-nav li.active a:active,.navbar-custom .navbar-nav li.active a:focus,.navbar-custom .navbar-nav li.active a:hover {
     color: #fff;
     background: #18BC9C
 }
@@ -209,8 +208,7 @@ hr.line-separator:after {
     font-size: 10px;
     border-color: #fff
 }
-.navbar-custom .navbar-toggle:focus,
-.navbar-custom .navbar-toggle:hover {
+.navbar-custom .navbar-toggle:focus,.navbar-custom .navbar-toggle:hover {
     background-color: #18BC9C;
     color: #fff;
     border-color: #18BC9C
