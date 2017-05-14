@@ -4,8 +4,12 @@ html, body {
     overflow-x: hidden;
 }
 
+.mainView {
+    margin-top: 50px;
+}
+
 #slider {
-  padding-top: 100px;
+  padding-top: 60px;
   padding-bottom: 60px;
   padding-right: 15px;
   padding-left: 15px;
