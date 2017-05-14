@@ -1,0 +1,244 @@
+<!-- Slider y formas   -->
+<section id="slider">
+    <div class="container-fluid" id="slider-content">
+        <div class="row-fluid">
+            <!-- Form izquierda -->
+            <div class="col-md-2" id="search-form">
+                <!-- Este es el date picker fecha inicio -->
+                <div class="row-fluid">
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label for="startDate" class="col-md-6 control-label left-label">Fecha Inicio</label>
+                            <div class="input-group col-md-6 startDateInput" id="btnStartDate">
+                                <input type="text" class="form-control date-placeholder" name="name" placeholder="D/M/Y" />
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+                            </div>  
+                        </div>
+                    </form>
+                </div>     
+
+                <!-- Este es el date picker fecha fin -->
+                <div class="row-fluid">
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label for="endDate" class="col-md-6 control-label left-label">Fecha Fin</label>
+                            <div class="input-group col-md-6 startDateInput" id="btnEndDate">
+                                <input type="text" class="form-control date-placeholder" name="name" placeholder="D/M/Y" />
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+                            </div>  
+                        </div>
+                    </form>
+                </div>  
+
+                <!-- Drop list de lugares de origen -->
+                <div class="row-fluid">
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label for="startPlace" class="col-md-6 control-label left-label">Origen</label>
+                            <div class="dropdown col-md-6">
+                                <button class="btn btn-default dropdown-toggle lugarDropdown" type="button" data-toggle="dropdown">
+                                    Lugares
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Accion</a></li>
+                                    <li><a href="#">Accion 2</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="#">Separado</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Drop list de lugares de destino -->
+                <div class="row-fluid">
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label for="endPlace" class="col-md-6 control-label left-label">Destino</label>
+                            <div class="dropdown col-md-6">
+                                <button class="btn btn-default dropdown-toggle lugarDropdown" type="button" data-toggle="dropdown" >
+                                    Lugares
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Accion</a></li>
+                                    <li><a href="#">Accion 2</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="#">Separado</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </form>
+                </div> 
+
+                <!-- Drop numero de personas -->
+                <div class="row-fluid">
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label for="numberOfPeople" class="col-md-9 control-label left-label">Numero de personas</label>
+
+                            <div class="form-group col-md-3" id="people-dropdown">
+                                <select class="form-control numberValue">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Boton de buscar -->
+                <div class="form-group">
+                    <a href="#" type="button" class="btn btn-primary btn-lg btn-block">Buscar</a>
+                </div>
+            </div>
+            <!-- Slider -->
+            <div class="col-md-8">
+                <div class="carousel fade-carousel slide" data-ride="carousel" data-interval="4000" id="bs-carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#bs-carousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#bs-carousel" data-slide-to="1"></li>
+                        <li data-target="#bs-carousel" data-slide-to="2"></li>
+                    </ol>
+
+                    <div class="carousel-inner">
+                        <div class="item slides active">
+                            <div class="slide-1"></div>
+                            <div class="hero">
+                                <hgroup>
+                                    <h1>Prueba1</h1>
+                                    <h3>Texto de abajo</h3>
+                                </hgroup>
+                            </div>
+                        </div>
+                        <div class="item slides">
+                            <div class="slide-2"></div>
+                            <div class="hero">
+                                <hgroup>
+                                    <h1>Prueba2</h1>
+                                    <h3>Texto de abajo</h3>
+                                </hgroup>
+                            </div>
+                        </div>
+                        <div class="item slides">
+                            <div class="slide-3"></div>
+                            <div class="hero">
+                                <hgroup>
+                                    <h1>Prueba3</h1>
+                                    <h3>Texto de abajo</h3>
+                                </hgroup>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Form derecha -->
+            <div class="col-md-2" id="right-form">
+                <!-- Esto es solo una forma que tiene titulo y su input-->
+                <form>
+                    <div class="form-group">
+                        <label for="name" class="cols-sm-2 control-label">Usuario</label>
+
+                        <div class="cols-sm-10 input-group">
+                            <span class="input-group-addon glyphicon glyphicon-user left-glyphicon"></span>
+                            <input type="text" class="form-control" name="name" placeholder="Ingresa tu usuario"/>
+                        </div>
+                    </div>
+                </form>
+
+                <form>
+                    <div class="form-group">
+                        <label for="password" class="cols-sm-2 control-label">Contraseña</label>
+
+                        <div class="cols-sm-10 input-group">
+                            <span class="input-group-addon glyphicon glyphicon-lock left-glyphicon"></span>
+                            <input type="password" class="form-control" name="name" placeholder="Contraseña"/>
+                        </div>
+                    </div>
+                </form>
+
+                <!-- Boton de ingresar -->
+                <div class="form-group">
+                    <a href="#" type="button" class="btn btn-primary btn-lg btn-block">Ingresar</a>
+                </div>
+                <hr>
+                <h5 class="text-center">¿No tienes cuenta?</h5>
+
+                <!-- Boton de registrarse -->
+                <div class="form-group">
+                    <a href="#" type="button" class="btn btn-primary btn-lg btn-block">Registrar</a>
+                </div>
+            </div>
+        </div>
+</section>
+
+
+<!-- Seccion de conductores -->
+<section id="conductores">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2>Conoce a nuestros conductores</h2>
+                <hr class="line-separator">
+            </div>
+        </div>
+        <!-- Fotos de los conductores -->
+        <div class="row">
+            <div class="col-sm-4 conductores-item">
+                <a>
+                    <img src="css/cabin.jpg" class="img-responsive" alt="conductor">  
+                </a>
+            </div>
+            <div class="col-sm-4 conductores-item">
+                <a>
+                    <img src="css/cabin.jpg" class="img-responsive" alt="conductor">  
+                </a>
+            </div>
+            <div class="col-sm-4 conductores-item">
+                <a>
+                    <img src="css/cabin.jpg" class="img-responsive" alt="conductor">  
+                </a>
+            </div>
+            <div class="col-sm-4 conductores-item">
+                <a>
+                    <img src="css/cabin.jpg" class="img-responsive" alt="conductor">  
+                </a>
+            </div>
+            <div class="col-sm-4 conductores-item">
+                <a>
+                    <img src="css/cabin.jpg" class="img-responsive" alt="conductor">  
+                </a>
+            </div>
+            <div class="col-sm-4 conductores-item">
+                <a>
+                    <img src="css/cabin.jpg" class="img-responsive" alt="conductor">  
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Sobre nosotros -->
+<section class="success" id="sobre_nosotros">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2>Sobre Nosotros</h2>
+                <hr class="line-separator-light">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-lg-offset-2">
+                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+            </div>
+            <div class="col-lg-4">
+                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. </p>
+            </div>
+        </div>
+    </div>
+</section>

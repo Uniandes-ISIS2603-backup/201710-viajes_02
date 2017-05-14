@@ -11,8 +11,8 @@
         'reservaModule',
         'viajeroModule',
         'conductorModule',
-        'viajeModule'
-        
+        'viajeModule',
+        'homeModule'
     ]);
     // Resuelve problemas de las promesas
     app.config(['$qProvider', function ($qProvider) {
