@@ -63,11 +63,13 @@
                     </button>
                     <a class="navbar-brand" href="#page-top">BeyondRoad</a>
                 </div>
-                
+
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right">
                         <li class="page-scroll">
                             <a ui-sref="cobroList({usuarioId: 1})">Prueba</a>
+                        </li>
+                        <li class="page-scroll">
                             <a ui-sref="conductoresList">Nuestros Conductores</a>
                         </li>
                     </ul>
@@ -75,7 +77,7 @@
             </div>
         </nav>
 
-        <div ui-view="mainView"></div>
+        <div class="mainView" ui-view="mainView"></div>
 
         <!-- Footer -->
         <footer class="text-center">

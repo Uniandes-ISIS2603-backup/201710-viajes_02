@@ -8,6 +8,10 @@ html, body {
     margin-top: 50px;
 }
 
+.page-scroll {
+    height: 50px;
+}
+
 #slider {
     padding-top: 60px;
     padding-bottom: 60px;
