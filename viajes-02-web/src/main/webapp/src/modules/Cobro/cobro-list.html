@@ -1,5 +1,4 @@
-<div class="container-fluid">
-   <!-- <h1><a ui-sref="cobrosDetail({usuarioId: cobro.usuarioRemitente.id,cobroId: cobro.id})">sadfsadf</a></h1> LINK -->
+<!-- <div class="container-fluid">
     <div class="col-sm-12">
         <table class="table table-striped">
             <thead>
@@ -11,11 +10,56 @@
             </thead>
             <tbody>
                 <tr ng-repeat="cobro in cobrosRecords">
-                    <td><a ui-sref="viajeroDetail({viajeroId: cobro.usuarioRemitente.id})">{{cobro.usuarioRemitente.nombre}}</a></td> <!-- CAMBIAR ID-->
-                    <td><a ui-sref="viajeroDetail({viajeroId: cobro.usuarioDestinatario.id})">{{cobro.usuarioDestinatario.nombre}}</a></td> <!-- CAMBIAR ID-->
+                    <td><a ui-sref="viajeroDetail({viajeroId: cobro.usuarioRemitente.id})">{{cobro.usuarioRemitente.nombre}}</a></td> 
+                    <td><a ui-sref="viajeroDetail({viajeroId: cobro.usuarioDestinatario.id})">{{cobro.usuarioDestinatario.nombre}}</a></td> 
                     <td><a ui-sref="cobrosDetail({usuarioId: cobro.usuarioRemitente.id,cobroId: cobro.id})" class="thumb">{{cobro.valor}}</a></td>
                 </tr>
             </tbody>
         </table>
     </div>
 </div>
+-->
+<div class="container cobro-list">
+    <div class="row">
+        <section class="content">
+            <h1>Cobros de William</h1>
+            <div class="col-md-8 col-md-offset-2">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="pull-right">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-success btn-filter" data-target="pagado">Pagado</button>
+                                <button type="button" class="btn btn-warning btn-filter" data-target="pendiente">Pendiente</button>
+                                <button type="button" class="btn btn-default btn-filter" data-target="all">Todos</button>
+                            </div>
+                        </div>
+                        <div class="table-container">
+                            <table class="table table-filter">
+                                <tbody>
+                                    <tr ng-repeat="cobro in cobrosRecords" data-status="{{cobro.cancelado ? 'pagado' : 'pendiente'}}">
+                                        <td>
+                                            <div class="media">
+                                                <a href="#" class="pull-left">
+                                                    <img src="https://s3.amazonaws.com/uifaces/faces/twitter/fffabs/128.jpg" class="media-photo">
+                                                </a>
+                                                <div class="media-body">
+                                                    <span class="media-meta pull-right">Febrero 13, 2016</span>
+                                                    <h4 class="title">
+                                                        {{cobro.usuarioDestinatario.nombre}}
+                                                        <span class="pull-right {{cobro.cancelado ? 'pagado' : 'pendiente'}}">({{cobro.cancelado ? 'Pagado' : 'Pendiente'}})</span>
+                                                    </h4>
+                                                    <p class="summary">$ {{cobro.valor}} USD</p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+

@@ -9,10 +9,10 @@ html, body {
 }
 
 #slider {
-  padding-top: 60px;
-  padding-bottom: 60px;
-  padding-right: 15px;
-  padding-left: 15px;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    padding-right: 15px;
+    padding-left: 15px;
 }
 
 h1,h2,h3,h4,h5,h6 {
@@ -62,70 +62,70 @@ hr.line-separator:after {
 }
 
 #slider-content {
-  padding: 0;
+    padding: 0;
 }
 
 /* Izquierda */
 
 #search-form {
-  padding-top: 20px;
-  padding-bottom: 20px;
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-top: 80px;
-  background-color: #2C3E50;  
-  border-radius: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-top: 80px;
+    background-color: #2C3E50;  
+    border-radius: 10px;
 }
 
 .form-horizontal .form-group {
-  margin-right: 0px;
-  margin-left: 0px;
+    margin-right: 0px;
+    margin-left: 0px;
 }
 
 .lugarDropdown {
-  width: 100%;
+    width: 100%;
 }
 
 .dropdown {
-  padding-left: 0px;
-  padding-right: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
 }
 
 #people-dropdown {
-  padding-right: 0px;
-  padding-left: 0px; 
+    padding-right: 0px;
+    padding-left: 0px; 
 }
 
 .form-horizontal .control-label, .left-label {
-  display: inline-block;
-  text-align: left;
-  font-size: 13px;
+    display: inline-block;
+    text-align: left;
+    font-size: 13px;
 }
 
 .left-label {
-  padding-left: 0px;
+    padding-left: 0px;
 }
 
 /* Derecha */
 
 #right-form {
-  padding-top: 20px;
-  padding-bottom: 20px;
-  margin-top: 80px;
-  padding-right: 15px;
-  padding-left: 15px;
-  background-color: #2C3E50;
-  border-radius: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-top: 80px;
+    padding-right: 15px;
+    padding-left: 15px;
+    background-color: #2C3E50;
+    border-radius: 10px;
 }
 
 .left-glyphicon {
-  top: 0px;
+    top: 0px;
 }
 
 /* Centro */
 #slider {
-  background: #18BC9C;
-  color: #fff
+    background: #18BC9C;
+    color: #fff
 }
 
 .hero {
@@ -137,11 +137,11 @@ hr.line-separator:after {
     text-align: center;
     text-transform: uppercase;
     text-shadow: 1px 1px 0 rgba(0,0,0,.75);
-      -webkit-transform: translate3d(-50%,-50%,0);
-         -moz-transform: translate3d(-50%,-50%,0);
-          -ms-transform: translate3d(-50%,-50%,0);
-           -o-transform: translate3d(-50%,-50%,0);
-              transform: translate3d(-50%,-50%,0);
+    -webkit-transform: translate3d(-50%,-50%,0);
+    -moz-transform: translate3d(-50%,-50%,0);
+    -ms-transform: translate3d(-50%,-50%,0);
+    -o-transform: translate3d(-50%,-50%,0);
+    transform: translate3d(-50%,-50%,0);
 }
 
 .hero h1 {
@@ -152,30 +152,30 @@ hr.line-separator:after {
 }
 
 .fade-carousel .slides .slide-1, .fade-carousel .slides .slide-2,.fade-carousel .slides .slide-3 {
-  height: 500px;
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
+    height: 500px;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
 }
 
 .date-placeholder {
-  font-size: 12px;
+    font-size: 12px;
 }
 
 .numberValue {
- font-size: 12px; 
+    font-size: 12px; 
 }
 
 /* Esto deberia salir del servidor */
 
 .fade-carousel .slides .slide-1 {
-  background-image: url(slide-1.jpg); 
+    background-image: url(slide-1.jpg); 
 }
 .fade-carousel .slides .slide-2 {
-  background-image: url(slide-2.jpg);
+    background-image: url(slide-2.jpg);
 }
 .fade-carousel .slides .slide-3 {
-  background-image: url(slide-3.jpg);
+    background-image: url(slide-3.jpg);
 }
 
 /* Navigation header */
@@ -242,8 +242,8 @@ hr.line-separator:after {
 
 /* Conductores */
 #conductores {
-  padding-top: 60px;
-  padding-bottom: 100px;
+    padding-top: 60px;
+    padding-bottom: 100px;
 }
 
 
@@ -294,8 +294,8 @@ hr.line-separator:after {
 /* Sobre nosotros */
 
 #sobre_nosotros {
-  padding-top: 100px;
-  padding-bottom: 100px;
+    padding-top: 100px;
+    padding-bottom: 100px;
 }
 
 section.success {
@@ -324,4 +324,74 @@ footer .footer-col {
 footer .lower-footer {
     padding: 25px 0;
     background-color: #233140
+}
+
+/* Cobros */
+
+.cobro-list .panel {
+    border: 1px solid #ddd;
+    background-color: #fcfcfc;
+}
+
+.cobro-list .panel .btn-group {
+    margin: 15px 0 30px;
+}
+
+.cobro-list .panel .btn-group .btn {
+    transition: background-color .3s ease;
+}
+
+.cobro-list .table-filter {
+    background-color: #fff;
+    border-bottom: 1px solid #eee;
+}
+
+.cobro-list .table-filter tbody tr:hover {
+    cursor: pointer;
+    background-color: #eee;
+}
+
+.cobro-list .table-filter tbody tr td {
+    padding: 10px;
+    vertical-align: middle;
+    border-top-color: #eee;
+}
+
+/* TAMAÑO DE FOTO DE COBRO */
+.cobro-list .table-filter .media-photo {
+    width: 35px;
+}
+
+.cobro-list .table-filter .media-meta {
+    font-size: 11px;
+    color: #999;
+}
+
+.cobro-list .table-filter .media .title {
+    color: #2BBCDE;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: normal;
+    margin: 0;
+}
+
+.cobro-list .table-filter .media .title span {
+    font-size: .8em;
+    margin-right: 20px;
+}
+
+.cobro-list .table-filter .media .title span.pagado {
+    color: #5cb85c;
+}
+
+.cobro-list .table-filter .media .title span.pendiente {
+    color: #f0ad4e;
+}
+
+.cobro-list .table-filter .media .title span.cancelado {
+    color: #d9534f;
+}
+
+.cobro-list .table-filter .media .summary {
+    font-size: 14px;
 }
