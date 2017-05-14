@@ -12,6 +12,7 @@
         'viajeroModule',
         'conductorModule',
         'viajeModule',
+        'usuarioModule',
         'homeModule'
     ]);
     // Resuelve problemas de las promesas
