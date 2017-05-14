@@ -64,7 +64,15 @@
                          templateUrl: basePath + 'conductores.detail.automoviles.html'
                      }
                  }
-             });
+             }).state('conductoresAdd', {
+                url: '/add',
+                parent: 'conductores',
+                views: {
+                    'listView': {
+                        templateUrl: basePath + 'conductores.anadir.html'
+                    }
+                }
+            });
     }]);
 })(window.angular);
 
