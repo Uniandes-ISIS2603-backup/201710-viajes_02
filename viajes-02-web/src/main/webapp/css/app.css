@@ -74,6 +74,7 @@ hr.line-separator:after {
   padding-left: 15px;
   margin-top: 80px;
   background-color: #2C3E50;  
+  border-radius: 10px;
 }
 
 .form-horizontal .form-group {
@@ -114,6 +115,7 @@ hr.line-separator:after {
   padding-right: 15px;
   padding-left: 15px;
   background-color: #2C3E50;
+  border-radius: 10px;
 }
 
 .left-glyphicon {
