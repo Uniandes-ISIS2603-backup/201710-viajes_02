@@ -48,6 +48,25 @@
                             }]
                     }
                 }
-            });
+            }).state('viajeAdd', {
+                url: '/{conductorId:int}/addViaje',
+                parent: 'viajes',
+                param: {
+                    conductorId: null
+                },
+                resolve:{
+                    currentConductor: ['$http', '$stateParams', function ($http, $params) {
+                            return $http.get("api/Conductores"+'/'+$params.conductorId);
+                        }]
+                },
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + 'viajes.anadir.html',
+                        controller: ['$scope', 'currentConductor', function ($scope,  currentConductor) {
+                                $scope.currentConductor = currentConductor.data;
+                            }]
+                    }
+                }
+            });;
         }]);
 })(window.angular);

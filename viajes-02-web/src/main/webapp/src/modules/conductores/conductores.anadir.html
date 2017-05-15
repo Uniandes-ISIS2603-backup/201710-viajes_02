@@ -12,23 +12,23 @@
                         <hr class="line-separator">
                     </div>
                 </div>
-                <form>
+                <form id="conductorForm">
                     <div class="form-group row" align = "center">
                         <label for="nombre" class="cols-sm-2 control-label">Nombre</label>
                         <div class="cols-sm-10 input-group">
-                            <input type="text" class="form-control" name="nombre" placeholder="Nombre"/>
+                            <input type="text" class="form-control" name="nombre" placeholder="Nombre" ng-model="conductor.nombre" ng-init="conductor.nombre" required/>
                         </div>
                         
                         <label for="correo" class="cols-sm-2 control-label">Correo</label>
 
                         <div class="cols-sm-10 input-group">
-                            <input type="text" class="form-control" name="Correo" placeholder="Correo Electronico"/>
+                            <input type="text" class="form-control" name="Correo" placeholder="Correo Electronico" ng-model="conductor.correo" ng-init="conductor.correo" required/>
                         </div>
                         
                         <label for="genero" class="cols-sm-2 control-label">Genero</label>
                         
                         <div class="cols-sm-10 input-group">
-                            <select class="form-control" name="genero" id="genero"/>
+                            <select class="form-control" name="genero" id="genero" ng-model="conductor.genero" ng-init="conductor.genero" required/>
                             <option>Masculino</option>
                             <option>Femenino</option>
                         </select>
@@ -36,25 +36,21 @@
                         
                         <label for="telefono" class="cols-sm-2 control-label">Telefono</label>
                         <div class="cols-sm-10 input-group">
-                            <input type="number" class="form-control" name="telefono" placeholder="Telefono"/>
+                            <input type="number" class="form-control" name="telefono" placeholder="Telefono" ng-model="conductor.telMovil" ng-init="conductor.telMovil" required/>
                         </div>
                         
                         <label for="edad" class="cols-sm-2 control-label">Edad</label>
                         <div class="cols-sm-10 input-group">
-                            <input type="number" class="form-control" name="edad" placeholder="Ingrese su edad"/>
+                            <input type="number" class="form-control" name="edad" placeholder="Ingrese su edad" ng-model="conductor.edad" ng-init="conductor.edad" required/>
                         </div>
                         
                         <label for="imagen" class="cols-sm-2 control-label">Imagen</label>
                         <div class="cols-sm-10 input-group">
-                            <input type="text" class="form-control" name="imagen" placeholder="Ingrese el url de su imagen"/>
+                            <input type="text" class="form-control" name="imagen" placeholder="Ingrese el url de su imagen" ng-model="conductor.imagen" ng-init="conductor.imagen" required=""/>
                         </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-lg btn-block" ng-click="submit()"> Registrarse </button>
+                        <a href="#" type="button" class="btn btn-primary btn-lg btn-block">Cancelar</a>
                     </div>
                 </form>
-
-                <!-- Boton de ingresar -->
-                <div class="form-group">
-                    <a href="#" type="button" class="btn btn-primary btn-lg btn-block">Registrarse</a>
-                    <a href="#" type="button" class="btn btn-primary btn-lg btn-block">Cancelar</a>
-                </div>
-    </div>
 </div>

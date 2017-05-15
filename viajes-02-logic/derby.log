@@ -1,13 +1,13 @@
 ----------------------------------------------------------------
-Sat May 13 21:43:16 COT 2017:
- Iniciando instancia a816c00e-015c-04d6-ab85-000009ca8438 de Derby, versiÃ³n The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): 
-en el directorio de base de datos /private/var/folders/1w/rqc2xp6s5l35r5j0szf3r_7c0000gn/T/gfembed3377045973965608298tmp/lib/databases/embedded_default con el cargador de clases sun.misc.Launcher$AppClassLoader@4aa298b7
-Cargado desde file:/Users/williamravelo/.m2/repository/org/glassfish/main/extras/glassfish-embedded-all/4.1/glassfish-embedded-all-4.1.jar
+Mon May 15 03:09:00 COT 2017:
+ Iniciando instancia a816c00e-015c-0b27-4066-000015013880 de Derby, versión The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): 
+en el directorio de base de datos C:\Users\n.aguilar\AppData\Local\Temp\gfembed3224553042607002958tmp\lib\databases\embedded_default con el cargador de clases sun.misc.Launcher$AppClassLoader@18b4aac2
+Cargado desde file:/C:/Users/n.aguilar/.m2/repository/org/glassfish/main/extras/glassfish-embedded-all/4.1/glassfish-embedded-all-4.1.jar
 java.vendor=Oracle Corporation
-java.runtime.version=1.8.0_91-b14
-user.dir=/Users/williamravelo/NetBeansProjects/viajes_02/viajes-02-logic
-os.name=Mac OS X
-os.arch=x86_64
-os.version=10.12.4
+java.runtime.version=1.8.0_111-b14
+user.dir=C:\Users\n.aguilar\Desktop\ViajesCompartidos\viajes_02\viajes-02-logic
+os.name=Windows 7
+os.arch=amd64
+os.version=6.1
 derby.system.home=null
 Cargador de clases de base de datos iniciado - derby.database.classpath=''

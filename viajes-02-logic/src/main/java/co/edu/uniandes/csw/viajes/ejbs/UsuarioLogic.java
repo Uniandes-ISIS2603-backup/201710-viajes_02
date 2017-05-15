@@ -35,8 +35,7 @@ import javax.inject.Inject;
  * @author n.aguilar
  */
 @Stateless
-public class UsuarioLogic
-{
+public class UsuarioLogic {
 
     /**
      * La persistencia de la entidad usuario
@@ -49,8 +48,7 @@ public class UsuarioLogic
      *
      * @return Lista de usuarios en el sistema
      */
-    public List<UsuarioEntity> getUsuarios()
-    {
+    public List<UsuarioEntity> getUsuarios() {
         return persistence.findAll();
     }
 
@@ -62,9 +60,11 @@ public class UsuarioLogic
      * @throws BusinessLogicException en caso de que no exista un usuario
      * identificado con el id
      */
-    public UsuarioEntity getUsuario(Long id) throws BusinessLogicException
-    {
+    public UsuarioEntity getUsuario(Long id) throws BusinessLogicException {
         UsuarioEntity u = persistence.find(id);
+        if (u == null) {
+            throw new BusinessLogicException("El usuario que se busca no existe");
+        }
         return u;
     }
 
@@ -76,10 +76,8 @@ public class UsuarioLogic
      * @throws BusinessLogicException En caso de que el genero de la entidad no
      * sea un valor esperado
      */
-    public UsuarioEntity createUsuario(UsuarioEntity entity) throws BusinessLogicException
-    {
-        if (!entity.getGenero().equalsIgnoreCase("masculino") && !entity.getGenero().equalsIgnoreCase("femenino"))
-        {
+    public UsuarioEntity createUsuario(UsuarioEntity entity) throws BusinessLogicException {
+        if (!entity.getGenero().equalsIgnoreCase("masculino") && !entity.getGenero().equalsIgnoreCase("femenino")) {
             throw new BusinessLogicException("El genero del usuario a crear no es valido. (Debe ser masculino o femenino)");
         }
         persistence.create(entity);
@@ -92,13 +90,15 @@ public class UsuarioLogic
      * @param entity La entidad que se desea actualizar
      * @return La entidad actualizada
      */
-    public UsuarioEntity updateUsuario(UsuarioEntity entity) throws BusinessLogicException
-    {
-        if (!entity.getGenero().equalsIgnoreCase("masculino") && !entity.getGenero().equalsIgnoreCase("femenino"))
-        {
+    public UsuarioEntity updateUsuario(UsuarioEntity entity) throws BusinessLogicException {
+        if (!entity.getGenero().equalsIgnoreCase("masculino") && !entity.getGenero().equalsIgnoreCase("femenino")) {
             throw new BusinessLogicException("El genero del usuario a crear no es valido. (Debe ser masculino o femenino)");
         }
-        persistence.update(entity);
+        if (getUsuario(entity.getId()) == null) {
+            throw new BusinessLogicException("El usuario que se desea actualizar no existe");
+        }
+        entity = persistence.update(entity);
+
         return entity;
     }
 
@@ -107,8 +107,7 @@ public class UsuarioLogic
      *
      * @param id el id de la entidad a eliminar
      */
-    public void deleteUsuario(Long id)
-    {
+    public void deleteUsuario(Long id) {
         persistence.delete(id);
     }
 }

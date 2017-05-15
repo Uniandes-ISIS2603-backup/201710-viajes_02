@@ -9,7 +9,7 @@
                 url: '/lugares',
                 abstract: true,
                 resolve: {
-                    lugares: ['$http','lugarContext', function ($http, lugarContext) {
+                    lugares: ['$http', 'lugarContext', function ($http, lugarContext) {
                             return $http.get(lugarContext);
                         }]
                 },
@@ -26,24 +26,40 @@
                 parent: 'lugares',
                 views: {
                     'listView': {
-                        templateUrl: basePath + 'lugar-list.html'
+                        templateUrl: basePath + 'lugar-list.html',
+                        controller: ['$scope', function ($scope) {
+                                var uluru = {lat: -25.363, lng: 131.044};
+
+                                $scope.mapOptions = {
+                                    zoom: 10,
+                                    center: uluru
+                                };
+
+                                $scope.map = new google.maps.Map(document.getElementById('map'), $scope.mapOptions);
+
+                                var marker = new google.maps.Marker({
+                                    position: uluru,
+                                    map: $scope.map
+                                });
+                            }
+                        ]
                     }
-                }
+                },
             }).state('lugarDetail', {
                 url: '/{lugarId:int}/detail',
                 parent: 'lugares',
                 param: {
                     lugarId: null
                 },
-                resolve:  {
+                resolve: {
                     currentLugar: ['$http', 'lugarContext', '$stateParams', function ($http, lugarContext, $params) {
-                            return $http.get(lugarContext+'/'+$params.lugarId);
+                            return $http.get(lugarContext + '/' + $params.lugarId);
                         }]
                 },
                 views: {
                     'detailView': {
                         templateUrl: basePath + 'lugar-detail.html',
-                        controller: ['$scope', 'currentLugar', function ($scope,  currentLugar) {
+                        controller: ['$scope', 'currentLugar', function ($scope, currentLugar) {
                                 $scope.currentLugar = currentLugar.data;
                             }]
                     }
