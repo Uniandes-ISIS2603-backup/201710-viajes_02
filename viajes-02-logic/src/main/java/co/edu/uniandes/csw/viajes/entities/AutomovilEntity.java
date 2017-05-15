@@ -80,7 +80,7 @@ public class AutomovilEntity implements Serializable {
 
 //TODO: verificar porque falla
 //    TODO: CAMBIO
-    @ManyToOne(targetEntity = ConductorEntity.class, cascade = CascadeType.PERSIST)
+    @ManyToOne(targetEntity = ConductorEntity.class)
     @PodamExclude
     private ConductorEntity conductorEntity;
 

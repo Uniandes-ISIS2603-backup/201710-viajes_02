@@ -102,10 +102,18 @@
                         templateUrl: basePath + 'reviews.formulario.html',
                         controller: ['$scope','$http', 'conductoresContext',
                             function ($scope, $http,conductoresContext) {
-
+                                    var valor=0;
                                 $scope.agregarRev= function (){
-
-                                    var valor = document.getElementById('radio').value;
+                                    if(document.getElementById('radio1'))
+                                     valor = 1;
+                                    else if(document.getElementById('radio2'))
+                                         valor = 2;
+                                   else if(document.getElementById('radio3'))
+                                         valor = 3;
+                                    if(document.getElementById('radio4'))
+                                         valor = 4;
+                                    else
+                                         valor = 5;
                                     var comment = document.getElementById('comment').value;
                                     var idCalificado=$scope.currentConductor.id;
                                     var idCalificador=document.getElementById('comment').value;
