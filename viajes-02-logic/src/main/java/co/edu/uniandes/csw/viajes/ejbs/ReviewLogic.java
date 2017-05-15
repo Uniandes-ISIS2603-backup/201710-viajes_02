@@ -71,6 +71,8 @@ public class ReviewLogic
 	public ReviewEntity creatReview( ReviewEntity review ) throws Exception
 	{
 		// calcularla y verificar que  el otro usuario este en el sistema
+            System.out.println(review);
+            System.out.println(review.getIdCalificador());
 		if( viajeroPersistence.find( review.getIdCalificador( ) ) != null )
 		{
 			if( conductorPersistence.find( review.getIdCalificado( ) ) != null &&(review.getCalificacion()>=0 && review.getCalificacion()<=5  )  )

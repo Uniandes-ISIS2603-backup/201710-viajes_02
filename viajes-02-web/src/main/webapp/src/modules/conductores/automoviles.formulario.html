@@ -1,0 +1,23 @@
+<div class="container-fluid">
+    <div ui-view="detailView"></div>
+    <div class="row">
+    <title>Inscribir Automovil</title>
+        <header style="align-content: center">Inscribir Automovil </header>
+
+        <form  method="post">
+
+            Placa: <input type="text" name="placa" id="placa"><br>
+            Color: <input type="color" name="color" id="color"><br>
+            Marca: <input type="text" name="marca" id="marca"><br>
+            Modelo: <input type="text" name="modelo" id="modelo"><br>
+            Aseguradora: <input type="text" name="aseguradora" id="aseguradora"><br>
+            Numero de Seguro: <input type="text" name="numseguro" id="numseguro"><br>
+            Cantidad de asientos: <input type="number" min="2" max="9" style="height: 35px;width: 35px" name="cantasientos" id="cantasientos"><br>
+
+
+            <button type="submit" value="Agregar" ng-click="agregar()" style="width: 30px;height: 35px"></button>
+        </form>
+
+       
+    </div>
+</div>

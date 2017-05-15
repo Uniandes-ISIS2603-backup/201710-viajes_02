@@ -145,7 +145,7 @@ public class AutomovilLogicTest
     }
 
       @Test
-    public void updateEmployeeTest() {
+    public void updateAutomovilTest() {
         AutomovilEntity entity = data.get(0);
         AutomovilEntity pojoEntity = factory.manufacturePojo(AutomovilEntity.class);
 

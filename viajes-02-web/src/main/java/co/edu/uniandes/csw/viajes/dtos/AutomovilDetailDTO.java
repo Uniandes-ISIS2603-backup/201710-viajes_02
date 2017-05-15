@@ -67,6 +67,7 @@ public class AutomovilDetailDTO extends AutomovilDTO
     {
         AutomovilEntity en = super.toEntity();
         //TODO: verificar
+        
      en.setConductorEntity(conductorDTO.DTO2Entity());
         return en;
     }

@@ -91,6 +91,7 @@ public class ReviewDTO implements Serializable
         reviewA.setCalificacion(this.getCalificacion());
         reviewA.setComent(this.getComent());
         reviewA.setIdCalificado(this.getIdCalificado());
+        reviewA.setIdCalificador(this.getIdCalificador());
         return reviewA;
     }
 

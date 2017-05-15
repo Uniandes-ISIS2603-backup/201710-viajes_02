@@ -27,7 +27,17 @@
                                     }]
                             }
                         }
-                    })
+                    }).state('automovilesCreate', {
+                url: '/create',
+                parent: 'automoviles',
+                views: {
+                    'automovilesView': {
+                        controller: 'automovilCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: basePath + 'automoviles.formulario.html'
+                    }
+                }
+            })
                     .state('automovilesList', {
                         url: '/list',
                         parent: 'automoviles',
