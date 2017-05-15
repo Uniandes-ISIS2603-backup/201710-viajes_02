@@ -15,3 +15,20 @@
             });
         }]);
 })(window.angular);
+
+function datePicker() {
+        $('#btnStartDate').datetimepicker({
+            format: 'MM/DD/YYYY'
+        });
+        $('#btnEndDate').datetimepicker({
+            useCurrent: false,
+            format: 'MM/DD/YYYY'
+            
+        });
+        $("#btnStartDate").on("dp.change", function (e) {
+            $('#btnEndDate').data("DateTimePicker").minDate(e.date);
+        });
+        $("#btnEndDate").on("dp.change", function (e) {
+            $('#btnStartDate').data("DateTimePicker").maxDate(e.date);
+        });
+};

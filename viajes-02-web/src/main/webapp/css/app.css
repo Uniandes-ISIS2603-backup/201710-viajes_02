@@ -129,7 +129,10 @@ hr.line-separator:after {
 /* Centro */
 #slider {
     background: #18BC9C;
-    color: #fff
+}
+
+#slider label {
+    color: #fff;
 }
 
 .hero {
