@@ -86,11 +86,17 @@ public class ConductorLogic
      */
     public ConductorEntity createConductor(ConductorEntity c) throws BusinessLogicException
     {
+        if(c != null){
+        if(c.getId() != null){
         ConductorEntity conductor = persistence.find(c.getId());
+        
         if (conductor != null)
         {
             throw new BusinessLogicException("El conductor con id dado ya existe en el sistema");
         }
+        }
+        }
+     
         return persistence.create(c);
     }
 

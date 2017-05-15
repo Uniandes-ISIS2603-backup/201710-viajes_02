@@ -69,7 +69,28 @@
                 parent: 'conductores',
                 views: {
                     'listView': {
-                        templateUrl: basePath + 'conductores.anadir.html'
+                        templateUrl: basePath + 'conductores.anadir.html',
+                        controller:['$scope', 'conductoresContext', '$http','$state', function ($scope, conductoresContext, $http, $state) {
+                                $scope.conductor = {
+                                    id: undefined /*Tipo Long. El valor se asigna en el backend*/,
+                                    nombre: '' /*Tipo String*/,
+                                    correo: '',
+                                    genero: '',
+                                    telMovil: '',
+                                    edad: '',
+                                    imagen: ''
+                                    
+                                };
+                                $scope.submit = function(){
+                                    currentConductor = $scope.conductor;
+                                    return $http.post(conductoresContext, currentConductor)
+                                    .then(function () {
+                            // $http.post es una promesa
+                            // cuando termine bien, cambie de estado
+                                    $state.go('conductoresList');
+                                    });
+                                };
+                            }]
                     }
                 }
             });
