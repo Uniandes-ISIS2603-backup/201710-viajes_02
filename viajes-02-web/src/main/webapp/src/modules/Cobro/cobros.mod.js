@@ -36,25 +36,6 @@
                         templateUrl: basePath + 'cobro-list.html'
                     }
                 }
-            }).state('cobrosDetail', {
-                url: '/{cobroId:int}',
-                parent: 'cobros',
-                param: {
-                    cobroId: null
-                },
-                resolve: {
-                    currentCobro: ['$http', 'cobroContext', '$stateParams', function ($http, cobroContext, $params) {
-                            return $http.get(cobroContext + '/' + $params.usuarioId + '/cobros/' + $params.cobroId);
-                        }]
-                },
-                views: {
-                    'detailView': {
-                        templateUrl: basePath + 'cobro-detail.html',
-                        controller: ['$scope', 'currentCobro', function ($scope, currentCobro) {
-                                $scope.currentCobro = currentCobro.data;
-                            }]
-                    }
-                }
             });
         }]);
 })(window.angular);
