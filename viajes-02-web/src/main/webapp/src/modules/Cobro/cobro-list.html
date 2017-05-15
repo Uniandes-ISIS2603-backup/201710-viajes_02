@@ -1,7 +1,8 @@
 <div class="container cobro-list">
     <div class="row">
         <section class="content">
-            <h1>Cobros de {{currentUsuario.nombre.split(" ")[0]}}</h1>          
+            <h1 class="text-center">Cobros de {{currentUsuario.nombre.split(" ")[0]}}</h1>    
+            <hr class="line-separator">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
                     <div class="panel-body">
@@ -15,21 +16,29 @@
                         <div class="table-container">
                             <table class="table table-filter">
                                 <tbody>
-                                    <tr ng-repeat="cobro in cobrosRecords" data-status="{{cobro.cancelado ? 'pagado' : 'pendiente'}}">
+                                    <tr ng-repeat="cobro in cobrosRecords" data-status="{{cobro.cancelado ? 'pagado' : 'pendiente'}}" class="cobro-table">
                                         <td>
-                                            <div class="media">
-                                                <a href="#" class="pull-left">
-                                                    <img src="https://s3.amazonaws.com/uifaces/faces/twitter/fffabs/128.jpg" class="media-photo">
-                                                </a>
-                                                <div class="media-body">
-                                                    <span class="media-meta pull-right">Febrero 13, 2016</span>
-                                                    <h4 class="title">
-                                                        {{cobro.usuarioDestinatario.nombre}}
-                                                        <span class="pull-right {{cobro.cancelado ? 'pagado' : 'pendiente'}}">({{cobro.cancelado ? 'Pagado' : 'Pendiente'}})</span>
-                                                    </h4>
-                                                    <p class="summary">$ {{cobro.valor}} USD</p>
+                                            <a data-toggle="collapse" href="usuarios/{{currentUsuario.id}}/cobros/list/#collapse{{cobro.id}}" aria-expanded="false" aria-controls="collapse{{cobro.id}}">
+                                                <div class="media">
+                                                    <div class="pull-left">
+                                                        <img src="https://s3.amazonaws.com/uifaces/faces/twitter/fffabs/128.jpg" class="media-photo">
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <h4 class="title">
+                                                            {{cobro.usuarioDestinatario.nombre}}
+                                                            <span class="pull-right {{cobro.cancelado ? 'pagado' : 'pendiente'}}">({{cobro.cancelado ? 'Pagado' : 'Pendiente'}})</span>
+                                                        </h4>
+                                                        <p class="summary">$ {{cobro.valor}} USD</p>
+                                                    </div>
+                                                    <div class="collapse" id="collapse{{cobro.id}}">
+                                                        <div class="well">
+                                                            Numero de factura: {{cobro.id}}<br>
+                                                            Correo destinatario: {{cobro.usuarioDestinatario.correo}}<br>
+                                                            Telefono destinatario: {{cobro.usuarioDestinatario.telMovil}}<br>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                            </div>
+                                            </a>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -41,4 +50,3 @@
         </section>
     </div>
 </div>
-

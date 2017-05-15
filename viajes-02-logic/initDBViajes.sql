@@ -92,6 +92,8 @@ insert into CobroEntity (id,cancelado,valor,usuariodestinatario_id,usuarioremite
 insert into CobroEntity (id,cancelado,valor,usuariodestinatario_id,usuarioremitente_id,dtype) values (18,1,27,1,10,'CobroEntity');
 insert into CobroEntity (id,cancelado,valor,usuariodestinatario_id,usuarioremitente_id,dtype) values (19,0,92,4,8,'CobroEntity');
 insert into CobroEntity (id,cancelado,valor,usuariodestinatario_id,usuarioremitente_id,dtype) values (20,0,80,1,7,'CobroEntity');
+insert into CobroEntity (id,cancelado,valor,usuariodestinatario_id,usuarioremitente_id,dtype) values (21,0,43,5,1,'CobroMultaEntity');
+
 
 insert into ReviewEntity (id, calificacion, coment,idcalificado,idcalificador) values (0 , 4, 'gran conductor',1,2);
 insert into ReviewEntity (id, calificacion, coment,idcalificado,idcalificador) values (1 , 2,'aun le falta mucha experiencia manejando',3,4);

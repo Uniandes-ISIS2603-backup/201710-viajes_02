@@ -131,7 +131,7 @@ hr.line-separator:after {
     background: #18BC9C;
 }
 
-#slider label {
+#slider label, #slider h1, #slider h2, #slider h3, #slider h4, #slider h5 {
     color: #fff;
 }
 
@@ -401,4 +401,12 @@ footer .lower-footer {
 
 .cobro-list .table-filter .media .summary {
     font-size: 14px;
+}
+
+.cobro-table a {
+    text-decoration: none;
+}
+
+.cobro-list {
+    margin-bottom: 50px;
 }
