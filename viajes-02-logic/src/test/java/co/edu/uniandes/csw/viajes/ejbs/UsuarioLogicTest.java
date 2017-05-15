@@ -3,10 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package co.edu.uniandes.csw.viajes.persistence;
+package co.edu.uniandes.csw.viajes.ejbs;
 
 import co.edu.uniandes.csw.viajes.entities.UsuarioEntity;
 import co.edu.uniandes.csw.viajes.entities.ViajeroEntity;
+import co.edu.uniandes.csw.viajes.exceptions.BusinessLogicException;
+import co.edu.uniandes.csw.viajes.persistence.UsuarioPersistence;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -30,10 +32,10 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
  * @author n.aguilar
  */
 @RunWith(Arquillian.class)
-public class UsuarioPersistenceTest {
-    
+public class UsuarioLogicTest {
+
     @Inject
-    private UsuarioPersistence usuarioPersistence;
+    private UsuarioLogic usuarioLogic;
 
     @PersistenceContext
     private EntityManager em;
@@ -47,6 +49,7 @@ public class UsuarioPersistenceTest {
     public static JavaArchive createDeployment() {
         return ShrinkWrap.create(JavaArchive.class)
                 .addPackage(UsuarioEntity.class.getPackage())
+                .addPackage(UsuarioLogic.class.getPackage())
                 .addPackage(UsuarioPersistence.class.getPackage())
                 .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
@@ -83,23 +86,62 @@ public class UsuarioPersistenceTest {
             data.add(entity);
         }
     }
-  
+
     @Test
     public void createUsuarioTest() {
         PodamFactory factory = new PodamFactoryImpl();
         UsuarioEntity newEntity = factory.manufacturePojo(UsuarioEntity.class);
+        UsuarioEntity result = null;
+        newEntity.setGenero("Indefinido");
+        try {
+            result = usuarioLogic.createUsuario(newEntity);
+            fail();
+        } catch (Exception e) {
+            assertTrue(true);
+        }
+        try {
+            newEntity.setGenero("Masculino");
+            result = usuarioLogic.createUsuario(newEntity);
+            Assert.assertNotNull(result);
 
-        UsuarioEntity result = usuarioPersistence.create(newEntity);
-        Assert.assertNotNull(result);
-        
-        UsuarioEntity entity = em.find(UsuarioEntity.class, result.getId());
-        Assert.assertNotNull(entity);
-        Assert.assertEquals(newEntity.getNombre(), entity.getNombre());
+            UsuarioEntity entity = em.find(UsuarioEntity.class, result.getId());
+            Assert.assertNotNull(entity);
+            Assert.assertEquals(newEntity.getNombre(), entity.getNombre());
+        } catch (Exception e) {
+            fail();
+        }
+    }
+
+    @Test
+    public void deleteUsuarioTest() {
+        UsuarioEntity entity = data.get(0);
+        usuarioLogic.deleteUsuario(entity.getId());
+        UsuarioEntity deleted = em.find(UsuarioEntity.class, entity.getId());
+        Assert.assertNull(deleted);
+    }
+
+    @Test
+    public void getUsuarioTest() {
+        UsuarioEntity entity = data.get(0);
+        UsuarioEntity newEntity = null;
+        try {
+            newEntity = usuarioLogic.getUsuario((long) 964);
+            fail();
+        } catch (Exception e) {
+            assertTrue(true);
+        }
+        try {
+            newEntity = usuarioLogic.getUsuario(entity.getId());
+        } catch (Exception e) {
+            fail();
+        }
+        Assert.assertNotNull(newEntity);
+        Assert.assertEquals(entity.getNombre(), newEntity.getNombre());
     }
 
     @Test
     public void getUsuariosTest() {
-        List<UsuarioEntity> list = usuarioPersistence.findAll();
+        List<UsuarioEntity> list = usuarioLogic.getUsuarios();
         Assert.assertEquals(data.size(), list.size());
         for (UsuarioEntity ent : list) {
             boolean found = false;
@@ -111,36 +153,37 @@ public class UsuarioPersistenceTest {
             Assert.assertTrue(found);
         }
     }
-    
+
     @Test
-    public void getUsuarioTest(){
-        UsuarioEntity entity = data.get(0);
-        UsuarioEntity newEntity = usuarioPersistence.find(entity.getId());
-        Assert.assertNotNull(newEntity);
-        Assert.assertEquals(entity.getNombre(), newEntity.getNombre());
-    }
-    
-    @Test
-    public void updateUsuarioTest(){
+    public void updateUsuarioTest() {
         UsuarioEntity entity = data.get(0);
         PodamFactory factory = new PodamFactoryImpl();
         UsuarioEntity newEntity = factory.manufacturePojo(UsuarioEntity.class);
+        try {
+            newEntity.setGenero("Indefinido");
+            usuarioLogic.updateUsuario(newEntity);
+            fail();
+        } catch (BusinessLogicException e) {
+            assertTrue(true);
+        }
+        try {
+            newEntity.setGenero("Femenino");
+            newEntity.setId((long) 11111);
+            usuarioLogic.updateUsuario(newEntity);
+            fail();
 
-        newEntity.setId(entity.getId());
-
-        usuarioPersistence.update(newEntity);
-
+        } catch (BusinessLogicException e) {
+            assertTrue(true);
+        }
+        try {
+            newEntity.setGenero("Femenino");
+            newEntity.setId(entity.getId());
+            usuarioLogic.updateUsuario(newEntity);
+            assertTrue(true);
+        } catch (BusinessLogicException e) {
+            fail();
+        }
         UsuarioEntity resp = em.find(UsuarioEntity.class, entity.getId());
-
         Assert.assertEquals(newEntity.getNombre(), resp.getNombre());
     }
-    
-    @Test
-    public void deleteUsuarioTest(){
-        UsuarioEntity entity = data.get(0);
-        usuarioPersistence.delete(entity.getId());
-        UsuarioEntity deleted = em.find(UsuarioEntity.class, entity.getId());
-        Assert.assertNull(deleted);
-    }
-    
 }

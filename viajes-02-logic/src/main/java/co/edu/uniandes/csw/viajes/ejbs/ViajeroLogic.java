@@ -64,7 +64,11 @@ public class ViajeroLogic
      */
     public ViajeroEntity getViajero(Long id) throws BusinessLogicException
     {
-        return persistence.find(id);
+        ViajeroEntity u = persistence.find(id);
+        if (u == null) {
+            throw new BusinessLogicException("El usuario que se busca no existe");
+        }
+        return u;
     }
 
     /**
@@ -104,6 +108,9 @@ public class ViajeroLogic
         if (entity.getEdad() < 0 || entity.getEdad() > 115)
         {
             throw new BusinessLogicException("La edad ingresada no es valida");
+        }
+        if (getViajero(entity.getId()) == null) {
+            throw new BusinessLogicException("El usuario que se desea actualizar no existe");
         }
         persistence.update(entity);
         return entity;
