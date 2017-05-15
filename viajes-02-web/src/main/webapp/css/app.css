@@ -410,3 +410,10 @@ footer .lower-footer {
 .cobro-list {
     margin-bottom: 50px;
 }
+
+/* Lugares */
+
+  #map {
+        height: 400px;
+        width: 100%;
+       }
