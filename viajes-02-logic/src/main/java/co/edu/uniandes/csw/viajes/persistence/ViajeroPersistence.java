@@ -97,7 +97,7 @@ public class ViajeroPersistence
     public void delete(Long id)
     {
         ViajeroEntity entity = em.find(ViajeroEntity.class, id);
-        em.detach(entity);
+        em.remove(entity);
     }
 
 }
