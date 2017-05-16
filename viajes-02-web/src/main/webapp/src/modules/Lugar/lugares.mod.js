@@ -129,11 +129,33 @@ function validate(action, elementId, elementErrorId, errorMessage) {
 }
 
 function addAllMarkers(records, map) {
+    var allMarkers = [];
     for (var i = 0; i < records.length; i++) {
         var location = {lat: records[i].lat, lng: records[i].lon};
+
+        var icon = {
+            url: 'css/marker.png',
+            scaledSize: new google.maps.Size(50, 85),
+            origin: new google.maps.Point(0, 0), 
+            anchor: new google.maps.Point(0, 0)
+        };
+
         var marker = new google.maps.Marker({
             position: location,
-            map: map
+            map: map,
+            placeName: records[i].lugar,
+            placeAddress: records[i].direccion,
+            icon: icon
         });
+
+        google.maps.event.addListener(marker, 'click', function () {
+            console.log(this.icon);
+            $('#basicModal').modal('show');
+            $('#basicModal-lugarName').text(this.placeName);
+            $('#basicModal-lugarAddress').text(this.placeAddress);
+        });
+
+        allMarkers.push(marker);
     }
+    map.markers = allMarkers;
 }
