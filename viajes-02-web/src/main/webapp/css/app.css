@@ -459,3 +459,39 @@ footer .lower-footer {
     color: white;
 }
 
+/* calificacion estrella*/
+#conductores .form {
+    width: 250px;
+    margin: 0 auto;
+    height: 50px;
+}
+
+#conductores .form p {
+    text-align: left;
+}
+
+#conductores .form label {
+    font-size: 20px;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+label {
+    color: grey;
+}
+
+.clasificacion {
+    direction: ltr;
+    unicode-bidi: bidi-override;
+}
+
+label:hover,
+label:hover ~ label {
+    color: orange;
+}
+
+input[type="radio"]:checked ~ label {
+    color: orange;
+}

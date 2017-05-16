@@ -3,9 +3,20 @@
         <h1> REVIEWS </h1>
         <div ng-repeat = "review in currentConductor.reviews" >
             <ul>
-                <li> Calificacion : {{review.calificacion}} | Comentario: {{review.coment}}</li>
+                <li> if({{review.calificacion}} ==1)
+                    Calificacion : ★✰✰✰✰
+                    else if({{review.calificacion}} ==2)
+                    Calificacion : ★★✰✰✰
+                    else if({{review.calificacion}} ==3)
+                    Calificacion : ★★★✰✰
+                    if({{review.calificacion}} ==4)
+                    Calificacion : ★★★★✰
+                    else
+                    Calificacion : ★★★★★
+                    Comentario: {{review.coment}}</li>
             </ul>
         </div>
     </div>
 </div>
 <div ui-view = "childrenView"></div>
+

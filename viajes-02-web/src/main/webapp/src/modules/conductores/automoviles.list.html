@@ -1,6 +1,7 @@
 <div class="container-fluid">
     <div ui-view="detailView"></div>
     <div class="row">
+        <button class="btn btn-danger" style= "border-radius:50px; color:#FFFFFF; position: absolute; right: 23px; margin-top: 7px; border: 0" ng-click="eliminarAutomovil()">&times;</button>
                 <div class="thumbnail">
                     <!--<td><a ui-sref="lugarDetail({automovoilId: currentAutomovil.id})" class="thumb">{{.lugar}}</a></td>-->
                     <p class="text-center">Placa: {{currentAutomovil.placa}}</p>
