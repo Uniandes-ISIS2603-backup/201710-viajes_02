@@ -1,1 +1,26 @@
-<div id="map"></div>
+<div class="row">
+    <div id="map"></div>
+</div>
+<div class="container" id="location-search">
+    <div class="row location-row">
+        <a type="button" class="btn btn-primary btn-lg  col-md-offset-1 col-md-2 location-input pull-right" onClick="goTo();">Buscar</a>
+        <div class="dropup col-md-offset-1 col-md-2 pull-right">
+            <button class="btn btn-default dropdown-toggle lugarDropdown location-input" type="button" data-toggle="dropdown">
+                Lugares
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+                <li><a href="#">Accion</a></li>
+                <li><a href="#">Accion 2</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Separado</a></li>
+            </ul>
+        </div>
+        <div class="col-md-2 pull-right">
+            <input type="text" class="location-input" name="locationName" id="locationName" placeholder="Nombre del lugar"/>
+            <h5 class="text-center error-message" id="error-message-location">asfasf</h5>
+        </div>
+        
+    </div>
+</div>
+

@@ -31,6 +31,7 @@
                     </dd>
 
                 </dl>
+                
                 <ul class="nav nav-tabs">
                     <li role="presentation" class="active"> <a ui-sref="conductoresDetailReview">Reviews</a></li>
                     <li role="presentation" class="active"> <a ui-sref="conductoresDetailAutomoviles">Automoviles</a></li>
@@ -39,7 +40,16 @@
                 </ul>
             </div>
         </div>
+        
         <div ui-view = "detail" > </div>
+        
+        <div class="jumbotron">
+            <div class="container">    
+            <h1>Mis Viajes</h1> 
+            </div>
+                    <div ui-view = "childrenView"></div>
+        </div>
+        
     </div>
 </div>
 

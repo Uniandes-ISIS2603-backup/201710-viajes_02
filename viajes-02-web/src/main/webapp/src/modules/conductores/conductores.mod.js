@@ -50,7 +50,14 @@
                     controller: ['$scope', 'currentConductor', function ($scope, currentConductor) {
                         $scope.currentConductor = currentConductor.data;
                     }]
-                }
+                
+                },
+                'listView': {
+                        templateUrl: 'src/modules/viajes/' + 'viajes.list.html',
+                        controller: ['$scope', 'currentConductor', function ($scope, currentConductor) {
+                                $scope.viajesRecords = currentConductor.data.viajes;
+                            }]
+                    }
             }
         })
             .state('conductoresDetailReview', {
@@ -94,7 +101,7 @@
                                 .then(function () {
                                     // $http.post es una promesa
                                     // cuando termine bien, cambie de estado
-                                    $state.go('conductoresList');
+                                    $state.go('conductoresList',{}, {reload: true});
                                 });
                         };
                     }]
@@ -107,8 +114,8 @@
             views: {
                 'detail': {
                     templateUrl: basePath + 'reviews.formulario.html',
-                    controller: ['$scope', '$http', 'conductoresContext',
-                        function ($scope, $http, conductoresContext) {
+                    controller: ['$scope', '$http', 'conductoresContext','$state',
+                        function ($scope, $http, conductoresContext,$state) {
                             var valor = 0;
                             $scope.agregarRev = function () {
                                 if (document.getElementById('radio1'))
@@ -133,19 +140,24 @@
                                 };
 
                                 $http.post('api/usuarios/' + $scope.currentConductor.id + '/reviews', review)
+                                    .then(function () {
+                                        // $http.post es una promesa
+                                        // cuando termine bien, cambie de estado
+                                        $state.go('conductorDetail',{conductorId:  $scope.currentConductor.id});
+                                    });
                             }
                         }]
                 }
             }
-        })
+            })
             .state('automovilesFormulario', {
                 url: '/addAuto',
                 parent: 'conductorDetail',
                 views: {
                     'detail': {
                         templateUrl: basePath + 'automoviles.formulario.html',
-                        controller: ['$scope', '$http', 'conductoresContext',
-                            function ($scope, $http, conductoresContext) {
+                        controller: ['$scope', '$http', 'conductoresContext','$state',
+                            function ($scope, $http, conductoresContext,$state) {
 
                                 $scope.agregar = function () {
 
@@ -170,6 +182,11 @@
                                     };
 
                                     $http.post('api/automoviles', carrito)
+                                        .then(function () {
+                                            // $http.post es una promesa
+                                            // cuando termine bien, cambie de estado
+                                            $state.go('conductorDetail',{conductorId:  $scope.currentConductor.id});
+                                        });
                                 }
                             }]
                     }
@@ -190,15 +207,22 @@
                 views: {
                     'childrenView': {
                         templateUrl: basePath + 'automoviles.list.html',
-                        controller: ['$scope', 'currentAutomovil', function ($scope, currentAutomovil) {
-                            $scope.currentAutomovil = currentAutomovil.data;
-                        }]
+                        controller: ['$scope', '$http' ,'currentAutomovil', '$stateParams', '$state',
+                            function ($scope,$http, currentAutomovil, $stateParams, $state) {
+                                $scope.currentAutomovil = currentAutomovil.data;
+
+                                $scope.eliminarAutomovil = function () {
+                                    $http.delete('api/automoviles/' + $stateParams.autoId)
+                                        .then(function () {
+                                            $state.go('conductoresDetailAutomoviles', {conductorId:  $scope.currentConductor.id})
+                                        });
+                                }
+                            }]
                     }
                 }
             });
     }])
 })
 (window.angular);
-
 
 

@@ -1,4 +1,3 @@
-delete from ViajeEntity;
 delete from UsuarioEntity_ReviewEntity;
 delete from UsuarioEntity_ReservaEntity;
 delete from UsuarioEntity_PagoEntity;
@@ -8,11 +7,13 @@ delete from ReviewEntity;
 delete from ReservaEntity;
 delete from PagoEntity;
 delete from CobroEntity;
+delete from ViajeEntity;
 delete from AutomovilEntity;
 delete from UsuarioEntity;
 delete from LugarEntity;
 
-insert into LugarEntity (id, direccion, lugar, lat, lon) values (0 , '8506 Sunbrook Place' , 'Lucija' , 45.50526 , 13.6024);
+
+insert into LugarEntity (id, direccion, lugar, lat, lon) values (0 , '8506 Sunbrook Place' , 'Lucija' , 4.6476286, -74.1038169);
 insert into LugarEntity (id, direccion, lugar, lat, lon) values (1 , '6060 Lindbergh Alley' , 'Żelazków' , 51.85418 , 18.1743);
 insert into LugarEntity (id, direccion, lugar, lat, lon) values (2 , '1 Hintze Point' , 'Sukawaris' , -6.8041 , 105.8639);
 insert into LugarEntity (id, direccion, lugar, lat, lon) values (3 , '9524 Russell Street' , 'Sainte-Anne-de-Bellevue' , 45.40618 , -73.9456);
@@ -32,6 +33,8 @@ insert into LugarEntity (id, direccion, lugar, lat, lon) values (16 , '0 Red Clo
 insert into LugarEntity (id, direccion, lugar, lat, lon) values (17 , '1319 Briar Crest Plaza' , 'Rimba Sekampung' , 1.6756 , 101.43748);
 insert into LugarEntity (id, direccion, lugar, lat, lon) values (18 , '367 Mayer Crossing' , 'Lama' , 41.53 , -8.3567);
 insert into LugarEntity (id, direccion, lugar, lat, lon) values (19 , '7994 Hooker Court' , 'Taoyuan' , 22.58041 , 113.96121);
+
+
 
 INSERT INTO APP.AUTOMOVILENTITY (ID,CANTASIENTOS, COLOR, COMPSEGUROS, MARCA, MODELO, NUMSEGURO, PLACA)
 	VALUES (1,4, 'Rojo', 'Asura', 'Mercedes', 'AMG', 456789, 'MAD568');

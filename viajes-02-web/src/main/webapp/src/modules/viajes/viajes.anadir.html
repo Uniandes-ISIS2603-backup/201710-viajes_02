@@ -16,51 +16,54 @@
                     <div class="form-group row" align = "center">
                         <label for="kilometros" class="cols-sm-2 control-label">Kilometros</label>
                         <div class="cols-sm-10 input-group">
-                            <input type="number" class="form-control" name="kilometros" placeholder="Kilometros" ng-model="conductor.nombre" ng-init="conductor.nombre" required/>
+                            <input type="number" class="form-control" name="kilometros" placeholder="Kilometros" ng-model="viaje.kilometros" ng-init="viaje.kilometros" required/>
                         </div>
                         
                         <label for="costo" class="cols-sm-2 control-label">Costo</label>
 
                         <div class="cols-sm-10 input-group">
-                            <input type="number" class="form-control" name="Costo" placeholder="Costo por asiento" ng-model="conductor.correo" ng-init="conductor.correo" required/>
+                            <input type="number" class="form-control" name="Costo" placeholder="Costo por asiento" ng-model="viaje.gastosCompartidos" ng-init="viaje.gastosCompartidos" required/>
                         </div>
                         
                         <label for="fechaPartida" class="cols-sm-2 control-label">Fecha Partida</label>
                         
                         <div class="cols-sm-10 input-group">
-                            <div class="input-group col-md-6 startDateInput" id="btnStartDate" onClick="datePicker();">
-                                <input type="text" class="form-control date-placeholder" name="name" placeholder="D/M/Y" />
+                            
+                                <input type="date"  name="name" placeholder="D/M/Y" ng-model="viaje.diaYHoraPartida" ng-init="viaje.diaYHoraPartida" />
                                 <span class="input-group-addon"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-                            </div>
                         </div>
                         
                         <label for="fechaLlegada" class="cols-sm-2 control-label">Fecha Llegada</label>
                         
                         <div class="cols-sm-10 input-group">
-                            <div class="input-group col-md-6 startDateInput" id="btnStartDate" onClick="datePicker();">
-                                <input type="text" class="form-control date-placeholder" name="name" placeholder="D/M/Y" />
+                           
+                                <input type="date"  name="name" placeholder="D/M/Y" ng-model="viaje.diaYHoraLlegada" ng-init="viaje.diaYHoraLlegada"/>
                                 <span class="input-group-addon"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-                            </div>
+                            
                         </div>
                         
                         <label for="origen" class="cols-sm-2 control-label">Origen</label>
 
                         <div class="cols-sm-10 input-group">
-                            <input type="text" class="form-control" name="Origen" placeholder="Ciudad" ng-model="conductor.correo" ng-init="conductor.correo" required/> <br>
-                            <input type="text" class="form-control" name="OrigenD" placeholder="Direccion" ng-model="conductor.correo" ng-init="conductor.correo" required/>
+                            <input type="text" class="form-control" name="Origen" placeholder="Ciudad" ng-model="origen.lugar" ng-init="origen.lugar" required/> <br>
+                            <input type="text" class="form-control" name="OrigenD" placeholder="Direccion" ng-model="origen.direccion" ng-init="origen.direccion" required/>
+                            <input type="number" class="form-control" name="OrigenLat" placeholder="Latitud" ng-model="origen.lat" ng-init="origen.lat" required/> <br>
+                            <input type="number" class="form-control" name="OrigenLon" placeholder="Longitud" ng-model="origen.lon" ng-init="origen.lon" required/>
                         </div>
                         
                         <label for="destino" class="cols-sm-2 control-label">Destino</label>
 
                         <div class="cols-sm-10 input-group">
-                            <input type="text" class="form-control" name="Destino" placeholder="Ciudad" ng-model="conductor.correo" ng-init="conductor.correo" required/> <br>
-                            <input type="text" class="form-control" name="DestinoD" placeholder="Direccion" ng-model="conductor.correo" ng-init="conductor.correo" required/>
+                            <input type="text" class="form-control" name="Destino" placeholder="Ciudad" ng-model="destino.lugar" ng-init="destino.lugar" required/> <br>
+                            <input type="text" class="form-control" name="DestinoD" placeholder="Direccion" ng-model="destino.direccion" ng-init="destino.direccion" required/>
+                            <input type="number" class="form-control" name="DestinoLat" placeholder="Latitud" ng-model="destino.lat" ng-init="destino.lat" required/> <br>
+                            <input type="number" class="form-control" name="DestinoLon" placeholder="Longitud" ng-model="destino.lon" ng-init="destino.lon" required/>
                         </div>
                         
                         <label for="Automovil" class="cols-sm-2 control-label">Automovil</label>
                         
                         <div class="cols-sm-10 input-group">
-                            <select class="form-control" name="automovil" id="genero" ng-model="conductor.genero" ng-init="conductor.genero" required/>
+                            <select class="form-control" name="automovil" id="genero" ng-model="placa" ng-init="placa" required/>
                             <option ng-repeat="automovil in currentConductor.automoviles">  {{automovil.placa}} </option>
                         </select>
                         </div>

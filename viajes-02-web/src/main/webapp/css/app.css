@@ -413,7 +413,85 @@ footer .lower-footer {
 
 /* Lugares */
 
-  #map {
-        height: 400px;
-        width: 100%;
-       }
+#map {
+    height: 580px;
+    width: 100%;
+}
+
+#location-search {
+    height: 150px;
+    width: 100%;
+    background-color: #233140;
+    margin: 0px;
+    padding-top: 60px;
+}
+
+.location-input {
+   height: 40px;
+   width: 250px;
+   padding-left: 10px;
+}
+
+.location-row {
+    padding-right: 50px;
+}
+
+/* Validator */
+
+.error {
+    border: solid 2px #a94442;  
+}
+
+.error-message {
+    color: #a94442;
+}
+
+#error-message-location {
+    display: none;
+    font-size: 12px;
+}
+.jumbotron{
+    color: #2C3E50;
+    background-color: #2C3E50;
+}
+
+.jumbotron h1{
+    color: white;
+}
+
+/* calificacion estrella*/
+#conductores .form {
+    width: 250px;
+    margin: 0 auto;
+    height: 50px;
+}
+
+#conductores .form p {
+    text-align: left;
+}
+
+#conductores .form label {
+    font-size: 20px;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+label {
+    color: grey;
+}
+
+.clasificacion {
+    direction: ltr;
+    unicode-bidi: bidi-override;
+}
+
+label:hover,
+label:hover ~ label {
+    color: orange;
+}
+
+input[type="radio"]:checked ~ label {
+    color: orange;
+}
