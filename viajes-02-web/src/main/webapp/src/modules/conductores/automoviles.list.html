@@ -1,0 +1,14 @@
+<div class="container-fluid">
+    <div ui-view="detailView"></div>
+    <div class="row">
+                <div class="thumbnail">
+                    <!--<td><a ui-sref="lugarDetail({automovoilId: currentAutomovil.id})" class="thumb">{{.lugar}}</a></td>-->
+                    <p class="text-center">Placa: {{currentAutomovil.placa}}</p>
+                    <p class="text-center">Color: {{currentAutomovil.color}}</p>
+                    <p class="text-center">Modelo: {{currentAutomovil.modelo}}</p>
+                    <p class="text-center">Cantidad asientos: {{currentAutomovil.cantAsientos}}</p>
+                    <p class="text-center">Compañia de seguros: {{currentAutomovil.compSeguros}}</p>
+                    <p class="text-center">Numero de seguros: {{currentAutomovil.numSeguro}}</p>
+                </div>
+    </div>
+</div>
