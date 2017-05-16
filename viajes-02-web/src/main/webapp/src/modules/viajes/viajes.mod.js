@@ -47,7 +47,6 @@
                                 $scope.currentViaje = currentViaje.data;
                                 $scope.cancelarViaje = function(){
                                     viaje = $scope.currentViaje;
-                                    console.log(viaje)
                                     return $http.delete(viajesContext+'/'+ viaje.idViaje)
                                 .then(function () {
                                     // $http.post es una promesa
