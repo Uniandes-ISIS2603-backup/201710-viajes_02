@@ -143,7 +143,7 @@
                                     .then(function () {
                                         // $http.post es una promesa
                                         // cuando termine bien, cambie de estado
-                                        $state.go('conductorDetail',{conductorId:  $scope.currentConductor.id});
+                                        $state.go('conductorDetail',{conductorId:  $scope.currentConductor.id},{reload: true});
                                     });
                             }
                         }]
@@ -215,7 +215,7 @@
                                 $scope.eliminarAutomovil = function () {
                                     $http.delete('api/automoviles/' + $stateParams.autoId)
                                         .then(function () {
-                                            $state.go('conductoresDetailAutomoviles', {conductorId:  $scope.currentConductor.id})
+                                            $state.go('conductoresDetailAutomoviles', {conductorId:  $scope.currentConductor.id},{reload: true})
                                         });
                                 }
                             }]
