@@ -4,7 +4,7 @@
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             var basePath = 'src/modules/Lugar/';
             $urlRouterProvider.otherwise("/lugarList");
-
+            self = this;
             $stateProvider.state('lugares', {
                 url: '/lugares',
                 abstract: true,
@@ -28,15 +28,20 @@
                     'listView': {
                         templateUrl: basePath + 'lugar-list.html',
                         controller: ['$scope', function ($scope) {
-                                var uluru = {lat: -25.363, lng: 131.044};
+                                var uluru = {lat: 4.6535241, lng: -74.1105382};
 
                                 $scope.mapOptions = {
-                                    zoom: 10,
-                                    center: uluru
+                                    zoom: 17,
+                                    center: uluru,
+                                    draggable: false,
+                                    zoomControl: false,
+                                    scrollwheel: false,
+                                    disableDoubleClickZoom: true
                                 };
 
                                 $scope.map = new google.maps.Map(document.getElementById('map'), $scope.mapOptions);
-
+                                self.mapLiteral = $scope.map;
+                                
                                 var marker = new google.maps.Marker({
                                     position: uluru,
                                     map: $scope.map
@@ -68,3 +73,8 @@
             });
         }]);
 })(window.angular);
+
+function marker() {
+    var buenas = new google.maps.LatLng(4.6476286,-74.1038169);
+    console.log(window.mapLiteral.setCenter(buenas));
+}

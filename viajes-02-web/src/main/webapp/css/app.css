@@ -413,7 +413,24 @@ footer .lower-footer {
 
 /* Lugares */
 
-  #map {
-        height: 400px;
-        width: 100%;
-       }
+#map {
+    height: 580px;
+    width: 100%;
+}
+
+#location-search {
+    height: 150px;
+    width: 100%;
+    background-color: #233140;
+    margin: 0px;
+    padding-top: 60px;
+}
+
+.location-input {
+   height: 40px;
+}
+
+.location-row {
+    padding-right: 50px;
+}
+
