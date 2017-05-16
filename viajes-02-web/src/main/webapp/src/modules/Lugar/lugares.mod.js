@@ -145,14 +145,15 @@ function addAllMarkers(records, map) {
             map: map,
             placeName: records[i].lugar,
             placeAddress: records[i].direccion,
+            placeImage: records[i].rutaImagen,
             icon: icon
         });
 
         google.maps.event.addListener(marker, 'click', function () {
-            console.log(this.icon);
             $('#basicModal').modal('show');
             $('#basicModal-lugarName').text(this.placeName);
             $('#basicModal-lugarAddress').text(this.placeAddress);
+            $('#basicModal-lugarImage').attr("src",this.placeImage);
         });
 
         allMarkers.push(marker);
