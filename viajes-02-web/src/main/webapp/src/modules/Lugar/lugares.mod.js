@@ -41,11 +41,15 @@
 
                                 $scope.map = new google.maps.Map(document.getElementById('map'), $scope.mapOptions);
                                 self.mapLiteral = $scope.map;
-                                
-                                var marker = new google.maps.Marker({
-                                    position: uluru,
-                                    map: $scope.map
-                                });
+                                self.scope = $scope;
+
+                                for (var i = 0; i < $scope.lugarRecords.length; i++) {
+                                    var location = {lat: $scope.lugarRecords[i].lat, lng: $scope.lugarRecords[i].lon};
+                                    var marker = new google.maps.Marker({
+                                        position: location,
+                                        map: $scope.map
+                                    });
+                                }
                             }
                         ]
                     }
@@ -74,7 +78,20 @@
         }]);
 })(window.angular);
 
-function marker() {
-    var buenas = new google.maps.LatLng(4.6476286,-74.1038169);
-    console.log(window.mapLiteral.setCenter(buenas));
+function goTo() {
+    var searchName = $('#locationName').val();
+    $('#locationName').val("");
+    
+    for (var i = 0; i < window.scope.lugarRecords.length; i++) {
+        var name = window.scope.lugarRecords[i].lugar
+        if(name == searchName) {
+            centerIn(window.scope.lugarRecords[i].lat, window.scope.lugarRecords[i].lon);
+            break;
+        }
+    }
+}
+
+function centerIn(lat, lng) {
+    var location = new google.maps.LatLng(lat, lng);
+    window.mapLiteral.setCenter(location);
 }
