@@ -34,6 +34,11 @@
                 <hr>
                 <dt>Conductor</dt>
                 <dd><a ui-sref="conductorDetail({conductorId: currentViaje.conductor.id})">{{currentViaje.conductor.nombre}}</a></dd>
+                
+                <hr>
+                    <dd>
+                        <a type="button" class="btn btn-primary btn-lg btn-block" ng-click="cancelarViaje()">Cancelar Viaje</a>
+                    </dd>
 
             </dl>
         </div>
