@@ -145,8 +145,6 @@
                                     viaje.destino = $scope.destino;
                                     viaje.conductor = currentConductor.data;
                                     viaje.automovil = setAuto($scope.placa);
-                                    viaje.diaYHoraPartida = dateToJson(viaje.diaYHoraPartida);
-                                    viaje.diaYHoraLlegada = dateToJson(viaje.diaYHoraLlegada);
                                     console.log(viaje);
                                     return $http.post(viajesContext, viaje)
                                     .then(function () {
