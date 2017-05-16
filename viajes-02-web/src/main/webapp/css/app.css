@@ -428,9 +428,27 @@ footer .lower-footer {
 
 .location-input {
    height: 40px;
+   width: 250px;
+   padding-left: 10px;
 }
 
 .location-row {
     padding-right: 50px;
 }
+
+/* Validator */
+
+.error {
+    border: solid 2px #a94442;  
+}
+
+.error-message {
+    color: #a94442;
+}
+
+#error-message-location {
+    display: none;
+    font-size: 12px;
+}
+
 

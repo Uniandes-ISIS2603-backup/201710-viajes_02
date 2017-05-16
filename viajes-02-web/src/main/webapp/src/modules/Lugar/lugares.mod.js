@@ -80,18 +80,39 @@
 
 function goTo() {
     var searchName = $('#locationName').val();
-    $('#locationName').val("");
     
-    for (var i = 0; i < window.scope.lugarRecords.length; i++) {
-        var name = window.scope.lugarRecords[i].lugar
-        if(name == searchName) {
+    var found = false;
+    for (var i = 0; i < window.scope.lugarRecords.length && !found; i++) {
+        var name = window.scope.lugarRecords[i].lugar.toUpperCase()
+        if(name == searchName.toUpperCase()) {
             centerIn(window.scope.lugarRecords[i].lat, window.scope.lugarRecords[i].lon);
-            break;
-        }
+            found = true;
+            validate(null, '#locationName', '#error-message-location');
+        }       
+    }
+    
+    if(!found) {
+        validate("add", '#locationName', '#error-message-location', "No existe el lugar indicado");
     }
 }
 
 function centerIn(lat, lng) {
     var location = new google.maps.LatLng(lat, lng);
     window.mapLiteral.setCenter(location);
+}
+
+function validate(action, elementId, elementErrorId, errorMessage) {
+    if(action !== null) {
+        $(elementId).addClass("error");
+        $(elementErrorId).show();
+        console.log($(elementErrorId))
+        if(errorMessage !== undefined) {
+            $(elementErrorId).text(errorMessage);
+        }
+        
+    } else {
+        $(elementId).removeClass("error");
+        $(elementId).val("");
+        $(elementErrorId).hide();
+    }
 }
