@@ -1,7 +1,8 @@
 <div class="container">
     <h1> Automoviles </h1>
-     <ul>
-        <li ng-repeat="automovil in currentConductor.automoviles">{{automovil.placa}}</li>
+     <ul class="nav nav-pills">
+        <li ng-repeat="automovil in currentConductor.automoviles">
+            <a href="" ui-sref="automovilesDetail({autoId: automovil.id})">{{automovil.placa}}</a></li>
      </ul> 
 </div>
 <div ui-view="childrenView"></div>
