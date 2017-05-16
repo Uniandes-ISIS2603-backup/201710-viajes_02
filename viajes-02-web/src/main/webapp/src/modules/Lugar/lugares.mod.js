@@ -56,6 +56,7 @@
                 },
                 resolve: {
                     currentLugar: ['$http', 'lugarContext', '$stateParams', function ($http, lugarContext, $params) {
+                            console.log("hola")
                             return $http.get(lugarContext + '/' + $params.lugarId);
                         }]
                 },
@@ -87,8 +88,30 @@
                 }
             });
         }]);
+
+    // POST
+    mod.controller('crearLugarController', ['$scope', '$http', 'lugarContext', function ($scope, $http, lugarContext) {
+            $scope.crearLugar = function () {
+                var data = {
+                "direccion": $("#placeAddressForm").val(),
+                "lat": $("#placeLatForm").val(),
+                "lon": $("#placeLonForm").val(),
+                "lugar": $("#placeNameForm").val(),
+                "rutaImagen": $("#placeImageURLForm").val()
+            };
+            
+                $http.post(lugarContext, data)
+                        .then(function (response) {
+                            window.location.reload();
+                        },
+                                function (response) {
+                                    console.log("fallo");
+                                });
+            };
+        }]);
 })(window.angular);
 
+// Map Helpers
 function goTo() {
     var searchName = $('#locationName').val();
 
@@ -136,7 +159,7 @@ function addAllMarkers(records, map) {
         var icon = {
             url: 'css/marker.png',
             scaledSize: new google.maps.Size(50, 85),
-            origin: new google.maps.Point(0, 0), 
+            origin: new google.maps.Point(0, 0),
             anchor: new google.maps.Point(0, 0)
         };
 
@@ -153,7 +176,7 @@ function addAllMarkers(records, map) {
             $('#basicModal').modal('show');
             $('#basicModal-lugarName').text(this.placeName);
             $('#basicModal-lugarAddress').text(this.placeAddress);
-            $('#basicModal-lugarImage').attr("src",this.placeImage);
+            $('#basicModal-lugarImage').attr("src", this.placeImage);
         });
 
         allMarkers.push(marker);
