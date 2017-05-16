@@ -143,7 +143,7 @@
                                     .then(function () {
                             // $http.post es una promesa
                             // cuando termine bien, cambie de estado
-                                    $state.go('viajesList');
+                                    $state.go('viajesList',{}, {reload: true});
                                     });
                                 };
                             }]

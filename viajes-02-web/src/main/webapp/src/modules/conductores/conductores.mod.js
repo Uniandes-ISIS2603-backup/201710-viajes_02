@@ -94,7 +94,7 @@
                                 .then(function () {
                                     // $http.post es una promesa
                                     // cuando termine bien, cambie de estado
-                                    $state.go('conductoresList');
+                                    $state.go('conductoresList',{}, {reload: true});
                                 });
                         };
                     }]
