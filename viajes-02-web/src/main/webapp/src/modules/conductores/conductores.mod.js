@@ -186,7 +186,7 @@
                                         .then(function () {
                                             // $http.post es una promesa
                                             // cuando termine bien, cambie de estado
-                                            $state.go('conductorDetail',{conductorId:  $scope.currentConductor.id});
+                                            $state.go('conductorDetail',{conductorId:  $scope.currentConductor.id},{reload: true});
                                         });
                                 };
                             }]
