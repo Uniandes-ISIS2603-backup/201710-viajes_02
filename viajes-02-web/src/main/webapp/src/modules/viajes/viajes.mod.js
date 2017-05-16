@@ -43,8 +43,18 @@
                 views: {
                     'detailView': {
                         templateUrl: basePath + 'viajes.detail.html',
-                        controller: ['$scope', 'currentViaje', function ($scope,  currentViaje) {
+                        controller: ['$scope', 'currentViaje', 'viajesContext', '$http', '$state', function ($scope,  currentViaje, viajesContext, $http, $state) {
                                 $scope.currentViaje = currentViaje.data;
+                                $scope.cancelarViaje = function(){
+                                    viaje = $scope.currentViaje;
+                                    console.log(viaje)
+                                    return $http.delete(viajesContext+'/'+ viaje.idViaje)
+                                .then(function () {
+                                    // $http.post es una promesa
+                                    // cuando termine bien, cambie de estado
+                                    $state.go('viajesList',{}, {reload: true});
+                                });
+                                };
                             }]
                     }
                 }
