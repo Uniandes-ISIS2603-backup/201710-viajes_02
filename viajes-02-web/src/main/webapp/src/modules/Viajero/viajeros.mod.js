@@ -67,6 +67,15 @@
                                 templateUrl: basePath + 'viajeros.detail.reviews.html'
                             }
                         }
+                    })
+                    .state('viajerosAdd', {
+                        url: '/add',
+                        parent: 'viajeros',
+                        views: {
+                            'detailView': {
+                                templateUrl: basePath + 'viajeros.registrar.html'
+                            }
+                        }
                     });
         }
     ]);
