@@ -160,7 +160,6 @@
                             function ($scope, $http, conductoresContext,$state) {
 
                                 $scope.agregar = function () {
-
                                     var placa = document.getElementById('placa').value;
                                     var color = document.getElementById('color').value;
                                     var marca = document.getElementById('marca').value;
@@ -181,13 +180,15 @@
                                         }
                                     };
 
-                                    $http.post('api/automoviles', carrito)
+                                   carrito = $http.post('api/automoviles', carrito)
+                                           
+                                    
                                         .then(function () {
                                             // $http.post es una promesa
                                             // cuando termine bien, cambie de estado
                                             $state.go('conductorDetail',{conductorId:  $scope.currentConductor.id});
                                         });
-                                }
+                                };
                             }]
                     }
                 }

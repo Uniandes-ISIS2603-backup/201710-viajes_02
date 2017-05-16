@@ -56,7 +56,8 @@ public class ConductorEntity extends UsuarioEntity{
      * Automoviles del conductor.
      */
     @PodamExclude
-    @OneToMany (cascade = CascadeType.ALL)
+    
+    @OneToMany(mappedBy = "conductorEntity")
     private List<AutomovilEntity> automoviles;
     /**
      * Viajes del conductor.
