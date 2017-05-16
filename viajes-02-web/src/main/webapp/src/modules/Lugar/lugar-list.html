@@ -10,10 +10,7 @@
                 <span class="caret"></span>
             </button>
             <ul class="dropdown-menu">
-                <li><a href="#">Accion</a></li>
-                <li><a href="#">Accion 2</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">Separado</a></li>
+                <li ng-repeat="lugar in lugarRecords"><a ui-sref="lugarDetail({lugarId: lugar.id})">{{lugar.lugar}}</a></li>
             </ul>
         </div>
         <div class="col-md-2 pull-right">
