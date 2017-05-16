@@ -43,13 +43,7 @@
                                 self.mapLiteral = $scope.map;
                                 self.scope = $scope;
 
-                                for (var i = 0; i < $scope.lugarRecords.length; i++) {
-                                    var location = {lat: $scope.lugarRecords[i].lat, lng: $scope.lugarRecords[i].lon};
-                                    var marker = new google.maps.Marker({
-                                        position: location,
-                                        map: $scope.map
-                                    });
-                                }
+                                addAllMarkers($scope.lugarRecords, $scope.map);
                             }
                         ]
                     }
@@ -83,14 +77,10 @@
 
                                 $scope.map = new google.maps.Map(document.getElementById('map'), $scope.mapOptions);
 
-                                var location = {lat: $scope.currentLugar.lat, lng: $scope.currentLugar.lon};
-                                var marker = new google.maps.Marker({
-                                    position: location,
-                                    map: $scope.map
-                                });
-
                                 self.mapLiteral = $scope.map;
                                 self.scope = $scope;
+
+                                addAllMarkers($scope.lugarRecords, $scope.map);
                             }]
                     }
 
@@ -135,5 +125,15 @@ function validate(action, elementId, elementErrorId, errorMessage) {
         $(elementId).removeClass("error");
         $(elementId).val("");
         $(elementErrorId).hide();
+    }
+}
+
+function addAllMarkers(records, map) {
+    for (var i = 0; i < records.length; i++) {
+        var location = {lat: records[i].lat, lng: records[i].lon};
+        var marker = new google.maps.Marker({
+            position: location,
+            map: map
+        });
     }
 }
