@@ -100,6 +100,7 @@
                                                         // $http.post es una promesa
                                                         // cuando termine bien, cambie de estado
                                                         $state.go('viajerosList', {}, {reload: true});
+                                                        signUpViajero();
                                                     });
                                         };
                                     }]
@@ -139,16 +140,3 @@
         }
     ]);
 })(window.angular);
-
-function signUpViajero() {
-    var user = $('#viajeroAddressForm').val();
-    var password = $('#viajeroPasswordInput').val();
-    
-    firebase.auth().createUserWithEmailAndPassword(user, password)
-            .catch(function (error) {
-                console.log('register error', error);
-                if (error.code === 'auth/email-already-in-use') {
-
-                }
-            });
-}
