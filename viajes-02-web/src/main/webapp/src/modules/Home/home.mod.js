@@ -1,5 +1,6 @@
 (function (ng) {
     var mod = ng.module('homeModule', ['ui.router']);
+    mod.constant("lugarContext", "api/lugares");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             var basePath = 'src/modules/Home/';
             self = this;
@@ -7,9 +8,17 @@
 
             $stateProvider.state('home', {
                 url: '/home',
+                resolve: {
+                    lugares: ['$http', 'lugarContext', function ($http, lugarContext) {
+                            return $http.get(lugarContext);
+                        }]
+                },
                 views: {
                     'mainView': {
-                        templateUrl: basePath + 'home.html'
+                        templateUrl: basePath + 'home.html',
+                        controller: ['$scope', 'lugares', function ($scope, lugares) {
+                                $scope.lugarRecords = lugares.data;
+                        }]
                     }
                 }
             });

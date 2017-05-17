@@ -25,6 +25,7 @@
                         controller: ['$scope', 'cobros', 'currentUsuario', function ($scope, cobros, currentUsuario) {
                                 $scope.currentUsuario = currentUsuario.data;
                                 $scope.cobrosRecords = cobros.data; 
+                                console.log($scope.cobrosRecords);
                             }]
                     }
                 }
@@ -38,6 +39,31 @@
                 }
             });
         }]);
+    
+     // POST
+     
+     /*
+    mod.controller('crearLugarController', ['$scope', '$http', 'lugarContext', function ($scope, $http, lugarContext) {
+            $scope.crearLugar = function () {
+                var data = {
+                    "direccion": $("#cobroIdForm").val(),
+                    "valor": $("#cobroPriceForm").val(),
+                    "cancelado": false
+                    
+                };
+
+                $http.post(lugarContext, data)
+                        .then(function (response) {
+                            window.location.reload();
+                            validate(null, null, "#error-message-locationForm")
+                        },
+                                function (response) {
+                                    validate(null, null, "#error-message-locationForm", "No se pudo crear lugar intente de nuevo");
+                                    console.log("fallo");
+                                });
+            };
+        }]);
+*/
 })(window.angular);
 
  function filtrarContenido(algo) {

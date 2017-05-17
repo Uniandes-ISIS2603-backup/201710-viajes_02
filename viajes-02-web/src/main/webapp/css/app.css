@@ -518,3 +518,7 @@ input[type="radio"]:checked ~ label {
 #accordionUpdateLugar a {
     text-decoration: none;
 }
+
+.cobro-form-create {
+    margin-bottom: 20px;
+}
