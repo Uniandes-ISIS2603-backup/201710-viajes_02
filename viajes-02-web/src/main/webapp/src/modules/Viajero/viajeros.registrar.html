@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<style type="text/css">
+    form  { display: table;      }
+    p1   { display: table-row;  }
+    label { display: table-cell; }
+    input { display: table-cell; }
+</style>
+<div>
+    <h2 style="text-align: center">
+        Registro viajero
+    </h2>
+</div>
+<hr class="line-separator">
+<div class="container">
+    <center>
+        <form>
+            <p1>
+                <label>Nombre:</label>
+                <input type="text" name="first" ng-model="viajero.nombre" ng-init="viajero.nombre" required/><br />
+            </p1>
+            <p1><br></p1>
+            <p1>
+                <label>Correo:</label>
+                <input type="text" name="correo" ng-model="viajero.correo" ng-init="viajero.correo" required/><br />
+            </p1>
+            <p1><br></p1>
+            <p1>
+                <label>Edad:</label>
+                <input type="number" name="edad" ng-model="viajero.edad" ng-init="viajero.edad" required/><br />
+            </p1>
+            <p1><br></p1>
+            <p1>
+                <label>Genero:</label>
+                <select class="form-control" name="genero" id="genero" ng-model="viajero.genero" ng-init="viajero.genero" required/>
+                <option>Masculino</option>
+                <option>Femenino</option>
+                </select>
+            </p1>
+            <p1><br></p1>
+            <p1>
+                <label>Telefono movil:</label>
+                <input type="number" name="telMovil" ng-model="viajero.telMovil" ng-init="viajero.telMovil" required/><br />
+            </p1>
+            <p1><br></p1>
+            <p1>
+                <label>Imagen:</label>
+                <input type="text" name="imagen" ng-model="viajero.imagen" ng-init="viajero.imagen" required/><br/>
+            </p1>
+            <p1><br></p1>
+        </form>
+        <button type="submit" class="btn btn-primary btn-lg btn-block" ng-click="submit()"> Registrarse </button>
+        <a href="#" type="button" class="btn btn-primary btn-lg btn-block">Cancelar</a>
+    </center>
+</div>
+
