@@ -18,83 +18,87 @@ and open the template in the editor.
                                 </a>
                             </h4>
                         </div>
-                    <div id="toCollapse{{reserva.id}}" class="panel-collapse collapse">
-                        <div class="panel-body" style="height: 200px">
-                            <dl>
-                            <dt>Precio</dt>
-                            <dd>{{reserva.precio}}</dd>
-                            <br>
-                            <dt>Conductor</dt>
-                            <dd>{{reserva.valorComision}}</dd>
-                            <br>
-                            <dt>Puestos reservados</dt>
-                            <dd>{{reserva.puestosReservados}}</dd>
-                            </dl>
-                        </div> 
-                    </div>
+                        <div id="toCollapse{{reserva.id}}" class="panel-collapse collapse">
+                            <div class="panel-body" style="height: 200px">
+                                <dl>
+                                    <dt>Precio</dt>
+                                    <dd>{{reserva.precio}}</dd>
+                                    <br>
+                                    <dt>Conductor</dt>
+                                    <dd>{{reserva.valorComision}}</dd>
+                                    <br>
+                                    <dt>Puestos reservados</dt>
+                                    <dd>{{reserva.puestosReservados}}</dd>
+                                </dl>
+                            </div> 
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
     </div>
-    
-<!--Reservar-->
 
-<div id="contenedor-principal" class="container-fluid">
-    <div id="superior" class="row">
-        <h3 align="center">Reservar</h3>
-        <hr class="line-separator">
-    </div>
-    <div id="formbuscarviajes" class="col-sm-offset-1 row form-group">
-        <div class="col-sm-3">
-          <label for="desde">Origen</label>
-          <input type="text" class="form-control" placeholder="Desde" name="desde" required><br>
+    <!--Reservar-->
+
+    <div id="contenedor-principal" class="container-fluid">
+        <div id="superior" class="row">
+            <h3 align="center">Reservar</h3>
+            <hr class="line-separator">
         </div>
-        <div class="col-sm-3">
-          <label for="hasta">Destino</label>
-          <input type="text" class="form-control" placeholder="Hasta" name="hasta" required><br>
-        </div>
-        <div class="col-sm-3">
-          <label for="fechasalida">Fecha de salida</label>
-          <input type="date" class="form-control" name="fechasalida"><br>
-        </div>
-        <div class="col-sm-2" align="center">
-          <button type="submit" form="formbuscarviajes" ng-click="buscarviajes()">Buscar</button>
-        </div>
-    </div>
-    <div id="resultado" class="row">
-        <div class="col-10 col-sm-offset-1 col-sm-10">
-            <div class="panel panel-default">
-                <div class="panel-heading c-list">
-                    <span class="title">VIAJES</span>
+        <div id="busqueda" class="col-sm-offset-1 row form-group">
+            <form id="formbuscarviajes">
+                <div class="col-sm-3">
+                    <label for="desde">Origen</label>
+                    <input type="text" class="form-control" placeholder="Desde" name="desde" required><br>
                 </div>
-            <ul id="resultado" class="list-group">
-                <li id="viaje{{viaje.idViaje}}" class="list-group-item" ng-repeat="viaje in viajes">
-                    <div class="col-xs-12 col-sm-3">
-                        <img src="http://api.randomuser.me/portraits/men/49.jpg" alt="Scott Stevens" class="img-responsive img-circle" />
-                    </div>
-                <div class="col-xs-12 col-sm-9">
-                    <h2>{{viaje.conductor.nombre}}</h2><br/>
-                    <div class="row">
-                        <span class="glyphicon glyphicon-earphone text-muted c-info" data-toggle="tooltip" title="Viaje"></span>
-                        <span class="text"> <span class="text">(870) 288-4149</span><br/></span>
-                        <span class="glyphicon glyphicon-usd text-muted c-info" data-toggle="tooltip" title="Costo"></span>
-                        <span class="text"><span class="text">Costo {{viaje.gastosComaprtidos}}</span><br/></span>
-                        <span class="glyphicon glyphicon-envelope text-muted c-info" data-toggle="tooltip" title="scott.stevens@example.com"></span>
-                        <span class="text">Cantidad de asientos
-                            <select class="text">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                            </select><br/>
-                        </span>
-                        <button type="submit" ng-click="reservar()">Reservar</button>
-                    </div>
+                <div class="col-sm-3">
+                    <label for="hasta">Destino</label>
+                    <input type="text" class="form-control" placeholder="Hasta" name="hasta" required><br>
                 </div>
-                <div class="clearfix"></div>
-                </li>
-            </ul>
+                <div class="col-sm-3">
+                    <label for="fechasalida">Fecha de salida</label>
+                    <input type="date" class="form-control" name="fechasalida"><br>
+                </div>
+                <div class="col-sm-2" align="center">
+                    <button id="buscar" type="submit" class="btn btn-primary btn-lg btn-block" form="formbuscarviajes" ng-click="buscarviajes()">Buscar</button>
+                </div>
+            </form>
+        </div>
+
+        <div id="resultado" class="row resultado">
+            <div class="col-10 col-sm-offset-1 col-sm-10">
+                <div class="panel panel-default">
+                    <div class="panel-heading c-list">
+                        <span class="title">VIAJES ENCONTRADOS</span>
+                    </div>
+                    <ul id="resultado" class="list-group">
+                        <li id="viaje{{viaje.idViaje}}" class="list-group-item" ng-repeat="viaje in viajes">
+                            <div class="col-xs-3 col-sm-3">
+                                <img src="{{viaje.conductor.imagen}}" alt="{{viaje.conductor.nombre}}" class="img-responsive img-circle" />
+                            </div>
+                            <div class="col-xs-12 col-sm-9">
+                                <h2><span>Conductor: </span>{{viaje.conductor.nombre}}</h2><br/>
+                                <div class="row">
+                                    <span class="glyphicon glyphicon-road text-muted c-info" data-toggle="tooltip" title="Viaje"></span>
+                                    <span class="text"> <span class="text"><a ui-sref="viajeDetail({viajeId: viaje.idViaje})">Viaje {{viaje.idViaje}}</a></span><br/></span>
+                                    <span class="glyphicon glyphicon-usd text-muted c-info" data-toggle="tooltip" title="Costo"></span>
+                                    <span class="text"><span class="text">Costo {{viaje.gastosCompartidos}}</span><br/></span>
+                                    <span class="glyphicon glyphicon-map-marker text-muted c-info" data-toggle="tooltip" title="asientos"></span>
+                                    <span class="text">
+                                        Cantidad de asientos 
+                                        <select id="cantAsientos{{viaje.idViaje}}" class="text">
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                        </select><br/>
+                                    </span>
+                                    <button id="reservar{{viaje.idViaje}}" type="submit" ng-click="reservar(viaje.idViaje)">Reservar</button>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>

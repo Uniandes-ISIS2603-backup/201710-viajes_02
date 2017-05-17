@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.viajes.persistence;
 
 import co.edu.uniandes.csw.viajes.entities.ReservaEntity;
+import co.edu.uniandes.csw.viajes.entities.ViajeroEntity;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -88,10 +89,11 @@ public class ReservaPersistenceTest {
     @Test
     public void createReservaTest() {
         PodamFactory podamFactory = new PodamFactoryImpl();
+        
         ReservaEntity newReservaEntity = podamFactory.manufacturePojo(ReservaEntity.class);
         ReservaEntity result = reservaPersistence.create(newReservaEntity);
-        
         Assert.assertNotNull(result);
+        
         ReservaEntity reservaEntity = entityManager.find(ReservaEntity.class, result.getId());
         Assert.assertNotNull(reservaEntity);
         Assert.assertEquals(newReservaEntity, reservaEntity);
@@ -118,6 +120,7 @@ public class ReservaPersistenceTest {
     @Test
     public void getReservaByIdTest() {
         ReservaEntity reservaEntity = data.get(0);
+        
         ReservaEntity newReservaEntity = reservaPersistence.findReserva(reservaEntity.getId());
         Assert.assertNotNull(newReservaEntity);
         Assert.assertEquals(reservaEntity, newReservaEntity);

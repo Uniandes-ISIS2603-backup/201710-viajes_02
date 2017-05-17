@@ -7,7 +7,7 @@
             $urlRouterProvider.otherwise("/reservasList");
             self = this;
             $stateProvider.state('reservas', {
-                url: 'viajeros/{idViajero:int}/reservas',
+                url: '/viajeros/{idViajero:int}/reservas',
                 abstract: true,
                 param: {
                     idViajero: null
@@ -15,27 +15,61 @@
                 resolve: {
                     reservas: ['$http', 'reservasContext', '$stateParams', function ($http, reservasContext, $params) {
                             return $http.get(reservasContext + '/' + $params.idViajero + '/reservas');
-                        }],
-                    currentViajero: ['$http', 'reservasContext', '$stateParams',  function ($http, reservasContext, $params) {
-                            return $http.get(reservasContext + '/' + $params.idViajero);
                         }]
                 },
                 views: {
                     'mainView': {
                         templateUrl: basePath + 'reservas.html',
-                        controller: ['$scope', 'reservas', 'currentViajero', function ($scope, reservas, currentViajero) {
+                        controller: ['$scope', 'reservas', function ($scope, reservas) {
                                 $scope.reservasRecords = reservas.data;
-                                $scope.currentViajero = currentViajero.data;
-                                console.log($scope.reservasRecords);
                             }]
                     }
                 }
             }).state('reservasList', {
-                url: '/list',
+                url: '',
                 parent: 'reservas',
+                resolve: {
+                    currentViajero: ['$http', 'reservasContext', '$stateParams', function ($http, reservasContext, $params) {
+                            return $http.get(reservasContext + '/' + $params.idViajero);
+                        }],
+                    viajes: ['$http', function ($http) {
+                            return $http.get('api/viajes');
+                        }]
+                },
                 views: {
                     'listView': {
-                        templateUrl: basePath + 'reservas.list.html'
+                        templateUrl: basePath + 'reservas.list.html',
+                        controller: ['$scope', '$http', 'currentViajero', 'viajes', function ($scope, $http, currentViajero, viajes) {
+                                $scope.currentViajero = currentViajero.data;
+                                $scope.viajes = viajes.data;
+                                
+                                $scope.buscarviajes = function() {
+                                    $('#busqueda').addClass('resultado');
+                                    console.log($scope.viajes);
+                                };
+                                
+                                $scope.reservar = function(id) {
+                                    
+                                    console.log($scope.viajes[id-1]);
+                                    var e = document.getElementById("cantAsientos" + id);
+                                    var option = e.options[e.selectedIndex].text;
+                                    console.log(option);
+//                                    var reserva = {
+//                                        "id":undefined,
+//                                        "precio":'',
+//                                        "valorComision":'',
+//                                        "puestosReservados":option,
+//                                        "viaje": {
+//                                            
+//                                        },
+//                                        "viajero": {
+//                                            "id":$scope.currentViajero.id
+//                                        }
+//                                    };
+//                                    
+//                                    $http.post('api/viajeros/', reserva);
+                                };
+                            }]
                     }
                 }
             }).state('reservasDetail', {
@@ -54,45 +88,40 @@
                         templateUrl: basePath + 'reservas.detail.html',
                         controller: ['$scope', 'currentReserva', function ($scope, currentReserva) {
                                 $scope.currentReserva = currentReserva.data;
+                                console.log($scope.currentReserva);
                             }]
                     }
                 }
             });
-//              .state('reservar', {
-//                url: 'viajeros/{idViajero:int}/reservas/list/reservar',
-//                parent: 'reservas',
-//                views: {
-//                    'createView': {
-//                        templateUrl: basePath + 'reservar.html',
-//                        controller: ['$scope', '$http', 'reservasContext', 'currentViajero', function($scope, $http, reservasContext, currentViajero) {
-//                                
-//                                $scope.currentViajero = currentViajero.data;
+        }]);
+    
+//    mod.controller('reservar', ['$scope', '$http', 'reservasContext', function($scope, $http, reservasContext) {
 //                                
 //                                $scope.buscarviajes = function() {
-//                                    var origen = document.getElementById("desde").value;
-//                                    var destino = document.getElementById("hasta").value;
-//                                    var fechasalida = document.getElementById("fechasalida").value;
-//                                    
-//                                    $scope.viajes = $http.get('api/viajes/' + origen + ";" + destino);
+////                                    var origen = document.getElementById("desde").value;
+////                                    var destino = document.getElementById("hasta").value;
+//                                    console.log($scope.viajes);
 //                                };
 //                                
 //                                $scope.reservar = function() {
-//                                    $scope.reserva = {
-//                                        id:undefined,
-//                                        precio:'',
-//                                        valorComision:'',
-//                                        puestosReservados:'',
-//                                        viaje: {
+//                                    var reserva = {
+//                                        "id":undefined,
+//                                        "precio":'',
+//                                        "valorComision":'',
+//                                        "puestosReservados":'',
+//                                        "viaje": {
 //                                            
 //                                        },
-//                                        viajero = $scope.currentViajero
+//                                        "viajero": {
+//                                            
+//                                        }
 //                                    };
 //                                    
 //                                    $http.post(reservasContext, reserva);
 //                                };
-//                        }]
-//                    }
-//                }
-//            });
-        }]);
+//    }]);
 })(window.angular);
+
+//function buscarviajes() {
+//    $('#busqueda').addClass("resultado");
+//}

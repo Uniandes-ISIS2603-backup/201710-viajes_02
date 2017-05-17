@@ -67,8 +67,8 @@ public class ReservaResource {
 
     @GET
     @Path("/{id: \\d+}")
-    public ReservaDTO getReserva(@PathParam("id") Long id) {
-        return new ReservaDTO(reservaLogic.getReserva(id));
+    public ReservaDetailDTO getReserva(@PathParam("id") Long id) {
+        return new ReservaDetailDTO(reservaLogic.getReserva(id));
     }
 
     @DELETE
