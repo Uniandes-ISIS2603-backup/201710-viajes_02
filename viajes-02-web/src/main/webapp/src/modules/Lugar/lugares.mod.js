@@ -87,8 +87,78 @@
                 }
             });
         }]);
+
+    // POST
+    mod.controller('crearLugarController', ['$scope', '$http', 'lugarContext', function ($scope, $http, lugarContext) {
+            $scope.crearLugar = function () {
+                var data = {
+                    "direccion": $("#placeAddressForm").val(),
+                    "lat": $("#placeLatForm").val(),
+                    "lon": $("#placeLonForm").val(),
+                    "lugar": $("#placeNameForm").val(),
+                    "rutaImagen": $("#placeImageURLForm").val()
+                };
+
+                $http.post(lugarContext, data)
+                        .then(function (response) {
+                            window.location.reload();
+                            validate(null, null, "#error-message-locationForm")
+                        },
+                                function (response) {
+                                    validate(null, null, "#error-message-locationForm", "No se pudo crear lugar intente de nuevo");
+                                    console.log("fallo");
+                                });
+            };
+        }]);
+
+
+    // PUT
+    
+    mod.controller('actualizarLugarController', ['$scope', '$http', 'lugarContext', function ($scope, $http, lugarContext) {
+            $scope.actualizarLugar = function () {
+                var data = {};
+
+                if ($("#placeNameUpdateForm").val() !== "") {
+                    data.lugar = $("#placeNameUpdateForm").val();
+                } else {
+                    data.lugar = $scope.currentLugar.lugar;
+                }
+
+                if ($("#placeAddressUpdateForm").val() !== "") {
+                    data.direccion = $("#placeAddressUpdateForm").val();
+                } else {
+                    data.direccion = $scope.currentLugar.direccion;
+                }
+
+                if ($("#placeLatUpdateForm").val() !== "") {
+                    data.lat = $("#placeLatUpdateForm").val();
+                } else {
+                    data.lat = $scope.currentLugar.lat;
+                }
+
+                if ($("#placeLonUpdateForm").val() !== "") {
+                    data.lon = $("#placeLonUpdateForm").val();
+                } else {
+                    data.lon = $scope.currentLugar.lon;
+                }
+
+                if ($("#placeImageUpdateForm").val() !== "") {
+                    data.rutaImagen = $("#placeImageUpdateForm").val();
+                } else {
+                    data.rutaImagen = $scope.currentLugar.rutaImagen;
+                }
+
+                $http.put(lugarContext + '/' + $scope.currentLugar.id, data).then(function (response) {
+                    console.log("funciono");
+                    window.location.reload();
+                }, function (response) {
+                    console.log("fallo");
+                });
+            };
+        }]);
 })(window.angular);
 
+// Map Helpers
 function goTo() {
     var searchName = $('#locationName').val();
 
@@ -112,28 +182,67 @@ function centerIn(lat, lng) {
     window.mapLiteral.setCenter(location);
 }
 
+function addAllMarkers(records, map) {
+    var allMarkers = [];
+    for (var i = 0; i < records.length; i++) {
+        var location = {lat: records[i].lat, lng: records[i].lon};
+
+        var icon = {
+            url: 'css/marker.png',
+            scaledSize: new google.maps.Size(50, 85),
+            origin: new google.maps.Point(0, 0),
+            anchor: new google.maps.Point(0, 0)
+        };
+
+        var marker = new google.maps.Marker({
+            position: location,
+            map: map,
+            placeName: records[i].lugar,
+            placeAddress: records[i].direccion,
+            placeImage: records[i].rutaImagen,
+            icon: icon
+        });
+
+        google.maps.event.addListener(marker, 'click', function () {
+            $('#basicModal').modal('show');
+            $('#basicModal-lugarName').text(this.placeName);
+            $('#basicModal-lugarAddress').text(this.placeAddress);
+            $('#basicModal-lugarImage').attr("src", this.placeImage);
+        });
+
+        allMarkers.push(marker);
+    }
+    map.markers = allMarkers;
+}
+
+// Error handling
+
+/**
+ * Crea validador
+ * @param {type} action Accion a realizar, eliminar, crear, etc. Cuando no se especifica es porque se quiere quitar el error
+ * @param {type} elementId Elemento que se quiere subrayar
+ * @param {type} elementErrorId Label que va a contener el texto del error
+ * @param {type} errorMessage Mensaje de error
+ * @returns {undefined} Nada
+ */
 function validate(action, elementId, elementErrorId, errorMessage) {
     if (action !== null) {
-        $(elementId).addClass("error");
+        if (elementId !== null) {
+            $(elementId).addClass("error");
+        }
+
         $(elementErrorId).show();
-        console.log($(elementErrorId))
+
         if (errorMessage !== undefined) {
             $(elementErrorId).text(errorMessage);
         }
 
     } else {
-        $(elementId).removeClass("error");
-        $(elementId).val("");
-        $(elementErrorId).hide();
-    }
-}
+        if (elementId !== null) {
+            $(elementId).removeClass("error");
+            $(elementId).val("");
+        }
 
-function addAllMarkers(records, map) {
-    for (var i = 0; i < records.length; i++) {
-        var location = {lat: records[i].lat, lng: records[i].lon};
-        var marker = new google.maps.Marker({
-            position: location,
-            map: map
-        });
+        $(elementErrorId).hide();
     }
 }

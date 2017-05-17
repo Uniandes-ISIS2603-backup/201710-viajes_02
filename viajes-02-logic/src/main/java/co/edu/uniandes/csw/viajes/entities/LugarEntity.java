@@ -64,6 +64,11 @@ public class LugarEntity implements Serializable {
     private Double lon;
     
     /**
+     * Ruta de la imagen del lugar;
+     */
+    private String rutaImagen;
+    
+    /**
      * Da el id del lugar
      * @return Id del lugar
      */
@@ -141,6 +146,21 @@ public class LugarEntity implements Serializable {
      */
     public void setLon(Double lon) {
         this.lon = lon;
+    }
+    
+    /**
+     * Da la ruta de imagen del lugar
+     * @return Ruta de imagen del lugar
+     */
+    public String getRutaImagen() {
+        return rutaImagen;
+    }
+    
+    /**
+     * Cambia la ruta imagen del lugar.
+     */
+    public void setRutaImagen(String rutaImagen) {
+        this.rutaImagen = rutaImagen;
     }
     
     /**

@@ -2,7 +2,7 @@ delete from UsuarioEntity_ReviewEntity;
 delete from UsuarioEntity_ReservaEntity;
 delete from UsuarioEntity_PagoEntity;
 delete from UsuarioEntity_CobroEntity;
-delete from UsuarioEntity_AutomovilEntity;
+delete from USUARIOENTITY_AUTOMOVILENTITY;
 delete from ReviewEntity;
 delete from ReservaEntity;
 delete from PagoEntity;
@@ -13,26 +13,26 @@ delete from UsuarioEntity;
 delete from LugarEntity;
 
 
-insert into LugarEntity (id, direccion, lugar, lat, lon) values (0 , '8506 Sunbrook Place' , 'Lucija' , 4.6476286, -74.1038169);
-insert into LugarEntity (id, direccion, lugar, lat, lon) values (1 , '6060 Lindbergh Alley' , 'Żelazków' , 51.85418 , 18.1743);
-insert into LugarEntity (id, direccion, lugar, lat, lon) values (2 , '1 Hintze Point' , 'Sukawaris' , -6.8041 , 105.8639);
-insert into LugarEntity (id, direccion, lugar, lat, lon) values (3 , '9524 Russell Street' , 'Sainte-Anne-de-Bellevue' , 45.40618 , -73.9456);
-insert into LugarEntity (id, direccion, lugar, lat, lon) values (4 , '4 Banding Pass' , 'Quxia' , 32.10037 , 120.15698);
-insert into LugarEntity (id, direccion, lugar, lat, lon) values (5 , '273 Kedzie Way' , 'Tivat' , 42.43639 , 18.69611);
-insert into LugarEntity (id, direccion, lugar, lat, lon) values (6 , '6440 Riverside Street' , 'Metz' , 49.1191 , 6.1727);
-insert into LugarEntity (id, direccion, lugar, lat, lon) values (7 , '46628 Granby Lane' , 'Ranao' , 16.2076 , 119.8155);
-insert into LugarEntity (id, direccion, lugar, lat, lon) values (8 , '7258 Barnett Plaza' , 'Maquiapo' , 14.98561 , 120.55855);
-insert into LugarEntity (id, direccion, lugar, lat, lon) values (9 , '026 Hoard Plaza' , 'Okigwi' , 5.83523 , 7.35989);
-insert into LugarEntity (id, direccion, lugar, lat, lon) values (10 , '53657 Twin Pines Trail' , 'Isanlu Itedoijowa' , 8.26667 , 5.83333);
-insert into LugarEntity (id, direccion, lugar, lat, lon) values (11 , '649 Hudson Park' , 'Timbiras' , -4.25528 , -43.94056);
-insert into LugarEntity (id, direccion, lugar, lat, lon) values (12 , '29 Eagle Crest Hill' , 'Maha Sarakham' , 16.18483 , 103.30067);
-insert into LugarEntity (id, direccion, lugar, lat, lon) values (13 , '6 Fairfield Court' , 'As Sulayyil' , 20.46067 , 45.57792);
-insert into LugarEntity (id, direccion, lugar, lat, lon) values (14 , '127 Spenser Crossing' , 'Shangyong' , 25.73421 , 118.15716);
-insert into LugarEntity (id, direccion, lugar, lat, lon) values (15 , '675 Gina Parkway' , 'Mislīyah' , 32.38613 , 35.2878);
-insert into LugarEntity (id, direccion, lugar, lat, lon) values (16 , '0 Red Cloud Terrace' , 'Jbaïl' , 34.12111 , 35.64806);
-insert into LugarEntity (id, direccion, lugar, lat, lon) values (17 , '1319 Briar Crest Plaza' , 'Rimba Sekampung' , 1.6756 , 101.43748);
-insert into LugarEntity (id, direccion, lugar, lat, lon) values (18 , '367 Mayer Crossing' , 'Lama' , 41.53 , -8.3567);
-insert into LugarEntity (id, direccion, lugar, lat, lon) values (19 , '7994 Hooker Court' , 'Taoyuan' , 22.58041 , 113.96121);
+insert into LugarEntity (id, direccion, lugar, lat, lon, rutaimagen) values (0 , 'Carrera 1E #19A-40, Bogotá, Colombia' , 'Bogota' ,4.6027848,-74.067091, 'https://www.las2orillas.co/wp-content/uploads/2017/02/Bogota1.jpg');
+insert into LugarEntity (id, direccion, lugar, lat, lon, rutaimagen) values (1 , 'Calle 13 # 100-00, Cali, Valle del Cauca, Colombia' , 'Cali' ,3.3759493,-76.5355789, 'http://caliescribe.com/sites/default/files/calicaco.jpg');
+insert into LugarEntity (id, direccion, lugar, lat, lon, rutaimagen) values (2 , 'Cl. 67 #53 - 108, Medellín, Antioquia, Colombia' , 'Medellin' ,6.2669586,-75.5713, 'https://www.medellin.gov.co/irj/go/km/docs/galerias/Imagenes/Panor%C3%A1micas%20de%20ciudad%20y%20sitios%20de%20inter%C3%A9s/500_400/08.30.2016_Alpujarra%20(2).jpg');
+insert into LugarEntity (id, direccion, lugar, lat, lon, rutaimagen) values (3 , 'Cra 51B #3-58' , 'Barranquilla' , 11.01924,-74.8666803, 'http://caribeafirmativo.lgbt/wp-content/uploads/2017/04/Barranquilla.jpg');
+insert into LugarEntity (id, direccion, lugar, lat, lon, rutaimagen) values (4 , 'Cra. 6 #36, Cartagena, Bolívar, Colombia' , 'Cartagena', 10.4255388,-75.5520021, 'http://multidestinos.co/wp-content/uploads/2016/02/Cartagena-producto.jpg');
+insert into LugarEntity (id, direccion, lugar, lat, lon, rutaimagen) values (5 , 'Cra 22 No. 7 – 06 Sur, La Rosita, Villavicencio, Meta, Colombia' , 'Villavicencio' ,4.1167448,-73.6109716, 'http://cdn.precioyviajes.com/Destinations/1424/1424/villavicencio-3769705587-L.jpg');
+insert into LugarEntity (id, direccion, lugar, lat, lon, rutaimagen) values (6 , 'Jenesano, Boyacá, Colombiat' , 'Boyaca' ,5.4683521,-73.4088808, 'http://www.procolombia.co/red-de-oficinas/oficinas-en-colombia/sites/default/files/boyaca2_1.jpg');
+insert into LugarEntity (id, direccion, lugar, lat, lon, rutaimagen) values (7 , '46628 Granby Lane' , 'Ranao' , 16.2076 , 119.8155, 'https://www.las2orillas.co/wp-content/uploads/2017/02/Bogota1.jpg');
+insert into LugarEntity (id, direccion, lugar, lat, lon, rutaimagen) values (8 , '7258 Barnett Plaza' , 'Maquiapo' , 14.98561 , 120.55855, 'https://www.las2orillas.co/wp-content/uploads/2017/02/Bogota1.jpg');
+insert into LugarEntity (id, direccion, lugar, lat, lon, rutaimagen) values (9 , '026 Hoard Plaza' , 'Okigwi' , 5.83523 , 7.35989, 'https://www.las2orillas.co/wp-content/uploads/2017/02/Bogota1.jpg');
+insert into LugarEntity (id, direccion, lugar, lat, lon, rutaimagen) values (10 , '53657 Twin Pines Trail' , 'Isanlu Itedoijowa' , 8.26667 , 5.83333, 'https://www.las2orillas.co/wp-content/uploads/2017/02/Bogota1.jpg');
+insert into LugarEntity (id, direccion, lugar, lat, lon, rutaimagen) values (11 , '649 Hudson Park' , 'Timbiras' , -4.25528 , -43.94056, 'https://www.las2orillas.co/wp-content/uploads/2017/02/Bogota1.jpg');
+insert into LugarEntity (id, direccion, lugar, lat, lon, rutaimagen) values (12 , '29 Eagle Crest Hill' , 'Maha Sarakham' , 16.18483 , 103.30067, 'https://www.las2orillas.co/wp-content/uploads/2017/02/Bogota1.jpg');
+insert into LugarEntity (id, direccion, lugar, lat, lon, rutaimagen) values (13 , '6 Fairfield Court' , 'As Sulayyil' , 20.46067 , 45.57792, 'https://www.las2orillas.co/wp-content/uploads/2017/02/Bogota1.jpg');
+insert into LugarEntity (id, direccion, lugar, lat, lon, rutaimagen) values (14 , '127 Spenser Crossing' , 'Shangyong' , 25.73421 , 118.15716, 'https://www.las2orillas.co/wp-content/uploads/2017/02/Bogota1.jpg');
+insert into LugarEntity (id, direccion, lugar, lat, lon, rutaimagen) values (15 , '675 Gina Parkway' , 'Mislīyah' , 32.38613 , 35.2878, 'https://www.las2orillas.co/wp-content/uploads/2017/02/Bogota1.jpg');
+insert into LugarEntity (id, direccion, lugar, lat, lon, rutaimagen) values (16 , '0 Red Cloud Terrace' , 'Jbaïl' , 34.12111 , 35.64806, 'https://www.las2orillas.co/wp-content/uploads/2017/02/Bogota1.jpg');
+insert into LugarEntity (id, direccion, lugar, lat, lon, rutaimagen) values (17 , '1319 Briar Crest Plaza' , 'Rimba Sekampung' , 1.6756 , 101.43748, 'https://www.las2orillas.co/wp-content/uploads/2017/02/Bogota1.jpg');
+insert into LugarEntity (id, direccion, lugar, lat, lon, rutaimagen) values (18 , '367 Mayer Crossing' , 'Lama' , 41.53 , -8.3567, 'https://www.las2orillas.co/wp-content/uploads/2017/02/Bogota1.jpg');
+insert into LugarEntity (id, direccion, lugar, lat, lon, rutaimagen) values (19 , '7994 Hooker Court' , 'Taoyuan' , 22.58041 , 113.96121, 'https://www.las2orillas.co/wp-content/uploads/2017/02/Bogota1.jpg');
 
 
 

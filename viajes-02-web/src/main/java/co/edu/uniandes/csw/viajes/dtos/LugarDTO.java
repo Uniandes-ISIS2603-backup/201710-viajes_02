@@ -58,6 +58,11 @@ public class LugarDTO
      * Longitud del lugar
      */
     private Double lon;
+    
+    /**
+     * Ruta de la imagen del lugar
+     */
+    private String rutaImagen;
 
     /**
      * Constructor por defecto
@@ -79,6 +84,7 @@ public class LugarDTO
         this.direccion = en.getDireccion();
         this.lat = en.getLat();
         this.lon = en.getLon();
+        this.rutaImagen = en.getRutaImagen();
     }
 
     /**
@@ -136,9 +142,9 @@ public class LugarDTO
      *
      * @param direccion Nuevo valor de la direccion
      */
-    public void setDireccion(String direcion)
+    public void setDireccion(String direccion)
     {
-        this.direccion = direcion;
+        this.direccion = direccion;
     }
 
     /**
@@ -180,6 +186,22 @@ public class LugarDTO
     {
         this.lon = lon;
     }
+    
+    /**
+     * Da la ruta imagen del lugar
+     * @return 
+     */
+    public String getRutaImagen() {
+        return rutaImagen;
+    }
+    
+    /**
+     * Da la ruta imagen del lugar
+     * @param rutaImagen Ruta imagen del lugar
+     */
+    public void setRutaImagen(String rutaImagen) {
+        this.rutaImagen = rutaImagen;
+    }
 
     /**
      * Crea una entidad de acuerdo a la infromacion de DTO
@@ -194,6 +216,7 @@ public class LugarDTO
         en.setDireccion(this.direccion);
         en.setLat(this.lat);
         en.setLon(this.lon);
+        en.setRutaImagen(this.rutaImagen);
         return en;
     }
 }

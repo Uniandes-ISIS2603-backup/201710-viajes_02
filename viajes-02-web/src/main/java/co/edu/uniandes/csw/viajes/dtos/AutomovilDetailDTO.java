@@ -54,6 +54,7 @@ public class AutomovilDetailDTO extends AutomovilDTO
         super(entity);
         //TODO: Verificar
         this.conductorDTO = new ConductorDTO(entity.getConductorEntity() );
+        
     }
 
 

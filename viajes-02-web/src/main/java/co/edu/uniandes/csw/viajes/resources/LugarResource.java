@@ -156,6 +156,7 @@ public class LugarResource
         dto.setLugar(entity.getLugar());
         dto.setLat(entity.getLat());
         dto.setLon(entity.getLon());
+        dto.setRutaImagen(entity.getRutaImagen());
         return dto;
     }
 

@@ -110,9 +110,9 @@ public class ConductorLogic
     public ConductorEntity updateConductor(ConductorEntity c) throws BusinessLogicException
     {
         ConductorEntity conductor = persistence.find(c.getId());
-        if (conductor != null)
+        if (conductor == null)
         {
-            throw new BusinessLogicException("El conductor con id dado ya existe en el sistema");
+            throw new BusinessLogicException("El conductor con id dado no existe en el sistema");
         }
         return persistence.update(c);
     }
