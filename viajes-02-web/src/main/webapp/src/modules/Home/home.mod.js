@@ -18,7 +18,7 @@
                         templateUrl: basePath + 'home.html',
                         controller: ['$scope', 'lugares', function ($scope, lugares) {
                                 $scope.lugarRecords = lugares.data;
-                        }]
+                            }]
                     }
                 }
             });
@@ -26,18 +26,58 @@
 })(window.angular);
 
 function datePicker() {
-        $('#btnStartDate').datetimepicker({
-            format: 'MM/DD/YYYY'
-        });
-        $('#btnEndDate').datetimepicker({
-            useCurrent: false,
-            format: 'MM/DD/YYYY'
-            
-        });
-        $("#btnStartDate").on("dp.change", function (e) {
-            $('#btnEndDate').data("DateTimePicker").minDate(e.date);
-        });
-        $("#btnEndDate").on("dp.change", function (e) {
-            $('#btnStartDate').data("DateTimePicker").maxDate(e.date);
-        });
-};
+    $('#btnStartDate').datetimepicker({
+        format: 'MM/DD/YYYY'
+    });
+    $('#btnEndDate').datetimepicker({
+        useCurrent: false,
+        format: 'MM/DD/YYYY'
+
+    });
+    $("#btnStartDate").on("dp.change", function (e) {
+        $('#btnEndDate').data("DateTimePicker").minDate(e.date);
+    });
+    $("#btnEndDate").on("dp.change", function (e) {
+        $('#btnStartDate').data("DateTimePicker").maxDate(e.date);
+    });
+}
+;
+
+function signIn() {
+    var user = $('#signInUser').val();
+    var password = $('#signInPassword').val();
+    console.log(user +" " +password);
+    firebase.auth().signInWithEmailAndPassword(user, password)
+            .then(function (firebaseUser) {
+                console.log('funciono');
+            })
+            .catch(function (error) {
+                console.log('fallo');
+            });
+}
+
+function signUpConductor() {
+    var user = $('#conductorAddressForm').val();
+    var password = $('#conductorPasswordInput').val();
+    
+    firebase.auth().createUserWithEmailAndPassword(user, password)
+            .catch(function (error) {
+                console.log('register error', error);
+                if (error.code === 'auth/email-already-in-use') {
+
+                }
+            });
+}
+
+function signUpViajero() {
+    var user = $('#viajeroAddressForm').val();
+    var password = $('#viajeroPasswordInput').val();
+    
+    firebase.auth().createUserWithEmailAndPassword(user, password)
+            .catch(function (error) {
+                console.log('register error', error);
+                if (error.code === 'auth/email-already-in-use') {
+
+                }
+            });
+}

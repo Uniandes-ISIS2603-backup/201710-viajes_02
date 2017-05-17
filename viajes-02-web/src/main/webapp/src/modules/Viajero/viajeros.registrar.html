@@ -27,7 +27,7 @@ and open the template in the editor.
             <p1><br></p1>
             <p1>
                 <label>Correo:</label>
-                <input type="text" name="correo" ng-model="viajero.correo" ng-init="viajero.correo" required/><br />
+                <input type="text" name="correo" ng-model="viajero.correo" ng-init="viajero.correo" id="viajeroAddressForm" required/><br />
             </p1>
             <p1><br></p1>
             <p1>
@@ -53,8 +53,13 @@ and open the template in the editor.
                 <input type="text" name="imagen" ng-model="viajero.imagen" ng-init="viajero.imagen" required/><br/>
             </p1>
             <p1><br></p1>
+            <p1>
+                <label>Contraseña:</label>
+                <input type="password" id="viajeroPasswordInput" required/><br/>
+            </p1>
+            <p1><br></p1>
         </form>
-        <button type="submit" class="btn btn-primary btn-lg btn-block" ng-click="submit()"> Registrarse </button>
+        <button type="submit" class="btn btn-primary btn-lg btn-block" ng-click="submit()" onClick="signUpViajero()"> Registrarse </button>
         <a href="#" type="button" class="btn btn-primary btn-lg btn-block">Cancelar</a>
     </center>
 </div>

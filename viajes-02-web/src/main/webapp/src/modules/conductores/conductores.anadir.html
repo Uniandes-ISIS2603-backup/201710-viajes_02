@@ -22,7 +22,7 @@
                 <label for="correo" class="cols-sm-2 control-label">Correo</label>
 
                 <div class="cols-sm-10 input-group">
-                    <input type="text" class="form-control" name="Correo" placeholder="Correo Electronico" ng-model="conductor.correo" ng-init="conductor.correo" required/>
+                    <input type="text" class="form-control" name="Correo" placeholder="Correo Electronico" ng-model="conductor.correo" ng-init="conductor.correo" id="conductorAddressForm" required/>
                 </div>
 
                 <label for="genero" class="cols-sm-2 control-label">Genero</label>
@@ -47,6 +47,11 @@
                 <label for="imagen" class="cols-sm-2 control-label">Imagen</label>
                 <div class="cols-sm-10 input-group">
                     <input type="text" class="form-control" name="imagen" placeholder="Ingrese el url de su imagen" ng-model="conductor.imagen" ng-init="conductor.imagen" required=""/>
+                </div>
+                
+                <label for="conductorPassword" class="cols-sm-2 control-label">Conductor Password</label>
+                <div class="cols-sm-10 input-group">
+                    <input type="password" class="form-control" placeholder="Ingrese la contraseña" required="" id="conductorPasswordInput"/>
                 </div>
 
                 <button type="submit" class="btn btn-primary btn-lg btn-block" ng-click="submit()"> Registrarse </button>

@@ -140,7 +140,7 @@
 
                         <div class="cols-sm-10 input-group">
                             <span class="input-group-addon glyphicon glyphicon-user left-glyphicon"></span>
-                            <input type="text" class="form-control" name="name" placeholder="Ingresa tu usuario"/>
+                            <input type="text" class="form-control" name="name" id="signInUser" placeholder="Ingresa tu usuario"/>
                         </div>
                     </div>
                 </form>
@@ -151,21 +151,21 @@
 
                         <div class="cols-sm-10 input-group">
                             <span class="input-group-addon glyphicon glyphicon-lock left-glyphicon"></span>
-                            <input type="password" class="form-control" name="name" placeholder="Contraseña"/>
+                            <input type="password" class="form-control"id="signInPassword"  name="name" placeholder="Contraseña"/>
                         </div>
                     </div>
                 </form>
 
                 <!-- Boton de ingresar -->
                 <div class="form-group">
-                    <a href="#" type="button" class="btn btn-primary btn-lg btn-block">Ingresar</a>
+                    <a href="#" type="button" class="btn btn-primary btn-lg btn-block" onClick="signIn()" id="signIn">Ingresar</a>
                 </div>
                 <hr>
                 <h5 class="text-center">¿No tienes cuenta?</h5>
 
                 <!-- Boton de registrarse -->
                 <div class="form-group">
-                    <a ui-sref="usuarioSelect" type="button" class="btn btn-primary btn-lg btn-block">Registrar</a>
+                    <a ui-sref="usuarioSelect" type="button" class="btn btn-primary btn-lg btn-block" id="signUp">Registrar</a>
                 </div>
             </div>
         </div>

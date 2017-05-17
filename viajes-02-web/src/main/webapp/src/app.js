@@ -8,7 +8,7 @@
         'lugarModule',
         'automovilesModule',
         //'reviewModule',
-        'reservaModule',
+        //'reservaModule',
         'viajeroModule',
         'conductorModule',
         'viajeModule',
