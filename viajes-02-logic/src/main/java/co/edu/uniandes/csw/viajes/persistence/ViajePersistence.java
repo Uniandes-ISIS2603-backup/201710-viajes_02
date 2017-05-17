@@ -116,7 +116,7 @@ public class ViajePersistence
      */
     public List<ViajeEntity> buscarPorOrigenyDestino(String origen, String destino)
     {
-        TypedQuery<ViajeEntity> q = em.createQuery("SELECT U FROM ViajeEntity U WHERE U.origen.lugar = origen AND U.destino.lugar = destino", ViajeEntity.class);
+        TypedQuery<ViajeEntity> q = em.createQuery("SELECT U FROM ViajeEntity U WHERE U.origen.lugar = " + origen + " AND U.destino.lugar = " + destino, ViajeEntity.class);
         List<ViajeEntity> lista = q.getResultList();
         return lista;
     }

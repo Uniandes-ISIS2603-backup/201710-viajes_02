@@ -1,8 +1,3 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 (function (ng) {
     var mod = ng.module("reservaModule", ['ui.router']);
     mod.constant("reservasContext", "api/viajeros");
@@ -10,9 +5,9 @@
 
             var basePath = 'src/modules/Reserva/';
             $urlRouterProvider.otherwise("/reservasList");
-
+            self = this;
             $stateProvider.state('reservas', {
-                url: 'viajeros/{idViajero:int}/reservas/',
+                url: 'viajeros/{idViajero:int}/reservas',
                 abstract: true,
                 param: {
                     idViajero: null
@@ -20,13 +15,18 @@
                 resolve: {
                     reservas: ['$http', 'reservasContext', '$stateParams', function ($http, reservasContext, $params) {
                             return $http.get(reservasContext + '/' + $params.idViajero + '/reservas');
+                        }],
+                    currentViajero: ['$http', 'reservasContext', '$stateParams',  function ($http, reservasContext, $params) {
+                            return $http.get(reservasContext + '/' + $params.idViajero);
                         }]
                 },
                 views: {
                     'mainView': {
                         templateUrl: basePath + 'reservas.html',
-                        controller: ['$scope', 'reservas', function ($scope, reservas) {
+                        controller: ['$scope', 'reservas', 'currentViajero', function ($scope, reservas, currentViajero) {
                                 $scope.reservasRecords = reservas.data;
+                                $scope.currentViajero = currentViajero.data;
+                                console.log($scope.reservasRecords);
                             }]
                     }
                 }
@@ -35,7 +35,32 @@
                 parent: 'reservas',
                 views: {
                     'listView': {
-                        templateUrl: basePath + 'reservas.list.html'
+                        templateUrl: basePath + 'reservas.list.html',
+                        controller: ['$scope', '$http', 'reservasContext', 'currentViajero', function($scope, $http, reservasContext, currentViajero) {
+                                
+                                $scope.buscarviajes = function() {
+                                    var origen = document.getElementById("desde").value;
+                                    var destino = document.getElementById("hasta").value;
+                                    var fechasalida = document.getElementById("fechasalida").value;
+                                    
+                                    $scope.viajes = $http.get('api/viajes/' + origen + ";" + destino);
+                                };
+                                
+                                $scope.reservar = function() {
+                                    $scope.reserva = {
+                                        id:undefined,
+                                        precio:'',
+                                        valorComision:'',
+                                        puestosReservados:'',
+                                        viaje: {
+                                            
+                                        },
+                                        viajero = $scope.currentViajero
+                                    };
+                                    
+                                    $http.post(reservasContext, reserva);
+                                };
+                        }]
                     }
                 }
             }).state('reservasDetail', {
@@ -58,6 +83,41 @@
                     }
                 }
             });
-        }
-    ]);
+//              .state('reservar', {
+//                url: 'viajeros/{idViajero:int}/reservas/list/reservar',
+//                parent: 'reservas',
+//                views: {
+//                    'createView': {
+//                        templateUrl: basePath + 'reservar.html',
+//                        controller: ['$scope', '$http', 'reservasContext', 'currentViajero', function($scope, $http, reservasContext, currentViajero) {
+//                                
+//                                $scope.currentViajero = currentViajero.data;
+//                                
+//                                $scope.buscarviajes = function() {
+//                                    var origen = document.getElementById("desde").value;
+//                                    var destino = document.getElementById("hasta").value;
+//                                    var fechasalida = document.getElementById("fechasalida").value;
+//                                    
+//                                    $scope.viajes = $http.get('api/viajes/' + origen + ";" + destino);
+//                                };
+//                                
+//                                $scope.reservar = function() {
+//                                    $scope.reserva = {
+//                                        id:undefined,
+//                                        precio:'',
+//                                        valorComision:'',
+//                                        puestosReservados:'',
+//                                        viaje: {
+//                                            
+//                                        },
+//                                        viajero = $scope.currentViajero
+//                                    };
+//                                    
+//                                    $http.post(reservasContext, reserva);
+//                                };
+//                        }]
+//                    }
+//                }
+//            });
+        }]);
 })(window.angular);

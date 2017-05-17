@@ -43,63 +43,58 @@ import javax.ws.rs.core.MediaType;
 // TODO este recruso debería ser un subrecurso de viajeros
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
-public class ReservaResource
-{
+public class ReservaResource {
+
     @Inject
     private ReservaLogic reservaLogic;
-    
+
     @Inject
     private ViajeroLogic viajeroLogic;
 
-    @POST 
-    public ReservaDetailDTO createReserva(ReservaDTO reservaDTO)
-    {
+    @POST
+    public ReservaDetailDTO createReserva(ReservaDTO reservaDTO) {
         return new ReservaDetailDTO(reservaLogic.createReserva(reservaDTO.toEntity()));
     }
 
     @GET
-    public List<ReservaDTO> getReservas(@PathParam("idViajero") Long idViajero)
-    {  // TODO si el recurso con el idViajero dado no existe de se debe disparar WebApplicationException 404
-        if(reservaLogic.getReservasViajero(idViajero) == null)
+    public List<ReservaDTO> getReservas(@PathParam("idViajero") Long idViajero) {  // TODO si el recurso con el idViajero dado no existe de se debe disparar WebApplicationException 404
+        if (reservaLogic.getReservasViajero(idViajero) == null) {
             throw new WebApplicationException("No existe(n) reserva(s) asociada(s) al viajero con id " + idViajero, 404);
-        else
+        } else {
             return listEntity2DTO(reservaLogic.getReservasViajero(idViajero));
+        }
     }
-    
+
     @GET
     @Path("/{id: \\d+}")
-    public ReservaDTO getReserva(@PathParam("id") Long id)
-    {
+    public ReservaDTO getReserva(@PathParam("id") Long id) {
         return new ReservaDTO(reservaLogic.getReserva(id));
     }
 
     @DELETE
     @Path("{idReserva: \\d+}")
-    public void deleteReserva(@PathParam("idReserva") Long idReserva)
-    {// TODO si el recurso con el idViajero y el idReserva dado no existe de sedeb disparar WebApplicationException 404
+    public void deleteReserva(@PathParam("idReserva") Long idReserva) {// TODO si el recurso con el idViajero y el idReserva dado no existe de sedeb disparar WebApplicationException 404
         reservaLogic.deleteReserva(idReserva);
     }
 
-    private List<ReservaDTO> listEntity2DTO(List<ReservaEntity> reservaEntityList)
-    {
+    private List<ReservaDTO> listEntity2DTO(List<ReservaEntity> reservaEntityList) {
         List<ReservaDTO> listReserva = new ArrayList<ReservaDTO>();
-        
+
         for (ReservaEntity reservaEntity : reservaEntityList) {
             listReserva.add(new ReservaDTO(reservaEntity));
         }
         return listReserva;
     }
-    
-    private List<ReservaDetailDTO> listEntity2DetailDTO(List<ReservaEntity> reservaEntityList)
-    {
+
+    private List<ReservaDetailDTO> listEntity2DetailDTO(List<ReservaEntity> reservaEntityList) {
         List<ReservaDetailDTO> listReserva = new ArrayList<ReservaDetailDTO>();
-        
+
         for (ReservaEntity reservaEntity : reservaEntityList) {
             listReserva.add(new ReservaDetailDTO(reservaEntity));
         }
         return listReserva;
     }
-    
+
     private boolean existeViajero(Long idViajero) {
         try {
             return (viajeroLogic.getViajero(idViajero) != null);
@@ -107,5 +102,5 @@ public class ReservaResource
             return false;
         }
     }
-    
+
 }
