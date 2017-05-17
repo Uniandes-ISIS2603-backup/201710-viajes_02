@@ -25,130 +25,146 @@
             }
         })
             .state('conductoresList', {
-            url: '/list',
-            parent: 'conductores',
-            views: {
-                'listView': {
-                    templateUrl: basePath + 'conductores.list.html'
+                url: '/list',
+                parent: 'conductores',
+                views: {
+                    'listView': {
+                        templateUrl: basePath + 'conductores.list.html'
+                    }
                 }
-            }
-        })
+            })
             .state('conductorDetail', {
-            url: '/{conductorId:int}/detail',
-            parent: 'conductores',
-            param: {
-                conductorId: null
-            },
-            resolve: {
-                currentConductor: ['$http', 'conductoresContext', '$stateParams', function ($http, conductoresContext, $params) {
-                    return $http.get(conductoresContext + '/' + $params.conductorId);
-                }]
-            },
-            views: {
-                'detailView': {
-                    templateUrl: basePath + 'conductores.detail.html',
-                    controller: ['$scope', 'currentConductor', function ($scope, currentConductor) {
-                        $scope.currentConductor = currentConductor.data;
-                    }]
-                
+                url: '/{conductorId:int}/detail',
+                parent: 'conductores',
+                param: {
+                    conductorId: null
                 },
-                'listView': {
+                resolve: {
+                    currentConductor: ['$http', 'conductoresContext', '$stateParams', function ($http, conductoresContext, $params) {
+                        return $http.get(conductoresContext + '/' + $params.conductorId);
+                    }]
+                },
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + 'conductores.detail.html',
+                        controller: ['$scope', 'currentConductor', function ($scope, currentConductor) {
+                            $scope.currentConductor = currentConductor.data;
+                        }]
+
+                    },
+                    'listView': {
                         templateUrl: 'src/modules/viajes/' + 'viajes.list.html',
                         controller: ['$scope', 'currentConductor', function ($scope, currentConductor) {
-                                $scope.viajesRecords = currentConductor.data.viajes;
+                            $scope.viajesRecords = currentConductor.data.viajes;
+                        }]
+                    }
+                }
+            })
+            .state('conductoresDetailReview', {
+                url: '/reviews',
+                parent: 'conductorDetail',
+                views: {
+                    'detail': {
+                        templateUrl: basePath + 'conductores.detail.reviews.html',
+                        controller: ['$scope', '$http', 'currentReview', '$stateParams', '$state',
+                            function ($scope, $http, currentAutomovil, $stateParams, $state) {
+                                $scope.currentAutomovil = currentAutomovil.data;
+
+                                $scope.eliminarAutomovil = function () {
+                                    $http.delete('api/automoviles/' + $stateParams.reviewid)
+                                        .then(function () {
+                                            $state.go('conductoresDetailAutomoviles', {conductorId: $scope.currentConductor.id}, {reload: true})
+                                        });
+                                }
                             }]
                     }
-            }
-        })
-            .state('conductoresDetailReview', {
-            url: '/reviews',
-            parent: 'conductorDetail',
-            views: {
-                'detail': {
-                    templateUrl: basePath + 'conductores.detail.reviews.html'
                 }
-            }
-        })
+            })
             .state('conductoresDetailAutomoviles', {
-            url: '/automoviles',
-            parent: 'conductorDetail',
-            views: {
-                'detail': {
-                    templateUrl: basePath + 'conductores.detail.automoviles.html'
+                url: '/automoviles',
+                parent: 'conductorDetail',
+                views: {
+                    'detail': {
+                        templateUrl: basePath + 'conductores.detail.automoviles.html'
+                    }
                 }
-            }
-        })
+            })
             .state('conductoresAdd', {
-            url: '/add',
-            parent: 'conductores',
-            views: {
-                'listView': {
-                    templateUrl: basePath + 'conductores.anadir.html',
-                    controller: ['$scope', 'conductoresContext', '$http', '$state', function ($scope, conductoresContext, $http, $state) {
-                        $scope.conductor = {
-                            id: undefined /*Tipo Long. El valor se asigna en el backend*/,
-                            nombre: '' /*Tipo String*/,
-                            correo: '',
-                            genero: '',
-                            telMovil: '',
-                            edad: '',
-                            imagen: ''
+                url: '/add',
+                parent: 'conductores',
+                views: {
+                    'listView': {
+                        templateUrl: basePath + 'conductores.anadir.html',
+                        controller: ['$scope', 'conductoresContext', '$http', '$state', function ($scope, conductoresContext, $http, $state) {
+                            $scope.conductor = {
+                                id: undefined /*Tipo Long. El valor se asigna en el backend*/,
+                                nombre: '' /*Tipo String*/,
+                                correo: '',
+                                genero: '',
+                                telMovil: '',
+                                edad: '',
+                                imagen: ''
 
-                        };
-                        $scope.submit = function () {
-                            currentConductor = $scope.conductor;
-                            return $http.post(conductoresContext, currentConductor)
-                                .then(function () {
-                                    // $http.post es una promesa
-                                    // cuando termine bien, cambie de estado
-                                    $state.go('conductoresList',{}, {reload: true});
-                                });
-                        };
-                    }]
-                }
-            }
-        })
-            .state('reviewsFormulario', {
-            url: '/addReview',
-            parent: 'conductorDetail',
-            views: {
-                'detail': {
-                    templateUrl: basePath + 'reviews.formulario.html',
-                    controller: ['$scope', '$http', 'conductoresContext','$state',
-                        function ($scope, $http, conductoresContext,$state) {
-                            var valor = 0;
-                            $scope.agregarRev = function () {
-                                if (document.getElementById('radio1'))
-                                    valor = 1;
-                                else if (document.getElementById('radio2'))
-                                    valor = 2;
-                                else if (document.getElementById('radio3'))
-                                    valor = 3;
-                                if (document.getElementById('radio4'))
-                                    valor = 4;
-                                else
-                                    valor = 5;
-                                var comment = document.getElementById('comment').value;
-                                var idCalificado = $scope.currentConductor.id;
-                                var idCalificador = document.getElementById('comment').value;
-
-                                var review = {
-                                    calificacion: valor,
-                                    coment: comment,
-                                    idCalificado: idCalificado,
-                                    idCalificador: idCalificador
-                                };
-
-                                $http.post('api/usuarios/' + $scope.currentConductor.id + '/reviews', review)
+                            };
+                            $scope.submit = function () {
+                                currentConductor = $scope.conductor;
+                                return $http.post(conductoresContext, currentConductor)
                                     .then(function () {
                                         // $http.post es una promesa
                                         // cuando termine bien, cambie de estado
-                                        $state.go('conductorDetail',{conductorId:  $scope.currentConductor.id},{reload: true});
+                                        $state.go('conductoresList', {}, {reload: true});
                                     });
-                            }
+                            };
                         }]
+                    }
                 }
-            }
+            })
+            .state('reviewsFormulario', {
+                url: '/addReview',
+                parent: 'conductorDetail',
+                views: {
+                    'detail': {
+                        templateUrl: basePath + 'reviews.formulario.html',
+                        controller: ['$scope', '$http', 'conductoresContext', '$state',
+                            function ($scope, $http, conductoresContext, $state) {
+                                var valor = 0;
+                                $scope.agregarRev = function () {
+
+                                    if (document.getElementById('radio1'))
+                                        valor = 1;
+                                    else if (document.getElementById('radio2'))
+                                        valor = 2;
+                                    else if (document.getElementById('radio3'))
+                                        valor = 3;
+                                    if (document.getElementById('radio4'))
+                                        valor = 4;
+                                    else
+                                        valor = 5;
+                                    var comment = document.getElementById('comment').value;
+                                    var idCalificado = $scope.currentConductor.id;
+                                    var idCalificador = parseInt(document.getElementById('idCalificador').value);
+                                    console.log(valor);
+                                    console.log(comment);
+                                    console.log(idCalificado);
+                                    console.log(idCalificador);
+                                    var review = {
+                                        calificacion: valor,
+                                        coment: comment,
+                                        idCalificado: idCalificado,
+                                        idCalificador: idCalificador
+                                    };
+                                    console.log(review);
+
+                                    $http.post('api/usuarios/' + $scope.currentConductor.id + '/reviews', review)
+                                        .then(function () {
+                                            // $http.post es una promesa
+                                            // cuando termine bien, cambie de estado
+                                            $state.go('conductorDetail', {conductorId: $scope.currentConductor.id}, {reload: true});
+                                        });
+                                }
+                            }]
+                    }
+                }
             })
             .state('automovilesFormulario', {
                 url: '/addAuto',
@@ -156,8 +172,8 @@
                 views: {
                     'detail': {
                         templateUrl: basePath + 'automoviles.formulario.html',
-                        controller: ['$scope', '$http', 'conductoresContext','$state',
-                            function ($scope, $http, conductoresContext,$state) {
+                        controller: ['$scope', '$http', 'conductoresContext', '$state',
+                            function ($scope, $http, conductoresContext, $state) {
 
                                 $scope.agregar = function () {
                                     var placa = document.getElementById('placa').value;
@@ -180,13 +196,13 @@
                                         }
                                     };
 
-                                   carrito = $http.post('api/automoviles', carrito)
-                                           
-                                    
+                                    carrito = $http.post('api/automoviles', carrito)
+
+
                                         .then(function () {
                                             // $http.post es una promesa
                                             // cuando termine bien, cambie de estado
-                                            $state.go('conductorDetail',{conductorId:  $scope.currentConductor.id},{reload: true});
+                                            $state.go('conductorDetail', {conductorId: $scope.currentConductor.id}, {reload: true});
                                         });
                                 };
                             }]
@@ -208,20 +224,71 @@
                 views: {
                     'childrenView': {
                         templateUrl: basePath + 'automoviles.list.html',
-                        controller: ['$scope', '$http' ,'currentAutomovil', '$stateParams', '$state',
-                            function ($scope,$http, currentAutomovil, $stateParams, $state) {
+                        controller: ['$scope', '$http', 'currentAutomovil', '$stateParams', '$state',
+                            function ($scope, $http, currentAutomovil, $stateParams, $state) {
                                 $scope.currentAutomovil = currentAutomovil.data;
 
                                 $scope.eliminarAutomovil = function () {
-                                    $http.delete('api/automoviles/' + $stateParams.autoId)
+                                    $http.delete('api/usuarios/reviews/'+ $scope.currentConductor.id+'/' + $stateParams.autoId)
                                         .then(function () {
-                                            $state.go('conductoresDetailAutomoviles', {conductorId:  $scope.currentConductor.id},{reload: true})
+                                            $state.go('conductoresDetailAutomoviles', {conductorId: $scope.currentConductor.id}, {reload: true})
                                         });
                                 }
                             }]
                     }
                 }
-            });
+            })
+            .state('automovilesActualizar', {
+                url: '/AutoDetailF',
+                parent: 'automovilesDetail',
+                views: {
+                    'automovilesDetail@childrenView': {
+                        templateUrl: basePath + 'automoviles.actualizar.html',
+                        controller: ['$scope', '$http', '$stateParams', '$state',
+                            function ($scope, $http, $stateParams, $state) {
+
+                                document.getElementById('pplaca').value = $scope.currentAutomovil.placa;
+                                // document.getElementById('mmarca').value = $scope.currentAutomovil.marca;
+                                // document.getElementById('mmodelo').value = $scope.currentAutomovil.modelo;
+
+
+                            }]
+                        //
+                        //        document.getElementById('placa').value = $scope.currentAutomovil.id;
+                        //          document.getElementById('marca').value=  $scope.currentAutomovil.marca;
+                        //         document.getElementById('modelo').value= $scope.currentAutomovil.modelo;
+                        //
+                        //         $scope.actualizar = function () {
+                        //           var   placa = document.getElementById('placa').value;
+                        //           var   color = document.getElementById('color').value;
+                        //           var   marca = document.getElementById('marca').value;
+                        //           var   modelo = document.getElementById('modelo').value;
+                        //           var   aseg = document.getElementById('aseguradora').value;
+                        //           var   numseg = document.getElementById('numseguro').value;
+                        //           var   cantasientos = document.getElementById('cantasientos').value;
+                        //             var  carrito = {
+                        //                 marca: marca,
+                        //                 modelo: modelo,
+                        //                 cantAsientos: cantasientos,
+                        //                 color: color,
+                        //                 compSeguros: aseg,
+                        //                 numSeguro: numseg,
+                        //                 placa: placa,
+                        //                 conductorDTO: {
+                        //                     id: $scope.currentConductor.id
+                        //                 }
+                        //             };
+                        //
+                        //             carrito = $http.put('api/automoviles/' + $scope.currentAutomovil.id, carrito)
+                        //                 .then(function () {
+                        //                     $state.go('conductoresDetailAutomoviles', {conductorId: $scope.currentConductor.id}, {reload: true})
+                        //                 });
+                        //         }
+                        //     }]
+                    }
+                }
+            })
+        ;
     }])
 })
 (window.angular);

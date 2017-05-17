@@ -1,0 +1,47 @@
+<div class="container-fluid">
+<div ui-view="detailView"></div>
+<div class="row">
+    <title>Inscribir Automovil</title>
+
+
+    <form method="post">
+        <table>
+            <thead colspan="2" style="align-content: center;">Inscribir Automovil</thead>
+            <tr>
+                <td >Placa:</td>
+                <td><input type="text" name="placa" id="pplaca" readonly ><br></td>
+            </tr>
+            <tr>
+                <td>Color:</td>
+                <td><input type="color" name="color" id="mcolor"><br></td>
+            </tr>
+            <tr>
+                <td>Marca:</td>
+                <td><input type="text" name="marca" id="mmarca" readonly><br></td>
+            </tr>
+            <tr>
+                <td>Modelo:</td>
+                <td> <input type="text" name="modelo" id="mmodelo" readonly><br></td>
+            </tr>
+            <tr>
+                <td>Aseguradora:</td>
+                <td> <input type="text" name="aseguradora" id="maseguradora"><br></td>
+            </tr>
+            <tr>
+                <td>Numero de Seguro:</td>
+                <td><input type="text" name="numseguro" id="mnumseguro"><br></td>
+            </tr>
+            <tr>
+                <td>Cantidad de asientos:</td>
+                <td><input type="number" min="2" max="9" style="height: 35px;width: 35px" name="cantasientos" id="mcantasientos"><br>
+                </td>
+            </tr>
+
+        </table>
+
+        <button type="submit" value="Agregar" ng-click="actualizar()" style="width: 62px;height: 26px">Actualizar</button>
+    </form>
+
+
+</div>
+</div>

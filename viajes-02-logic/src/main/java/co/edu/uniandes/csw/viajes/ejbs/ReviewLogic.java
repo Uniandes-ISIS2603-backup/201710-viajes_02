@@ -60,7 +60,13 @@ public class ReviewLogic
 	{
 		return persistence.findReviewsUsuario( idCalificado );
 	}
-	
+
+
+	public ReviewEntity getReview(Long idCalificado , Long review)
+	{
+		return persistence.findReviewUsuario(idCalificado,review);
+	}
+
 	/**
 	 * Se encarga de crear una nueva calificacion en la base de datos.
 	 *
@@ -75,7 +81,8 @@ public class ReviewLogic
             System.out.println(review.getIdCalificador());
 		if( viajeroPersistence.find( review.getIdCalificador( ) ) != null )
 		{
-			if( conductorPersistence.find( review.getIdCalificado( ) ) != null &&(review.getCalificacion()>=0 && review.getCalificacion()<=5  )  )
+
+			if( conductorPersistence.find( review.getIdCalificado( ) ) != null )
 			{
 				return persistence.create( review );
 			}

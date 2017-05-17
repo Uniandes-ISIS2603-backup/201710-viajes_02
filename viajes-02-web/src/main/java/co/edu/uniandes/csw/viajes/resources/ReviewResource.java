@@ -45,7 +45,7 @@ import javax.ws.rs.core.MediaType;
 /**
  * @author Danny
  */
-@Path("/usuarios/{usuarioId: \\d+}/reviews")
+@Path("/usuarios/reviews")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class ReviewResource
@@ -101,7 +101,7 @@ public class ReviewResource
      */
     @GET
     @Path("{id: \\d+}")
-    public List<ReviewDTO> getReview(@PathParam("id") Long id)
+    public List<ReviewDTO> getReviews(@PathParam("id") Long id)
     { // TODO si el recurso con el id dado no existe de sedeb disparar WebApplicationException 404
         List<ReviewDTO> lista = new ArrayList<ReviewDTO>();
 
@@ -113,6 +113,13 @@ public class ReviewResource
                 return lista;
     }
 
+    @GET
+    @Path("{id: \\d+}/{idr:\\d+}")
+    public ReviewDTO getReview(@PathParam("id") Long id,@PathParam("idr") Long idr)
+    { // TODO si el recurso con el id dado no existe de sedeb disparar WebApplicationException 404
+        return new ReviewDTO ( logic.getReview(id,idr));
+
+    }
     /**
      * crea un nuevo review en la base de datos
      *
