@@ -155,7 +155,7 @@
                                         valor = 2;
                                     else if (document.getElementById('radio3'))
                                         valor = 3;
-                                    if (document.getElementById('radio4'))
+                                    else if (document.getElementById('radio4'))
                                         valor = 4;
                                     else
                                         valor = 5;
@@ -200,7 +200,7 @@
                                     var marca = document.getElementById('marca').value;
                                     var modelo = document.getElementById('modelo').value;
                                     var aseg = document.getElementById('aseguradora').value;
-                                    var numseg = document.getElementById('numseguro').value;
+                                    var numseg = parseInt(document.getElementById('numseguro').value);
                                     var cantasientos = document.getElementById('cantasientos').value;
                                     var carrito = {
                                         marca: marca,
