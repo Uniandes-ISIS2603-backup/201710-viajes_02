@@ -21,8 +21,9 @@
     </div>
 </div>
 
+<!-- Detail de lugar -->
 <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog" ng-controller="actualizarLugarController">
         <div class="modal-content">
             <form>
                 <div class="modal-body">
@@ -37,6 +38,43 @@
                             <label id="basicModal-lugarAddress">Direccion</label>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="row">
+                            <label class="col-sm-2 control-label">Nombre</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" id="placeNameUpdateForm" name="name" placeholder="Nombre del lugar">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="col-sm-2 control-label">Dirección</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" id="placeAddressUpdateForm" name="address" placeholder="Dirección del lugar">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label  class="col-sm-2 control-label">Latitud</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" id="placeLatUpdateForm" name="lat" placeholder="Latitud del lugar">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label  class="col-sm-2 control-label">Longitud</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" id="placeLonUpdateForm" name="lon" placeholder="Longitud del lugar">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="col-sm-2 control-label">URL Imagen</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" id="placeImageUpdateForm" name="image" placeholder="Nombre del lugar">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-offset-2 col-sm-6">
+                                <button class="btn btn-primary" ng-click="actualizarLugar();">Actualizar</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="reset" class="btn btn-danger" data-dismiss="modal">Close</button>
@@ -45,7 +83,7 @@
         </div>
     </div>
 </div>
-
+<!-- Crea un lugar nuevo -->
 <div class="container" ng-controller="crearLugarController">
 
     <div class="page-header">

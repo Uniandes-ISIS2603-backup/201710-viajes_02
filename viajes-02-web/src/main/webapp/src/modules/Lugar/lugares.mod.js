@@ -56,7 +56,6 @@
                 },
                 resolve: {
                     currentLugar: ['$http', 'lugarContext', '$stateParams', function ($http, lugarContext, $params) {
-                            console.log("hola")
                             return $http.get(lugarContext + '/' + $params.lugarId);
                         }]
                 },
@@ -103,12 +102,58 @@
                 $http.post(lugarContext, data)
                         .then(function (response) {
                             window.location.reload();
-                            validate(null,null, "#error-message-locationForm")
+                            validate(null, null, "#error-message-locationForm")
                         },
                                 function (response) {
-                                    validate(null,null, "#error-message-locationForm", "No se pudo crear lugar intente de nuevo");
+                                    validate(null, null, "#error-message-locationForm", "No se pudo crear lugar intente de nuevo");
                                     console.log("fallo");
                                 });
+            };
+        }]);
+
+
+    // PUT
+    
+    mod.controller('actualizarLugarController', ['$scope', '$http', 'lugarContext', function ($scope, $http, lugarContext) {
+            $scope.actualizarLugar = function () {
+                var data = {};
+
+                if ($("#placeNameUpdateForm").val() !== "") {
+                    data.lugar = $("#placeNameUpdateForm").val();
+                } else {
+                    data.lugar = $scope.currentLugar.lugar;
+                }
+
+                if ($("#placeAddressUpdateForm").val() !== "") {
+                    data.direccion = $("#placeAddressUpdateForm").val();
+                } else {
+                    data.direccion = $scope.currentLugar.direccion;
+                }
+
+                if ($("#placeLatUpdateForm").val() !== "") {
+                    data.lat = $("#placeLatUpdateForm").val();
+                } else {
+                    data.lat = $scope.currentLugar.lat;
+                }
+
+                if ($("#placeLonUpdateForm").val() !== "") {
+                    data.lon = $("#placeLonUpdateForm").val();
+                } else {
+                    data.lon = $scope.currentLugar.lon;
+                }
+
+                if ($("#placeImageUpdateForm").val() !== "") {
+                    data.rutaImagen = $("#placeImageUpdateForm").val();
+                } else {
+                    data.rutaImagen = $scope.currentLugar.rutaImagen;
+                }
+
+                $http.put(lugarContext + '/' + $scope.currentLugar.id, data).then(function (response) {
+                    console.log("funciono");
+                    window.location.reload();
+                }, function (response) {
+                    console.log("fallo");
+                });
             };
         }]);
 })(window.angular);
