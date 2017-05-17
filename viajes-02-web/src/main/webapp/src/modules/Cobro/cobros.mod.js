@@ -24,7 +24,7 @@
                         templateUrl: basePath + 'cobro.html',
                         controller: ['$scope', 'cobros', 'currentUsuario', function ($scope, cobros, currentUsuario) {
                                 $scope.currentUsuario = currentUsuario.data;
-                                $scope.cobrosRecords = cobros.data; 
+                                $scope.cobrosRecords = cobros.data;
                             }]
                     }
                 }
@@ -38,41 +38,46 @@
                 }
             });
         }]);
-    
-     // POST
-     
-     /*
-    mod.controller('crearLugarController', ['$scope', '$http', 'lugarContext', function ($scope, $http, lugarContext) {
-            $scope.crearLugar = function () {
+
+    // POST
+
+
+    mod.controller('createCobro', ['$scope', '$http', 'cobroContext', function ($scope, $http, cobroContext) {
+            $scope.crearCobro = function () {
+
                 var data = {
-                    "direccion": $("#cobroIdForm").val(),
                     "valor": $("#cobroPriceForm").val(),
-                    "cancelado": false
-                    
+                    "cancelado": false,
+                    "usuarioRemitente": {
+                        "id": $scope.currentUsuario.id
+                    },
+                    "usuarioDestinatario": {
+                        "id": $("#cobroIdForm").val()
+                    }
+
                 };
 
-                $http.post(lugarContext, data)
+                $http.post(cobroContext + "/" + $scope.currentUsuario.id + "/cobros", data)
                         .then(function (response) {
+                            console.log("success")
                             window.location.reload();
-                            validate(null, null, "#error-message-locationForm")
                         },
                                 function (response) {
-                                    validate(null, null, "#error-message-locationForm", "No se pudo crear lugar intente de nuevo");
                                     console.log("fallo");
                                 });
             };
         }]);
-*/
+
 
 // PUT
-    
+
     mod.controller('pagarCobro', ['$scope', '$http', 'cobroContext', function ($scope, $http, cobroContext) {
             $scope.pagarCobro = function (idCobro) {
                 var data = {
                     cancelado: true
                 };
-                
-                $http.put(cobroContext + '/' +$scope.currentUsuario.id +"/cobros/" +idCobro, data).then(function (response) {
+
+                $http.put(cobroContext + '/' + $scope.currentUsuario.id + "/cobros/" + idCobro, data).then(function (response) {
                     console.log("funciono");
                     window.location.reload();
                 }, function (response) {
@@ -80,16 +85,16 @@
                 });
             };
         }]);
-    
+
 })(window.angular);
 
- function filtrarContenido(algo) {
-      var $target = $(algo).data('target');
+function filtrarContenido(algo) {
+    var $target = $(algo).data('target');
 
-     if ($target !== 'all') {
+    if ($target !== 'all') {
         $('.table tr').css('display', 'none');
         $('.table tr[data-status="' + $target + '"]').fadeIn('slow');
-      } else {
+    } else {
         $('.table tr').css('display', 'none').fadeIn('slow');
-      }
+    }
 }

@@ -52,7 +52,7 @@
     </div>
 </div>
 <!-- Crea un lugar nuevo -->
-<div class="container cobro-form-create" ng-controller="">
+<div class="container cobro-form-create" ng-controller="createCobro">
 
     <div class="page-header text-center">
         <h1>Hacer cobro</h1>
@@ -60,7 +60,7 @@
 
     <div class="well">Para realizar el cobro necesita el identificador del destinatario, el cobro que realize estara pendiente de pago</div>
 
-    <form class="form-horizontal" role="form" ng-submit="">
+    <form class="form-horizontal" role="form" ng-submit="crearCobro()">
         <div class="form-group">
             <label for="identificador" class="col-sm-2 control-label">Identificador destinatario</label>
             <div class="col-sm-4">
