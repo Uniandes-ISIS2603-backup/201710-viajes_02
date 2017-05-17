@@ -32,26 +32,24 @@ import uk.co.jemos.podam.common.PodamExclude;
  * @author wr.ravelo
  */
 @XmlRootElement
-public class CobroDetailDTO extends CobroDTO
-{
+public class CobroDetailDTO extends CobroDTO {
 
     /**
      * Usuario destinatario del cobro
      */
     @PodamExclude
     protected UsuarioDTO usuarioDestinatario;
-    
+
     /**
      * Usuario remitente del cobro
      */
     @PodamExclude
     protected UsuarioDTO usuarioRemitente;
-    
+
     /**
      * Crea un cobro detail dto.
      */
-    public CobroDetailDTO()
-    {
+    public CobroDetailDTO() {
         super();
     }
 
@@ -60,8 +58,7 @@ public class CobroDetailDTO extends CobroDTO
      *
      * @param en Entidad de la cual se va a crear un detail dto.
      */
-    public CobroDetailDTO(CobroEntity en)
-    {
+    public CobroDetailDTO(CobroEntity en) {
         super(en);
         this.usuarioDestinatario = new UsuarioDTO(en.getUsuarioDestinatario());
         this.usuarioRemitente = new UsuarioDTO(en.getUsuarioRemitente());
@@ -73,16 +70,22 @@ public class CobroDetailDTO extends CobroDTO
      * @return Entidad creada desde un detail dto.
      */
     @Override
-    public CobroEntity toEntity()
-    {
-        CobroEntity x =  super.toEntity();
-        x.setUsuarioDestinatario(this.usuarioDestinatario.toEntity());
-        x.setUsuarioRemitente(this.getUsuarioRemitente().toEntity());
+    public CobroEntity toEntity() {
+        CobroEntity x = super.toEntity();
+
+        if (this.usuarioDestinatario != null) {
+            x.setUsuarioDestinatario(this.usuarioDestinatario.toEntity());
+        }
+
+        if (this.getUsuarioRemitente() != null) {
+            x.setUsuarioRemitente(this.getUsuarioRemitente().toEntity());
+        }
         return x;
     }
-    
-     /**
+
+    /**
      * Da el usuario destinatario
+     *
      * @return Usuario destinatario
      */
     public UsuarioDTO getUsuarioDestinatario() {
@@ -91,6 +94,7 @@ public class CobroDetailDTO extends CobroDTO
 
     /**
      * Modifica el usuario destinatario
+     *
      * @param usuarioDestinatario Nuevo usuario destinatario
      */
     public void setUsuarioDestinatario(UsuarioDTO usuarioDestinatario) {
@@ -99,6 +103,7 @@ public class CobroDetailDTO extends CobroDTO
 
     /**
      * Da el usuario remitente
+     *
      * @return Usuario remitente
      */
     public UsuarioDTO getUsuarioRemitente() {
@@ -107,6 +112,7 @@ public class CobroDetailDTO extends CobroDTO
 
     /**
      * Modifica el usuario remitente
+     *
      * @param usuarioRemitente Nuevo usuario remitente.
      */
     public void setUsuarioRemitente(UsuarioDTO usuarioRemitente) {

@@ -128,7 +128,6 @@ public class CobroResource {
         if(!existsCobro(id))
             throw new WebApplicationException("No existe el cobro con id" +id, 404);
         
-        cobro.getUsuarioRemitente().setId(usuarioId);
         CobroEntity entity = cobro.toEntity();
         entity.setId(id);
         return basicEntity2DTO(logic.updateCobro(entity));
