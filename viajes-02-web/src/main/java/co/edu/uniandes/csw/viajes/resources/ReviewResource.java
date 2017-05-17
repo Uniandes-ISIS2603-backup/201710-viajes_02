@@ -142,6 +142,6 @@ public class ReviewResource
     @Path("{id: \\d+}")
     public void deleteReview(@PathParam("id") Long id)
     { // TODO si el recurso con el id dado no existe de sedeb disparar WebApplicationException 404
-        logic.deletReview(id);
+        logic.deleteReview(id);
     }
 }

@@ -65,20 +65,10 @@
                 parent: 'conductorDetail',
                 views: {
                     'detail': {
-                        templateUrl: basePath + 'conductores.detail.reviews.html',
-                        controller: ['$scope', '$http', 'currentReview', '$stateParams', '$state',
-                            function ($scope, $http, currentAutomovil, $stateParams, $state) {
-                                $scope.currentAutomovil = currentAutomovil.data;
-
-                                $scope.eliminarAutomovil = function () {
-                                    $http.delete('api/automoviles/' + $stateParams.reviewid)
-                                        .then(function () {
-                                            $state.go('conductoresDetailAutomoviles', {conductorId: $scope.currentConductor.id}, {reload: true})
-                                        });
+                        templateUrl: basePath + 'conductores.detail.reviews.html'
                                 }
-                            }]
-                    }
-                }
+                            }
+
             })
             .state('conductoresDetailAutomoviles', {
                 url: '/automoviles',
@@ -258,7 +248,7 @@
                                 $scope.currentAutomovil = currentAutomovil.data;
 
                                 $scope.eliminarAutomovil = function () {
-                                    $http.delete('api/usuarios/reviews/'+ $scope.currentConductor.id+'/' + $stateParams.autoId)
+                                    $http.delete('api/automoviles/'+ $stateParams.autoId)
                                         .then(function () {
                                             $state.go('conductoresDetailAutomoviles', {conductorId: $scope.currentConductor.id}, {reload: true})
                                         });
@@ -267,56 +257,56 @@
                     }
                 }
             })
-            .state('automovilesActualizar', {
-                url: '/AutoDetailF',
-                parent: 'automovilesDetail',
-                views: {
-                    'automovilesDetail@childrenView': {
-                        templateUrl: basePath + 'automoviles.actualizar.html',
-                        controller: ['$scope', '$http', '$stateParams', '$state',
-                            function ($scope, $http, $stateParams, $state) {
-
-                                document.getElementById('pplaca').value = $scope.currentAutomovil.placa;
-                                // document.getElementById('mmarca').value = $scope.currentAutomovil.marca;
-                                // document.getElementById('mmodelo').value = $scope.currentAutomovil.modelo;
-
-
-                            }]
-                        //
-                        //        document.getElementById('placa').value = $scope.currentAutomovil.id;
-                        //          document.getElementById('marca').value=  $scope.currentAutomovil.marca;
-                        //         document.getElementById('modelo').value= $scope.currentAutomovil.modelo;
-                        //
-                        //         $scope.actualizar = function () {
-                        //           var   placa = document.getElementById('placa').value;
-                        //           var   color = document.getElementById('color').value;
-                        //           var   marca = document.getElementById('marca').value;
-                        //           var   modelo = document.getElementById('modelo').value;
-                        //           var   aseg = document.getElementById('aseguradora').value;
-                        //           var   numseg = document.getElementById('numseguro').value;
-                        //           var   cantasientos = document.getElementById('cantasientos').value;
-                        //             var  carrito = {
-                        //                 marca: marca,
-                        //                 modelo: modelo,
-                        //                 cantAsientos: cantasientos,
-                        //                 color: color,
-                        //                 compSeguros: aseg,
-                        //                 numSeguro: numseg,
-                        //                 placa: placa,
-                        //                 conductorDTO: {
-                        //                     id: $scope.currentConductor.id
-                        //                 }
-                        //             };
-                        //
-                        //             carrito = $http.put('api/automoviles/' + $scope.currentAutomovil.id, carrito)
-                        //                 .then(function () {
-                        //                     $state.go('conductoresDetailAutomoviles', {conductorId: $scope.currentConductor.id}, {reload: true})
-                        //                 });
-                        //         }
-                        //     }]
-                    }
-                }
-            })
+            // .state('automovilesActualizar', {
+            //     url: '/AutoDetailF',
+            //     parent: 'automovilesDetail',
+            //     views: {
+            //         'automovilesDetail@childrenView': {
+            //             templateUrl: basePath + 'automoviles.actualizar.html',
+            //             controller: ['$scope', '$http', '$stateParams', '$state',
+            //                 function ($scope, $http, $stateParams, $state) {
+            //
+            //                     document.getElementById('pplaca').value = $scope.currentAutomovil.placa;
+            //                     // document.getElementById('mmarca').value = $scope.currentAutomovil.marca;
+            //                     // document.getElementById('mmodelo').value = $scope.currentAutomovil.modelo;
+            //
+            //
+            //                 }]
+            //             //
+            //             //        document.getElementById('placa').value = $scope.currentAutomovil.id;
+            //             //          document.getElementById('marca').value=  $scope.currentAutomovil.marca;
+            //             //         document.getElementById('modelo').value= $scope.currentAutomovil.modelo;
+            //             //
+            //             //         $scope.actualizar = function () {
+            //             //           var   placa = document.getElementById('placa').value;
+            //             //           var   color = document.getElementById('color').value;
+            //             //           var   marca = document.getElementById('marca').value;
+            //             //           var   modelo = document.getElementById('modelo').value;
+            //             //           var   aseg = document.getElementById('aseguradora').value;
+            //             //           var   numseg = document.getElementById('numseguro').value;
+            //             //           var   cantasientos = document.getElementById('cantasientos').value;
+            //             //             var  carrito = {
+            //             //                 marca: marca,
+            //             //                 modelo: modelo,
+            //             //                 cantAsientos: cantasientos,
+            //             //                 color: color,
+            //             //                 compSeguros: aseg,
+            //             //                 numSeguro: numseg,
+            //             //                 placa: placa,
+            //             //                 conductorDTO: {
+            //             //                     id: $scope.currentConductor.id
+            //             //                 }
+            //             //             };
+            //             //
+            //             //             carrito = $http.put('api/automoviles/' + $scope.currentAutomovil.id, carrito)
+            //             //                 .then(function () {
+            //             //                     $state.go('conductoresDetailAutomoviles', {conductorId: $scope.currentConductor.id}, {reload: true})
+            //             //                 });
+            //             //         }
+            //             //     }]
+            //         }
+            //     }
+            // })
         ;
     }])
 })

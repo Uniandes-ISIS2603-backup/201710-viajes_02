@@ -5,14 +5,10 @@ package co.edu.uniandes.csw.viajes.test.logic;//package co.edu.uniandes.csw.viaj
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-import co.edu.uniandes.csw.viajes.ejbs.AutomoviLogic;
 import co.edu.uniandes.csw.viajes.ejbs.ReviewLogic;
-import co.edu.uniandes.csw.viajes.ejbs.ReviewLogic;
-import co.edu.uniandes.csw.viajes.entities.AutomovilEntity;
 import co.edu.uniandes.csw.viajes.entities.ConductorEntity;
 import co.edu.uniandes.csw.viajes.entities.ReviewEntity;
 import co.edu.uniandes.csw.viajes.entities.ViajeroEntity;
-import co.edu.uniandes.csw.viajes.persistence.AutomovilPersistence;
 import co.edu.uniandes.csw.viajes.persistence.ReviewPersistence;
 import java.util.ArrayList;
 import java.util.List;
@@ -174,7 +170,7 @@ public class ReviewLogicTest
     public void deleteReviewTest()
     {
         ReviewEntity entity = data.get(1);
-        reviewLogic.deletReview(entity.getId());
+        reviewLogic.deleteReview(entity.getId());
         ReviewEntity deleted = em.find(ReviewEntity.class, entity.getId());
         Assert.assertNull(deleted);
     }

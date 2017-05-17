@@ -112,7 +112,7 @@ public class ReviewLogic
 	 *
 	 * @param idReview para identificar la calificacion del usuario a eliminar
 	 */
-	public void deletReview( Long idReview )
+	public void deleteReview(Long idReview )
 	{
 		persistence.delete( idReview );
 	}

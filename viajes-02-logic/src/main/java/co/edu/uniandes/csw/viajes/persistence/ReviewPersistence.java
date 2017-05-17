@@ -106,7 +106,7 @@ public class ReviewPersistence
  //TODO: verificar que busque por el id del review
     public void delete(Long idReview)
     {
-        ReviewEntity borrar = em.find(ReviewEntity.class, idReview);
+        ReviewEntity borrar = em.find(ReviewEntity.class,  idReview);
         em.remove(borrar);
 
     }
