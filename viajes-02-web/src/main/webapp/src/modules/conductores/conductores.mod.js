@@ -146,7 +146,7 @@
                 },
                 views: {
                     'listView': {
-                        templateUrl: basePath + 'conductores.anadir.html',
+                        templateUrl: basePath + 'conductores.editar.html',
                         controller: ['$scope', 'conductoresContext', '$http', '$state', 'currentConductor', function ($scope, conductoresContext, $http, $state, currentConductor) {
                                 $scope.conductor = currentConductor.data;
                                 $scope.submit = function () {

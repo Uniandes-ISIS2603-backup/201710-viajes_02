@@ -122,7 +122,7 @@
                             'detailView': {
                                 templateUrl: basePath + 'viajeros.registrar.html',
                                 controller: ['$scope', 'viajerosContext', '$http', '$state', 'currentViajero', function ($scope, viajerosContext, $http, $state, currentViajero) {
-                                        $scope.viajero = currentViajero.data;
+                                        $scope.viajero = currentViajero.data
                                         $scope.submit = function () {
                                             currentViajero = $scope.viajero;
 
