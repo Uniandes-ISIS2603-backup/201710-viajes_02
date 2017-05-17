@@ -35,32 +35,7 @@
                 parent: 'reservas',
                 views: {
                     'listView': {
-                        templateUrl: basePath + 'reservas.list.html',
-                        controller: ['$scope', '$http', 'reservasContext', 'currentViajero', function($scope, $http, reservasContext, currentViajero) {
-                                
-                                $scope.buscarviajes = function() {
-                                    var origen = document.getElementById("desde").value;
-                                    var destino = document.getElementById("hasta").value;
-                                    var fechasalida = document.getElementById("fechasalida").value;
-                                    
-                                    $scope.viajes = $http.get('api/viajes/' + origen + ";" + destino);
-                                };
-                                
-                                $scope.reservar = function() {
-                                    $scope.reserva = {
-                                        id:undefined,
-                                        precio:'',
-                                        valorComision:'',
-                                        puestosReservados:'',
-                                        viaje: {
-                                            
-                                        },
-                                        viajero = $scope.currentViajero
-                                    };
-                                    
-                                    $http.post(reservasContext, reserva);
-                                };
-                        }]
+                        templateUrl: basePath + 'reservas.list.html'
                     }
                 }
             }).state('reservasDetail', {
