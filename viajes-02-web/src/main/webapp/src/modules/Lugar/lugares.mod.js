@@ -93,18 +93,20 @@
     mod.controller('crearLugarController', ['$scope', '$http', 'lugarContext', function ($scope, $http, lugarContext) {
             $scope.crearLugar = function () {
                 var data = {
-                "direccion": $("#placeAddressForm").val(),
-                "lat": $("#placeLatForm").val(),
-                "lon": $("#placeLonForm").val(),
-                "lugar": $("#placeNameForm").val(),
-                "rutaImagen": $("#placeImageURLForm").val()
-            };
-            
+                    "direccion": $("#placeAddressForm").val(),
+                    "lat": $("#placeLatForm").val(),
+                    "lon": $("#placeLonForm").val(),
+                    "lugar": $("#placeNameForm").val(),
+                    "rutaImagen": $("#placeImageURLForm").val()
+                };
+
                 $http.post(lugarContext, data)
                         .then(function (response) {
                             window.location.reload();
+                            validate(null,null, "#error-message-locationForm")
                         },
                                 function (response) {
+                                    validate(null,null, "#error-message-locationForm", "No se pudo crear lugar intente de nuevo");
                                     console.log("fallo");
                                 });
             };
@@ -133,22 +135,6 @@ function goTo() {
 function centerIn(lat, lng) {
     var location = new google.maps.LatLng(lat, lng);
     window.mapLiteral.setCenter(location);
-}
-
-function validate(action, elementId, elementErrorId, errorMessage) {
-    if (action !== null) {
-        $(elementId).addClass("error");
-        $(elementErrorId).show();
-        console.log($(elementErrorId))
-        if (errorMessage !== undefined) {
-            $(elementErrorId).text(errorMessage);
-        }
-
-    } else {
-        $(elementId).removeClass("error");
-        $(elementId).val("");
-        $(elementErrorId).hide();
-    }
 }
 
 function addAllMarkers(records, map) {
@@ -182,4 +168,36 @@ function addAllMarkers(records, map) {
         allMarkers.push(marker);
     }
     map.markers = allMarkers;
+}
+
+// Error handling
+
+/**
+ * Crea validador
+ * @param {type} action Accion a realizar, eliminar, crear, etc. Cuando no se especifica es porque se quiere quitar el error
+ * @param {type} elementId Elemento que se quiere subrayar
+ * @param {type} elementErrorId Label que va a contener el texto del error
+ * @param {type} errorMessage Mensaje de error
+ * @returns {undefined} Nada
+ */
+function validate(action, elementId, elementErrorId, errorMessage) {
+    if (action !== null) {
+        if (elementId !== null) {
+            $(elementId).addClass("error");
+        }
+
+        $(elementErrorId).show();
+
+        if (errorMessage !== undefined) {
+            $(elementErrorId).text(errorMessage);
+        }
+
+    } else {
+        if (elementId !== null) {
+            $(elementId).removeClass("error");
+            $(elementId).val("");
+        }
+
+        $(elementErrorId).hide();
+    }
 }
