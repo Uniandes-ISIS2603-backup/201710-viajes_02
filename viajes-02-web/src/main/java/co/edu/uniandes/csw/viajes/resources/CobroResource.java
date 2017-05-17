@@ -127,9 +127,17 @@ public class CobroResource {
     public CobroDetailDTO updateCobro(@PathParam("id") Long id, CobroDetailDTO cobro) {
         if(!existsCobro(id))
             throw new WebApplicationException("No existe el cobro con id" +id, 404);
+ 
+        CobroEntity entity = logic.findCobro(id);
+        if(cobro.getCancelado() != null)
+            entity.setCancelado(cobro.getCancelado());
+        if(cobro.getUsuarioDestinatario() != null)
+            entity.setUsuarioDestinatario(cobro.getUsuarioDestinatario().toEntity());
+        if(cobro.getUsuarioRemitente() != null)
+            entity.setUsuarioRemitente(cobro.getUsuarioRemitente().toEntity());
+        if(cobro.getValor() != null)
+            entity.setValor(cobro.getValor());
         
-        CobroEntity entity = cobro.toEntity();
-        entity.setId(id);
         return basicEntity2DTO(logic.updateCobro(entity));
     }
 
