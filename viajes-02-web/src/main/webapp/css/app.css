@@ -69,6 +69,10 @@ hr.line-separator:after {
     padding: 0;
 }
 
+.escondido {
+    display: none;
+}
+
 /* Izquierda */
 
 #search-form {

@@ -30,12 +30,13 @@
                                                         </h4>
                                                         <p class="summary">$ {{cobro.valor}} USD</p>
                                                     </div>
-                                                    <div class="collapse" id="collapse{{cobro.id}}">
+                                                    <div class="collapse" id="collapse{{cobro.id}}" ng-controller="pagarCobro">
                                                         <div class="well">
                                                             Numero de factura: {{cobro.id}}<br>
                                                             Correo destinatario: {{cobro.usuarioDestinatario.correo}}<br>
                                                             Telefono destinatario: {{cobro.usuarioDestinatario.telMovil}}<br>
                                                         </div>
+                                                        <button type="button" class="btn btn-danger btn-filter pull-right {{cobro.cancelado ? 'escondido' : ''}}" data-target="all" ng-click="pagarCobro(cobro.id);">Pagar</button>
                                                     </div>
                                                 </div>
                                             </a>

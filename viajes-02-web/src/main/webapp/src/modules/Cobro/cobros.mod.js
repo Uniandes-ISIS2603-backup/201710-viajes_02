@@ -25,7 +25,6 @@
                         controller: ['$scope', 'cobros', 'currentUsuario', function ($scope, cobros, currentUsuario) {
                                 $scope.currentUsuario = currentUsuario.data;
                                 $scope.cobrosRecords = cobros.data; 
-                                console.log($scope.cobrosRecords);
                             }]
                     }
                 }
@@ -64,6 +63,24 @@
             };
         }]);
 */
+
+// PUT
+    
+    mod.controller('pagarCobro', ['$scope', '$http', 'cobroContext', function ($scope, $http, cobroContext) {
+            $scope.pagarCobro = function (idCobro) {
+                var data = {
+                    cancelado: true
+                };
+                
+                $http.put(cobroContext + '/' +$scope.currentUsuario.id +"/cobros/" +idCobro, data).then(function (response) {
+                    console.log("funciono");
+                    window.location.reload();
+                }, function (response) {
+                    console.log("fallo");
+                });
+            };
+        }]);
+    
 })(window.angular);
 
  function filtrarContenido(algo) {
