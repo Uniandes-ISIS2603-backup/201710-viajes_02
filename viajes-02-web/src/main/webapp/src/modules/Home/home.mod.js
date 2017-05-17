@@ -18,6 +18,7 @@
                         templateUrl: basePath + 'home.html',
                         controller: ['$scope', 'lugares', function ($scope, lugares) {
                                 $scope.lugarRecords = lugares.data;
+                                cargar();
                             }]
                     }
                 }
@@ -84,4 +85,12 @@ function signUpViajero() {
 
                 }
             });
+}
+
+function cargar() {
+    if(window.firebaseUser !== undefined) {
+        $('#loggedInfo').removeClass("escondido");
+        $('#notLoggedInfo').addClass("escondido");
+        $('#loggedLabCorreo').text(firebaseUser.email)
+         }
 }
