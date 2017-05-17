@@ -120,33 +120,23 @@
 
                 if ($("#placeNameUpdateForm").val() !== "") {
                     data.lugar = $("#placeNameUpdateForm").val();
-                } else {
-                    data.lugar = $scope.currentLugar.lugar;
-                }
+                } 
 
                 if ($("#placeAddressUpdateForm").val() !== "") {
                     data.direccion = $("#placeAddressUpdateForm").val();
-                } else {
-                    data.direccion = $scope.currentLugar.direccion;
-                }
+                } 
 
                 if ($("#placeLatUpdateForm").val() !== "") {
                     data.lat = $("#placeLatUpdateForm").val();
-                } else {
-                    data.lat = $scope.currentLugar.lat;
-                }
+                } 
 
                 if ($("#placeLonUpdateForm").val() !== "") {
                     data.lon = $("#placeLonUpdateForm").val();
-                } else {
-                    data.lon = $scope.currentLugar.lon;
-                }
+                } 
 
                 if ($("#placeImageUpdateForm").val() !== "") {
                     data.rutaImagen = $("#placeImageUpdateForm").val();
-                } else {
-                    data.rutaImagen = $scope.currentLugar.rutaImagen;
-                }
+                } 
 
                 $http.put(lugarContext + '/' + $scope.currentLugar.id, data).then(function (response) {
                     console.log("funciono");

@@ -13,7 +13,6 @@ delete from UsuarioEntity;
 delete from LugarEntity;
 
 
-insert into LugarEntity (id, direccion, lugar, lat, lon, rutaimagen) values (0 , 'Carrera 1E #19A-40, Bogotá, Colombia' , 'Bogota' ,4.6027848,-74.067091, 'https://www.las2orillas.co/wp-content/uploads/2017/02/Bogota1.jpg');
 insert into LugarEntity (id, direccion, lugar, lat, lon, rutaimagen) values (1 , 'Calle 13 # 100-00, Cali, Valle del Cauca, Colombia' , 'Cali' ,3.3759493,-76.5355789, 'http://caliescribe.com/sites/default/files/calicaco.jpg');
 insert into LugarEntity (id, direccion, lugar, lat, lon, rutaimagen) values (2 , 'Cl. 67 #53 - 108, Medellín, Antioquia, Colombia' , 'Medellin' ,6.2669586,-75.5713, 'https://www.medellin.gov.co/irj/go/km/docs/galerias/Imagenes/Panor%C3%A1micas%20de%20ciudad%20y%20sitios%20de%20inter%C3%A9s/500_400/08.30.2016_Alpujarra%20(2).jpg');
 insert into LugarEntity (id, direccion, lugar, lat, lon, rutaimagen) values (3 , 'Cra 51B #3-58' , 'Barranquilla' , 11.01924,-74.8666803, 'http://off2colombia.com.co/images/destinations/barranquilla/barranquilla-city.jpg');
@@ -33,6 +32,7 @@ insert into LugarEntity (id, direccion, lugar, lat, lon, rutaimagen) values (16 
 insert into LugarEntity (id, direccion, lugar, lat, lon, rutaimagen) values (17 , '1319 Briar Crest Plaza' , 'Rimba Sekampung' , 1.6756 , 101.43748, 'https://www.las2orillas.co/wp-content/uploads/2017/02/Bogota1.jpg');
 insert into LugarEntity (id, direccion, lugar, lat, lon, rutaimagen) values (18 , '367 Mayer Crossing' , 'Lama' , 41.53 , -8.3567, 'https://www.las2orillas.co/wp-content/uploads/2017/02/Bogota1.jpg');
 insert into LugarEntity (id, direccion, lugar, lat, lon, rutaimagen) values (19 , '7994 Hooker Court' , 'Taoyuan' , 22.58041 , 113.96121, 'https://www.las2orillas.co/wp-content/uploads/2017/02/Bogota1.jpg');
+insert into LugarEntity (id, direccion, lugar, lat, lon, rutaimagen) values (20 , 'Carrera 1E #19A-40, Bogotá, Colombia' , 'Bogota' ,4.6027848,-74.067091, 'https://www.las2orillas.co/wp-content/uploads/2017/02/Bogota1.jpg');
 
 
 

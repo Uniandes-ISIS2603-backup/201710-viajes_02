@@ -114,7 +114,7 @@ public class ReviewResource
     }
 
     @GET
-    @Path("{id: \\d+}/{idr:\\d+}")
+    @Path("{id: \\d+}/{idr: \\d+}")
     public ReviewDTO getReview(@PathParam("id") Long id,@PathParam("idr") Long idr)
     { // TODO si el recurso con el id dado no existe de sedeb disparar WebApplicationException 404
         return new ReviewDTO ( logic.getReview(id,idr));
