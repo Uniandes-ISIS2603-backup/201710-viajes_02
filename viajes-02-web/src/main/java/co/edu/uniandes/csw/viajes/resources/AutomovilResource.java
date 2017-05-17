@@ -51,15 +51,14 @@ import javax.ws.rs.WebApplicationException;
 @Path("/automoviles")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
-public class AutomovilResource
-{
+public class AutomovilResource {
 
     /**
      * Injeccion de la logica
      */
     @Inject
     private AutomoviLogic logic;
-// TODO Eliminar los atributos que no se necesitan
+    // TODO Eliminar los atributos que no se necesitan
     @Context
     private HttpServletResponse response;
 
@@ -75,11 +74,9 @@ public class AutomovilResource
      * @param entityList
      * @return lista de DetailDTO de automoviles
      */
-    private List<AutomovilDetailDTO> listEntity2DTO(List<AutomovilEntity> entityList)
-    {
+    private List<AutomovilDetailDTO> listEntity2DTO(List<AutomovilEntity> entityList) {
         List<AutomovilDetailDTO> list = new ArrayList<>();
-        for (AutomovilEntity entity : entityList)
-        {
+        for (AutomovilEntity entity : entityList) {
             list.add(new AutomovilDetailDTO(entity));
         }
         return list;
@@ -91,8 +88,7 @@ public class AutomovilResource
      * @return lista de AutomovilDetailDTO
      */
     @GET
-    public List<AutomovilDetailDTO> getAutos()
-    {
+    public List<AutomovilDetailDTO> getAutos() {
         return listEntity2DTO(logic.getAutomoviles());
     }
 
@@ -104,8 +100,7 @@ public class AutomovilResource
      */
     @GET
     @Path("{id: \\d+}")
-    public AutomovilDetailDTO getCar(@PathParam("id") Long id)
-    {
+    public AutomovilDetailDTO getCar(@PathParam("id") Long id) {
         return new AutomovilDetailDTO(logic.getAuto(id));
     }
 
@@ -117,8 +112,7 @@ public class AutomovilResource
      * @throws Exception
      */
     @POST
-    public AutomovilDetailDTO newCar(AutomovilDetailDTO car) throws Exception
-    {
+    public AutomovilDetailDTO newCar(AutomovilDetailDTO car) throws Exception {
 
         return new AutomovilDetailDTO(logic.creatCar(car.toEntity()));
     }
@@ -130,8 +124,7 @@ public class AutomovilResource
      */
     @DELETE
     @Path("{id: \\d+}")
-    public void deleteCar(@PathParam("id") Long id)
-    {
+    public void deleteCar(@PathParam("id") Long id) {
         logic.deletCar(id);
     }
 }
