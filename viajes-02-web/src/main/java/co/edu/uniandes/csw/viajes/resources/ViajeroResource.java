@@ -32,6 +32,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -139,5 +140,15 @@ public class ViajeroResource
             throw new WebApplicationException("No existe el viajero con el id especificado",404);
         }
         return new ViajeroDetailDTO(v);
+    }
+    
+    @DELETE
+    @Path("{id: \\d+}")
+    // TODO falta el Path id
+    public void deleteViajero(@PathParam("id") int id) throws BusinessLogicException
+    {
+         // TODO si el recurso con el id dado no existe de sedeb disparar WebApplicationException 404
+        logic.deleteViajero((long)id);
+        
     }
 }

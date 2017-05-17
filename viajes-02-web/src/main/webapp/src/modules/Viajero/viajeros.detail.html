@@ -21,14 +21,21 @@
                     <dd><B>Id: </B> {{currentViajero.id}} </dd>
                     <br>
                     <dd><B>Lugar: </B><a ui-sref="lugarDetail({lugarId: currentViajero.direccion.id})"> {{currentViajero.direccion.lugar}}</a> </dd>
-                    <h3><a ui-sref="cobroList({usuarioId: currentViajero.id})">Cobros</a></h3>
-                    <!--                    <h3><a ui-sref="pagoUserList({usuarioId: currentViajero.id})">Pagos</a></h3>-->
-                    <h3><a ui-sref="reservasList({idViajero: currentViajero.id})">Reservas</a></h3>
+
 
                 </dl>
                 <!--                <ul class="nav nav-tabs">
                                     <li role="presentation" class="active"> <a ui-sref="viajerosDetailReview">Reviews</a></li>
                                 </ul>-->
+            </div>
+            <div class="col-md-3">
+                <div class="row"><a ui-sref="viajerosEdit({viajeroId: currentViajero.id})"type="button" class="btn btn-primary btn-lg btn-block">Editar</a></div>
+                <br>
+                <div class="row"><a ui-sref="cobroList({usuarioId: currentViajero.id})"type="button" class="btn btn-primary btn-lg btn-block">Cobros</a></div>
+
+                <!--                    <h3><a ui-sref="pagoUserList({usuarioId: currentViajero.id})">Pagos</a></h3>-->
+                <h3><a ui-sref="reservasList({idViajero: currentViajero.id})">Reservas</a></h3>
+
             </div>
             <!--        </div>
                     <div ui-view = "detail"> </div>

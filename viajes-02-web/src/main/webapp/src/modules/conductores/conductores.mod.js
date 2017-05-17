@@ -50,7 +50,6 @@
                         controller: ['$scope', 'currentConductor', function ($scope, currentConductor) {
                             $scope.currentConductor = currentConductor.data;
                         }]
-
                     },
                     'listView': {
                         templateUrl: 'src/modules/viajes/' + 'viajes.list.html',
