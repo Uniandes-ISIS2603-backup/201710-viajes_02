@@ -155,7 +155,7 @@
                                     };
                                     console.log(review);
 
-                                    $http.post('api/usuarios/reviews', review)
+                                    $http.post('api/usuarios/reviews', review) 
                                         .then(function () {
                                             // $http.post es una promesa
                                             // cuando termine bien, cambie de estado
