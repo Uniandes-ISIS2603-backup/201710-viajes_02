@@ -16,6 +16,8 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.UserTransaction;
+
+import com.sun.org.apache.xml.internal.resolver.Resolver;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
@@ -55,6 +57,8 @@ public class ReviewLogicTest
 
     private ConductorEntity conductor;
     private ViajeroEntity viajero;
+    private Long idConductor ;
+    private Long idviajero;
     
     @Deployment
     public static JavaArchive createDeployment()
@@ -103,17 +107,19 @@ public class ReviewLogicTest
         PodamFactory factory = new PodamFactoryImpl();
         conductor = factory.manufacturePojo(ConductorEntity.class);
         viajero = factory.manufacturePojo(ViajeroEntity.class);
-        conductor.setId(1L);
-        viajero.setId(1L);
+        idConductor = conductor.getId();
+        idviajero = viajero.getId();
+
         em.persist(conductor);
         em.persist(viajero);
-
+        System.out.println(conductor.getId());
+        System.out.println(viajero.getId());
         for (int i = 0; i < 3; i++)
         {
             ReviewEntity entity = factory.manufacturePojo(ReviewEntity.class);
             // entity.set(data.get(0));
-            entity.setIdCalificador(viajero.getId());
-            entity.setIdCalificado(conductor.getId());
+            entity.setIdCalificador(idviajero);
+            entity.setIdCalificado(idConductor);
             em.persist(entity);
             data.add(entity);
         }
@@ -123,15 +129,18 @@ public class ReviewLogicTest
     public void createReviewTest()
     {
         ReviewEntity newEntity = factory.manufacturePojo(ReviewEntity.class);
+        newEntity.setIdCalificado(idConductor);
+        newEntity.setIdCalificador(idviajero);
+        System.out.println(idConductor);
+        System.out.println(idviajero);
         ReviewEntity result = null;
         try
         {
             result = reviewLogic.creatReview(newEntity);
         } catch (Exception e)
         {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
-        Assert.assertNotNull(result);
         ReviewEntity entity = em.find(ReviewEntity.class, result.getId());
         Assert.assertEquals(newEntity.getCalificacion(), entity.getCalificacion());
         Assert.assertEquals(newEntity.getComent(), entity.getComent());
