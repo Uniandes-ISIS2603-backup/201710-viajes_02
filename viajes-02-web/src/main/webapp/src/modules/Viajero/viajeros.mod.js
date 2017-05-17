@@ -43,18 +43,19 @@
                         param: {
                             viajeroId: null
                         },
+                        resolve: {
+                            viajeroActual: ['$http', "viajerosContext", "$stateParams", function ($http, viajerosContext, $params) {
+                                    return $http.get(viajerosContext+"/"+$params.viajeroId); // $http retorna una promesa que aquí no se está manejando si viene con error.
+                                }]
+                        },
                         views: {
                             'listView': {
                                 templateUrl: basePath + 'viajeros.list.html'
-                            }, resolve: {
-                                currentViajero: ['$http', 'viajerosContext', '$stateParams', function ($http, viajerosContext, $params) {
-                                        return $http.get(viajerosContext + '/' + $params.viajeroID); // $http retorna una promesa que aquí no se está manejando si viene con error.
-                                    }]
                             },
                             'detailView': {
                                 templateUrl: basePath + 'viajeros.detail.html',
-                                controller: ['$scope', '$stateParams', function ($scope, $params) {
-                                        $scope.currentViajero = $scope.viajerosRecords[$params.viajeroId - 1];
+                                controller: ['$scope', 'viajeroActual', function ($scope, viajeroActual) {
+                                        $scope.currentViajero = viajeroActual.data;
                                     }]
                             }
                         }
@@ -73,7 +74,26 @@
                         parent: 'viajeros',
                         views: {
                             'detailView': {
-                                templateUrl: basePath + 'viajeros.registrar.html'
+                                templateUrl: basePath + 'viajeros.registrar.html',
+                                controller: ['$scope', 'viajerosContext', '$http', '$state', function ($scope, viajerosContext, $http, $state) {
+                                        $scope.viajero = {
+                                            nombre: '' /*Tipo String*/,
+                                            correo: '',
+                                            genero: '',
+                                            telMovil: '',
+                                            edad: '',
+                                            imagen: ''
+                                        };
+                                        $scope.submit = function () {
+                                            currentViajero = $scope.viajero;
+                                            return $http.post(viajerosContext, currentViajero)
+                                                    .then(function () {
+                                                        // $http.post es una promesa
+                                                        // cuando termine bien, cambie de estado
+                                                        $state.go('viajerosList', {}, {reload: true});
+                                                    });
+                                        };
+                                    }]
                             }
                         }
                     });

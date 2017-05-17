@@ -10,27 +10,27 @@
                 <dl>     
                     <dd><B>Nombre:</B> {{currentViajero.nombre}} </dd>
                     <br>
+                    <dd><B>Correo</B> {{currentViajero.correo}} </dd>
+                    <br>
                     <dd><B>Genero:</B> {{currentViajero.genero}} </dd>
                     <br>
                     <dd><B>Telefono movil:</B> {{currentViajero.telMovil}} </dd>
                     <br>
                     <dd><B>Edad: </B> {{currentViajero.edad}} </dd>  
                     <br>
-                    <dd><B>Rating: </B> {{currentViajero.rating}} </dd>
-                    <br>
                     <dd><B>Id: </B> {{currentViajero.id}} </dd>
                     <br>
                     <dd><B>Lugar: </B><a ui-sref="lugarDetail({lugarId: currentViajero.direccion.id})"> {{currentViajero.direccion.lugar}}</a> </dd>
                     <h3><a ui-sref="cobroList({usuarioId: currentViajero.id})">Cobros</a></h3>
-<!--                    <h3><a ui-sref="pagoUserList({usuarioId: currentViajero.id})">Pagos</a></h3>-->
+                    <!--                    <h3><a ui-sref="pagoUserList({usuarioId: currentViajero.id})">Pagos</a></h3>-->
                     <h3><a ui-sref="reservasList({idViajero: currentViajero.id})">Reservas</a></h3>
 
                 </dl>
-<!--                <ul class="nav nav-tabs">
-                    <li role="presentation" class="active"> <a ui-sref="viajerosDetailReview">Reviews</a></li>
-                </ul>-->
+                <!--                <ul class="nav nav-tabs">
+                                    <li role="presentation" class="active"> <a ui-sref="viajerosDetailReview">Reviews</a></li>
+                                </ul>-->
             </div>
-<!--        </div>
-        <div ui-view = "detail"> </div>
-    </div>-->
-</div>
+            <!--        </div>
+                    <div ui-view = "detail"> </div>
+                </div>-->
+        </div>

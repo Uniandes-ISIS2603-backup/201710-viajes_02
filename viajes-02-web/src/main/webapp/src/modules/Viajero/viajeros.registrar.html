@@ -22,40 +22,40 @@ and open the template in the editor.
         <form>
             <p1>
                 <label>Nombre:</label>
-                <input type="text" name="first"><br />
+                <input type="text" name="first" ng-model="viajero.nombre" ng-init="viajero.nombre" required/><br />
             </p1>
             <p1><br></p1>
             <p1>
                 <label>Correo:</label>
-                <input type="text" name="correo"><br />
-            </p1>
-            <p1><br></p1>
-            <p1>
-                <label>Email:</label>
-                <input type="text" name="email"><br />
-            </p1>
-            <p1><br></p1>
-            <p1>
-                <label>Direccion:</label>
-                <input type="text" name="direccion"><br />
+                <input type="text" name="correo" ng-model="viajero.correo" ng-init="viajero.correo" required/><br />
             </p1>
             <p1><br></p1>
             <p1>
                 <label>Edad:</label>
-                <input type="text" name="edad"><br />
+                <input type="number" name="edad" ng-model="viajero.edad" ng-init="viajero.edad" required/><br />
             </p1>
             <p1><br></p1>
             <p1>
                 <label>Genero:</label>
-                <input type="text" name="genero"><br />
+                <select class="form-control" name="genero" id="genero" ng-model="viajero.genero" ng-init="viajero.genero" required/>
+                <option>Masculino</option>
+                <option>Femenino</option>
+                </select>
             </p1>
             <p1><br></p1>
             <p1>
                 <label>Telefono movil:</label>
-                <input type="text" name="telMovil"><br />
+                <input type="number" name="telMovil" ng-model="viajero.telMovil" ng-init="viajero.telMovil" required/><br />
+            </p1>
+            <p1><br></p1>
+            <p1>
+                <label>Imagen:</label>
+                <input type="text" name="imagen" ng-model="viajero.imagen" ng-init="viajero.imagen" required/><br/>
             </p1>
             <p1><br></p1>
         </form>
+        <button type="submit" class="btn btn-primary btn-lg btn-block" ng-click="submit()"> Registrarse </button>
+        <a href="#" type="button" class="btn btn-primary btn-lg btn-block">Cancelar</a>
     </center>
 </div>
 
