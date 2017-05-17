@@ -118,6 +118,35 @@
                         }]
                     }
                 }
+            }).state('conductoresEdit', {
+                url: '/{conductorId:int}/edit',
+                parent: 'conductores',
+                param: {
+                    conductorId: null
+                },
+                resolve: {
+                    currentConductor: ['$http', 'conductoresContext', '$stateParams', function ($http, conductoresContext, $params) {
+                        return $http.get(conductoresContext + '/' + $params.conductorId);
+                    }]
+                },
+                views: {
+                    'listView': {
+                        templateUrl: basePath + 'conductores.anadir.html',
+                        controller: ['$scope', 'conductoresContext', '$http', '$state', 'currentConductor', function ($scope, conductoresContext, $http, $state, currentConductor) {
+                            $scope.conductor = currentConductor.data;
+                            $scope.submit = function () {
+                                currentConductor = $scope.conductor;
+                                
+                                return $http.put(conductoresContext + '/' + currentConductor.id, currentConductor)
+                                    .then(function () {
+                                        // $http.post es una promesa
+                                        // cuando termine bien, cambie de estado
+                                        $state.go('conductoresList', {}, {reload: true});
+                                    });
+                            };
+                        }]
+                    }
+                }
             })
             .state('reviewsFormulario', {
                 url: '/addReview',
