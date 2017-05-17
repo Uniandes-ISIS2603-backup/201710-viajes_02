@@ -46,10 +46,14 @@ function datePicker() {
 function signIn() {
     var user = $('#signInUser').val();
     var password = $('#signInPassword').val();
-    console.log(user +" " +password);
+    console.log(user + " " + password);
     firebase.auth().signInWithEmailAndPassword(user, password)
             .then(function (firebaseUser) {
-                console.log('funciono');
+                console.log(window.firebaseUser);
+                window.firebaseUser = firebaseUser;
+                $('#loggedInfo').removeClass("escondido");
+                $('#notLoggedInfo').addClass("escondido");
+                $('#loggedLabCorreo').text(firebaseUser.email)
             })
             .catch(function (error) {
                 console.log('fallo');
@@ -59,7 +63,7 @@ function signIn() {
 function signUpConductor() {
     var user = $('#conductorAddressForm').val();
     var password = $('#conductorPasswordInput').val();
-    
+
     firebase.auth().createUserWithEmailAndPassword(user, password)
             .catch(function (error) {
                 console.log('register error', error);
@@ -72,7 +76,7 @@ function signUpConductor() {
 function signUpViajero() {
     var user = $('#viajeroAddressForm').val();
     var password = $('#viajeroPasswordInput').val();
-    
+
     firebase.auth().createUserWithEmailAndPassword(user, password)
             .catch(function (error) {
                 console.log('register error', error);

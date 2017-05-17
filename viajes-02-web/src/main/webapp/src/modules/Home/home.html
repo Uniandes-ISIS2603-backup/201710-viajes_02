@@ -134,41 +134,58 @@
             <!-- Form derecha -->
             <div class="col-md-2" id="right-form">
                 <!-- Esto es solo una forma que tiene titulo y su input-->
-                <form>
-                    <div class="form-group">
-                        <label for="name" class="cols-sm-2 control-label">Usuario</label>
+                <div id="notLoggedInfo">
+                    <form>
+                        <div class="form-group">
+                            <label for="name" class="cols-sm-2 control-label">Usuario</label>
 
-                        <div class="cols-sm-10 input-group">
-                            <span class="input-group-addon glyphicon glyphicon-user left-glyphicon"></span>
-                            <input type="text" class="form-control" name="name" id="signInUser" placeholder="Ingresa tu usuario"/>
+                            <div class="cols-sm-10 input-group">
+                                <span class="input-group-addon glyphicon glyphicon-user left-glyphicon"></span>
+                                <input type="text" class="form-control" name="name" id="signInUser" placeholder="Ingresa tu usuario"/>
+                            </div>
                         </div>
-                    </div>
-                </form>
+                    </form>
 
-                <form>
-                    <div class="form-group">
-                        <label for="password" class="cols-sm-2 control-label">Contraseña</label>
+                    <form>
+                        <div class="form-group">
+                            <label for="password" class="cols-sm-2 control-label">Contraseña</label>
 
-                        <div class="cols-sm-10 input-group">
-                            <span class="input-group-addon glyphicon glyphicon-lock left-glyphicon"></span>
-                            <input type="password" class="form-control"id="signInPassword"  name="name" placeholder="Contraseña"/>
+                            <div class="cols-sm-10 input-group">
+                                <span class="input-group-addon glyphicon glyphicon-lock left-glyphicon"></span>
+                                <input type="password" class="form-control"id="signInPassword"  name="name" placeholder="Contraseña"/>
+                            </div>
                         </div>
-                    </div>
-                </form>
+                    </form>
 
-                <!-- Boton de ingresar -->
-                <div class="form-group">
-                    <a href="#" type="button" class="btn btn-primary btn-lg btn-block" onClick="signIn()" id="signIn">Ingresar</a>
+                    <!-- Boton de ingresar -->
+                    <div class="form-group">
+                        <a href="#" type="button" class="btn btn-primary btn-lg btn-block" onClick="signIn()" id="signIn">Ingresar</a>
+                    </div>
+                    <hr>
+                    <h5 class="text-center">¿No tienes cuenta?</h5>
+
+                    <!-- Boton de registrarse -->
+                    <div class="form-group">
+                        <a ui-sref="usuarioSelect" type="button" class="btn btn-primary btn-lg btn-block" id="signUp">Registrar</a>
+                    </div>
                 </div>
-                <hr>
-                <h5 class="text-center">¿No tienes cuenta?</h5>
 
-                <!-- Boton de registrarse -->
-                <div class="form-group">
-                    <a ui-sref="usuarioSelect" type="button" class="btn btn-primary btn-lg btn-block" id="signUp">Registrar</a>
+                <div class="row escondido" id="loggedInfo">
+                    <h3 class="text-center">Bienvenido</h3>
+                    <form>
+                        <div class="form-group">
+                            <img src="css/cabin.jpg" class="img-responsive" alt="conductor">  
+                        </div>
+                    </form>
+
+                    <div class="container">
+                        <label>Correo: </label>
+                        <label id="loggedLabCorreo"></label>
+                    </div>
                 </div>
             </div>
         </div>
+    </div>
 </section>
 
 

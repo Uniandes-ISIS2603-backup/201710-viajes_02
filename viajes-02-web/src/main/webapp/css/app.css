@@ -526,3 +526,10 @@ input[type="radio"]:checked ~ label {
 .cobro-form-create {
     margin-bottom: 20px;
 }
+
+/* Logged */
+
+#loggedInfo {
+    padding-left: 10px;
+    padding-right: 10px;
+}
