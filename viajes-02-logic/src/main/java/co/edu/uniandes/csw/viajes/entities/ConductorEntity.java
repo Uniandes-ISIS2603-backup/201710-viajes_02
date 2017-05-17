@@ -50,7 +50,8 @@ public class ConductorEntity extends UsuarioEntity{
      * Reviews del conductor
      */
     @PodamExclude
-    @OneToMany
+    
+    @OneToMany(mappedBy = "conductorEntity")
     private List <ReviewEntity> reviews;
     /**
      * Automoviles del conductor.
