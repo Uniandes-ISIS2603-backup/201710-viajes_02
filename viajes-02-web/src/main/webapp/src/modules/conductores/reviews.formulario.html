@@ -1,31 +1,77 @@
 <div class="container-fluid">
     <div ui-view="detailView"></div>
-    <div class="row">
+    <div class="row"style="text-align: center">
         <title>Inscribir Automovil</title>
-        <header style="align-content: center">Inscribir review </header> 
+        <h1 style="font-size: medium">Inscribir review </h1>
 
         <form>
             <br> Calificacion:<br>
             <p class="clasificacion">
-                <input id="radio1" type="radio" name="estrellas" value="1"><!--
-                --><label for="radio1">★</label><!--
-                --><input id="radio2" type="radio" name="estrellas" value="2"><!--
-                --><label for="radio2">★</label><!--
+                <input id="radio1" type="radio" name="estrellas" value="2">
+
+                <label  for="radio1" id="lblradio1" onclick="document.getElementById('radio1').value = 5;">★</label><!--
+                --><input id="radio2" type="radio" name="estrellas" value="1"><!--
+                --><label for="radio2" id="lblradio2" onclick="document.getElementById('radio1').value = 4;">★</label><!--
                 --><input id="radio3" type="radio" name="estrellas" value="3"><!--
-                --><label for="radio3">★</label><!--
+                --><label for="radio3" id="lblradio3" onclick="document.getElementById('radio1').value = 3;">★</label><!--
                 --><input id="radio4" type="radio" name="estrellas" value="4"><!--
-                --><label for="radio4">★</label><!--
+                --><label  for="radio4"id="lblradio4" onclick="document.getElementById('radio1').value = 2;">★</label><!--
                 --><input id="radio5" type="radio" name="estrellas" value="5"><!--
-                --><label for="radio5">★</label>
+                --><label for="radio5" id="lblradio5" onclick="document.getElementById('radio1').value = 1;">★</label>
             </p>
+            <script>
+                console.log('adsasd');
+                document.getElementById('lblradio1').onclick = function(){
+                    console.log('lbl1');
+                    document.getElementById('radio1').value = 1;
+                }
+                document.getElementById('lblradio2').onclick = function(){
+                    console.log('lbl2');
+                    document.getElementById('radio1').value = 2;
+                }
+                document.getElementById('lblradio3').onclick = function(){
+                    console.log('lbl3');
+                    document.getElementById('radio1').value = 3;
+                }
+                document.getElementById('lblradio4').onclick = function(){
+                    console.log('lbl4');
+                    document.getElementById('radio1').value = 4;
+                }
+                document.getElementById('lblradio5').onclick = function(){
+                    console.log('lbl5');
+                    document.getElementById('radio1').value = 5;
+                }
+            </script>
             <p class="comentario">
             <br> Comentarios: <br><input type="text"  style="height: 70px;width: 350px" name="coment" id="comment"><br>
             </p>
             <br>Por seguridad ingrese  su ID:<br>  
             <input type="text" name="idCalificador" id="idCalificador"><br>
             <button type="submit" value="Enviar" ng-click="agregarRev()" style="width: 62px;height: 26px" > Calificar</button>
-
+            <script>
+                document.getElementById('lblradio1').onclick = function(){
+                    console.log('lbl1');
+                    document.getElementById('radio1').value = 1;
+                }
+                document.getElementById('lblradio2').onclick = function(){
+                    console.log('lbl2');
+                    document.getElementById('radio1').value = 2;
+                }
+                document.getElementById('lblradio3').onclick = function(){
+                    console.log('lbl3');
+                    document.getElementById('radio1').value = 3;
+                }
+                document.getElementById('lblradio4').onclick = function(){
+                    console.log('lbl4');
+                    document.getElementById('radio1').value = 4;
+                }
+                document.getElementById('lblradio5').onclick = function(){
+                    console.log('lbl5');
+                    document.getElementById('radio1').value = 5;
+                }
+            </script>
         </form>
+
 
     </div>
 </div>

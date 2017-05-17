@@ -493,7 +493,7 @@ label {
 }
 
 .clasificacion {
-    direction: ltr;
+    direction: rtl;
     unicode-bidi: bidi-override;
 }
 

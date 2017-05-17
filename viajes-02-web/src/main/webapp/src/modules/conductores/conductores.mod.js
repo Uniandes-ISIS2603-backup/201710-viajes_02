@@ -71,12 +71,28 @@
                     .state('conductoresDetailReview', {
                         url: '/reviews',
                         parent: 'conductorDetail',
+
                         views: {
                             'detail': {
-                                templateUrl: basePath + 'conductores.detail.reviews.html'
+                                templateUrl: basePath + 'conductores.detail.reviews.html',
+                                controller: ['$scope', '$http', 'currentConductor', '$stateParams', '$state',
+                                    function ($scope, $http, currentConductor, $stateParams, $state) {
+                                        $scope.currentConductor = currentConductor.data;
+                                            // console.log(currentConductor.data.id)
+                                        var rev= $http.get('api/usuarios/reviews/'+currentConductor.data.id)
+                                        console.log(rev)
+                                        $scope.eliminarev = function (idrev) {
+
+                                            $http.delete('api/usuarios/reviews/' +idrev)
+
+
+                                                .then(function () {
+                                                    $state.go('conductoresDetailAutomoviles', {conductorId: $scope.currentConductor.id}, {reload: true})
+                                                });
+                                        }
+                                    }]
                             }
                         }
-
                     })
                     .state('conductoresDetailAutomoviles', {
                         url: '/automoviles',
@@ -157,17 +173,17 @@
                                     function ($scope, $http, conductoresContext, $state) {
                                         var valor = 0;
                                         $scope.agregarRev = function () {
-
-                                            if (document.getElementById('radio1'))
-                                                valor = 1;
-                                            else if (document.getElementById('radio2'))
-                                                valor = 2;
-                                            else if (document.getElementById('radio3'))
-                                                valor = 3;
-                                            else if (document.getElementById('radio4'))
-                                                valor = 4;
-                                            else
-                                                valor = 5;
+                                            console.log('pruebaaaa'+document.getElementById('radio1').value);
+                                            if (document.getElementById('radio1').value)
+                                                valor = document.getElementById('radio1').value;
+                                            // else if (document.getElementById('radio2').value)
+                                            //     valor = 2;
+                                            // else if (document.getElementById('radio3').value)
+                                            //     valor = 3;
+                                            // // else if (document.getElementById('radio4').value)
+                                            //     valor = 4;
+                                            // else
+                                            //     valor = 5;
                                             var comment = document.getElementById('comment').value;
                                             var idCalificado = $scope.currentConductor.id;
                                             var idCalificador = parseInt(document.getElementById('idCalificador').value);
