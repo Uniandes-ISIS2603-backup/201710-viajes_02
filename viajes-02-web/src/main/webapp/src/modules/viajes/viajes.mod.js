@@ -76,18 +76,20 @@
                                 $scope.automoviles = $scope.currentConductor.automoviles;
                                 $scope.placa = '';
                                 $scope.origen = {
-                                    id: Math.floor((Math.random() * 100000) + 1),
+                                    id: Math.floor((Math.random() * 500000) + 1),
                                     direccion: '',
                                     lat: '',
                                     lon: '',
-                                    lugar: ''
+                                    lugar: '',
+                                    rutaImagen: ''
                                 };
                                 $scope.destino = {
-                                    id: Math.floor((Math.random() * 100000) + 1),
+                                    id: Math.floor((Math.random() * 500000) + 1),
                                     direccion: '',
                                     lat: '',
                                     lon: '',
-                                    lugar: ''
+                                    lugar: '',
+                                    rutaImagen: ''
                                 };
                                 $scope.viaje ={
                                     idViaje: undefined,

@@ -3,17 +3,30 @@
         <h1> REVIEWS </h1>
         <div ng-repeat = "review in currentConductor.reviews" >
             <ul>
-                <li> if({{review.calificacion}} ==1)
+                <li>
+                    <div  ng-if="review.calificacion==1">
                     Calificacion : ★✰✰✰✰
-                    else if({{review.calificacion}} ==2)
-                    Calificacion : ★★✰✰✰
-                    else if({{review.calificacion}} ==3)
-                    Calificacion : ★★★✰✰
-                    if({{review.calificacion}} ==4)
-                    Calificacion : ★★★★✰
-                    else
-                    Calificacion : ★★★★★
+                    </div>
+                    <div  ng-if="review.calificacion==2">
+                        Calificacion :★★✰✰✰
+                    </div>
+                    <div  ng-if="review.calificacion==3">
+                        Calificacion :★★★✰✰
+                    </div>
+                    <div  ng-if="review.calificacion==4">
+                        Calificacion :★★★★✰
+                    </div>
+                    <div  ng-if="review.calificacion==5">
+                        Calificacion :★★★★★
+                    </div>
+
                     Comentario: {{review.coment}}</li>
+                <button class="btn btn-danger"
+                        style="border-radius:50px; color:#FFFFFF; "
+                        ng-click="eliminarAutomovil()">&times;</button>
+                <button class="btn btn-info"
+                        style="border-radius:50px; color:#FFFFFF; position: absolute;">
+                    <a ui-sref="automovilesActualizar"> &#9745; </a></button>
             </ul>
         </div>
     </div>

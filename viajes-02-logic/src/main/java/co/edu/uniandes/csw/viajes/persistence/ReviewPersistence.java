@@ -70,6 +70,14 @@ public class ReviewPersistence
         return q.getResultList();
     }
 
+
+    public ReviewEntity findReviewUsuario(Long idCalificado, Long review)
+    {
+        TypedQuery<ReviewEntity> q = em.createQuery("select u from ReviewEntity u where u.idCalificado = :pollo and u.id=:pollito", ReviewEntity.class);
+        q.setParameter("pollo",idCalificado);
+        q.setParameter("pollito",review);
+        return q.getSingleResult();
+    }
     /**
      * crea un nuevo review
      *

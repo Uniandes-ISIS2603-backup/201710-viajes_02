@@ -1,23 +1,48 @@
 <div class="container-fluid">
     <div ui-view="detailView"></div>
     <div class="row">
-    <title>Inscribir Automovil</title>
-        <header style="align-content: center">Inscribir Automovil </header>
-
-        <form  method="post">
-
-            Placa: <input type="text" name="placa" id="placa"><br>
-            Color: <input type="color" name="color" id="color"><br>
-            Marca: <input type="text" name="marca" id="marca"><br>
-            Modelo: <input type="text" name="modelo" id="modelo"><br>
-            Aseguradora: <input type="text" name="aseguradora" id="aseguradora"><br>
-            Numero de Seguro: <input type="text" name="numseguro" id="numseguro"><br>
-            Cantidad de asientos: <input type="number" min="2" max="9" style="height: 35px;width: 35px" name="cantasientos" id="cantasientos"><br>
+        <title>Inscribir Automovil</title>
 
 
-            <button type="submit" value="Agregar" ng-click="agregar()" style="width: 150px;height: 55px"></button>
+        <form method="post">
+            <table>
+                <thead colspan="2" style="align-content: center;">Inscribir Automovil</thead>
+                <tr>
+                    <td >Placa:</td>
+                    <td><input type="text" name="placa" id="placa" style=""><br></td>
+                </tr>
+                <tr>
+                    <td>Color:</td>
+                    <td><input type="text" name="color" id="color"><br></td>
+                </tr>
+                <tr>
+                    <td>Marca:</td>
+                    <td><input type="text" name="marca" id="marca">
+                        <br></td>
+                </tr>
+                <tr>
+                    <td>Modelo:</td>
+                    <td> <input type="text" name="modelo" id="modelo"><br></td>
+                </tr>
+                <tr>
+                    <td>Aseguradora:</td>
+                    <td> <input type="text" name="aseguradora" id="aseguradora"><br></td>
+                </tr>
+                <tr>
+                    <td>Numero de Seguro:</td>
+                    <td><input type="text" name="numseguro" id="numseguro"><br></td>
+                </tr>
+                <tr>
+                    <td>Cantidad de asientos:</td>
+                    <td><input type="number" min="2" max="9" style="height: 35px;width: 35px" name="cantasientos" id="cantasientos"><br>
+                </td>
+                </tr>
+
+            </table>
+
+            <button type="submit" value="Agregar" ng-click="agregar()" style="width: 62px;height: 26px">Agregar</button>
         </form>
 
-       
+
     </div>
 </div>
