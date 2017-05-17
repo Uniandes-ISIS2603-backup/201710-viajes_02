@@ -14,6 +14,7 @@
                     conductores: ['$http', 'conductoresContext', function ($http, conductoresContext) {
                             return $http.get(conductoresContext);
                         }]
+                    
                 },
                 views: {
                     'mainView': {
@@ -42,13 +43,21 @@
                         resolve: {
                             currentConductor: ['$http', 'conductoresContext', '$stateParams', function ($http, conductoresContext, $params) {
                                     return $http.get(conductoresContext + '/' + $params.conductorId);
+                                }],
+                            currentReservas:  ['$http', '$stateParams', function ($http, $params) {
+                                    return $http.get('api/usuarios/reviews' + '/' + $params.conductorId);
                                 }]
                         },
                         views: {
                             'detailView': {
                                 templateUrl: basePath + 'conductores.detail.html',
-                                controller: ['$scope', 'currentConductor', function ($scope, currentConductor) {
+                                controller: ['$scope', 'currentConductor','currentReservas', function ($scope, currentConductor, currentReservas) {
                                         $scope.currentConductor = currentConductor.data;
+                                        $scope.currentConductor.reviews = currentReservas.data;
+                                        
+                                        
+                                        
+                                        
                                     }]
                             },
                             'listView': {
