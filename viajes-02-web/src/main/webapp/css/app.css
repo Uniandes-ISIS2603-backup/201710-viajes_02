@@ -533,3 +533,12 @@ input[type="radio"]:checked ~ label {
     padding-left: 10px;
     padding-right: 10px;
 }
+
+.reservas-collapse {
+    float: right; 
+    color: #00b3ee;
+}
+
+.resultado {
+    display: none;
+}

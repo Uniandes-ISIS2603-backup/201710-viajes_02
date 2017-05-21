@@ -3,7 +3,7 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<div class="container-fluid">
+<div class="container-fluid reservas">
     <div class="row">
         <section class="content">
             <h1 class="text-center">Reservas de {{currentViajero.nombre}}</h1>
@@ -14,7 +14,7 @@ and open the template in the editor.
                         <div class="panel-heading">
                             <h4 class="panel-title" >
                                 <a ui-sref="reservasDetail({idReserva: reserva.id})">Reserva {{reserva.id}}
-                                    <span data-toggle="collapse" href="#toCollapse{{reserva.id}}" style="float: right; color: #00b3ee"><i class="glyphicon glyphicon-chevron-down"></i></span>
+                                    <span data-toggle="collapse" href="#toCollapse{{reserva.id}}"><i class="glyphicon glyphicon-chevron-down reserva-collapse pull-right"></i></span>
                                 </a>
                             </h4>
                         </div>
@@ -40,27 +40,27 @@ and open the template in the editor.
 
     <!--Reservar-->
 
-    <div id="contenedor-principal" class="container-fluid">
-        <div id="superior" class="row">
+    <div id="contenedor-principal" class="container-fluid buscar-reserva">
+        <div id="titulo-reservar" class="row">
             <h3 align="center">Reservar</h3>
             <hr class="line-separator">
         </div>
-        <div id="busqueda" class="col-sm-offset-1 row form-group">
-            <form id="formbuscarviajes">
+        <div id="busqueda" class="col-sm-offset-1 row form-group busqueda">
+            <form id="form-buscar-viajes">
                 <div class="col-sm-3">
-                    <label for="desde">Origen</label>
-                    <input type="text" class="form-control" placeholder="Desde" name="desde" required><br>
+                    <label for="desde">Ciudad de origen</label>
+                    <input id="desde" type="text" class="form-control" placeholder="Desde" name="desde" required><br>
                 </div>
                 <div class="col-sm-3">
-                    <label for="hasta">Destino</label>
-                    <input type="text" class="form-control" placeholder="Hasta" name="hasta" required><br>
+                    <label for="hasta">Ciudad de destino</label>
+                    <input id="hasta" type="text" class="form-control" placeholder="Hasta" name="hasta" required><br>
                 </div>
                 <div class="col-sm-3">
                     <label for="fechasalida">Fecha de salida</label>
                     <input type="date" class="form-control" name="fechasalida"><br>
                 </div>
                 <div class="col-sm-2" align="center">
-                    <button id="buscar" type="submit" class="btn btn-primary btn-lg btn-block" form="formbuscarviajes" ng-click="buscarviajes()">Buscar</button>
+                    <button id="buscar" type="submit" class="btn btn-primary btn-lg btn-block" form="form-buscar-viajes" ng-click="buscarviajes()">Buscar</button>
                 </div>
             </form>
         </div>

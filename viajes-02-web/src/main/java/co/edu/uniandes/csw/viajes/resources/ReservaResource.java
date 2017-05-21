@@ -52,8 +52,8 @@ public class ReservaResource {
     private ViajeroLogic viajeroLogic;
 
     @POST
-    public ReservaDetailDTO createReserva(ReservaDTO reservaDTO) {
-        return new ReservaDetailDTO(reservaLogic.createReserva(reservaDTO.toEntity()));
+    public ReservaDetailDTO createReserva(ReservaDetailDTO reservaDetailDTO) {
+        return new ReservaDetailDTO(reservaLogic.createReserva(reservaDetailDTO.toEntity()));
     }
 
     @GET

@@ -10,7 +10,9 @@ and open the template in the editor.
         <div class="panel-group">
             <div class="panel panel-default">
                 <div class="panel-heading" style="height: 40px" >
-                    <h3 style="margin-top: -2px;">Reserva {{currentReserva.id}}</h3>
+                    <h3 style="margin-top: -2px;">Reserva {{currentReserva.id}}
+
+                    </h3>
                 </div>
                 <!--<ul ng-repeat="viaje in currentReserva.viaje">
                     <a ui-sref="viajeDetail({viajeId: viaje.id})">{{viaje.id}}</a>
@@ -45,6 +47,12 @@ and open the template in the editor.
                         <dt>Correo</dt>
                         <dd>{{currentReserva.viajero.correo}}</dd>
                     </dl>
+                    <hr>
+                    <div class="col-sm-2 pull-right" align="center">
+                        <button id="eliminar" type="submit" class="btn btn-primary btn-lg btn-block" ng-click="eliminar()">
+                            Eliminar reserva
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
