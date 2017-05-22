@@ -4,11 +4,11 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <div class="container-fluid reservas">
-    <div class="row">
+    <div id="reservas-viajero" class="row reservas-viajero">
         <section class="content">
             <h1 class="text-center">Reservas de {{currentViajero.nombre}}</h1>
             <hr class="line-separator">
-            <div class="col-md-8 col-md-offset-2" ng-repeat="reserva in reservasRecords">
+            <div  class="col-md-8 col-md-offset-2" ng-repeat="reserva in reservasRecords">
                 <div class="panel-group">
                     <div class="panel panel-default">
                         <div class="panel-heading">

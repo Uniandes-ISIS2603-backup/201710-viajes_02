@@ -44,6 +44,10 @@
                                 $scope.currentViajero = currentViajero.data;
                                 $scope.viajes = viajes.data;
                                 
+                                if($scope.reservasRecords.length > 0) {
+                                    document.getElementById('reservas-viajero').style.display = "block";
+                                }
+                                
                                 $scope.buscarviajes = function() {
                                     var origen = document.getElementById('desde').value;
                                     var destino = document.getElementById('hasta').value;
@@ -74,14 +78,14 @@
                                             "edad": currentViajero.edad,
                                             "rating": currentViajero.rating,
                                             "correo": currentViajero.correo,
-                                            "direccion": {
-                                                "id": currentViajero.direccion.id,
-                                                "lugar": currentViajero.direccion.lugar,
-                                                "direccion": currentViajero.direccion.direccion,
-                                                "lat": currentViajero.direccion.lat,
-                                                "lon": currentViajero.direccion.lon,
-                                                "rutaImagen": currentViajero.direccion.rutaImagen
-                                            },
+//                                            "direccion": {
+//                                                "id": currentViajero.direccion.id,
+//                                                "lugar": currentViajero.direccion.lugar,
+//                                                "direccion": currentViajero.direccion.direccion,
+//                                                "lat": currentViajero.direccion.lat,
+//                                                "lon": currentViajero.direccion.lon,
+//                                                "rutaImagen": currentViajero.direccion.rutaImagen
+//                                            },
                                             "imagen": currentViajero.imagen
                                         },
                                         "viaje": {

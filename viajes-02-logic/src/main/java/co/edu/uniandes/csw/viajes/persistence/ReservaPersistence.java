@@ -54,12 +54,7 @@ public class ReservaPersistence
     
     public List<ReservaEntity> findReservasByIdViajero(Long idViajero) {
         TypedQuery<ReservaEntity> query = entityManager.createQuery("SELECT u FROM ReservaEntity u WHERE u.viajero.id = " + idViajero, ReservaEntity.class);
-        List<ReservaEntity> reservasPorIdViajero = query.getResultList();
-        
-        if (!reservasPorIdViajero.isEmpty())
-            return reservasPorIdViajero;
-        else
-            return null;
+        return query.getResultList();
     }
 
     public ReservaEntity findReserva(Long id) {

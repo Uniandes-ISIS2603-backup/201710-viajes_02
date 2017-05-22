@@ -542,3 +542,7 @@ input[type="radio"]:checked ~ label {
 .resultado {
     display: none;
 }
+
+.reservas-viajero {
+   display: none;
+}
